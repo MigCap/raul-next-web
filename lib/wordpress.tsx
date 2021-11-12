@@ -1,5 +1,6 @@
 const BASE_URL = "https://www.rauldediego.es/wp-json/wp/v2";
 const POSTS_API_URL = `${BASE_URL}/posts`;
+const TAGS_API_URL = `${BASE_URL}/tags`;
 const MEDIA_API_URL = `${BASE_URL}/media`;
 
 export async function getPosts() {
@@ -13,6 +14,15 @@ export async function getPost(slug: any) {
   const postArray = posts.filter((post: any) => post.slug === slug);
   const post = postArray.length > 0 ? postArray[0] : null;
   return post;
+}
+
+export async function getPostBy(id: any) {
+  const postRes = await fetch(`${POSTS_API_URL}/${id}`);
+  const post = await postRes.json();
+
+  const currPost = post?.id == id ? post : null;
+
+  return currPost;
 }
 
 export async function getSlugs(type: any) {
@@ -33,6 +43,19 @@ export async function getSlugs(type: any) {
   });
 
   return elementsIds;
+}
+
+export async function getPostTags(slug: string) {
+  const post = await getPost(slug);
+  const tags = post?.tags;
+  const tagsArray = tags?.map(async (tag: any) => {
+    const tagRes = await fetch(`${TAGS_API_URL}/${tag}`);
+    const tagData = await tagRes.json();
+    return tagData;
+  });
+  return Promise.all(tagsArray).then((values) => {
+    return values;
+  });
 }
 
 export async function getMedia() {

@@ -5,16 +5,15 @@ import { Card } from "primereact/card";
 
 import { getFeaturedImage } from "lib";
 
-import styles from "styles/Post.module.css";
+import styles from "./styles.module.css";
 
-export default function Post({
+export default function PostCard({
   post,
   featuredMedia,
 }: {
   post: any;
   featuredMedia: any;
 }) {
-  // console.log(`🚀 ~ featuredMedia`, featuredMedia);
   const header = featuredMedia && (
     <div
       style={{
@@ -48,7 +47,6 @@ export default function Post({
 }
 
 export async function getStaticProps(context: any) {
-  console.log(`🚀 ~ getStaticProps ~ context`, context);
   const image = await getFeaturedImage(context);
 
   return {

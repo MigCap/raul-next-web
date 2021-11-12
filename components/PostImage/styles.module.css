@@ -1,0 +1,15 @@
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom:hover .postDetailImage {
+    transform: scale(1.2);
+}
+
+.postDetailImage {
+    /* object-fit: cover; */
+    object-fit: contain;
+    width: 280px;
+    min-height: 200px;
+    transition: transform 0.5s ease;
+}

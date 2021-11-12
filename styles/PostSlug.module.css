@@ -1,8 +1,0 @@
-.postDetailImage {
-    /* object-fit: cover; */
-    object-fit: contain;
-}
-
-.postDetailImageFill {
-    object-fit: contain;
-}

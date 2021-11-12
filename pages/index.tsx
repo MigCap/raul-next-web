@@ -3,14 +3,14 @@ import Head from "next/head";
 
 import { getMedia, getPosts, getFeaturedMedia } from "lib";
 
-import Post from "components/Post";
+import PostCard from "components/PostCard";
 
 export default function Home({ posts, media }: { posts: any; media: any }) {
   const jsxPosts = posts.slice(0, 6).map((post: any) => {
     const featuredMediaId = post["featured_media"];
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
 
-    return <Post post={post} featuredMedia={featuredMedia} key={post.id} />;
+    return <PostCard post={post} featuredMedia={featuredMedia} key={post.id} />;
   });
 
   return (
