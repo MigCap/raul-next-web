@@ -1,0 +1,8 @@
+/* .card {
+    margin: 1rem;
+} */
+
+.cardImage {
+    object-fit: cover;
+    border-radius: 3px 3px 0 0;
+}

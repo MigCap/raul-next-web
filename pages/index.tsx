@@ -1,24 +1,15 @@
+// import { useEffect } from "react";
 import Head from "next/head";
 
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
-import "primeflex/primeflex.css";
+import { getMedia, getPosts, getFeaturedMedia } from "lib";
 
-import {
-  getEvents,
-  getMedia,
-  getPosts,
-  getFeaturedMedia,
-} from "../utils/wordpress";
-
-import Post from "../components/Post";
+import Post from "components/Post";
 
 export default function Home({ posts, media }: { posts: any; media: any }) {
-  console.log(`🚀 ~ Home ~ media`, media);
-  const jsxPosts = posts.map((post: any) => {
+  const jsxPosts = posts.slice(0, 6).map((post: any) => {
     const featuredMediaId = post["featured_media"];
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
+
     return <Post post={post} featuredMedia={featuredMedia} key={post.id} />;
   });
 
@@ -28,19 +19,17 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
         <title>Raúl de Diego Vázquez</title>
         <meta
           name="description"
-          content="Keep up to date with the latest trends in tech"
+          content="Raúl de Diego Vázquez personal website"
         />
         <link rel="icon" href="/favicon.ico" />
         {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 
       <div className="container pt-5">
-        <h1 className="text-center pb-5">Raúl de Diego Vázquez</h1>
-        <div className="row">
-          <div className="col-lg-8">
-            <h2 className="pb-3">Blog posts</h2>
-            {jsxPosts}
-          </div>
+        <h1 className="p-text-center p-py-5">Raúl de Diego Vázquez</h1>
+        <div className="p-mx-4">
+          <h2 className="">Blog posts</h2>
+          <section className="p-grid p-align-center">{jsxPosts}</section>
         </div>
       </div>
     </>
@@ -50,7 +39,6 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
 export async function getStaticProps({ params }: { params: any }) {
   const posts = await getPosts();
   const media = await getMedia();
-
   return {
     props: {
       posts,
