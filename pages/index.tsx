@@ -1,8 +1,9 @@
-// import { useEffect } from "react";
 import Head from "next/head";
 
 import { getMedia, getPosts, getFeaturedMedia } from "lib";
 
+import { Menu } from "components/Menu";
+import Hero from "components/Hero";
 import PostCard from "components/PostCard";
 
 export default function Home({ posts, media }: { posts: any; media: any }) {
@@ -25,11 +26,24 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
         {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 
-      <div className="container pt-5">
-        <h1 className="p-text-center p-py-5">Raúl de Diego Vázquez</h1>
-        <div className="p-mx-4">
-          <h2 className="">Blog posts</h2>
-          <section className="p-grid p-align-center">{jsxPosts}</section>
+      {/* <Menu /> */}
+
+      <div className="p-py-2">
+        <p
+          className="p-text-center p-text-uppercase"
+          style={{ fontWeight: 700 }}
+        >
+          Raúl de Diego Vázquez
+        </p>
+      </div>
+
+      <Hero />
+
+      <div className="container">
+        <div className="p-mx-5 p-px-5">
+          <section className="p-grid p-align-center p-justify-center p-mx-5 p-px-5 p-my-5">
+            {jsxPosts}
+          </section>
         </div>
       </div>
     </>

@@ -4,8 +4,9 @@ export default function PostTag({ tag }: { tag: any }) {
     if (computerTags.includes(tag?.name)) return "pi pi-desktop";
     return;
   };
+
   return (
-    <div className="p-d-flex p-ai-center p-ml-3">
+    <div className={`p-d-flex p-ai-center p-mr-3`}>
       {getTagIcon() && (
         <i
           className={`${getTagIcon()} p-mr-1`}
