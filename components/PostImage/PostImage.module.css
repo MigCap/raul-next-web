@@ -2,14 +2,15 @@
     overflow: hidden;
 }
 
-.img-hover-zoom:hover .postDetailImage {
+.img-hover-zoom:hover .post-detail-image {
     transform: scale(1.2);
 }
 
-.postDetailImage {
+.post-detail-image {
     /* object-fit: cover; */
     object-fit: contain;
-    width: 280px;
-    min-height: 200px;
+    width: 100%;
+    /* max-width: 80%; */
+    min-height: 150px;
     transition: transform 0.5s ease;
 }

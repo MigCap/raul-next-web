@@ -2,7 +2,7 @@
 
 import { Image as PrimeImage } from "primereact/image";
 
-import styles from "./styles.module.css";
+import styles from "./PostImage.module.css";
 
 export default function PostImage({ src }: { src: string }) {
   //   const imagesMinHeight = `200px`;
@@ -11,11 +11,11 @@ export default function PostImage({ src }: { src: string }) {
 
   return (
     <>
-      <div className={styles["img-hover-zoom"]}>
+      <div className={`${styles["img-hover-zoom"]} p-mb-1 p-mb-md-2`}>
         <PrimeImage
           src={src}
           alt={src}
-          imageClassName={styles.postDetailImage}
+          imageClassName={`${styles["post-detail-image"]}`}
           preview
         />
       </div>

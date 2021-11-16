@@ -1,0 +1,11 @@
+/* .card {
+    margin: 1rem;
+} */
+
+.cardImage {
+    object-fit: cover;
+    border-radius: 5px;
+    width: 480px;
+    height: 431px;
+    overflow: visible;
+}

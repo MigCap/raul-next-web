@@ -1,0 +1,10 @@
+.image {
+    background: url("/assets/background-hero.jpg") no-repeat fixed;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+}

@@ -3,9 +3,16 @@ import Image from "next/image";
 
 import { Card } from "primereact/card";
 
+import {
+  useViewportScroll,
+  motion,
+  useTransform,
+  useMotionValue,
+} from "framer-motion";
+
 import { getFeaturedImage } from "lib";
 
-import styles from "./styles.module.css";
+import styles from "./PostCard.module.css";
 
 export default function PostCard({
   post,
@@ -30,19 +37,93 @@ export default function PostCard({
     </div>
   );
 
+  const textMotion = {
+    // rest: {
+    //   color: "grey",
+    //   x: 0,
+    //   transition: {
+    //     duration: 2,
+    //     type: "tween",
+    //     ease: "easeIn",
+    //   },
+    // },
+    hover: {
+      // color: "blue",
+      x: 5,
+      transition: {
+        duration: 0.4,
+        type: "tween",
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const arrowMotion = {
+    rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
+    hover: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        type: "tween",
+        ease: "easeIn",
+      },
+    },
+  };
+
   return (
-    <div className="p-col-4">
+    <motion.div
+      className="p-col-4"
+      // whileHover={{
+      //   // scale: 1.1,
+      //   translateY: -5,
+      //   transition: { duration: 0.5 },
+      // }}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      variants={{
+        hover: {
+          // scale: 1.05,
+          translateY: -2,
+          transition: { duration: 0.5 },
+        },
+      }}
+    >
       <Link href={`/posts/${post.slug}`}>
         <a>
-          <Card
-            title={post.title.rendered}
+          {/* <Card
+            // title={post.title.rendered}
             style={{ minHeight: "20rem" }}
-            header={header}
+            // header={header}
             className={styles.card}
-          />
+          >
+          </Card> */}
+          <>
+            <p className="p-m-0 p-p-0">
+              {post.title.rendered}
+              <motion.span variants={arrowMotion}> →</motion.span>
+            </p>
+            {featuredMedia && (
+              <div
+                style={{
+                  position: "relative",
+                  height: "20rem",
+                  width: "100%",
+                  borderRadius: "1rem",
+                }}
+              >
+                <Image
+                  src={`${featuredMedia?.["source_url"]}`}
+                  layout="fill"
+                  alt={featuredMedia?.["alt_text"]}
+                  className={styles.cardImage}
+                />
+              </div>
+            )}
+          </>
         </a>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
