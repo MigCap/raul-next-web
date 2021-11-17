@@ -27,10 +27,9 @@ p {
     min-height: 100vh;
 } */
 
-
-/* @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .container {
         margin-left: 10rem;
         margin-right: 10rem;
     }
-} */
+}

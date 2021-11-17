@@ -40,11 +40,9 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
       <Hero />
 
       <div className="container">
-        <div className="p-mx-5 p-px-5">
-          <section className="p-grid p-align-center p-justify-center p-mx-5 p-px-5 p-my-5">
+          <section className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5 p-my-5">
             {jsxPosts}
           </section>
-        </div>
       </div>
     </>
   );
