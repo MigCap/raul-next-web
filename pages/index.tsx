@@ -1,19 +1,15 @@
 import Head from "next/head";
+import Image from "next/image";
 
-import { getMedia, getPosts, getFeaturedMedia } from "lib";
+import { getMedia, getPosts } from "lib";
 
-import { Menu } from "components/Menu";
+// import { Menu } from "components/Menu";
 import Hero from "components/Hero";
-import PostCard from "components/PostCard";
+import Works from "components/Works";
 
-export default function Home({ posts, media }: { posts: any; media: any }) {
-  const jsxPosts = posts.slice(0, 6).map((post: any) => {
-    const featuredMediaId = post["featured_media"];
-    const featuredMedia = getFeaturedMedia(media, featuredMediaId);
+import styles from "styles/Home.module.css";
 
-    return <PostCard post={post} featuredMedia={featuredMedia} key={post.id} />;
-  });
-
+export default function Home({ posts, media }: any) {
   return (
     <>
       <Head>
@@ -28,21 +24,30 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
 
       {/* <Menu /> */}
 
-      <div className="p-py-2">
-        <p
-          className="p-text-center p-text-uppercase"
-          style={{ fontWeight: 700 }}
-        >
-          Raúl de Diego Vázquez
-        </p>
-      </div>
-
       <Hero />
 
       <div className="container">
-          <section className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5 p-my-5">
-            {jsxPosts}
-          </section>
+        <div className="p-my-3" style={{ position: "relative", width: "5rem" }}>
+          <Image
+            src={`/assets/logo-raul.png`}
+            // layout="fill"
+            alt={`logo-raul`}
+            width={50}
+            height={50}
+            className={styles.logo}
+          />
+        </div>
+        <div
+          className="p-d-flex"
+          style={{ marginTop: "5rem", marginBottom: "5rem" }}
+        >
+          <div className="menu" style={{ minWidth: "10rem" }}>
+            <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
+              Raúl de Diego
+            </p>
+          </div>
+          <Works posts={posts} media={media} />
+        </div>
       </div>
     </>
   );
@@ -50,7 +55,7 @@ export default function Home({ posts, media }: { posts: any; media: any }) {
 
 export async function getStaticProps({ params }: { params: any }) {
   const posts = await getPosts();
-  const media = await getMedia();
+  const media = await getMedia(posts);
   return {
     props: {
       posts,

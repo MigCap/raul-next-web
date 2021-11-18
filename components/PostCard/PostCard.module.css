@@ -1,11 +1,24 @@
-/* .card {
-    margin: 1rem;
-} */
+.card {
+    cursor: pointer;
+    max-width: 20rem;
+}
+
+.card:hover .cardImage {
+    filter: opacity(0.83);
+}
+
+.cardImageContainer {
+    position: relative;
+    height: 20rem;
+    width: 100%;
+    border-radius: 1rem;
+}
 
 .cardImage {
     object-fit: cover;
     border-radius: 5px;
-    width: 480px;
-    height: 431px;
+    width: 20rem;
+    height: 20rem;
     overflow: visible;
+    transition: all 0.5s ease;
 }

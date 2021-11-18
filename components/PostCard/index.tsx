@@ -21,42 +21,41 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
-  const header = featuredMedia && (
-    <div
-      style={{
-        position: "relative",
-        height: "200px",
-      }}
-    >
-      <Image
-        src={`${featuredMedia?.["source_url"]}`}
-        layout="fill"
-        alt={featuredMedia?.["alt_text"]}
-        className={styles.cardImage}
-      />
-    </div>
-  );
+  // const header = featuredMedia && (
+  //   <div
+  //     style={{
+  //       position: "relative",
+  //       height: "200px",
+  //     }}
+  //   >
+  //     <Image
+  //       src={`${featuredMedia?.["source_url"]}`}
+  //       layout="fill"
+  //       alt={featuredMedia?.["alt_text"]}
+  //       className={styles.cardImage}
+  //     />
+  //   </div>
+  // );
 
-  const textMotion = {
-    // rest: {
-    //   color: "grey",
-    //   x: 0,
-    //   transition: {
-    //     duration: 2,
-    //     type: "tween",
-    //     ease: "easeIn",
-    //   },
-    // },
-    hover: {
-      // color: "blue",
-      x: 5,
-      transition: {
-        duration: 0.4,
-        type: "tween",
-        ease: "easeOut",
-      },
-    },
-  };
+  // const textMotion = {
+  //   hover: {
+  //     // color: "blue",
+  //     x: 5,
+  //     transition: {
+  //       duration: 0.4,
+  //       type: "tween",
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // };
+
+  // const postCardMotion = {
+  //   hover: {
+  //     // scale: 1.05,
+  //     translateY: -2,
+  //     transition: { duration: 0.5 },
+  //   },
+  // };
 
   const arrowMotion = {
     rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
@@ -72,7 +71,6 @@ export default function PostCard({
 
   return (
     <motion.div
-      className="p-col-4"
       // whileHover={{
       //   // scale: 1.1,
       //   translateY: -5,
@@ -81,13 +79,8 @@ export default function PostCard({
       initial="rest"
       whileHover="hover"
       animate="rest"
-      variants={{
-        hover: {
-          // scale: 1.05,
-          translateY: -2,
-          transition: { duration: 0.5 },
-        },
-      }}
+      // variants={postCardMotion}
+      className={`${styles.card} p-col-4`}
     >
       <Link href={`/posts/${post.slug}`}>
         <a>
@@ -101,17 +94,16 @@ export default function PostCard({
           <>
             <p className="p-m-0 p-p-0">
               {post.title.rendered}
+              {/* <motion.span variants={arrowMotion}>
+                <i
+                  className="pi pi-arrow-right p-ml-1"
+                  style={{ fontSize: "0.6em", color: "#63666f" }}
+                ></i>
+              </motion.span> */}
               <motion.span variants={arrowMotion}> →</motion.span>
             </p>
             {featuredMedia && (
-              <div
-                style={{
-                  position: "relative",
-                  height: "20rem",
-                  width: "100%",
-                  borderRadius: "1rem",
-                }}
-              >
+              <div className={styles.cardImageContainer}>
                 <Image
                   src={`${featuredMedia?.["source_url"]}`}
                   layout="fill"

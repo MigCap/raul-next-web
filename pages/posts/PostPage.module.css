@@ -1,5 +1,5 @@
 h1.post-title {
-    color: var(--teal-300);
+    color: var(--indigo-500);
     /* font-family: "Oswald"; */
 }
 
@@ -7,7 +7,7 @@ h1.post-title {
     width: 25%;
     height: 2px;
     /* background-color: var(--teal-300); */
-    background-color: #ef9700;
+    background-color: var(--indigo-500);
 }
 
 .refresh {
@@ -15,7 +15,7 @@ h1.post-title {
     /* position: absolute; */
     /* background: rgba(0, 0, 0, 0.4); */
     /* background: rgba(0, 0, 0, 0.4); */
-    border: solid var(--teal-300) 1px;
+    border: solid var(--indigo-500) 1px;
     border-radius: 50%;
     width: 50px;
     height: 50px;

@@ -10,11 +10,11 @@ export default function PostTag({ tag }: { tag: any }) {
       {getTagIcon() && (
         <i
           className={`${getTagIcon()} p-mr-1`}
-          style={{ fontSize: "0.8rem", color: "var(--teal-500)" }}
+          style={{ fontSize: "0.8rem", color: "var(--indigo-500)" }}
         />
       )}
        
-      <p style={{ fontSize: "0.7rem", color: "var(--teal-500)" }}>
+      <p style={{ fontSize: "0.7rem", color: "var(--indigo-500)" }}>
         {tag?.name.toUpperCase()}
       </p>
     </div>

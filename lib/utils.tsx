@@ -17,7 +17,13 @@ function getImagesSources(post: any) {
     ? match.map((m: any) => m.replace(/srcs*=s*"/g, "").replace('"', ""))
     : [];
 
-  return srcs;
+  const imgs = srcs.map((imgSrc: string, i: number) => ({
+    src: imgSrc,
+    alt: imgSrc,
+    index: i,
+  }));
+
+  return imgs;
 }
 
 export { parse, getDate, getImagesSources };

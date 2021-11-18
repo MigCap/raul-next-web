@@ -1,10 +1,12 @@
-const BASE_URL = "https://www.rauldediego.es/wp-json/wp/v2";
+const BASE_URL = "http://wp.rauldediego.com/wp-json/wp/v2";
 const POSTS_API_URL = `${BASE_URL}/posts`;
 const TAGS_API_URL = `${BASE_URL}/tags`;
 const MEDIA_API_URL = `${BASE_URL}/media`;
 
 export async function getPosts() {
-  const postsRes = await fetch(POSTS_API_URL);
+  const fields =
+    "?_fields=id,slug,title,content,excerpt,featured_media,categories,tags,_links";
+  const postsRes = await fetch(`${POSTS_API_URL}${fields}`);
   const posts = await postsRes.json();
   return posts;
 }
@@ -58,9 +60,22 @@ export async function getPostTags(slug: string) {
   });
 }
 
-export async function getMedia() {
+export async function getMedia(posts: any) {
+  const fields = "?_fields=id,alt_text,media_details,guid";
   // const mediaRes = await fetch(MEDIA_API_URL);
-  const mediaRes = await fetch(MEDIA_API_URL + "?per_page=30");
+  // ?_fields=author,id,excerpt,title,link
+  // ?_fields=id,alt_text,media_details,guid
+
+  const postsMediaIds =
+    posts &&
+    posts
+      ?.map((post: any) => post.featured_media)
+      .join()
+      .replace(" ", "");
+
+  console.log(`🚀 ~ getMedia ~ postsMediaIds`, postsMediaIds);
+
+  const mediaRes = await fetch(`${MEDIA_API_URL}?include=${postsMediaIds}`);
   const media = await mediaRes.json();
   return media;
 }
