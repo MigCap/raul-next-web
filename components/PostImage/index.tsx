@@ -40,11 +40,6 @@ export default function PostImage({
           className={`${styles["post-detail-image"]}`}
         />
       </div>
-      {/* <img
-        src={src}
-        alt={src}
-        style={{ display: "block", width: "8rem", height: "5rem" }}
-      /> */}
     </motion.div>
   );
 }

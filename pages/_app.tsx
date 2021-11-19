@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Head from "next/head";
 import Router from "next/router";
 
@@ -13,44 +15,65 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.scss";
 
 import "styles/globals.css";
-import { useEffect } from "react";
+
+const routeChange = () => {
+  // Temporary fix to avoid flash of unstyled content
+  // during route transitions. Keep an eye on this
+  // issue and remove this code when resolved:
+  // https://github.com/vercel/next.js/issues/17464
+
+  const tempFix = () => {
+    const allStyleElems = document.querySelectorAll('style[media="x"]');
+    allStyleElems.forEach((elem) => {
+      elem.removeAttribute("media");
+    });
+  };
+  tempFix();
+};
+
+Router.events.on("routeChangeComplete", routeChange);
+Router.events.on("routeChangeStart", routeChange);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  let copies: any = [];
-
   useEffect(() => {
-    Router.events.on("beforeHistoryChange", onLoad);
-    return () => {
-      Router.events.off("beforeHistoryChange", onLoad);
-    };
+    router.push(router.pathname);
   }, []);
 
-  const onLoad = () => {
-    // Create a clone of every <style> and <link> that currently affects the page. It doesn't matter
-    // if Next.js is going to remove them or not since we are going to remove the copies ourselves
-    // later on when the transition finishes.
-    const nodes: any = document.querySelectorAll(
-      "link[rel=stylesheet], style:not([media=x])"
-    );
-    copies = [...nodes].map((el) => el.cloneNode(true));
+  // let copies: any = [];
 
-    for (let copy of copies) {
-      // Remove Next.js' data attributes so the copies are not removed from the DOM in the route
-      // change process.
-      copy.removeAttribute("data-n-p");
-      copy.removeAttribute("data-n-href");
+  // useEffect(() => {
+  //   Router.events.on("beforeHistoryChange", onLoad);
+  //   return () => {
+  //     Router.events.off("beforeHistoryChange", onLoad);
+  //   };
+  // }, []);
 
-      // Add duplicated nodes to the DOM.
-      document.head.appendChild(copy);
-    }
-  };
+  // const onLoad = () => {
+  //   // Create a clone of every <style> and <link> that currently affects the page. It doesn't matter
+  //   // if Next.js is going to remove them or not since we are going to remove the copies ourselves
+  //   // later on when the transition finishes.
+  //   const nodes: any = document.querySelectorAll(
+  //     "link[rel=stylesheet], style:not([media=x])"
+  //   );
+  //   copies = [...nodes].map((el) => el.cloneNode(true));
 
-  const onExit = () => {
-    for (let copy of copies) {
-      // Remove previous page's styles after the transition has finalized.
-      document.head.removeChild(copy);
-    }
-  };
+  //   for (let copy of copies) {
+  //     // Remove Next.js' data attributes so the copies are not removed from the DOM in the route
+  //     // change process.
+  //     copy.removeAttribute("data-n-p");
+  //     copy.removeAttribute("data-n-href");
+
+  //     // Add duplicated nodes to the DOM.
+  //     document.head.appendChild(copy);
+  //   }
+  // };
+
+  // const onExit = () => {
+  //   for (let copy of copies) {
+  //     // Remove previous page's styles after the transition has finalized.
+  //     document.head.removeChild(copy);
+  //   }
+  // };
 
   return (
     <>
@@ -63,7 +86,8 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           crossOrigin="anonymous"
         />
       </Head> */}
-      <AnimatePresence exitBeforeEnter onExitComplete={onExit}>
+      <AnimatePresence exitBeforeEnter>
+        {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </>
