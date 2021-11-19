@@ -92,12 +92,7 @@ export default function PostCard({
             <motion.span variants={arrowMotion}> →</motion.span>
           </p>
           {featuredMedia && (
-            <motion.div
-              // exit={{ opacity: 0 }}
-              // initial="initial"
-              // animate="animate"
-              className={styles.cardImageContainer}
-            >
+            <div className={styles.cardImageContainer}>
               <Image
                 priority
                 src={`${featuredMedia?.["source_url"]}`}
@@ -105,7 +100,7 @@ export default function PostCard({
                 alt={featuredMedia?.["alt_text"]}
                 className={styles.cardImage}
               />
-            </motion.div>
+            </div>
           )}
         </a>
       </Link>
