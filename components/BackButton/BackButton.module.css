@@ -3,7 +3,8 @@
     /* position: absolute; */
     /* background: rgba(0, 0, 0, 0.4); */
     /* background: rgba(0, 0, 0, 0.4); */
-    border: solid var(--indigo-500) 1px;
+    border: solid var(--teal-500) 1px;
+    /* border: solid var(--indigo-500) 1px; */
     border-radius: 50%;
     width: 50px;
     height: 50px;

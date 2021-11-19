@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// import { Card } from "primereact/card";
-
 import { motion } from "framer-motion";
 
 import { getFeaturedImage } from "lib";
 
+import { colors } from "styles/theme";
+
+import cs from "components/Works/Works.module.css";
 import styles from "./PostCard.module.css";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
@@ -18,26 +19,6 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
-  // const textMotion = {
-  //   hover: {
-  //     // color: "blue",
-  //     x: 5,
-  //     transition: {
-  //       duration: 0.4,
-  //       type: "tween",
-  //       ease: "easeOut",
-  //     },
-  //   },
-  // };
-
-  // const postCardMotion = {
-  //   hover: {
-  //     // scale: 1.05,
-  //     translateY: -2,
-  //     transition: { duration: 0.5 },
-  //   },
-  // };
-
   const fadeInUp = {
     initial: {
       y: 60,
@@ -52,11 +33,16 @@ export default function PostCard({
         ease: easing,
       },
     },
-    // hover: {
-    //   // scale: 1.05,
-    //   translateY: -2,
-    //   transition: { duration: 0.5 },
-    // },
+  };
+
+  const postCard = {
+    hover: {
+      // scale: 1.05,
+      // translateY: -2,
+      // x: 15,
+      color: colors.primary,
+      transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+    },
   };
 
   const arrowMotion = {
@@ -72,41 +58,62 @@ export default function PostCard({
   };
 
   return (
-    <motion.div
-      // whileHover={{
-      //   // scale: 1.1,
-      //   translateY: -5,
-      //   transition: { duration: 0.5 },
-      // }}
-      // initial="initial"
-      // whileHover="hover"
-      // animate="animate"
-      variants={fadeInUp}
-      // exit={{ opacity: 0 }}
-      className={`${styles.card} p-col-4`}
-    >
-      <Link href={`/posts/${post.slug}`}>
-        <a>
-          <p className="p-m-0 p-p-0">
-            {post.title.rendered}
-            <motion.span variants={arrowMotion}> →</motion.span>
-          </p>
-
-          {featuredMedia && (
-            <div className={styles.cardImageContainer}>
-              <Image
-                priority
-                src={`${featuredMedia?.["source_url"]}`}
-                layout="fill"
-                alt={featuredMedia?.["alt_text"]}
-                className={styles.cardImage}
-              />
-            </div>
-          )}
-        </a>
-      </Link>
+    <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
+      <motion.div
+        whileHover="hover"
+        animate="animate"
+        initial="initial"
+        variants={postCard}
+      >
+        <Link href={`/posts/${post.slug}`} passHref>
+          <a>
+            <p className="p-m-0 p-p-0">
+              {post.title.rendered}
+              <motion.span variants={arrowMotion}> →</motion.span>
+            </p>
+            {featuredMedia && (
+              <div className={styles.cardImageContainer}>
+                <Image
+                  priority
+                  src={`${featuredMedia?.["source_url"]}`}
+                  layout="fill"
+                  alt={featuredMedia?.["alt_text"]}
+                  className={styles.cardImage}
+                />
+              </div>
+            )}
+          </a>
+        </Link>
+      </motion.div>
     </motion.div>
   );
+
+  // return (
+  //   <div className={`${styles.card} p-col-4`}>
+  //     <div className={cs.container}>
+  //       <div className={cs.box}>
+  //         <div className={cs.imgBox}>
+  //           {/* <img
+  //             src={`${featuredMedia?.["source_url"]}`}
+  //             alt={featuredMedia?.["alt_text"]}
+  //           /> */}
+  //           <div className={styles.cardImageContainer}>
+  //             <Image
+  //               priority
+  //               src={`${featuredMedia?.["source_url"]}`}
+  //               layout="fill"
+  //               alt={featuredMedia?.["alt_text"]}
+  //               className={styles.cardImage}
+  //             />
+  //           </div>
+  //         </div>
+  //         <div className={cs.content}>
+  //           <h2>{post.title.rendered}</h2>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export async function getStaticProps(context: any) {

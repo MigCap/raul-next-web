@@ -8,6 +8,7 @@ const stagger = {
   animate: {
     transition: {
       staggerChildren: 0.1,
+      // staggerDirection: -1,
     },
   },
 };

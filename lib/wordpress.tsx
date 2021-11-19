@@ -81,8 +81,6 @@ export async function getMedia(posts: any) {
       .join()
       .replace(" ", "");
 
-  console.log(`🚀 ~ getMedia ~ postsMediaIds`, postsMediaIds);
-
   const mediaRes = await fetch(`${MEDIA_API_URL}?include=${postsMediaIds}`);
   const media = await mediaRes.json();
   return media;

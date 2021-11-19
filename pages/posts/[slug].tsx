@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import BackButton from "components/BackButton";
 import LightBox from "components/LightBox";
 import PostImage from "components/PostImage";
-import PostTag from "components/PostTag";
+import PostTags from "components/PostTags";
 
 import { getPost, getSlugs, getPostTags, getImagesSources, parse } from "lib";
 
@@ -29,12 +29,6 @@ export default function PostPage({
     setShow(true);
     setActiveIndex(index);
   }, []);
-
-  const postTagsElements =
-    postTags &&
-    postTags.map((tag: any, i: number) => {
-      return <PostTag key={tag?.id} tag={tag} />;
-    });
 
   const leftPostImages =
     imgs?.length >= 3 &&
@@ -66,9 +60,10 @@ export default function PostPage({
 
         <div className="p-grid p-align-center">
           <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
-            <h1 className={`${styles["post-title"]} p-mb-2`}>
+            <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
               {post?.title?.rendered}
             </h1>
+
             <motion.div
               className={`${styles.separator} p-my-1 p-md-my-3`}
               initial="hidden"
@@ -76,22 +71,12 @@ export default function PostPage({
               transition={{ duration: 2 }}
               variants={postTitleUnderline}
             />
+
             <div className="pb-5">
               {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
             </div>
-            {postTags?.length > 0 && (
-              <div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0">
-                <p
-                  className="p-m-0"
-                  style={{ color: "var(--indigo-500)", fontWeight: 700 }}
-                >
-                  HERRAMIENTAS
-                </p>
-                <div className="p-d-flex p-flex-wrap p-jc-start">
-                  {postTagsElements}
-                </div>
-              </div>
-            )}
+
+            <PostTags postTags={postTags} />
           </div>
 
           <div className="p-col-12 p-md-8">
@@ -115,7 +100,6 @@ export default function PostPage({
   );
 }
 
-//hey Next, these are the possible slugs
 export async function getStaticPaths() {
   const paths = await getSlugs("posts");
 
@@ -127,7 +111,6 @@ export async function getStaticPaths() {
   };
 }
 
-//access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }: { params: any }) {
   const post = await getPost(params.slug);
   const postTags = await getPostTags(params.slug);

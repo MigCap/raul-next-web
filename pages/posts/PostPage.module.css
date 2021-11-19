@@ -1,11 +1,6 @@
-h1.post-title {
-    color: var(--indigo-500);
-    /* font-family: "Oswald"; */
-}
-
 .separator {
     width: 25%;
     height: 2px;
-    /* background-color: var(--teal-300); */
-    background-color: var(--indigo-500);
+    background-color: var(--teal-400);
+    /* background-color: var(--indigo-500); */
 }
