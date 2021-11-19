@@ -1,15 +1,15 @@
 .imageContainer {
-  position: relative;
-  min-height: 20rem;
-  width: 100%;
-  border-radius: 1rem;
+    position: relative;
+    min-height: 20rem;
+    width: 100%;
+    border-radius: 1rem;
 }
 
 .image {
-  object-fit: cover;
-  border-radius: 5px;
-  width: 20rem;
-  height: 100%;
-  overflow: visible;
-  transition: all 0.5s ease;
+    object-fit: cover;
+    border-radius: 5px;
+    width: 20rem;
+    height: 100%;
+    overflow: visible;
+    transition: all 0.5s ease;
 }
