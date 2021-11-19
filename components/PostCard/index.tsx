@@ -91,7 +91,7 @@ export default function PostCard({
             {post.title.rendered}
             <motion.span variants={arrowMotion}> →</motion.span>
           </p>
-          {featuredMedia && (
+          {/* {featuredMedia && (
             <motion.div
               // exit={{ opacity: 0 }}
               // initial="initial"
@@ -106,7 +106,7 @@ export default function PostCard({
                 className={styles.cardImage}
               />
             </motion.div>
-          )}
+          )} */}
         </a>
       </Link>
     </motion.div>
