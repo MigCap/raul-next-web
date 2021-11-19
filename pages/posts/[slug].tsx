@@ -94,6 +94,7 @@ export default function PostPage({
                 </div>
               )}
             </div>
+
             <div className="p-col-12 p-md-8">
               <div className="p-grid p-align-center">
                 <div className="p-col-12 p-md-6">
@@ -106,12 +107,12 @@ export default function PostPage({
         </div>
       </div>
 
-      <LightBox
+      {/* <LightBox
         images={imgs}
         show={show}
         setShow={setShow}
         activeIndex={activeIndex}
-      />
+      /> */}
     </motion.div>
   );
 }
