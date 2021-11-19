@@ -7,7 +7,6 @@ import { getFeaturedImage } from "lib";
 
 import { colors } from "styles/theme";
 
-import cs from "components/Works/Works.module.css";
 import styles from "./PostCard.module.css";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
@@ -45,6 +44,19 @@ export default function PostCard({
     },
   };
 
+  // const image = {
+  //   hover: {
+  //     scale: 1.02,
+  //     translateY: -2,
+  //     // x: 15,
+  //     // boxShadow: '',
+  //     transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+  //   },
+  //   tap: {
+  //     scale: 0.95,
+  //   },
+  // };
+
   const arrowMotion = {
     initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
     hover: {
@@ -61,6 +73,7 @@ export default function PostCard({
     <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
       <motion.div
         whileHover="hover"
+        whileTap="tap"
         animate="animate"
         initial="initial"
         variants={postCard}
@@ -72,15 +85,18 @@ export default function PostCard({
               <motion.span variants={arrowMotion}> →</motion.span>
             </p>
             {featuredMedia && (
-              <div className={styles.cardImageContainer}>
+              <motion.div
+                className={`${styles.cardImageContainer}`}
+                // variants={image}
+              >
                 <Image
                   priority
                   src={`${featuredMedia?.["source_url"]}`}
                   layout="fill"
                   alt={featuredMedia?.["alt_text"]}
-                  className={styles.cardImage}
+                  className={`${styles.cardImage}`}
                 />
-              </div>
+              </motion.div>
             )}
           </a>
         </Link>
@@ -89,30 +105,101 @@ export default function PostCard({
   );
 
   // return (
-  //   <div className={`${styles.card} p-col-4`}>
-  //     <div className={cs.container}>
-  //       <div className={cs.box}>
-  //         <div className={cs.imgBox}>
-  //           {/* <img
-  //             src={`${featuredMedia?.["source_url"]}`}
-  //             alt={featuredMedia?.["alt_text"]}
-  //           /> */}
-  //           <div className={styles.cardImageContainer}>
-  //             <Image
-  //               priority
-  //               src={`${featuredMedia?.["source_url"]}`}
-  //               layout="fill"
-  //               alt={featuredMedia?.["alt_text"]}
-  //               className={styles.cardImage}
-  //             />
-  //           </div>
-  //         </div>
-  //         <div className={cs.content}>
-  //           <h2>{post.title.rendered}</h2>
+  //   <>
+  //     <div
+  //       id="curve"
+  //       className={`${styles.card}`}
+  //       style={{ backgroundImage: `url(${featuredMedia?.["source_url"]})` }}
+  //     >
+  //       <div className={`${styles.footer}`}>
+  //         <svg id="curve">
+  //           <path
+  //             id="p"
+  //             d="M0,200 Q80,100 400,200 V150 H0 V50"
+  //             transform="translate(0 300)"
+  //           />
+  //           <rect
+  //             id="dummyRect"
+  //             x="0"
+  //             y="0"
+  //             height="450"
+  //             width="400"
+  //             fill="transparent"
+  //           />
+  //           {/* <!-- slide up--> */}
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,50 Q80,100 400,50 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="dummyRect.mouseover"
+  //             end="dummyRect.mouseout"
+  //             dur="0.1s"
+  //             id="bounce1"
+  //           />
+  //           {/* <!-- slide up and curve in --> */}
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,50 Q80,0 400,50 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="bounce1.end"
+  //             end="dummyRect.mouseout"
+  //             dur="0.15s"
+  //             id="bounce2"
+  //           />
+  //           {/* <!-- slide down and curve in --> */}
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,50 Q80,80 400,50 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="bounce2.end"
+  //             end="dummyRect.mouseout"
+  //             dur="0.15s"
+  //             id="bounce3"
+  //           />
+  //           {/* <!-- slide down and curve out --> */}
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,50 Q80,45 400,50 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="bounce3.end"
+  //             end="dummyRect.mouseout"
+  //             dur="0.1s"
+  //             id="bounce4"
+  //           />
+  //           {/* <!-- curve in --> */}
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,50 Q80,50 400,50 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="bounce4.end"
+  //             end="dummyRect.mouseout"
+  //             dur="0.05s"
+  //             id="bounce5"
+  //           />
+
+  //           <animate
+  //             xlinkHref="#p"
+  //             attributeName="d"
+  //             to="M0,200 Q80,100 400,200 V150 H0 V50"
+  //             fill="freeze"
+  //             begin="dummyRect.mouseout"
+  //             dur="0.15s"
+  //             id="bounceOut"
+  //           />
+  //         </svg>
+  //         <div className={`${styles.info}`}>
+  //           <div className={`${styles.name}`}>Filan Fisteku</div>
+  //           <div className={`${styles.job}`}>Architect Manager</div>
   //         </div>
   //       </div>
+  //       <div className={`${styles["card-blur"]}`}></div>
   //     </div>
-  //   </div>
+  //   </>
   // );
 }
 

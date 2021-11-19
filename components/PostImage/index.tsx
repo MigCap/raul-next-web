@@ -14,18 +14,21 @@ export default function PostImage({
   onClick: any;
 }) {
   return (
-    <motion.div exit={{ opacity: 0 }} initial="initial" animate="animate">
-      <div
-        className={`${styles["img-hover-zoom"]} p-mb-2 p-mb-md-3`}
-        onClick={() => onClick(index)}
-      >
-        <Image
-          src={src}
-          layout="fill"
-          alt={src}
-          className={`${styles["post-detail-image"]}`}
-        />
-      </div>
+    <motion.div
+      className={`${styles["img-container"]} p-mb-2 p-mb-md-3`}
+      onClick={() => onClick(index)}
+      exit={{ opacity: 0 }}
+      initial="initial"
+      animate="animate"
+    >
+      <Image
+        src={src}
+        layout="responsive"
+        width={850}
+        height={570}
+        alt={src}
+        className={`${styles["image"]}`}
+      />
     </motion.div>
   );
 }

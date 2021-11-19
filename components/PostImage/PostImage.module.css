@@ -1,25 +1,21 @@
-.img-hover-zoom {
-    /* only for next Img */
-    min-height: 200px;
-    position: relative;
-    /* only for next Img */
+.img-container {
     overflow: hidden;
+    transition: transform 0.5s ease;
+    border-radius: 5px;
 }
 
-
-/* .img-hover-zoom:hover .post-detail-image {
-    transform: scale(1.2);
-} */
-
-.img-hover-zoom:hover img {
+.img-container:hover .image {
     cursor: pointer;
     transform: scale(1.02);
     /* opacity: 1.04; */
 }
 
-.post-detail-image {
+.image {
+    border-radius: 10px;
     object-fit: contain;
-    width: 100%;
+    /* width: 100%; */
+    /* width: 50rem; */
+    /* height: 40rem; */
     /* max-width: 80%; */
     min-height: 150px;
     transition: transform 0.5s ease;

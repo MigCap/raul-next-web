@@ -29,39 +29,20 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
     },
   ];
 
-  const itemTemplate = (item: any) => {
+  const itemTemplate = ({ src, alt }: any) => {
     return (
       <div className={styles.imageContainer}>
         <Image
-          priority
-          src={`${item.src}`}
-          layout="fill"
-          alt={item.alt}
-          className={styles.image}
+          src={src}
+          layout="responsive"
+          width={850}
+          height={570}
+          alt={src}
+          className={`${styles["image"]}`}
         />
       </div>
-      // <img src={item.src} alt={item.alt} style={{ width: "100%" }} />
     );
   };
-
-  // const thumbnailTemplate = (item: any) => {
-  //   return (
-  //     // <div className={styles.cardImageContainer}>
-  //     //         <Image
-  //     //           priority
-  //     //           src={`${featuredMedia?.["source_url"]}`}
-  //     //           layout="fill"
-  //     //           alt={featuredMedia?.["alt_text"]}
-  //     //           className={styles.cardImage}
-  //     //         />
-  //     //       </div>
-  //     <img
-  //       src={item.src}
-  //       alt={item.alt}
-  //       style={{ display: "block", width: "8rem", height: "5rem" }}
-  //     />
-  //   );
-  // };
 
   return (
     <>
@@ -84,7 +65,6 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
           circular
           style={{ minWidth: "50vw" }}
           item={itemTemplate}
-          // thumbnail={thumbnailTemplate}
           showItemNavigators
           showThumbnails={false}
           showItemNavigatorsOnHover

@@ -81,9 +81,7 @@ export default function PostPage({
 
           <div className="p-col-12 p-md-8">
             <div className="p-grid p-align-center">
-              <div className="p-col-12 p-md-6">
-                <div className="p-d-flex p-flex-column">{leftPostImages}</div>
-              </div>
+              <div className="p-col-12 p-md-6">{leftPostImages}</div>
               <div className="p-col-12 p-md-6">{rightPostImages}</div>
             </div>
           </div>
