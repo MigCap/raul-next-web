@@ -71,7 +71,7 @@ export default function PostPage({
   };
 
   return (
-    <>
+    <motion.div exit={{ opacity: 0 }} initial="initial" animate="animate">
       <div className="container">
         <div className={`p-px-5 p-mx-lg-6 p-mt-4 p-md-mt-5 p-pt-3`}>
           <Link href="/" passHref>
@@ -106,7 +106,7 @@ export default function PostPage({
                 // animate={{ x: 100 }}
                 initial="hidden"
                 animate="visible"
-                transition={{ duration: 1 }}
+                transition={{ duration: 2 }}
                 variants={postTitleUnderline}
               />
               <div className="pb-5">
@@ -134,7 +134,7 @@ export default function PostPage({
         setShow={setShow}
         activeIndex={activeIndex}
       />
-    </>
+    </motion.div>
   );
 }
 

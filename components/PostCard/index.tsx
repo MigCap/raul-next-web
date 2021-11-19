@@ -14,6 +14,24 @@ import { getFeaturedImage } from "lib";
 
 import styles from "./PostCard.module.css";
 
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
 export default function PostCard({
   post,
   featuredMedia,
@@ -76,10 +94,10 @@ export default function PostCard({
       //   translateY: -5,
       //   transition: { duration: 0.5 },
       // }}
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-      // variants={postCardMotion}
+      // initial="rest"
+      // whileHover="hover"
+      // animate="rest"
+      variants={fadeInUp}
       className={`${styles.card} p-col-4`}
     >
       <Link href={`/posts/${post.slug}`}>

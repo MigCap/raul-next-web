@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 import { getMedia, getPosts } from "lib";
 
 // import { Menu } from "components/Menu";
@@ -11,7 +13,7 @@ import styles from "styles/Home.module.css";
 
 export default function Home({ posts, media }: any) {
   return (
-    <>
+    <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
       <Head>
         <title>Raúl de Diego Vázquez</title>
         <meta
@@ -26,7 +28,7 @@ export default function Home({ posts, media }: any) {
 
       <Hero />
 
-      <div className="container">
+      <motion.div className="container">
         <div className="p-my-3" style={{ position: "relative", width: "5rem" }}>
           <Image
             src={`/assets/logo-raul.png`}
@@ -48,8 +50,8 @@ export default function Home({ posts, media }: any) {
           </div>
           <Works posts={posts} media={media} />
         </div>
-      </div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 }
 
