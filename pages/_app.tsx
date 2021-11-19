@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           crossOrigin="anonymous"
         /> */}
       </Head>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </>

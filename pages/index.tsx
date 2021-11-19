@@ -23,7 +23,7 @@ export default function Home({ posts, media, categories }: any) {
 
       {/* <Menu /> */}
 
-      <Hero />
+      {/* <Hero /> */}
 
       <motion.div className="container">
         <div className="p-my-3" style={{ position: "relative", width: "5rem" }}>
