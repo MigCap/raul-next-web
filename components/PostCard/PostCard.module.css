@@ -4,12 +4,12 @@
 }
 
 .card:hover .cardImage {
-    filter: opacity(0.83);
+    filter: opacity(0.9);
 }
 
 .cardImageContainer {
     position: relative;
-    height: 20rem;
+    height: 10rem;
     width: 100%;
     border-radius: 1rem;
 }
@@ -17,8 +17,8 @@
 .cardImage {
     object-fit: cover;
     border-radius: 5px;
-    width: 20rem;
-    height: 20rem;
+    width: 850px;
+    height: 567px;
     overflow: visible;
     transition: all 0.5s ease;
 }

@@ -2,18 +2,18 @@ import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
 
-import { getMedia, getPosts, getFeaturedMedia } from "lib";
+import { getFeaturedMedia } from "lib";
 
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
 
 export default function Works({ posts, media }: any) {
-  const jsxPosts = posts.map((post: any) => {
+  const jsxPosts = posts?.slice(0, 9)?.map((post: any) => {
     const featuredMediaId = post["featured_media"];
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
 
@@ -21,10 +21,13 @@ export default function Works({ posts, media }: any) {
   });
 
   return (
-    <motion.div variants={stagger} style={{ width: "100%" }}>
-      <section className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5">
+    <div style={{ width: "100%" }}>
+      <motion.section
+        variants={stagger}
+        className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5"
+      >
         {jsxPosts}
-      </section>
-    </motion.div>
+      </motion.section>
+    </div>
   );
 }

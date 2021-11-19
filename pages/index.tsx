@@ -73,6 +73,7 @@ export default function Home({ posts, media, categories }: any) {
             <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
               Raúl de Diego
             </p>
+
             <div className="p-mt-6 p-d-pt-6">
               {/* <Menu model={items} /> */}
               {categories &&
@@ -85,12 +86,18 @@ export default function Home({ posts, media, categories }: any) {
                   }
                   return (
                     <a href={`/category/${category.slug}`} key={category.id}>
-                      <p className="p-text-uppercase p-m-0">{category.name}</p>
+                      <p
+                        className="p-text-uppercase p-m-0"
+                        style={{ fontSize: "0.7rem" }}
+                      >
+                        {category.name}
+                      </p>
                     </a>
                   );
                 })}
             </div>
           </div>
+
           <Works posts={posts} media={media} />
         </div>
       </motion.div>

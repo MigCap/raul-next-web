@@ -1,36 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Card } from "primereact/card";
+// import { Card } from "primereact/card";
 
-import {
-  useViewportScroll,
-  motion,
-  useTransform,
-  useMotionValue,
-} from "framer-motion";
+import { motion } from "framer-motion";
 
 import { getFeaturedImage } from "lib";
 
 import styles from "./PostCard.module.css";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
 
 export default function PostCard({
   post,
@@ -59,6 +38,27 @@ export default function PostCard({
   //   },
   // };
 
+  const fadeInUp = {
+    initial: {
+      y: 60,
+      opacity: 0,
+      transition: { duration: 0.6, ease: easing },
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: easing,
+      },
+    },
+    // hover: {
+    //   // scale: 1.05,
+    //   translateY: -2,
+    //   transition: { duration: 0.5 },
+    // },
+  };
+
   const arrowMotion = {
     initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
     hover: {
@@ -78,11 +78,11 @@ export default function PostCard({
       //   translateY: -5,
       //   transition: { duration: 0.5 },
       // }}
-      initial="initial"
-      whileHover="hover"
-      animate="animate"
+      // initial="initial"
+      // whileHover="hover"
+      // animate="animate"
       variants={fadeInUp}
-      exit={{ opacity: 0 }}
+      // exit={{ opacity: 0 }}
       className={`${styles.card} p-col-4`}
     >
       <Link href={`/posts/${post.slug}`}>
@@ -91,6 +91,7 @@ export default function PostCard({
             {post.title.rendered}
             <motion.span variants={arrowMotion}> →</motion.span>
           </p>
+
           {featuredMedia && (
             <div className={styles.cardImageContainer}>
               <Image
