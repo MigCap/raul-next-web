@@ -39,22 +39,6 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
-  // const header = featuredMedia && (
-  //   <div
-  //     style={{
-  //       position: "relative",
-  //       height: "200px",
-  //     }}
-  //   >
-  //     <Image
-  //       src={`${featuredMedia?.["source_url"]}`}
-  //       layout="fill"
-  //       alt={featuredMedia?.["alt_text"]}
-  //       className={styles.cardImage}
-  //     />
-  //   </div>
-  // );
-
   // const textMotion = {
   //   hover: {
   //     // color: "blue",
@@ -76,7 +60,7 @@ export default function PostCard({
   // };
 
   const arrowMotion = {
-    rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
+    initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
     hover: {
       opacity: 1,
       transition: {
@@ -94,43 +78,29 @@ export default function PostCard({
       //   translateY: -5,
       //   transition: { duration: 0.5 },
       // }}
-      // initial="rest"
-      // whileHover="hover"
-      // animate="rest"
+      initial="initial"
+      whileHover="hover"
+      animate="animate"
       variants={fadeInUp}
       className={`${styles.card} p-col-4`}
     >
       <Link href={`/posts/${post.slug}`}>
         <a>
-          {/* <Card
-            // title={post.title.rendered}
-            style={{ minHeight: "20rem" }}
-            // header={header}
-            className={styles.card}
-          >
-          </Card> */}
-          <>
-            <p className="p-m-0 p-p-0">
-              {post.title.rendered}
-              {/* <motion.span variants={arrowMotion}>
-                <i
-                  className="pi pi-arrow-right p-ml-1"
-                  style={{ fontSize: "0.6em", color: "#63666f" }}
-                ></i>
-              </motion.span> */}
-              <motion.span variants={arrowMotion}> →</motion.span>
-            </p>
-            {featuredMedia && (
-              <div className={styles.cardImageContainer}>
-                <Image
-                  src={`${featuredMedia?.["source_url"]}`}
-                  layout="fill"
-                  alt={featuredMedia?.["alt_text"]}
-                  className={styles.cardImage}
-                />
-              </div>
-            )}
-          </>
+          <p className="p-m-0 p-p-0">
+            {post.title.rendered}
+            <motion.span variants={arrowMotion}> →</motion.span>
+          </p>
+          {featuredMedia && (
+            <div className={styles.cardImageContainer}>
+              <Image
+                priority
+                src={`${featuredMedia?.["source_url"]}`}
+                layout="fill"
+                alt={featuredMedia?.["alt_text"]}
+                className={styles.cardImage}
+              />
+            </div>
+          )}
         </a>
       </Link>
     </motion.div>

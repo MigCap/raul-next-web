@@ -7,14 +7,12 @@ import { getMedia, getPosts, getFeaturedMedia } from "lib";
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.2,
     },
   },
 };
 
 export default function Works({ posts, media }: any) {
-  // console.log(`🚀 ~ Works ~ media`, media);
-  // console.log(`🚀 ~ Works ~ posts`, posts);
   const jsxPosts = posts.slice(0, 6).map((post: any) => {
     const featuredMediaId = post["featured_media"];
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
@@ -23,11 +21,8 @@ export default function Works({ posts, media }: any) {
   });
 
   return (
-    <motion.div variants={stagger}>
-      <section
-        className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5"
-        style={{ width: "100%" }}
-      >
+    <motion.div variants={stagger} style={{ width: "100%" }}>
+      <section className="p-grid p-align-center p-justify-center p-mx-5 p-md-px-5">
         {jsxPosts}
       </section>
     </motion.div>

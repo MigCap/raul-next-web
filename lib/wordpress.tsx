@@ -1,6 +1,8 @@
 const BASE_URL = "http://wp.rauldediego.com/wp-json/wp/v2";
+
 const POSTS_API_URL = `${BASE_URL}/posts`;
 const TAGS_API_URL = `${BASE_URL}/tags`;
+const CATEGORIES_API_URL = `${BASE_URL}/categories`;
 const MEDIA_API_URL = `${BASE_URL}/media`;
 
 export async function getPosts() {
@@ -58,6 +60,12 @@ export async function getPostTags(slug: string) {
   return Promise.all(tagsArray).then((values) => {
     return values;
   });
+}
+
+export async function getCategories() {
+  const res = await fetch(`${CATEGORIES_API_URL}`);
+  const categories = await res.json();
+  return categories;
 }
 
 export async function getMedia(posts: any) {

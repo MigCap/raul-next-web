@@ -1,0 +1,16 @@
+.refresh {
+    padding: 10px;
+    /* position: absolute; */
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* background: rgba(0, 0, 0, 0.4); */
+    border: solid var(--indigo-500) 1px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    /* top: 10px;
+    right: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
