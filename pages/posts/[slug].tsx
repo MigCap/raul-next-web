@@ -80,11 +80,20 @@ export default function PostPage({
               <div className="pb-5">
                 {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
               </div>
-              <div className="p-col-12 p-d-flex p-flex-wrap p-jc-start p-mt-2 p-md-mt-6 p-p-0">
-                {postTagsElements}
-              </div>
+              {postTags?.length > 0 && (
+                <div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0">
+                  <p
+                    className="p-m-0"
+                    style={{ color: "var(--indigo-500)", fontWeight: 700 }}
+                  >
+                    HERRAMIENTAS
+                  </p>
+                  <div className="p-d-flex p-flex-wrap p-jc-start">
+                    {postTagsElements}
+                  </div>
+                </div>
+              )}
             </div>
-
             <div className="p-col-12 p-md-8">
               <div className="p-grid p-align-center">
                 <div className="p-col-12 p-md-6">

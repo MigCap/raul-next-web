@@ -13,7 +13,7 @@ const stagger = {
 };
 
 export default function Works({ posts, media }: any) {
-  const jsxPosts = posts.slice(0, 6).map((post: any) => {
+  const jsxPosts = posts.map((post: any) => {
     const featuredMediaId = post["featured_media"];
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
 

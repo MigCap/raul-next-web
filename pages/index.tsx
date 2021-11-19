@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 
 import { getMedia, getPosts, getCategories } from "lib";
 
+import { Menu } from "primereact/menu";
+
 // import { Menu } from "components/Menu";
 import Hero from "components/Hero";
 import Works from "components/Works";
@@ -12,8 +14,29 @@ import Works from "components/Works";
 import styles from "styles/Home.module.css";
 
 export default function Home({ posts, media, categories }: any) {
+  // let items: any = [];
+  // categories &&
+  //   categories.forEach((category: any) => {
+  //     if (category.name === "Uncategorized" || category.count === 0) {
+  //       return;
+  //     } else {
+  //       items.push({
+  //         label: category?.name || "",
+  //         // items: [
+  //         //   {
+  //         //     label: category?.name || "",
+  //         //     icon: "pi pi-refresh",
+  //         //     command: () => {
+  //         //         toast.current.show({ severity: 'success', summary: 'Updated', detail: 'Data Updated', life: 3000 });
+  //         //     }
+  //         //   },
+  //         // ],
+  //       });
+  //     }
+  //   });
+
   return (
-    <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
+    <div>
       <Head>
         <title>Raúl de Diego Vázquez</title>
         <meta name="description" content="Raúl de Diego Vázquez Portfolio" />
@@ -25,7 +48,12 @@ export default function Home({ posts, media, categories }: any) {
 
       {/* <Hero /> */}
 
-      <motion.div className="container">
+      <motion.div
+        className="container"
+        initial="initial"
+        animate="animate"
+        exit={{ opacity: 0 }}
+      >
         <div className="p-my-3" style={{ position: "relative", width: "5rem" }}>
           <Image
             src={`/assets/logo-raul.png`}
@@ -46,6 +74,7 @@ export default function Home({ posts, media, categories }: any) {
               Raúl de Diego
             </p>
             <div className="p-mt-6 p-d-pt-6">
+              {/* <Menu model={items} /> */}
               {categories &&
                 categories.map((category: any) => {
                   if (
@@ -65,7 +94,7 @@ export default function Home({ posts, media, categories }: any) {
           <Works posts={posts} media={media} />
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 

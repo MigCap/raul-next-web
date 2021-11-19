@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-import { Image as PrimeImage } from "primereact/image";
+// import { Image as PrimeImage } from "primereact/image";
+
+import { motion } from "framer-motion";
 
 import styles from "./PostImage.module.css";
 
@@ -14,7 +16,7 @@ export default function PostImage({
   onClick: any;
 }) {
   return (
-    <>
+    <motion.div>
       {/* <div
         className={`${styles["img-hover-zoom"]} p-mb-1 p-md-mb-2`}
         // onClick={() => onClick(index)}
@@ -38,6 +40,6 @@ export default function PostImage({
           className={`${styles["post-detail-image"]}`}
         />
       </div>
-    </>
+    </motion.div>
   );
 }

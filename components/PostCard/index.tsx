@@ -82,6 +82,7 @@ export default function PostCard({
       whileHover="hover"
       animate="animate"
       variants={fadeInUp}
+      exit={{ opacity: 0 }}
       className={`${styles.card} p-col-4`}
     >
       <Link href={`/posts/${post.slug}`}>
@@ -91,7 +92,12 @@ export default function PostCard({
             <motion.span variants={arrowMotion}> →</motion.span>
           </p>
           {featuredMedia && (
-            <div className={styles.cardImageContainer}>
+            <motion.div
+              // exit={{ opacity: 0 }}
+              // initial="initial"
+              // animate="animate"
+              className={styles.cardImageContainer}
+            >
               <Image
                 priority
                 src={`${featuredMedia?.["source_url"]}`}
@@ -99,7 +105,7 @@ export default function PostCard({
                 alt={featuredMedia?.["alt_text"]}
                 className={styles.cardImage}
               />
-            </div>
+            </motion.div>
           )}
         </a>
       </Link>
