@@ -107,12 +107,12 @@ export default function PostPage({
         </div>
       </div>
 
-      {/* <LightBox
+      <LightBox
         images={imgs}
         show={show}
         setShow={setShow}
         activeIndex={activeIndex}
-      /> */}
+      />
     </motion.div>
   );
 }
