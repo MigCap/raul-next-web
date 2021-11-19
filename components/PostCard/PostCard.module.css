@@ -1,26 +1,27 @@
 .card {
-  max-width: 20rem;
+    max-width: 20rem;
 }
 
 .card:hover .cardImage {
-  filter: opacity(0.9);
+    filter: opacity(0.9);
 }
 
 .cardImageContainer {
-  position: relative;
-  height: 10rem;
-  width: 100%;
-  border-radius: 1rem;
+    position: relative;
+    height: 10rem;
+    width: 100%;
+    border-radius: 1rem;
 }
 
 .cardImage {
-  object-fit: cover;
-  border-radius: 5px;
-  width: 850px;
-  height: 567px;
-  overflow: visible;
-  transition: all 0.5s ease;
+    object-fit: cover;
+    border-radius: 5px;
+    width: 850px;
+    height: 567px;
+    overflow: visible;
+    transition: all 0.5s ease;
 }
+
 
 /* html,
 body {
@@ -28,9 +29,11 @@ body {
     width: 100%;
 } */
 
+
 /* .card {
     background-image: url("https://www.rauldediego.es/wp-content/uploads/2021/05/nippon_05.png");
 } */
+
 
 /* .card {
     position: absolute;
