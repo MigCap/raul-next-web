@@ -14,9 +14,8 @@ export default function Home({ posts, media, categories }: any) {
   return (
     <>
       <Head>
-        <title>Raúl de Diego Vázquez</title>
-        <meta name="description" content="Raúl de Diego Vázquez Portfolio" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Raúl de Diego Portfolio</title>
+        <meta name="description" content="Raúl de Diego Portfolio" />
         {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 

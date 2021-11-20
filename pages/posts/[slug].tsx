@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 
+import Head from "next/head";
+
 import { motion } from "framer-motion";
 
 import BackButton from "components/BackButton";
@@ -70,53 +72,59 @@ export default function PostPage({
       );
     });
 
+  const postTitle = post?.title?.rendered;
+
   return (
-    <div className="container">
-      <div className={`p-px-5 p-mx-lg-6 p-mt-4 p-md-mt-5 p-pt-3`}>
-        <BackButton />
+    <>
+      <Head>
+        <title>Raúl de Diego Works - {postTitle}</title>
+        <meta
+          name="description"
+          content={`Raúl de Diego Works - ${postTitle} Portfolio`}
+        />
+      </Head>
 
-        <div className="p-grid p-align-center">
-          <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
-            <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
-              {post?.title?.rendered}
-            </h1>
-
-            <motion.div
-              className={`${styles.separator} p-my-1 p-md-my-3`}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 2 }}
-              variants={postTitleUnderline}
-            />
-
-            <div className="pb-5">
-              {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
+      <div className="container">
+        <div className={`p-px-5 p-mx-lg-6 p-mt-4 p-md-mt-5 p-pt-3`}>
+          <BackButton />
+          <div className="p-grid p-align-center">
+            <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
+              <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
+                {postTitle}
+              </h1>
+              <motion.div
+                className={`${styles.separator} p-my-1 p-md-my-3`}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 2 }}
+                variants={postTitleUnderline}
+              />
+              <div className="pb-5">
+                {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
+              </div>
+              <PostTags postTags={postTags} />
+              <PostCategories postCategories={postCategories} />
             </div>
-
-            <PostTags postTags={postTags} />
-            <PostCategories postCategories={postCategories} />
-          </div>
-
-          <div className="p-col-12 p-md-8">
-            <div className="p-grid p-align-center">
-              <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                {leftPostImages}
-              </motion.div>
-              <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                {rightPostImages}
-              </motion.div>
+            <div className="p-col-12 p-md-8">
+              <div className="p-grid p-align-center">
+                <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                  {leftPostImages}
+                </motion.div>
+                <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                  {rightPostImages}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
+        <LightBox
+          images={imgs}
+          show={show}
+          setShow={setShow}
+          activeIndex={activeIndex}
+        />
       </div>
-
-      <LightBox
-        images={imgs}
-        show={show}
-        setShow={setShow}
-        activeIndex={activeIndex}
-      />
-    </div>
+    </>
   );
 }
 
