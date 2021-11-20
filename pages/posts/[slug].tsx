@@ -41,7 +41,7 @@ export default function PostPage({
 
   const rightPostImages =
     imgs?.length >= 4 &&
-    imgs.slice(3, imgs?.length).map((img: any) => {
+    imgs.slice(3, 7).map((img: any) => {
       const { src, alt, index } = img;
       return (
         <PostImage src={src} index={index} onClick={onClickImg} key={src} />
