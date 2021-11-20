@@ -32,7 +32,7 @@ export default function PostPage({
 
   const leftPostImages =
     imgs?.length >= 3 &&
-    imgs.slice(0, 3).map((img: any) => {
+    imgs.slice(0, 2).map((img: any) => {
       const { src, alt, index } = img;
       return (
         <PostImage src={src} index={index} onClick={onClickImg} key={src} />
@@ -41,7 +41,7 @@ export default function PostPage({
 
   const rightPostImages =
     imgs?.length >= 4 &&
-    imgs.slice(3, 7).map((img: any) => {
+    imgs.slice(2, 5).map((img: any) => {
       const { src, alt, index } = img;
       return (
         <PostImage src={src} index={index} onClick={onClickImg} key={src} />
