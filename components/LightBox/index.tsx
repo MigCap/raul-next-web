@@ -35,8 +35,8 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
         <Image
           src={src}
           layout="responsive"
-          width={850}
-          height={570}
+          width={100}
+          height={100}
           alt={src}
           className={`${styles["image"]}`}
         />
@@ -49,7 +49,7 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
       <Dialog
         visible={show}
         onHide={() => onHide()}
-        breakpoints={{ "960px": "75vw" }}
+        // breakpoints={{ "960px": "75vw" }}
         modal
         resizable
         maximizable
@@ -63,7 +63,7 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
           activeIndex={activeIndex}
           numVisible={7}
           circular
-          style={{ minWidth: "50vw" }}
+          style={{ minWidth: "80vw" }}
           item={itemTemplate}
           showItemNavigators
           showThumbnails={false}
