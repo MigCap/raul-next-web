@@ -35,8 +35,8 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
         <Image
           src={src}
           layout="responsive"
-          width={100}
-          height={100}
+          width={850}
+          height={570}
           alt={src}
           className={`${styles["image"]}`}
         />
@@ -63,7 +63,7 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
           activeIndex={activeIndex}
           numVisible={7}
           circular
-          style={{ minWidth: "80vw" }}
+          style={{ minWidth: "50vw" }}
           item={itemTemplate}
           showItemNavigators
           showThumbnails={false}
