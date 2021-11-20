@@ -56,7 +56,7 @@ export default function PostCard({
           }}
         >
           <a>
-            <motion.p className="p-m-0 p-p-0" variants={scaleAndTab}>
+            <motion.p className="p-m-0 p-p-0">
               {post.title.rendered}
               <motion.span variants={arrowMotion}> →</motion.span>
             </motion.p>
