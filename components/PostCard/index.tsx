@@ -44,18 +44,18 @@ export default function PostCard({
     },
   };
 
-  // const image = {
-  //   hover: {
-  //     scale: 1.02,
-  //     translateY: -2,
-  //     // x: 15,
-  //     // boxShadow: '',
-  //     transition: { duration: 0.5, type: "tween", ease: "easeOut" },
-  //   },
-  //   tap: {
-  //     scale: 0.95,
-  //   },
-  // };
+  const scale = {
+    hover: {
+      scale: 1.02,
+      translateY: -2,
+      // x: 15,
+      // boxShadow: '',
+      transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+    },
+    tap: {
+      scale: 0.95,
+    },
+  };
 
   const arrowMotion = {
     initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
@@ -85,14 +85,14 @@ export default function PostCard({
           }}
         >
           <a>
-            <p className="p-m-0 p-p-0">
+            <motion.p className="p-m-0 p-p-0" variants={scale}>
               {post.title.rendered}
               <motion.span variants={arrowMotion}> →</motion.span>
-            </p>
+            </motion.p>
             {featuredMedia && (
               <motion.div
                 className={`${styles.cardImageContainer}`}
-                // variants={image}
+                variants={scale}
               >
                 <Image
                   priority
