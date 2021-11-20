@@ -38,6 +38,8 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
+  const { source_url, alt_text } = featuredMedia;
+
   return (
     <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
       <motion.div
@@ -60,15 +62,15 @@ export default function PostCard({
             </motion.p>
             {featuredMedia && (
               <motion.div
-                className={`${styles.cardImageContainer}`}
+                className={`${styles.imageContainer}`}
                 variants={scaleAndTab}
               >
                 <Image
                   priority
-                  src={`${featuredMedia?.["source_url"]}`}
+                  src={source_url}
                   layout="fill"
-                  alt={featuredMedia?.["alt_text"]}
-                  className={`${styles.cardImage}`}
+                  alt={alt_text}
+                  className={`${styles.image}`}
                 />
               </motion.div>
             )}
