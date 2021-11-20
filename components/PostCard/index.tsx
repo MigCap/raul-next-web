@@ -78,7 +78,12 @@ export default function PostCard({
         initial="initial"
         variants={postCard}
       >
-        <Link href={`/posts/${post.slug}`} passHref>
+        <Link
+          href={{
+            pathname: "/posts/[slug]",
+            query: { slug: post.slug },
+          }}
+        >
           <a>
             <p className="p-m-0 p-p-0">
               {post.title.rendered}
