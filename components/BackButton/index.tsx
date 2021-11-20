@@ -19,15 +19,15 @@ export default function BackButton() {
   return (
     <Link href="/" passHref>
       <motion.div
-        className={styles["refresh"]}
+        className={styles.refresh}
         variants={postBackButtonContainer}
         initial="rest"
         whileHover="hover"
         whileTap="pressed"
       >
         <motion.svg
-          width="16"
-          height="16"
+          width="15"
+          height="15"
           xmlns="http://www.w3.org/2000/svg"
           variants={postBackButtonArrow}
         >
