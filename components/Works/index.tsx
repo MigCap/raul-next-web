@@ -2,16 +2,7 @@ import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
 
-import { getFeaturedMedia } from "lib";
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-      // staggerDirection: -1,
-    },
-  },
-};
+import { getFeaturedMedia, stagger } from "lib";
 
 export default function Works({ posts, media }: any) {
   const jsxPosts = posts?.slice(0, 9)?.map((post: any) => {

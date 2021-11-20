@@ -1,7 +1,5 @@
 import { useCallback, useState } from "react";
 
-// import { Button } from "primereact/button";
-
 import { motion } from "framer-motion";
 
 import BackButton from "components/BackButton";
@@ -20,6 +18,20 @@ import {
 } from "lib";
 
 import styles from "./PostPage.module.css";
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+      // staggerDirection: -1,
+    },
+  },
+};
+
+const postTitleUnderline = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+};
 
 export default function PostPage({
   post,
@@ -58,11 +70,6 @@ export default function PostPage({
       );
     });
 
-  const postTitleUnderline = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
-  };
-
   return (
     <div className="container">
       <div className={`p-px-5 p-mx-lg-6 p-mt-4 p-md-mt-5 p-pt-3`}>
@@ -92,8 +99,12 @@ export default function PostPage({
 
           <div className="p-col-12 p-md-8">
             <div className="p-grid p-align-center">
-              <div className="p-col-12 p-md-6">{leftPostImages}</div>
-              <div className="p-col-12 p-md-6">{rightPostImages}</div>
+              <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                {leftPostImages}
+              </motion.div>
+              <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                {rightPostImages}
+              </motion.div>
             </div>
           </div>
         </div>

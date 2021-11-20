@@ -33,7 +33,6 @@ export default function Home({ posts, media, categories }: any) {
           style={{ marginTop: "5rem", marginBottom: "5rem" }}
         >
           <Menu categories={categories} />
-
           <Works posts={posts} media={media} />
         </div>
       </motion.div>

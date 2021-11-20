@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
+import { fadeInUp } from "lib";
+
 import styles from "./PostImage.module.css";
 
 export default function PostImage({
@@ -34,24 +36,26 @@ export default function PostImage({
       : window.btoa(str);
 
   return (
-    <motion.div
-      className={`${styles["img-container"]} p-mb-2 p-mb-md-3`}
-      onClick={() => onClick(index)}
-      exit={{ opacity: 0 }}
-      initial="initial"
-      animate="animate"
-    >
-      <Image
-        src={newImageSrc}
-        layout="responsive"
-        width={850}
-        height={570}
-        alt={src}
-        className={`${styles["image"]}`}
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(
-          convertImage(700, 475)
-        )}`}
-      />
+    <motion.div variants={fadeInUp} className={`p-mb-2 p-mb-md-3`}>
+      <motion.div
+        className={`${styles["img-container"]}`}
+        onClick={() => onClick(index)}
+        exit={{ opacity: 0 }}
+        initial="initial"
+        animate="animate"
+      >
+        <Image
+          src={newImageSrc}
+          layout="responsive"
+          width={850}
+          height={570}
+          alt={src}
+          className={`${styles["image"]}`}
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            convertImage(700, 475)
+          )}`}
+        />
+      </motion.div>
     </motion.div>
   );
 }

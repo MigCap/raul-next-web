@@ -3,13 +3,33 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-import { getFeaturedImage } from "lib";
+import { fadeInUp, getFeaturedImage, scaleAndTab } from "lib";
 
 import { colors } from "styles/theme";
 
 import styles from "./PostCard.module.css";
 
-let easing = [0.6, -0.05, 0.01, 0.99];
+const postCard = {
+  hover: {
+    // scale: 1.05,
+    // translateY: -2,
+    // x: 15,
+    color: colors.primary,
+    transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+  },
+};
+
+const arrowMotion = {
+  initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
+  hover: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      type: "tween",
+      ease: "easeIn",
+    },
+  },
+};
 
 export default function PostCard({
   post,
@@ -18,57 +38,6 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
-  const fadeInUp = {
-    initial: {
-      y: 60,
-      opacity: 0,
-      transition: { duration: 0.6, ease: easing },
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easing,
-      },
-    },
-  };
-
-  const postCard = {
-    hover: {
-      // scale: 1.05,
-      // translateY: -2,
-      // x: 15,
-      color: colors.primary,
-      transition: { duration: 0.5, type: "tween", ease: "easeOut" },
-    },
-  };
-
-  const scale = {
-    hover: {
-      scale: 1.02,
-      translateY: -2,
-      // x: 15,
-      // boxShadow: '',
-      transition: { duration: 0.5, type: "tween", ease: "easeOut" },
-    },
-    tap: {
-      scale: 0.95,
-    },
-  };
-
-  const arrowMotion = {
-    initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
-    hover: {
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        type: "tween",
-        ease: "easeIn",
-      },
-    },
-  };
-
   return (
     <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
       <motion.div
@@ -85,14 +54,14 @@ export default function PostCard({
           }}
         >
           <a>
-            <motion.p className="p-m-0 p-p-0" variants={scale}>
+            <motion.p className="p-m-0 p-p-0" variants={scaleAndTab}>
               {post.title.rendered}
               <motion.span variants={arrowMotion}> →</motion.span>
             </motion.p>
             {featuredMedia && (
               <motion.div
                 className={`${styles.cardImageContainer}`}
-                variants={scale}
+                variants={scaleAndTab}
               >
                 <Image
                   priority
