@@ -49,17 +49,18 @@ export async function getSlugs(type: any) {
   return elementsIds;
 }
 
-export async function getPostTags(slug: string) {
-  const post = await getPost(slug);
-  const tags = post?.tags;
-  const tagsArray = tags?.map(async (tag: any) => {
-    const tagRes = await fetch(`${TAGS_API_URL}/${tag}`);
-    const tagData = await tagRes.json();
-    return tagData;
-  });
-  return Promise.all(tagsArray).then((values) => {
-    return values;
-  });
+export async function getPostTags(tags: string[]) {
+  const ids = tags && tags.join().replace(" ", "");
+  const tagsRes = await fetch(`${TAGS_API_URL}?include=${ids}`);
+  const tagsData = await tagsRes.json();
+  return tagsData;
+}
+
+export async function getPostCategories(categories: string[]) {
+  const ids = categories && categories.join().replace(" ", "");
+  const categoriesRes = await fetch(`${CATEGORIES_API_URL}?include=${ids}`);
+  const categoriesData = await categoriesRes.json();
+  return categoriesData;
 }
 
 export async function getCategories() {
@@ -69,7 +70,7 @@ export async function getCategories() {
 }
 
 export async function getMedia(posts: any) {
-  const fields = "?_fields=id,alt_text,media_details,guid";
+  // const fields = "?_fields=id,alt_text,media_details,guid";
   // const mediaRes = await fetch(MEDIA_API_URL);
   // ?_fields=author,id,excerpt,title,link
   // ?_fields=id,alt_text,media_details,guid

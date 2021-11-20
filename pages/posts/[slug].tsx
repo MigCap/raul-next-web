@@ -7,18 +7,28 @@ import { motion } from "framer-motion";
 import BackButton from "components/BackButton";
 import LightBox from "components/LightBox";
 import PostImage from "components/PostImage";
+import PostCategories from "components/PostCategories";
 import PostTags from "components/PostTags";
 
-import { getPost, getSlugs, getPostTags, getImagesSources, parse } from "lib";
+import {
+  getPost,
+  getSlugs,
+  getPostTags,
+  getPostCategories,
+  getImagesSources,
+  parse,
+} from "lib";
 
 import styles from "./PostPage.module.css";
 
 export default function PostPage({
   post,
   postTags,
+  postCategories,
 }: {
   post: any;
   postTags: any;
+  postCategories: any;
 }) {
   const [show, setShow] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -77,6 +87,7 @@ export default function PostPage({
             </div>
 
             <PostTags postTags={postTags} />
+            <PostCategories postCategories={postCategories} />
           </div>
 
           <div className="p-col-12 p-md-8">
@@ -111,11 +122,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: any }) {
   const post = await getPost(params.slug);
-  const postTags = await getPostTags(params.slug);
+  const postTags = await getPostTags(post?.tags);
+  const postCategories = await getPostCategories(post?.categories);
   return {
     props: {
       post,
       postTags,
+      postCategories,
     },
     revalidate: 10, // In seconds
   };
