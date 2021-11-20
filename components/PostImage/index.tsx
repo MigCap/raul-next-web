@@ -42,7 +42,7 @@ export default function PostImage({
       animate="animate"
     >
       <Image
-        src={src}
+        src={newImageSrc}
         layout="responsive"
         width={850}
         height={570}

@@ -65,23 +65,26 @@ export const Menu = ({ categories }: any) => {
 
   return (
     <div className="menu" style={{ minWidth: "10rem" }}>
-      {/* <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
-              Raúl de Diego
-            </p> */}
-      <div className="p-mt-6 p-d-pt-6">
+      <div className="">
+        {/* <div className="p-mt-6 p-d-pt-6"> */}
+        <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
+          Raúl de Diego
+        </p>
+
         {/* <Menu model={items} /> */}
+
         {categories &&
-          categories.map((category: any) => {
-            if (category.name === "Uncategorized" || category.count === 0) {
+          categories.map(({ id, name, count, slug }: any) => {
+            if (name === "Uncategorized" || count === 0) {
               return null;
             }
             return (
-              <a href={`/category/${category.slug}`} key={category.id}>
+              <a href={`/category/${slug}`} key={id}>
                 <p
-                  className="p-text-uppercase p-m-0"
+                  className="p-text-lowercase p-m-0"
                   style={{ fontSize: "0.7rem" }}
                 >
-                  {category.name}
+                  # {name}
                 </p>
               </a>
             );
