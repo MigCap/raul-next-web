@@ -3,10 +3,8 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    /* background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%); */
     background-color: #f0f0f0;
     color: #63666f;
-    /* color: var(--teal-600); */
 }
 
 * {
@@ -21,7 +19,55 @@ a {
 p {
     font-size: 16px;
     line-height: 2em;
+    margin: 0 0 10px 0;
 }
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+/* *** *** *** */
+
+.container {
+    min-width: 100vw;
+    padding: 0 0.5rem;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+    height: auto;
+    width: 100%;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+}
+
+
+/* *** *** *** */
 
 .p-dialog-header-icon:focus {
     outline: 0 none;
@@ -33,14 +79,8 @@ p {
     color: var(--teal-400);
 }
 
-
-/* .container {
-    min-height: 100vh;
-} */
-
-@media screen and (min-width: 1200px) {
-    .container {
-        margin-left: 10rem;
-        margin-right: 10rem;
-    }
+.logo {
+    height: 1em;
+    width: 1em;
+    margin-left: 0.5rem;
 }

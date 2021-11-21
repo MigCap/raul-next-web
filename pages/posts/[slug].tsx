@@ -17,18 +17,10 @@ import {
   getPostCategories,
   getImagesSources,
   parse,
+  stagger,
 } from "lib";
 
 import styles from "./PostPage.module.css";
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-      // staggerDirection: -1,
-    },
-  },
-};
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
@@ -71,6 +63,7 @@ export default function PostPage({
         <PostImage src={src} index={index} onClick={onClickImg} key={src} />
       );
     });
+  console.log(`🚀 ~ rightPostImages`, rightPostImages);
 
   const postTitle = post?.title?.rendered;
 
@@ -84,46 +77,50 @@ export default function PostPage({
         />
       </Head>
 
-      <div className="container">
-        <div className={`p-mt-4 p-md-mt-5 p-pt-3`}>
-          <BackButton />
-          <div className="p-grid p-align-center">
-            <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
-              <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
-                {postTitle}
-              </h1>
-              <motion.div
-                className={`${styles.separator} p-my-1 p-md-my-3`}
-                initial="hidden"
-                animate="visible"
-                transition={{ duration: 2 }}
-                variants={postTitleUnderline}
-              />
-              <div className="pb-5">
-                {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
-              </div>
-              <PostTags postTags={postTags} />
-              <PostCategories postCategories={postCategories} />
+      <motion.div
+        className={`p-mt-4 p-md-mt-5 p-pt-3`}
+        initial="initial"
+        animate="animate"
+        exit={{ opacity: 0 }}
+      >
+        <BackButton />
+        <div className="p-grid p-align-center">
+          <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
+            <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
+              {postTitle}
+            </h1>
+            <motion.div
+              className={`${styles.separator} p-my-1 p-md-my-3`}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 2 }}
+              variants={postTitleUnderline}
+            />
+            <div className="pb-5">
+              {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
             </div>
-            <div className="p-col-12 p-md-8">
-              <div className="p-grid p-align-center p-px-3">
-                <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                  {leftPostImages}
-                </motion.div>
-                <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                  {rightPostImages}
-                </motion.div>
-              </div>
+            <PostTags postTags={postTags} />
+            <PostCategories postCategories={postCategories} />
+          </div>
+
+          <div className="p-col-12 p-md-8">
+            <div className="p-grid p-align-center p-px-3">
+              <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                {leftPostImages}
+              </motion.div>
+              <motion.div className="p-col-12 p-md-6" variants={stagger}>
+                {rightPostImages}
+              </motion.div>
             </div>
           </div>
         </div>
-        <LightBox
-          images={imgs}
-          show={show}
-          setShow={setShow}
-          activeIndex={activeIndex}
-        />
-      </div>
+      </motion.div>
+      <LightBox
+        images={imgs}
+        show={show}
+        setShow={setShow}
+        activeIndex={activeIndex}
+      />
     </>
   );
 }

@@ -1,13 +1,10 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-import Image from "next/image";
 
 import { AnimatePresence } from "framer-motion";
-
-import styles from "styles/Home.module.css";
 
 // Import styles
 // import "primereact/resources/themes/saga-blue/theme.css";
@@ -17,6 +14,9 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.scss";
 
 import "styles/globals.css";
+
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 const routeChange = () => {
   // Temporary fix to avoid flash of unstyled content
@@ -37,9 +37,9 @@ Router.events.on("routeChangeComplete", routeChange);
 Router.events.on("routeChangeStart", routeChange);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  useEffect(() => {
-    router.push(router.asPath);
-  }, []);
+  // useEffect(() => {
+  //   router.push(router.asPath);
+  // }, []);
 
   return (
     <>
@@ -50,22 +50,13 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
       <AnimatePresence exitBeforeEnter>
         {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
-
-        <div
-          className="p-my-3 container"
-          style={{ position: "relative", width: "5rem" }}
-        >
-          <Image
-            src={`/assets/logo-raul.png`}
-            // layout="fill"
-            alt={`logo-raul`}
-            width={50}
-            height={50}
-            className={styles.logo}
-          />
+        <div key={router.route}>
+          <Header />
+          <div className="container">
+            <Component {...pageProps} />
+          </div>
+          <Footer />
         </div>
-
-        <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </>
   );

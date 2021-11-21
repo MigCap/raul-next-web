@@ -1,4 +1,5 @@
 import Head from "next/head";
+// import Image from "next/image";
 
 import { motion } from "framer-motion";
 
@@ -19,14 +20,9 @@ export default function Home({ posts, media, categories }: any) {
         {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 
-      {/* <Hero /> */}
+      <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
+        {/* <Hero /> */}
 
-      <motion.div
-        className="container"
-        initial="initial"
-        animate="animate"
-        exit={{ opacity: 0 }}
-      >
         <div
           className="p-d-flex"
           style={{ marginTop: "5rem", marginBottom: "5rem" }}
