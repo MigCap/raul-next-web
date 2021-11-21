@@ -1,11 +1,11 @@
-.imageContainer {
+.imgContainer {
     position: relative;
     overflow: hidden;
     transition: transform 0.5s ease;
     border-radius: 5px;
 }
 
-.imageContainer:hover .image {
+.imgContainer:hover .image {
     cursor: pointer;
     transform: scale(1.02);
     /* opacity: 1.04; */

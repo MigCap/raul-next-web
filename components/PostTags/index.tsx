@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "lib";
 
 export default function PostTags({ postTags }: { postTags: any }) {
+  console.log(`🚀 ~ PostTags ~ postTags`, postTags);
   if (!postTags || postTags?.length <= 0) return null;
 
   return (
@@ -22,10 +23,10 @@ export default function PostTags({ postTags }: { postTags: any }) {
 
 function PostTag({ tag }: { tag: any }) {
   const getTagIcon = () => {
-    const pencilTags = ["acuarelas", "lapizypapel"];
+    const pencilTags = ["acuarelas", "lapiz-y-papel"];
     const computerTags = ["acrobat", "illustrator", "indesign", "photoshop"];
-    if (pencilTags.includes(tag?.name)) return "pi pi-pencil";
-    if (computerTags.includes(tag?.name)) return "pi pi-desktop";
+    if (pencilTags.includes(tag?.slug)) return "pi pi-pencil";
+    if (computerTags.includes(tag?.slug)) return "pi pi-desktop";
     return;
   };
 
