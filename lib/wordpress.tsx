@@ -36,6 +36,9 @@ export async function getSlugs(type: any) {
     case "posts":
       elements = await getPosts();
       break;
+    case "categories":
+      elements = await getCategories();
+      break;
   }
 
   const elementsIds = elements.map((element: any) => {
