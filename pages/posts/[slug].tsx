@@ -16,6 +16,7 @@ import {
   getPostTags,
   getPostCategories,
   getImagesSources,
+  fadeInUp,
   parse,
   stagger,
 } from "lib";
@@ -63,7 +64,6 @@ export default function PostPage({
         <PostImage src={src} index={index} onClick={onClickImg} key={src} />
       );
     });
-  console.log(`🚀 ~ rightPostImages`, rightPostImages);
 
   const postTitle = post?.title?.rendered;
 
@@ -85,23 +85,31 @@ export default function PostPage({
       >
         <BackButton />
         <div className="p-grid p-align-center">
-          <div className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2">
-            <h1 className={`${styles["post-title"]} p-mb-2 primary-color`}>
+          <motion.div
+            className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2"
+            variants={stagger}
+          >
+            <motion.h1
+              className={`${styles["post-title"]} p-mb-0 primary-color`}
+              variants={fadeInUp}
+            >
               {postTitle}
-            </h1>
-            <motion.div
-              className={`${styles.separator} p-my-1 p-md-my-3`}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 2 }}
-              variants={postTitleUnderline}
-            />
-            <div className="pb-5">
+            </motion.h1>
+            <motion.div className={`p-my-1 p-md-my-3`} variants={fadeInUp}>
+              <motion.div
+                className={`${styles.separator}`}
+                // initial="hidden"
+                // animate="visible"
+                // transition={{ duration: 2 }}
+                variants={postTitleUnderline}
+              />
+            </motion.div>
+            <motion.p className="p-pb-2 p-pb-md-6 p-pt-2" variants={fadeInUp}>
               {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
-            </div>
+            </motion.p>
             <PostTags postTags={postTags} />
             <PostCategories postCategories={postCategories} />
-          </div>
+          </motion.div>
 
           <div className="p-col-12 p-md-8">
             <div className="p-grid p-align-center p-px-3">

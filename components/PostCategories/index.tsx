@@ -1,3 +1,7 @@
+import { motion } from "framer-motion";
+
+import { fadeInUp } from "lib";
+
 export default function PostCategories({
   postCategories,
 }: {
@@ -6,7 +10,7 @@ export default function PostCategories({
   if (!postCategories || postCategories?.length <= 0) return null;
 
   return (
-    <div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0">
+    <motion.div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0" variants={fadeInUp}>
       <div className="p-d-flex p-flex-wrap p-jc-cener p-ai-start">
         {postCategories?.map(({ id, name }: any, i: number) => {
           return (
@@ -20,6 +24,6 @@ export default function PostCategories({
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }

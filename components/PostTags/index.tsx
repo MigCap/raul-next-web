@@ -1,12 +1,13 @@
+import { motion } from "framer-motion";
+
+import { fadeInUp } from "lib";
+
 export default function PostTags({ postTags }: { postTags: any }) {
   if (!postTags || postTags?.length <= 0) return null;
 
   return (
-    <div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0">
-      <h2
-        className="p-my-2"
-        style={{ fontSize: "0.9rem", fontWeight: 700 }}
-      >
+    <motion.div className="p-col-12 p-mt-2 p-mt-md-6 p-p-0" variants={fadeInUp}>
+      <h2 className="p-my-2" style={{ fontSize: "0.9rem", fontWeight: 700 }}>
         HERRAMIENTAS
       </h2>
 
@@ -15,7 +16,7 @@ export default function PostTags({ postTags }: { postTags: any }) {
           return <PostTag key={tag?.id} tag={tag} />;
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

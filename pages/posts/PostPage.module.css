@@ -1,6 +1,5 @@
 .separator {
-    width: 30%;
+    width: 20%;
     height: 2px;
     background-color: var(--teal-400);
-    /* background-color: var(--indigo-500); */
 }
