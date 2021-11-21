@@ -48,7 +48,7 @@ export const fadeInRight = {
 export const scaleAndTab = {
   hover: {
     scale: 1.02,
-    translateY: -2,
+    // translateY: -2,
     // x: 15,
     // boxShadow: '',
     transition: { duration: 0.5, type: "tween", ease: "easeOut" },

@@ -78,10 +78,10 @@ export default function PostPage({
       </Head>
 
       <motion.div
-        className={`p-mt-4 p-md-mt-5 p-pt-3`}
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}
+        style={{ marginTop: "5rem", marginBottom: "5rem" }}
       >
         <BackButton />
         <div className="p-grid p-align-center">
