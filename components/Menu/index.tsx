@@ -1,8 +1,12 @@
-import { useRef } from "react";
+// import { useRef } from "react";
+
+import Link from "next/link";
 
 // import { Menu as PrimeMenu } from "primereact/menu";
 
 import { motion, useCycle } from "framer-motion";
+
+import { scaleAndTab, stagger } from "lib";
 
 // import { MenuToggle } from "./MenuToggle";
 // import { Navigation } from "./Navigation";
@@ -64,8 +68,15 @@ export const Menu = ({ categories }: any) => {
   //   });
 
   return (
-    <div className="menu" style={{ minWidth: "10rem" }}>
-      <div className="">
+    <div>
+      <motion.div
+        className="menu"
+        style={{ minWidth: "10rem" }}
+        initial="initial"
+        animate="animate"
+        exit={{ opacity: 0 }}
+        variants={stagger}
+      >
         {/* <div className="p-mt-6 p-d-pt-6"> */}
         <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
           Raúl de Diego
@@ -79,17 +90,26 @@ export const Menu = ({ categories }: any) => {
               return null;
             }
             return (
-              <a href={`/category/${slug}`} key={id}>
-                <p
-                  className="p-text-lowercase p-m-0"
-                  style={{ fontSize: "0.7rem" }}
+              <motion.div key={id} variants={scaleAndTab}>
+                <Link
+                  href={{
+                    pathname: "/categories/[slug]",
+                    query: { slug },
+                  }}
                 >
-                  # {name}
-                </p>
-              </a>
+                  <a>
+                    <p
+                      className="p-text-lowercase p-m-0"
+                      style={{ fontSize: "0.7rem" }}
+                    >
+                      # {name}
+                    </p>
+                  </a>
+                </Link>
+              </motion.div>
             );
           })}
-      </div>
+      </motion.div>
 
       {/* <motion.nav
         className={styles.nav}

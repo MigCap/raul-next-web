@@ -3,7 +3,7 @@ import IconLinkedin from "components/Icons/IconLinkedin";
 
 export default function Footer() {
   return (
-    <footer className="footer p-mt-2 p-mt-md-5">
+    <footer className="footer p-mt-3 p-mt-md-5 p-pt-md-5">
       <div className="p-d-flex p-ai-center p-jc-center p-my-2">
         <p className="p-m-0 p-px-4">
           Copyright 2014-2021 – Raúl de Diego . All rights reserved
