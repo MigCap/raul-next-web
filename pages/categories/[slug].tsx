@@ -1,37 +1,21 @@
-import { useCallback, useState } from "react";
-
 import Head from "next/head";
 
 // import { motion } from "framer-motion";
 
-import {
-  getPost,
-  getSlugs,
-  //   getPostTags,
-  getPostCategories,
-  //   getImagesSources,
-  //   fadeInUp,
-  //   parse,
-  //   stagger,
-} from "lib";
+import { getSlugs, getCategory } from "lib";
 
-export default function PostPage({
-  postCategories,
-}: {
-  post: any;
-  postTags: any;
-  postCategories: any;
-}) {
-  console.log(`🚀 ~ postCategories`, postCategories);
-
+export default function PostPage({ category }: { category: any }) {
   return (
     <>
       <Head>
-        <title>Raúl de Diego Posts Categories</title>
-        <meta name="description" content={`Raúl de Diego Posts Categories`} />
+        <title>Raúl de Diego - {category?.name} Category</title>
+        <meta
+          name="description"
+          content={`Raúl de Diego - ${category?.name} Category`}
+        />
       </Head>
 
-      <h1></h1>
+      <h1>{category?.name}</h1>
     </>
   );
 }
@@ -48,12 +32,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const post = await getPost(params.slug);
-  const postCategories = await getPostCategories(post?.categories);
+  const category = await getCategory(params.slug);
   return {
     props: {
-      post,
-      postCategories,
+      category,
     },
     revalidate: 10, // In seconds
   };

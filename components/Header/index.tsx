@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
@@ -11,14 +12,18 @@ export default function Header() {
           // background: "#fff",
         }}
       >
-        <Image
-          src={`/assets/logo-raul.png`}
-          // layout="fill"
-          alt={`logo-raul`}
-          width={50}
-          height={50}
-          className="logo"
-        />
+        <Link href="/">
+          <a>
+            <Image
+              src={`/assets/logo-raul.png`}
+              // layout="fill"
+              alt={`logo-raul`}
+              width={50}
+              height={50}
+              className="logo"
+            />
+          </a>
+        </Link>
       </div>
     </div>
   );

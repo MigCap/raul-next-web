@@ -66,6 +66,12 @@ export async function getPostCategories(categories: string[]) {
   return categoriesData;
 }
 
+export async function getCategory(slug: any) {
+  const categoryRes = await fetch(`${CATEGORIES_API_URL}?slug=${slug}`);
+  const categoryData = await categoryRes.json();
+  return categoryData[0];
+}
+
 export async function getCategories() {
   const res = await fetch(`${CATEGORIES_API_URL}`);
   const categories = await res.json();
