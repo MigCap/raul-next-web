@@ -76,11 +76,6 @@ ol {
 }
 
 .primary-color {
-    color: var(--teal-400);
-}
-
-.logo {
-    height: 1em;
-    width: 1em;
-    margin-left: 0.5rem;
+    /* color: var(--teal-400); */
+    color: #26b59f;
 }

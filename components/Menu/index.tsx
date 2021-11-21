@@ -77,7 +77,7 @@ export const Menu = ({ categories, currCategory }: any) => {
       >
         {/* <div className="p-mt-6 p-d-pt-6"> */}
         <p className="p-text-uppercase p-m-0" style={{ fontWeight: 700 }}>
-          Raúl de Diego
+          Categories
         </p>
 
         {/* <Menu model={items} /> */}

@@ -14,7 +14,7 @@ export default function Works({ posts, media }: any) {
   return (
     <motion.section
       variants={stagger}
-      className="p-grid p-align-center p-justify-center"
+      className="p-grid p-align-center p-justify-end"
       style={{ width: "100%" }}
     >
       {jsxPosts}

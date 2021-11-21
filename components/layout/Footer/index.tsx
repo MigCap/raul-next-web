@@ -20,7 +20,7 @@ export default function Footer() {
                 <IconLinkedin />
               </a>
             </li>
-            <li className="p-mx-2 p-mt-1">
+            {/* <li className="p-mx-2 p-mt-1">
               <a
                 href={"https://www.linkedin.com/in/miguel-capellan/"}
                 target="_blank"
@@ -29,7 +29,7 @@ export default function Footer() {
               >
                 <IconInstagram />
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
