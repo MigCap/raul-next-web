@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 
-// import { Menu as PrimeMenu } from "primereact/menu";
-
 import { motion, useCycle } from "framer-motion";
 
 import { scaleAndTab, stagger } from "lib";
@@ -35,7 +33,7 @@ import { useDimensions } from "./use-dimensions";
 //   },
 // };
 
-export const Menu = ({ categories }: any) => {
+export const Menu = ({ categories, currCategory }: any) => {
   // const [isOpen, toggleOpen] = useCycle(false, true);
 
   // const containerRef = useRef(null);
@@ -99,7 +97,11 @@ export const Menu = ({ categories }: any) => {
                 >
                   <a>
                     <p
-                      className="p-text-lowercase p-m-0"
+                      className={`p-text-lowercase p-m-0 ${
+                        currCategory && currCategory === name
+                          ? "p-text-bold"
+                          : ""
+                      }`}
                       style={{ fontSize: "0.7rem" }}
                     >
                       # {name}

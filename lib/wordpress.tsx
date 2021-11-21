@@ -13,11 +13,23 @@ export async function getPosts() {
   return posts;
 }
 
-export async function getPost(slug: any) {
-  const posts = await getPosts();
-  const postArray = posts.filter((post: any) => post.slug === slug);
-  const post = postArray.length > 0 ? postArray[0] : null;
-  return post;
+export async function getPostsByCategoryId(id: string) {
+  const postsRes = await fetch(`${POSTS_API_URL}?categories=${id}`);
+  const posts = await postsRes.json();
+  return posts;
+}
+
+// export async function getPost(slug: any) {
+//   const posts = await getPosts();
+//   const postArray = posts.filter((post: any) => post.slug === slug);
+//   const post = postArray.length > 0 ? postArray[0] : null;
+//   return post;
+// }
+
+export async function getPostBySlug(slug: any) {
+  const postRes = await fetch(`${POSTS_API_URL}?slug=${slug}`);
+  const post = await postRes.json();
+  return post?.[0];
 }
 
 export async function getPostBy(id: any) {
@@ -69,7 +81,7 @@ export async function getPostCategories(categories: string[]) {
 export async function getCategory(slug: any) {
   const categoryRes = await fetch(`${CATEGORIES_API_URL}?slug=${slug}`);
   const categoryData = await categoryRes.json();
-  return categoryData[0];
+  return categoryData?.[0];
 }
 
 export async function getCategories() {
@@ -97,13 +109,14 @@ export async function getMedia(posts: any) {
 }
 
 export function getFeaturedMedia(media: any, id: any) {
-  const featuredMediaArray = media.filter((element: any) => element.id === id);
-  return featuredMediaArray.length > 0 ? featuredMediaArray[0] : null;
+  if (!id) return;
+  const featuredMediaArray = media?.filter((element: any) => element.id === id);
+  return featuredMediaArray?.length > 0 ? featuredMediaArray[0] : null;
 }
 
-export async function getFeaturedImage(id: any) {
-  // const mediaRes = await fetch(`${MEDIA_API_URL}/${id}`);
-  // const image = await mediaRes.json();
-  // return image;
-  return id;
-}
+// export async function getFeaturedImage(id: any) {
+//   // const mediaRes = await fetch(`${MEDIA_API_URL}/${id}`);
+//   // const image = await mediaRes.json();
+//   // return image;
+//   return id;
+// }

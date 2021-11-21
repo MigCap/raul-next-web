@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-import { fadeInUp, getFeaturedImage, scaleAndTab } from "lib";
+import { fadeInUp, scaleAndTab } from "lib";
 
 import { colors } from "styles/theme";
 
@@ -38,8 +38,6 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
-  const { source_url, alt_text } = featuredMedia;
-
   return (
     <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
       <motion.div
@@ -67,9 +65,9 @@ export default function PostCard({
               >
                 <Image
                   priority
-                  src={source_url}
+                  src={featuredMedia?.source_url}
                   layout="fill"
-                  alt={alt_text}
+                  alt={featuredMedia?.alt_text}
                   className={`${styles.image}`}
                 />
               </motion.div>
@@ -81,13 +79,13 @@ export default function PostCard({
   );
 }
 
-export async function getStaticProps(context: any) {
-  const image = await getFeaturedImage(context);
+// export async function getStaticProps(context: any) {
+//   // const image = await getFeaturedImage(context);
 
-  return {
-    props: {
-      image,
-    },
-    revalidate: 10, // In seconds
-  };
-}
+//   return {
+//     props: {
+//       // image,
+//     },
+//     revalidate: 10, // In seconds
+//   };
+// }

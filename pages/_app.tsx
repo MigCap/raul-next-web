@@ -15,8 +15,8 @@ import "primeflex/primeflex.scss";
 
 import "styles/globals.css";
 
-import Header from "components/Header";
-import Footer from "components/Footer";
+import Header from "components/layout/Header";
+import Footer from "components/layout/Footer";
 
 const routeChange = () => {
   // Temporary fix to avoid flash of unstyled content
@@ -52,9 +52,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
         <div key={router.route}>
           <Header />
+
           <div className="container">
             <Component {...pageProps} />
           </div>
+
           <Footer />
         </div>
       </AnimatePresence>

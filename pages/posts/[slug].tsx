@@ -11,7 +11,6 @@ import PostCategories from "components/PostCategories";
 import PostTags from "components/PostTags";
 
 import {
-  getPost,
   getSlugs,
   getPostTags,
   getPostCategories,
@@ -19,6 +18,7 @@ import {
   fadeInUp,
   parse,
   stagger,
+  getPostBySlug,
 } from "lib";
 
 import styles from "./PostPage.module.css";
@@ -145,7 +145,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const post = await getPost(params.slug);
+  const post = await getPostBySlug(params.slug);
   const postTags = await getPostTags(post?.tags);
   const postCategories = await getPostCategories(post?.categories);
   return {

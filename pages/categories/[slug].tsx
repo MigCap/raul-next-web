@@ -1,10 +1,24 @@
 import Head from "next/head";
 
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { getSlugs, getCategory } from "lib";
+import {
+  getSlugs,
+  getCategory,
+  getPostsByCategoryId,
+  getMedia,
+  getCategories,
+} from "lib";
 
-export default function PostPage({ category }: { category: any }) {
+import { Menu } from "components/Menu";
+import Works from "components/Works";
+
+export default function CategoryPage({
+  category,
+  posts,
+  media,
+  categories,
+}: any) {
   return (
     <>
       <Head>
@@ -15,7 +29,16 @@ export default function PostPage({ category }: { category: any }) {
         />
       </Head>
 
-      <h1>{category?.name}</h1>
+      <motion.div
+        className="p-d-flex"
+        style={{ marginTop: "5rem", marginBottom: "5rem" }}
+        initial="initial"
+        animate="animate"
+        exit={{ opacity: 0 }}
+      >
+        <Menu categories={categories} currCategory={category?.name} />
+        <Works posts={posts} media={media} />
+      </motion.div>
     </>
   );
 }
@@ -32,10 +55,16 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
+  const categories = await getCategories();
   const category = await getCategory(params.slug);
+  const posts = await getPostsByCategoryId(category?.id);
+  const media = await getMedia(posts);
   return {
     props: {
+      categories,
       category,
+      posts,
+      media,
     },
     revalidate: 10, // In seconds
   };

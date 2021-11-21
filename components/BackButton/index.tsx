@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
 import styles from "./BackButton.module.css";
@@ -16,8 +15,9 @@ const postBackButtonArrow = {
 };
 
 export default function BackButton() {
+  const router = useRouter();
   return (
-    <Link href="/">
+    <div onClick={() => router.back()}>
       <a>
         <motion.div
           className={styles.refresh}
@@ -40,6 +40,6 @@ export default function BackButton() {
           </motion.svg>
         </motion.div>
       </a>
-    </Link>
+    </div>
   );
 }
