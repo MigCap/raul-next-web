@@ -104,9 +104,9 @@ export default function PostPage({
                 variants={postTitleUnderline}
               />
             </motion.div>
-            <motion.p className="p-pb-2 p-pb-md-6 p-pt-2" variants={fadeInUp}>
+            <motion.div className="p-pb-2 p-pb-md-6 p-pt-2" variants={fadeInUp}>
               {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
-            </motion.p>
+            </motion.div>
             <PostTags postTags={postTags} />
             <PostCategories postCategories={postCategories} />
           </motion.div>
