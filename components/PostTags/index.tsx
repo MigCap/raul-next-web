@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "lib";
 
 export default function PostTags({ postTags }: { postTags: any }) {
-  console.log(`🚀 ~ PostTags ~ postTags`, postTags);
   if (!postTags || postTags?.length <= 0) return null;
 
   return (
