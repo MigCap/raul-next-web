@@ -22,7 +22,9 @@ export default function PostTags({ postTags }: { postTags: any }) {
 
 function PostTag({ tag }: { tag: any }) {
   const getTagIcon = () => {
+    const pencilTags = ["acuarelas", "lapizypapel"];
     const computerTags = ["acrobat", "illustrator", "indesign", "photoshop"];
+    if (pencilTags.includes(tag?.name)) return "pi pi-pencil";
     if (computerTags.includes(tag?.name)) return "pi pi-desktop";
     return;
   };
