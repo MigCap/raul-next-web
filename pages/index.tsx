@@ -97,7 +97,10 @@ export default function Home({ posts, media, categories }: any) {
           </div>
           <div
             className="p-d-flex"
-            style={{ marginTop: "5rem", marginBottom: "5rem" }}
+            style={{
+              // marginTop: "5rem",
+              marginBottom: "5rem",
+            }}
           >
             <WorksGallery
               posts={posts}

@@ -46,7 +46,7 @@ export default function CategoryPage({
         <WorksGallery
           posts={posts}
           media={media}
-          className="p-grid p-align-center p-justify-end"
+          className="p-grid p-align-start p-justify-end"
           style={{ width: "100%" }}
         />
       </motion.div>

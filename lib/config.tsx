@@ -11,7 +11,7 @@ export const routesConfig = [
   },
   {
     name: "works",
-    path: "/works",
+    path: "/categories",
   },
   {
     name: "contact",

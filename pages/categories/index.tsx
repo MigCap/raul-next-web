@@ -9,7 +9,12 @@ import WorksGallery from "components/WorksGallery";
 
 // import styles from "styles/WorksPage.module.css";
 
-export default function WorksPage({ posts, media, categories, tags }: any) {
+export default function CategoriesPage({
+  posts,
+  media,
+  categories,
+  tags,
+}: any) {
   return (
     <>
       <Head>

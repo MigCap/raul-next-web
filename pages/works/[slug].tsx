@@ -21,7 +21,7 @@ import {
   getPostBySlug,
 } from "lib";
 
-import styles from "./WorksPage.module.css";
+import styles from "./WorkPage.module.css";
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
