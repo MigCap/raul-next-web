@@ -1,15 +1,13 @@
 import Head from "next/head";
-// import Image from "next/image";
 
 import { motion } from "framer-motion";
 
 import { getMedia, getPosts, getCategories, getTags } from "lib";
 
-import Menu from "components/MenuSide";
-// import Hero from "components/Hero";
+import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
-// import styles from "styles/Home.module.css";
+// import styles from "styles/WorksPage.module.css";
 
 export default function WorksPage({ posts, media, categories, tags }: any) {
   return (
@@ -25,7 +23,7 @@ export default function WorksPage({ posts, media, categories, tags }: any) {
           className="p-d-flex"
           style={{ marginTop: "5rem", marginBottom: "5rem" }}
         >
-          <Menu categories={categories} tags={tags} />
+          <MenuSide categories={categories} tags={tags} />
           <WorksGallery
             posts={posts}
             media={media}
