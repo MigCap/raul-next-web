@@ -2,7 +2,12 @@ import { socialLinks } from "lib";
 
 export default function Footer() {
   return (
-    <footer className="container footer p-mt-3 p-mt-md-5">
+    <footer
+      className="container footer"
+      style={{
+        margin: "15rem 0 0 0",
+      }}
+    >
       <div className="p-d-flex p-ai-center p-jc-center p-my-2">
         <p className="p-m-0 p-px-4">
           Copyright 2014-2021 – Raúl de Diego . All rights reserved
