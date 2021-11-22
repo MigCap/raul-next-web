@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-import { socialLinks, routesConfig, scaleAndTab } from "lib";
+import { about, socialLinks, routesConfig, scaleAndTab } from "lib";
 
 // const navBarAnimation = {
 //   initial: {
@@ -57,7 +57,7 @@ export default function Header() {
                   className="p-text-uppercase p-my-0 p-mx-2"
                   style={{ fontWeight: 700 }}
                 >
-                  Raúl de Diego
+                  {about.name}
                 </p>
               </motion.div>
             </a>
@@ -94,7 +94,7 @@ export default function Header() {
                   className="p-m-0"
                   style={{ fontSize: "0.6rem", fontWeight: 600 }}
                 >
-                  contact@rauldediego.com
+                  {about.contactMail}
                 </p>
               </a>
             </Link>
@@ -103,7 +103,7 @@ export default function Header() {
               target="_blank"
               rel="nofollow noopener noreferrer"
               aria-label={"Linkedin"}
-              className="link-linkedin p-ml-2"
+              className="link-linkedin p-ml-2 lighten"
             >
               {socialLinks?.linkedin?.Icon}
             </a> */}

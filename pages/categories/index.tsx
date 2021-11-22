@@ -20,14 +20,10 @@ export default function CategoriesPage({
       <Head>
         <title>Raúl de Diego Works</title>
         <meta name="description" content="Raúl de Diego Works" />
-        {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 
       <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
-        <div
-          className="p-d-flex"
-          style={{ marginTop: "5rem", marginBottom: "5rem" }}
-        >
+        <div className="p-d-flex" style={{ margin: "5rem 0" }}>
           <MenuSide categories={categories} tags={tags} />
           <WorksGallery
             posts={posts}

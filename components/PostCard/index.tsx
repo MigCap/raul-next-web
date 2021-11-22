@@ -39,7 +39,10 @@ export default function PostCard({
   featuredMedia: any;
 }) {
   return (
-    <motion.div variants={fadeInUp} className={`${styles.card} p-col-4`}>
+    <motion.div
+      variants={fadeInUp}
+      className={`${styles.card} p-col-12 p-lg-4`}
+    >
       <motion.div
         whileHover="hover"
         whileTap="tap"

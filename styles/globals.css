@@ -31,7 +31,7 @@ a.darken:hover {
 p {
     font-size: 16px;
     line-height: 2em;
-    margin: 0 0 10px 0;
+    margin: 0 0 1rem 0;
 }
 
 ul,
@@ -46,14 +46,15 @@ ol {
 
 .container {
     min-width: 100vw;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
 }
 
-.header {
-    /* background-color: #fff; */
-    padding: 0.5rem;
-    /* border-bottom: 1px solid #e6e6e6; */
-}
+
+/* .header {
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e6e6e6;
+} */
 
 .header .link-linkedin svg {
     width: 16px;
@@ -87,13 +88,6 @@ ol {
     height: 0.9rem;
 }
 
-@media screen and (min-width: 1200px) {
-    .container {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-}
-
 .link-linkedin svg {
     fill: #63666f;
     transition: fill 0.2s ease-in-out;
@@ -101,6 +95,13 @@ ol {
 
 .link-linkedin svg:hover {
     fill: #312f2f;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
 }
 
 

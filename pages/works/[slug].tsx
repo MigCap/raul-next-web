@@ -81,7 +81,7 @@ export default function WorkPage({
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}
-        style={{ marginTop: "5rem", marginBottom: "5rem" }}
+        style={{ margin: "5rem 0" }}
       >
         <BackButton />
         <div className="p-grid p-align-center">

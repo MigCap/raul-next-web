@@ -33,7 +33,7 @@ export default function CategoryPage({
 
       <motion.div
         className="p-d-flex"
-        style={{ marginTop: "5rem", marginBottom: "5rem" }}
+        style={{ margin: "5rem 0" }}
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}

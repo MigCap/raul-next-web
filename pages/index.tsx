@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import Head from "next/head";
 
 import { motion } from "framer-motion";
@@ -15,7 +17,6 @@ export default function Home({ posts, media, categories }: any) {
       <Head>
         <title>Raúl de Diego Portfolio</title>
         <meta name="description" content="Raúl de Diego Portfolio" />
-        {/* You can add more metadata here, like open graph tags for social media, etc */}
       </Head>
 
       <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
@@ -24,8 +25,7 @@ export default function Home({ posts, media, categories }: any) {
         {/* <div
           className="p-d-flex p-flex-column p-ai-center p-jc-center"
           style={{
-            // marginTop: "5rem",
-            marginBottom: "5rem",
+            margin: "5rem 0",
             backgroundColor: "#7cb1b1",
             minHeight: "60vh",
             color: "#fff",
@@ -51,67 +51,70 @@ export default function Home({ posts, media, categories }: any) {
         </div> */}
 
         <div className="container">
-          <div
-            className="p-d-flex p-flex-column p-ai-center p-jc-center"
-            style={{
-              marginTop: "5rem",
-              marginBottom: "5rem",
-              minHeight: "40vh",
-            }}
-          >
-            <div>
-              <div className="p-d-flex p-ai-center pjc center">
-                <h3 className="p-text-uppercase">{about.title}</h3>
-                <div
-                  style={{
-                    height: "2px",
-                    width: "100%",
-                    backgroundColor: "#6bb0b2",
-                  }}
-                  className={"p-ml-6"}
-                />
-              </div>
-              <p
-                className="p-text-left"
-                style={{
-                  fontSize: "1rem",
-                  margin: "0 0 0 10rem",
-                  maxWidth: "70%",
-                }}
-              >
-                {about.description}
-              </p>
-            </div>
-          </div>
-
-          <div className="p-d-flex p-ai-center pjc center">
-            <h3 className="p-text-uppercase">works</h3>
-            <div
+          <HomeSection title={about.title}>
+            <p
+              className="p-text-left"
               style={{
-                height: "2px",
-                width: "100%",
-                backgroundColor: "#6bb0b2",
+                fontSize: "1rem",
+                // margin: "0 0 0 10rem",
+                // maxWidth: "70%",
               }}
-              className={"p-ml-6"}
-            />
-          </div>
-          <div
-            className="p-d-flex"
-            style={{
-              // marginTop: "5rem",
-              marginBottom: "5rem",
-            }}
-          >
-            <WorksGallery
-              posts={posts}
-              media={media}
-              className="p-grid p-align-center p-justify-center"
-              style={{ width: "100%" }}
-            />
-          </div>
+            >
+              {about.description}
+            </p>
+          </HomeSection>
+
+          <HomeSection title={"works"}>
+            <div
+              className="p-d-flex"
+              style={{
+                marginBottom: "0 0 5rem 0",
+              }}
+            >
+              <WorksGallery
+                posts={posts}
+                media={media}
+                className="p-grid p-align-center p-justify-center"
+                style={{ width: "100%" }}
+              />
+            </div>
+          </HomeSection>
         </div>
       </motion.div>
     </>
+  );
+}
+
+function HomeSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className="p-d-flex p-flex-column p-ai-center p-jc-center"
+      style={{
+        margin: "2rem 0",
+        // minHeight: "40vh",
+      }}
+    >
+      <div>
+        <div className="p-d-flex p-ai-center pjc center">
+          <h3 className="p-text-uppercase">{title}</h3>
+          <div
+            style={{
+              height: "2px",
+              width: "100%",
+              backgroundColor: "#6bb0b2",
+            }}
+            className={"p-ml-6"}
+          />
+        </div>
+        {children}
+      </div>
+    </div>
   );
 }
 

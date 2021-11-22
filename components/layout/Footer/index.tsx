@@ -4,9 +4,9 @@ export default function Footer() {
   return (
     <footer
       className="container footer"
-      style={{
-        margin: "15rem 0 0 0",
-      }}
+      // style={{
+      //   margin: "5rem 0 0 0",
+      // }}
     >
       <div className="p-d-flex p-ai-center p-jc-center p-my-2">
         <p className="p-m-0 p-px-4">
