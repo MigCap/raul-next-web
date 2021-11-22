@@ -31,7 +31,7 @@ export default function CategoryPage({
         />
       </Head>
 
-      <motion.div
+      <motion.article
         className="p-d-flex"
         style={{ margin: "5rem 0" }}
         initial="initial"
@@ -49,7 +49,7 @@ export default function CategoryPage({
           className="p-grid p-align-start p-justify-end"
           style={{ width: "100%" }}
         />
-      </motion.div>
+      </motion.article>
     </>
   );
 }

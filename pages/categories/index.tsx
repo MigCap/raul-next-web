@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import { motion } from "framer-motion";
 
-import { getMedia, getPosts, getCategories, getTags } from "lib";
+import { getMedia, getPosts, getCategories, getTags, about } from "lib";
 
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
@@ -18,8 +18,8 @@ export default function CategoriesPage({
   return (
     <>
       <Head>
-        <title>Raúl de Diego Works</title>
-        <meta name="description" content="Raúl de Diego Works" />
+        <title>{about.name} Works</title>
+        <meta name="description" content={`${about.name} Works`} />
       </Head>
 
       <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>

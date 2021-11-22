@@ -47,7 +47,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     <>
       <Head>
         {/* you can add metadata here, for all pages */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <AnimatePresence exitBeforeEnter>
@@ -55,12 +59,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <div key={router.route}>
           <Header />
 
-          <div
+          <main
             className={isHomePage ? "" : "container"}
             style={{ minHeight: "100vh" }}
           >
             <Component {...pageProps} />
-          </div>
+          </main>
 
           <Footer />
         </div>

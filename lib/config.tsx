@@ -19,6 +19,23 @@ export const routesConfig = [
   },
 ];
 
+export const DeviceSize = {
+  mobile: 768,
+  tablet: 992,
+  laptop: 1324,
+  desktop: 2024,
+};
+
+export const DeviceSizes = {
+  giant: 1440,
+  desktop: 1000,
+  tablet: 768,
+  thone: 600,
+  phablet: 480,
+  phone: 376,
+  tiny: 330,
+};
+
 export const socialLinks: any = {
   linkedin: {
     url: "https://www.linkedin.com/in/rauldediegovazquez/",

@@ -15,7 +15,7 @@ export default function Hero() {
         //   }
         // }
       >
-        <div className="p-mx-2 p-md-mx-6 p-text-center">
+        <div className="p-mx-4 p-md-mx-6 p-text-center">
           <h1 className="p-text-uppercase">{about.position}</h1>
           <h2 className="p-m-0">{about.positionDescription}</h2>
         </div>

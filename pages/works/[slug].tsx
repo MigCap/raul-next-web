@@ -77,7 +77,7 @@ export default function WorkPage({
         />
       </Head>
 
-      <motion.div
+      <motion.article
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}
@@ -122,7 +122,7 @@ export default function WorkPage({
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.article>
       <LightBox
         images={imgs}
         show={show}

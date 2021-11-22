@@ -19,7 +19,7 @@ export default function Home({ posts, media, categories }: any) {
         <meta name="description" content="Raúl de Diego Portfolio" />
       </Head>
 
-      <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
+      <motion.main initial="initial" animate="animate" exit={{ opacity: 0 }}>
         <Hero />
 
         {/* <div
@@ -50,7 +50,7 @@ export default function Home({ posts, media, categories }: any) {
           </div>
         </div> */}
 
-        <div className="container">
+        <section className="container">
           <HomeSection title={about.title}>
             <p
               className="p-text-left"
@@ -79,8 +79,8 @@ export default function Home({ posts, media, categories }: any) {
               />
             </div>
           </HomeSection>
-        </div>
-      </motion.div>
+        </section>
+      </motion.main>
     </>
   );
 }
@@ -93,7 +93,7 @@ function HomeSection({
   children: ReactNode;
 }) {
   return (
-    <div
+    <section
       className="p-d-flex p-flex-column p-ai-center p-jc-center"
       style={{
         margin: "2rem 0",
@@ -114,7 +114,7 @@ function HomeSection({
         </div>
         {children}
       </div>
-    </div>
+    </section>
   );
 }
 
