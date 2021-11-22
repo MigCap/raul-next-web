@@ -72,9 +72,11 @@ export default function Home({ posts, media, categories }: any) {
                 />
               </div>
               <p
-                className="p-text-center p-m-0"
+                className="p-text-left"
                 style={{
                   fontSize: "1rem",
+                  margin: "0 0 0 10rem",
+                  maxWidth: "70%",
                 }}
               >
                 {about.description}
