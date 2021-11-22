@@ -1,13 +1,11 @@
 import Head from "next/head";
-// import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-import { getMedia, getPosts, getCategories } from "lib";
+import { getMedia, getPosts, getCategories, about } from "lib";
 
-import { Menu } from "components/Menu";
-// import Hero from "components/Hero";
-import Works from "components/Works";
+import Hero from "components/Hero";
+import WorksGallery from "components/WorksGallery";
 
 // import styles from "styles/Home.module.css";
 
@@ -21,14 +19,91 @@ export default function Home({ posts, media, categories }: any) {
       </Head>
 
       <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
-        {/* <Hero /> */}
+        <Hero />
 
-        <div
-          className="p-d-flex"
-          style={{ marginTop: "5rem", marginBottom: "5rem" }}
+        {/* <div
+          className="p-d-flex p-flex-column p-ai-center p-jc-center"
+          style={{
+            // marginTop: "5rem",
+            marginBottom: "5rem",
+            backgroundColor: "#7cb1b1",
+            minHeight: "60vh",
+            color: "#fff",
+            fontSize: "1.5rem",
+          }}
         >
-          <Menu categories={categories} />
-          <Works posts={posts} media={media} />
+          <div
+            className="p-d-flex p-flex-column p-ai-center p-jc-center p-pb-6"
+            style={{
+              maxWidth: "60%",
+            }}
+          >
+            <h3 className="p-text-center p-text-uppercase">{about.title}</h3>
+            <p
+              className="p-text-center p-m-0"
+              style={{
+                fontSize: "1rem",
+              }}
+            >
+              {about.description}
+            </p>
+          </div>
+        </div> */}
+
+        <div className="container">
+          <div
+            className="p-d-flex p-flex-column p-ai-center p-jc-center"
+            style={{
+              marginTop: "5rem",
+              marginBottom: "5rem",
+              minHeight: "40vh",
+            }}
+          >
+            <div>
+              <div className="p-d-flex p-ai-center pjc center">
+                <h3 className="p-text-uppercase">{about.title}</h3>
+                <div
+                  style={{
+                    height: "2px",
+                    width: "100%",
+                    backgroundColor: "#6bb0b2",
+                  }}
+                  className={"p-ml-6"}
+                />
+              </div>
+              <p
+                className="p-text-center p-m-0"
+                style={{
+                  fontSize: "1rem",
+                }}
+              >
+                {about.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="p-d-flex p-ai-center pjc center">
+            <h3 className="p-text-uppercase">works</h3>
+            <div
+              style={{
+                height: "2px",
+                width: "100%",
+                backgroundColor: "#6bb0b2",
+              }}
+              className={"p-ml-6"}
+            />
+          </div>
+          <div
+            className="p-d-flex"
+            style={{ marginTop: "5rem", marginBottom: "5rem" }}
+          >
+            <WorksGallery
+              posts={posts}
+              media={media}
+              className="p-grid p-align-center p-justify-center"
+              style={{ width: "100%" }}
+            />
+          </div>
         </div>
       </motion.div>
     </>

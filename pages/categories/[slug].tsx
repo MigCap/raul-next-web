@@ -8,16 +8,18 @@ import {
   getPostsByCategoryId,
   getMedia,
   getCategories,
+  getTags,
 } from "lib";
 
-import { Menu } from "components/Menu";
-import Works from "components/Works";
+import { MenuSide } from "components/MenuSide";
+import WorksGallery from "components/WorksGallery";
 
 export default function CategoryPage({
   category,
   posts,
   media,
   categories,
+  tags,
 }: any) {
   return (
     <>
@@ -36,8 +38,17 @@ export default function CategoryPage({
         animate="animate"
         exit={{ opacity: 0 }}
       >
-        <Menu categories={categories} currCategory={category?.name} />
-        <Works posts={posts} media={media} />
+        <MenuSide
+          categories={categories}
+          tags={tags}
+          currCategory={category?.name}
+        />
+        <WorksGallery
+          posts={posts}
+          media={media}
+          className="p-grid p-align-center p-justify-end"
+          style={{ width: "100%" }}
+        />
       </motion.div>
     </>
   );
@@ -56,12 +67,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: any }) {
   const categories = await getCategories();
+  const tags = await getTags();
   const category = await getCategory(params.slug);
   const posts = await getPostsByCategoryId(category?.id);
   const media = await getMedia(posts);
   return {
     props: {
       categories,
+      tags,
       category,
       posts,
       media,

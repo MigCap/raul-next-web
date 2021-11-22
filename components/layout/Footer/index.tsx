@@ -1,42 +1,47 @@
-import { linkedinUrl } from "lib";
-
-// import IconInstagram from "components/Icons/IconInstagram";
-import IconLinkedin from "components/Icons/IconLinkedin";
+import { socialLinks } from "lib";
 
 export default function Footer() {
   return (
-    <footer className="footer p-mt-3 p-mt-md-5 p-pt-md-5 footer">
+    <footer className="container footer p-mt-3 p-mt-md-5">
       <div className="p-d-flex p-ai-center p-jc-center p-my-2">
         <p className="p-m-0 p-px-4">
           Copyright 2014-2021 – Raúl de Diego . All rights reserved
         </p>
-        <div className="p-d-flex p-ai-center p-jc-center">
-          <ul>
-            <li className="p-mx-2">
-              <a
-                href={linkedinUrl}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                aria-label={"Linkedin"}
-                className="link-linkedin"
-              >
-                <IconLinkedin />
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
 
-      <p>
-        Develop by{" "}
+      <div className="p-d-flex p-ai-center p-jc-center p-my-2">
+        <ul>
+          {Object.keys(socialLinks)?.map((key) => {
+            const { url, Icon, show } = socialLinks[key];
+            if (!show || !Icon) return null;
+            return (
+              <li className="p-mx-2" key={key}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label={"Linkedin"}
+                  className="link-linkedin lighten"
+                >
+                  <Icon />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {/* <p className="p-d-flex p-ai-center p-jc-center p-my-2">
+        Develop by
         <a
           href="https://miguelcapellan.com/"
           target="_blank"
           rel="noopener noreferrer"
+          className="lighten p-ml-1"
         >
           <span className={"footer-author"}>MCV</span>
         </a>
-      </p>
+      </p> */}
     </footer>
   );
 }

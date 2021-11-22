@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 import BackButton from "components/BackButton";
 import LightBox from "components/LightBox";
-import PostImage from "components/PostImage";
-import PostCategories from "components/PostCategories";
-import PostTags from "components/PostTags";
+import PostImage from "components/work/WorkImage";
+import WorkTags from "components/work/WorkTags";
+import WorkCategories from "components/work/WorkCategories";
 
 import {
   getSlugs,
@@ -21,14 +21,14 @@ import {
   getPostBySlug,
 } from "lib";
 
-import styles from "./PostPage.module.css";
+import styles from "./WorksPage.module.css";
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
 
-export default function PostPage({
+export default function WorkPage({
   post,
   postTags,
   postCategories,
@@ -107,8 +107,8 @@ export default function PostPage({
             <motion.div className="p-pb-2 p-pb-md-6 p-pt-2" variants={fadeInUp}>
               {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
             </motion.div>
-            <PostTags postTags={postTags} />
-            <PostCategories postCategories={postCategories} />
+            <WorkTags postTags={postTags} />
+            <WorkCategories postCategories={postCategories} />
           </motion.div>
 
           <div className="p-col-12 p-md-8">

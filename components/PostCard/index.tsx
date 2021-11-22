@@ -49,7 +49,7 @@ export default function PostCard({
       >
         <Link
           href={{
-            pathname: "/posts/[slug]",
+            pathname: "/works/[slug]",
             query: { slug: post.slug },
           }}
         >

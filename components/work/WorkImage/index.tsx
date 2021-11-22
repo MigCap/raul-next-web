@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 import { fadeInRight } from "lib";
 
-import styles from "./PostImage.module.css";
+import styles from "./WorkImage.module.css";
 
-export default function PostImage({
+export default function WorkImage({
   src,
   index,
   onClick,

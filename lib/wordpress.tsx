@@ -90,6 +90,12 @@ export async function getCategories() {
   return categories;
 }
 
+export async function getTags() {
+  const tagsRes = await fetch(`${TAGS_API_URL}`);
+  const tagsData = await tagsRes.json();
+  return tagsData;
+}
+
 export async function getMedia(posts: any) {
   // const fields = "?_fields=id,alt_text,media_details,guid";
   // const mediaRes = await fetch(MEDIA_API_URL);

@@ -41,6 +41,8 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     router.push(router.asPath);
   }, []);
 
+  const isHomePage = router?.pathname === "/";
+
   return (
     <>
       <Head>
@@ -53,7 +55,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <div key={router.route}>
           <Header />
 
-          <div className="container">
+          <div
+            className={isHomePage ? "" : "container"}
+            style={{ minHeight: "100vh" }}
+          >
             <Component {...pageProps} />
           </div>
 

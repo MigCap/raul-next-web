@@ -3,9 +3,22 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-import { linkedinUrl, scaleAndTab } from "lib";
+import { socialLinks, routesConfig, scaleAndTab } from "lib";
 
-import IconLinkedin from "components/Icons/IconLinkedin";
+// const navBarAnimation = {
+//   initial: {
+//     opacity: 0,
+//     y: -100,
+//   },
+//   animate: {
+//     opacity: 1,
+//     y: 0,
+//   },
+//   exit: {
+//     opacity: 0,
+//     y: -100,
+//   },
+// };
 
 export default function Header() {
   return (
@@ -49,22 +62,51 @@ export default function Header() {
               </motion.div>
             </a>
           </Link>
+
+          <ul className={`p-d-flex`}>
+            {routesConfig.map(({ name, path }) => {
+              return (
+                <li
+                  key={name}
+                  className="p-text-uppercase p-text-bold p-ml-3"
+                  style={{ fontSize: "0.7rem" }}
+                >
+                  <Link
+                    href={{
+                      pathname: path,
+                    }}
+                  >
+                    <a className="lighten">
+                      <span>{name}</span>
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <div className="p-d-flex p-ai-center p-jc-end">
           <div className="p-d-flex p-ai-center">
-            <p
-              className="p-mx-2 p-my-0"
-              style={{ fontSize: "0.7rem", fontWeight: 600 }}
-            >
-              contact@rauldediego.com
-            </p>
-            <a
-              href={linkedinUrl}
+            <Link href="/">
+              <a className="lighten">
+                <p
+                  className="p-m-0"
+                  style={{ fontSize: "0.6rem", fontWeight: 600 }}
+                >
+                  contact@rauldediego.com
+                </p>
+              </a>
+            </Link>
+            {/* <a
+              href={socialLinks?.linkedin?.url}
               target="_blank"
               rel="nofollow noopener noreferrer"
               aria-label={"Linkedin"}
-              className="link-linkedin"
+              className="link-linkedin p-ml-2"
             >
-              <IconLinkedin />
-            </a>
+              {socialLinks?.linkedin?.Icon}
+            </a> */}
           </div>
         </div>
       </motion.div>
