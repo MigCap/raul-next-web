@@ -73,7 +73,7 @@ export function MenuSide({
               <div key={id}>
                 <Link
                   href={{
-                    pathname: "/",
+                    pathname: "/works",
                     // pathname: "/tools/[slug]",
                     // query: { slug },
                   }}

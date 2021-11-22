@@ -109,7 +109,7 @@ ol {
 .p-dialog-header-icon:focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem transparent;
+    box-shadow: 0 0 0 0.2rem transparent !important;
 }
 
 .primary-color {
