@@ -15,6 +15,8 @@ import {
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
+import { Section } from "styles";
+
 export default function CategoryPage({
   category,
   posts,
@@ -32,23 +34,25 @@ export default function CategoryPage({
         />
       </Head>
 
-      <MainCategoriesContainer
-        initial="initial"
-        animate="animate"
-        exit={{ opacity: 0 }}
-      >
-        <MenuSide
-          categories={categories}
-          tags={tags}
-          currCategory={category?.name}
-        />
-        <WorksGallery
-          posts={posts}
-          media={media}
-          className="p-grid p-align-start p-justify-end"
-          style={{ width: "100%" }}
-        />
-      </MainCategoriesContainer>
+      <Section>
+        <MainCategoriesContainer
+          initial="initial"
+          animate="animate"
+          exit={{ opacity: 0 }}
+        >
+          <MenuSide
+            categories={categories}
+            tags={tags}
+            currCategory={category?.name}
+          />
+          <WorksGallery
+            posts={posts}
+            media={media}
+            className="p-grid p-align-start p-justify-end"
+            style={{ width: "100%" }}
+          />
+        </MainCategoriesContainer>
+      </Section>
     </>
   );
 }
