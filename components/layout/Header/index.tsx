@@ -99,7 +99,7 @@ export default function Header({ location }: any) {
   const headerRef = useRef(null);
   const nodeRef = useRef(null);
 
-  const isHome = location && location.pathname === "/";
+  // const isHome = location && location.pathname === "/";
 
   return (
     <HeaderContainer ref={headerRef} scrollDirection={scrollDirection}>
@@ -456,7 +456,7 @@ const HamburgerInner = styled.div`
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
-  ${media.tablet`display: none;`};
+  // ${media.tablet`display: none;`};
 `;
 const NavList = styled.ol`
   div {
