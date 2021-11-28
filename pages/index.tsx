@@ -29,12 +29,12 @@ export default function Home({ posts, media, categories }: any) {
         <section className="container">
           <HomeSection title={about.title}>
             <p
-              className="p-text-left"
-              style={{
-                fontSize: "1rem",
-                // margin: "0 0 0 10rem",
-                // maxWidth: "70%",
-              }}
+            // className="p-text-left"
+            // style={{
+            //   fontSize: "1rem",
+            //   // margin: "0 0 0 10rem",
+            //   // maxWidth: "70%",
+            // }}
             >
               {about.description}
             </p>
@@ -42,16 +42,16 @@ export default function Home({ posts, media, categories }: any) {
 
           <HomeSection title={"works"}>
             <div
-              className="p-d-flex"
-              style={{
-                marginBottom: "0 0 5rem 0",
-              }}
+            // className="p-d-flex"
+            // style={{
+            //   marginBottom: "0 0 5rem 0",
+            // }}
             >
               <WorksGallery
                 posts={posts}
                 media={media}
-                className="p-grid p-align-center p-justify-center"
-                style={{ width: "100%" }}
+                // className="p-grid p-align-center p-justify-center"
+                // style={{ width: "100%" }}
               />
             </div>
           </HomeSection>
@@ -70,7 +70,7 @@ function HomeSection({
 }) {
   return (
     <HomeSectionContainer>
-      <FlexHeaderContainer className="p-d-flex p-ai-center p-jc-center">
+      <FlexHeaderContainer>
         <h3>{title.toUpperCase()}</h3>
         <LineSeparator />
       </FlexHeaderContainer>
@@ -81,8 +81,9 @@ function HomeSection({
 
 const HomeSectionContainer = styled(Section)`
   position: relative;
-  max-width: 700px;
   padding: 50px 0;
+  // min-width: 1200px;
+  // ${media.desktop`min-width: auto;`};
   &:first-of-type {
     padding-top: 100px;
   }
@@ -90,7 +91,6 @@ const HomeSectionContainer = styled(Section)`
 const FlexHeaderContainer = styled.div`
   ${mixins.flexCenter};
   width: 100%;
-  max-width: 750px;
   margin: 0.5rem 0;
   ${media.tablet`width: 100%;`};
   h3 {

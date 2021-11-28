@@ -22,7 +22,7 @@ import {
   getPostBySlug,
 } from "lib";
 
-import { theme, mixins, media } from "styles";
+import { theme, mixins, media, Section } from "styles";
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
@@ -78,39 +78,40 @@ export default function WorkPage({
         />
       </Head>
 
-      <PostDetailContainer
-        initial="initial"
-        animate="animate"
-        exit={{ opacity: 0 }}
-      >
-        <BackButton />
-        <PostDetailContent imagesLength={imgs?.length}>
-          <motion.div variants={stagger}>
-            <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
-            <LineSeparatorContainer variants={fadeInUp}>
-              <LineSeparator variants={postTitleUnderline} />
-            </LineSeparatorContainer>
-            <PostDescription variants={fadeInUp}>
-              {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
-            </PostDescription>
-            <WorkTags postTags={postTags} />
-            <WorkCategories postCategories={postCategories} />
-          </motion.div>
-
-          <div>
-            <PostImagesContainer imagesLength={imgs?.length}>
-              <motion.div variants={stagger}>{leftPostImages}</motion.div>
-              <motion.div variants={stagger}>{rightPostImages}</motion.div>
-            </PostImagesContainer>
-          </div>
-        </PostDetailContent>
-      </PostDetailContainer>
-      {/* <LightBox
-        images={imgs}
-        show={show}
-        setShow={setShow}
-        activeIndex={activeIndex}
-      /> */}
+      <Section>
+        <PostDetailContainer
+          initial="initial"
+          animate="animate"
+          exit={{ opacity: 0 }}
+        >
+          <BackButton />
+          <PostDetailContent imagesLength={imgs?.length}>
+            <motion.div variants={stagger}>
+              <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
+              <LineSeparatorContainer variants={fadeInUp}>
+                <LineSeparator variants={postTitleUnderline} />
+              </LineSeparatorContainer>
+              <PostDescription variants={fadeInUp}>
+                {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
+              </PostDescription>
+              <WorkTags postTags={postTags} />
+              <WorkCategories postCategories={postCategories} />
+            </motion.div>
+            <div>
+              <PostImagesContainer imagesLength={imgs?.length}>
+                <motion.div variants={stagger}>{leftPostImages}</motion.div>
+                <motion.div variants={stagger}>{rightPostImages}</motion.div>
+              </PostImagesContainer>
+            </div>
+          </PostDetailContent>
+        </PostDetailContainer>
+        {/* <LightBox
+          images={imgs}
+          show={show}
+          setShow={setShow}
+          activeIndex={activeIndex}
+        /> */}
+      </Section>
     </>
   );
 }
