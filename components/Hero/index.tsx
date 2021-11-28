@@ -61,7 +61,7 @@ const HeroContainer = styled(Section)`
   min-height: 100vh;
   ${media.desktop`min-height: 50vh;`};
   padding: 0 1rem;
-  ${media.tablet`padding-top: 150px;`};
+  ${media.desktop`padding-top: 150px;`};
   background: #6bb0b2 url("/assets/Picture Background.jpg") no-repeat fixed
     center;
   background-blend-mode: multiply;
@@ -75,7 +75,7 @@ const Hi = styled.h1`
   font-size: ${theme.fontSizes.medium};
   font-family: ${theme.fonts.SFMono};
   font-weight: normal;
-  ${media.desktop`font-size: ${theme.fontSizes.xlarge};`};
+  ${media.desktop`font-size: ${theme.fontSizes.large};`};
   ${media.tablet`font-size: ${theme.fontSizes.smallish};`};
 `;
 const Name = styled.h2`
@@ -91,7 +91,7 @@ const Subtitle = styled.h3`
   font-size: 80px;
   line-height: 1.1;
   color: ${theme.colors.white};
-  ${media.desktop`font-size: 100px;`};
+  ${media.desktop`font-size: 80px;`};
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
   ${media.phone`font-size: 40px;`};
