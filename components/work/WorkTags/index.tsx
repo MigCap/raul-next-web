@@ -66,6 +66,6 @@ const WorkTagsContainer = styled.div`
   p {
     margin: 0;
     padding: 0 0 0 0.1rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;

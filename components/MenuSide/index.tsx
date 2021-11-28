@@ -62,7 +62,7 @@ export function MenuSide({
 
         <p
           className="p-text-uppercase p-mt-4 p-mb-0"
-          style={{ fontWeight: 700 }}
+          style={{ fontWeight: 700, marginTop: "1rem" }}
         >
           tools
         </p>
@@ -73,7 +73,7 @@ export function MenuSide({
               <div key={id}>
                 <Link
                   href={{
-                    pathname: "/works",
+                    pathname: "/categories",
                     // pathname: "/tools/[slug]",
                     // query: { slug },
                   }}

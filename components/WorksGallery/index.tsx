@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
@@ -8,7 +10,10 @@ import { getFeaturedMedia, stagger } from "lib";
 import { theme, mixins, media, Section } from "styles";
 
 export default function WorksGallery({ posts, media, className, style }: any) {
-  const jsxPosts = posts?.slice(0, 9)?.map((post: any) => {
+  const isHomePage = Router?.router?.pathname === "/";
+  const maxCardsToShow = isHomePage ? 9 : 18;
+
+  const jsxPosts = posts?.slice(0, maxCardsToShow)?.map((post: any) => {
     const featuredMediaId = post?.featured_media;
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
     return <PostCard post={post} featuredMedia={featuredMedia} key={post.id} />;

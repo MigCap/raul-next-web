@@ -14,7 +14,7 @@ export async function getPosts() {
 }
 
 export async function getPostsByCategoryId(id: string) {
-  const postsRes = await fetch(`${POSTS_API_URL}?categories=${id}`);
+  const postsRes = await fetch(`${POSTS_API_URL}?categories=${id}&per_page=18`);
   const posts = await postsRes.json();
   return posts;
 }

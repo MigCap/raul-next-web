@@ -60,4 +60,5 @@ const WorkCategoriesTitle = styled.h3`
 const WorkCategorieText = styled.p`
   margin: 0 0.5rem 0 0;
   padding: 0 0;
+  font-size: 1rem;
 `;

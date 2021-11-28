@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import Head from "next/head";
 
 import { motion } from "framer-motion";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
 import { getMedia, getPosts, getCategories, about } from "lib";
@@ -12,8 +12,6 @@ import Hero from "components/Hero";
 import WorksGallery from "components/WorksGallery";
 
 import { theme, mixins, media, Section } from "styles";
-
-// import styles from "styles/Home.module.css";
 
 export default function Home({ posts, media, categories }: any) {
   return (
@@ -28,31 +26,12 @@ export default function Home({ posts, media, categories }: any) {
 
         <section className="container">
           <HomeSection title={about.title}>
-            <p
-            // className="p-text-left"
-            // style={{
-            //   fontSize: "1rem",
-            //   // margin: "0 0 0 10rem",
-            //   // maxWidth: "70%",
-            // }}
-            >
-              {about.description}
-            </p>
+            <p>{about.description}</p>
           </HomeSection>
 
           <HomeSection title={"works"}>
-            <div
-            // className="p-d-flex"
-            // style={{
-            //   marginBottom: "0 0 5rem 0",
-            // }}
-            >
-              <WorksGallery
-                posts={posts}
-                media={media}
-                // className="p-grid p-align-center p-justify-center"
-                // style={{ width: "100%" }}
-              />
+            <div>
+              <WorksGallery posts={posts} media={media} />
             </div>
           </HomeSection>
         </section>
@@ -82,8 +61,6 @@ function HomeSection({
 const HomeSectionContainer = styled(Section)`
   position: relative;
   padding: 50px 0;
-  // min-width: 1200px;
-  // ${media.desktop`min-width: auto;`};
   &:first-of-type {
     padding-top: 100px;
   }

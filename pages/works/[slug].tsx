@@ -122,9 +122,7 @@ interface ImagesLengthProp {
   imagesLength: number;
 }
 
-const PostDetailContainer = styled(motion.article)`
-  // margin: ${theme.headerHeight} 0 0 0;
-`;
+const PostDetailContainer = styled(motion.article)``;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   ${mixins.gridCenter};
   grid-template-columns: 40% 60%;
@@ -134,6 +132,7 @@ const PostDetailContent = styled.div<ImagesLengthProp>`
 const PostTitle = styled(motion.h1)`
   margin: 1rem 0 0 0;
   color: ${theme.colors.teal};
+  font-size: 2.5rem;
 `;
 const LineSeparatorContainer = styled(motion.div)`
   margin: 0.5rem 0;
