@@ -7,7 +7,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+// import AnchorLink from "react-anchor-link-smooth-scroll";
 
 import {
   about,
@@ -178,7 +178,11 @@ export default function Header({ location }: any) {
                       key={i}
                       style={{ transitionDelay: `${i * 100}ms` }}
                     >
-                      <NavLink href={path}>{name}</NavLink>
+                      <NavLink href={path}>
+                        <a>
+                          <p style={{ margin: 0 }}>{name}</p>
+                        </a>
+                      </NavLink>
                     </NavListItem>
                   </CSSTransition>
                 ))}
