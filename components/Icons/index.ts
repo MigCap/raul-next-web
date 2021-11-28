@@ -1,3 +1,3 @@
-import IconLinkedin from "components/icons/IconLinkedin";
+import IconLinkedin from "components/Icons/IconLinkedin";
 
 export { IconLinkedin };

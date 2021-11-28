@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { socialMedia } from "lib";
 
-import { IconLinkedin } from "components/icons";
+import { IconLinkedin } from "components/Icons";
 
 import { theme, media } from "styles";
 
