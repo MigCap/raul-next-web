@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import styled, { ThemeProvider } from "styled-components";
 
@@ -23,7 +23,7 @@ export default function Layout({ children, router }: any) {
       <ThemeProvider theme={theme}>
         <AnimatePresence exitBeforeEnter>
           {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
-          <div key={router.route}>
+          <motion.div key={router.route}>
             <Header location={router} />
             <Social />
             <Email />
@@ -34,7 +34,7 @@ export default function Layout({ children, router }: any) {
             )}
 
             <Footer />
-          </div>
+          </motion.div>
         </AnimatePresence>
       </ThemeProvider>
     </>

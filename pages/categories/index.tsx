@@ -8,8 +8,7 @@ import { getMedia, getPosts, getCategories, getTags, about } from "lib";
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
-import { theme, mixins, media, Main } from "styles";
-// import styles from "styles/WorksPage.module.css";
+import { theme, mixins, media, Section } from "styles";
 
 export default function CategoriesPage({
   posts,
@@ -24,19 +23,21 @@ export default function CategoriesPage({
         <meta name="description" content={`${about.name} Works`} />
       </Head>
 
-      <MainCategoriesContainer
-        initial="initial"
-        animate="animate"
-        exit={{ opacity: 0 }}
-      >
-        <MenuSide categories={categories} tags={tags} />
-        <WorksGallery
-          posts={posts}
-          media={media}
-          className="p-grid p-align-center p-justify-end"
-          style={{ width: "100%" }}
-        />
-      </MainCategoriesContainer>
+      <Section>
+        <MainCategoriesContainer
+          initial="initial"
+          animate="animate"
+          exit={{ opacity: 0 }}
+        >
+          <MenuSide categories={categories} tags={tags} />
+          <WorksGallery
+            posts={posts}
+            media={media}
+            className="p-grid p-align-center p-justify-end"
+            style={{ width: "100%" }}
+          />
+        </MainCategoriesContainer>
+      </Section>
     </>
   );
 }

@@ -25,13 +25,13 @@ export default function Hero() {
   const nodeRef = useRef(null);
 
   const One = () => (
-    <Hi style={{ transitionDelay: "100ms" }}>{about.positionDescription}</Hi>
+    <Hi style={{ transitionDelay: "300ms" }}>{about.positionDescription}</Hi>
   );
   // const Two = () => (
   //   <Name style={{ transitionDelay: "200ms" }}>{about.position}.</Name>
   // );
   const Three = () => (
-    <Subtitle style={{ transitionDelay: "300ms" }}>{about.position}</Subtitle>
+    <Subtitle style={{ transitionDelay: "100ms" }}>{about.position}</Subtitle>
   );
 
   // const items = [Two, Three];
