@@ -100,7 +100,9 @@ export default function WorkPage({
             <div>
               <PostImagesContainer imagesLength={imgs?.length}>
                 <motion.div variants={stagger}>{leftPostImages}</motion.div>
-                <motion.div variants={stagger}>{rightPostImages}</motion.div>
+                {imgs?.length > 3 && (
+                  <motion.div variants={stagger}>{rightPostImages}</motion.div>
+                )}
               </PostImagesContainer>
             </div>
           </PostDetailContent>
@@ -125,8 +127,7 @@ const PostDetailContainer = styled(motion.article)`
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   ${mixins.gridCenter};
-  grid-template-columns: ${(props: any) =>
-    props.imagesLength > 3 ? `40% 60%` : "100%"};
+  grid-template-columns: 40% 60%;
   ${media.desktop`grid-template-columns: 100%;`};
   gap: 1rem;
 `;
