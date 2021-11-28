@@ -58,17 +58,16 @@ const HeroContainer = styled(Section)`
   ${mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-  // margin-top: ${theme.headerScrollHeight};
   min-height: 100vh;
+  ${media.desktop`min-height: 50vh;`};
   padding: 0 1rem;
-
   ${media.tablet`padding-top: 150px;`};
-  div {
-    width: 100%;
-  }
   background: #6bb0b2 url("/assets/Picture Background.jpg") no-repeat fixed
     center;
   background-blend-mode: multiply;
+  div {
+    width: 100%;
+  }
 `;
 const Hi = styled.h1`
   color: ${theme.colors.white};

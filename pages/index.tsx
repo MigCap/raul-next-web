@@ -61,8 +61,11 @@ function HomeSection({
 const HomeSectionContainer = styled(Section)`
   position: relative;
   padding: 50px 0;
+  ${media.desktop`padding: 25px 100px;`};
+  ${media.tablet`padding: 50px 50px;`};
   &:first-of-type {
     padding-top: 100px;
+    ${media.desktop`padding-top: 50px;`};
   }
 `;
 const FlexHeaderContainer = styled.div`
