@@ -59,7 +59,6 @@ export default function CategoryPage({
 
 const MainCategoriesContainer = styled(motion.article)`
   display: flex;
-  margin: 10rem 0 5rem 0;
   min-height: 80vh;
 `;
 

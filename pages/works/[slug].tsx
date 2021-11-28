@@ -123,7 +123,7 @@ interface ImagesLengthProp {
 }
 
 const PostDetailContainer = styled(motion.article)`
-  margin: ${theme.headerHeight} 0 0 0;
+  // margin: ${theme.headerHeight} 0 0 0;
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   ${mixins.gridCenter};

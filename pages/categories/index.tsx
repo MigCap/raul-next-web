@@ -44,7 +44,6 @@ export default function CategoriesPage({
 
 const MainCategoriesContainer = styled(motion.div)`
   display: flex;
-  margin: 10rem 0 5rem 0;
   min-height: 80vh;
 `;
 
