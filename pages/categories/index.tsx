@@ -1,12 +1,14 @@
 import Head from "next/head";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 import { getMedia, getPosts, getCategories, getTags, about } from "lib";
 
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
+import { theme, mixins, media, Main } from "styles";
 // import styles from "styles/WorksPage.module.css";
 
 export default function CategoriesPage({
@@ -22,20 +24,28 @@ export default function CategoriesPage({
         <meta name="description" content={`${about.name} Works`} />
       </Head>
 
-      <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
-        <div className="p-d-flex" style={{ margin: "5rem 0" }}>
-          <MenuSide categories={categories} tags={tags} />
-          <WorksGallery
-            posts={posts}
-            media={media}
-            className="p-grid p-align-center p-justify-end"
-            style={{ width: "100%" }}
-          />
-        </div>
-      </motion.div>
+      <MainCategoriesContainer
+        initial="initial"
+        animate="animate"
+        exit={{ opacity: 0 }}
+      >
+        <MenuSide categories={categories} tags={tags} />
+        <WorksGallery
+          posts={posts}
+          media={media}
+          className="p-grid p-align-center p-justify-end"
+          style={{ width: "100%" }}
+        />
+      </MainCategoriesContainer>
     </>
   );
 }
+
+const MainCategoriesContainer = styled(motion.div)`
+  display: flex;
+  margin: 10rem 0 5rem 0;
+  min-height: 80vh;
+`;
 
 export async function getStaticProps({ params }: { params: any }) {
   const posts = await getPosts();

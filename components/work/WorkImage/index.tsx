@@ -1,10 +1,11 @@
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 import { fadeInRight } from "lib";
 
-import styles from "./WorkImage.module.css";
+import { theme, mixins, media } from "styles";
 
 export default function WorkImage({
   src,
@@ -36,29 +37,47 @@ export default function WorkImage({
       : window.btoa(str);
 
   return (
-    <motion.div
-      className={`p-mb-2 p-mb-md-3`}
-      // variants={fadeInUp}
-      variants={fadeInRight}
-      transition={{ delay: 0.2 }}
-    >
-      <motion.div
-        className={`${styles.imgContainer}`}
-        onClick={() => onClick(index)}
-      >
-        <Image
+    <PostImageContainer variants={fadeInRight} transition={{ delay: 0.2 }}>
+      <ImageContainer onClick={() => onClick(index)}>
+        <ImageStyled
           priority
           src={newImageSrc}
           layout="responsive"
           width={850}
           height={570}
           alt={src}
-          className={`${styles.image}`}
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             convertImage(700, 475)
           )}`}
         />
-      </motion.div>
-    </motion.div>
+      </ImageContainer>
+    </PostImageContainer>
   );
 }
+
+const PostImageContainer = styled(motion.div)`
+  margin: 0 0 1rem 0;
+  ${media.tablet`margin: 0 0 2rem 0;`};
+`;
+const ImageContainer = styled(motion.div)`
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  border-radius: 5px;
+`;
+const ImageStyled = styled(Image)`
+  border-radius: 10px;
+  object-fit: fill;
+  width: 100%;
+  width: 50rem;
+  height: 40rem;
+  max-width: 80%;
+  min-height: 150px;
+  transition: transform 0.5s ease;
+
+  ${ImageContainer}:hover & {
+    cursor: pointer;
+    transform: scale(1.02);
+    /* opacity: 1.04; */
+  }
+`;

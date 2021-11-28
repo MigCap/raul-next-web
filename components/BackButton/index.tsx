@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
 
-import styles from "./BackButton.module.css";
+import { motion } from "framer-motion";
+import styled from "styled-components";
+
+import { theme } from "styles";
 
 const postBackButtonContainer = {
   rest: { scale: 1 },
@@ -19,27 +21,42 @@ export default function BackButton() {
   return (
     <div onClick={() => router.back()}>
       <a>
-        <motion.div
-          className={styles.refresh}
+        <BackButtonContainer
           variants={postBackButtonContainer}
           initial="rest"
           whileHover="hover"
           whileTap="pressed"
         >
           <motion.svg
-            width="15"
-            height="15"
+            width="5"
+            height="10"
             xmlns="http://www.w3.org/2000/svg"
             variants={postBackButtonArrow}
           >
             <path
-              d="M12.8 5.1541V2.5a.7.7 0 0 1 1.4 0v5a.7.7 0 0 1-.7.7h-5a.7.7 0 0 1 0-1.4h3.573c-.7005-1.8367-2.4886-3.1-4.5308-3.1C4.8665 3.7 2.7 5.85 2.7 8.5s2.1665 4.8 4.8422 4.8c1.3035 0 2.523-.512 3.426-1.4079a.7.7 0 0 1 .986.9938C10.7915 14.0396 9.2186 14.7 7.5422 14.7 4.0957 14.7 1.3 11.9257 1.3 8.5s2.7957-6.2 6.2422-6.2c2.1801 0 4.137 1.1192 5.2578 2.8541z"
-              fill="var(--teal-500)"
-              fillRule="nonzero"
+              d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+              fill={theme.colors.teal}
+              // fillRule="nonzero"
             />
           </motion.svg>
-        </motion.div>
+        </BackButtonContainer>
       </a>
     </div>
   );
 }
+
+const BackButtonContainer = styled(motion.div)`
+  margin: 1rem 0;
+  padding: 12px 5px 0 10px;
+  // position: absolute;
+  border: solid ${theme.colors.teal} 1px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  // top: 10px;
+  // right: 10px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  cursor: pointer;
+`;

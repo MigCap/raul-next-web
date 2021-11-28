@@ -8,22 +8,17 @@ function getDate(date: any) {
   });
 }
 
-function getImagesSources(post: any) {
-  const match = post?.content?.rendered?.match(/srcs*=s*"(.+?)"/g);
-  // const match = post.content.rendered.match(/src\s*=\s*"?(.+?)["|\s]/g);
-  // const match = post.content.rendered.match(/<img.*?src="(.*?)"/g);
-
-  const srcs: string[] = match
-    ? match.map((m: any) => m.replace(/srcs*=s*"/g, "").replace('"', ""))
-    : [];
-
-  const imgs = srcs.map((imgSrc: string, i: number) => ({
-    src: imgSrc,
-    alt: imgSrc,
-    index: i,
-  }));
-
-  return imgs;
+function throttle(func: any, wait: number = 100) {
+  let timer: any = null;
+  return function (...args: any) {
+    if (timer === null) {
+      timer = setTimeout(() => {
+        // @ts-ignore
+        func.apply(this, args);
+        timer = null;
+      }, wait);
+    }
+  };
 }
 
-export { parse, getDate, getImagesSources };
+export { parse, getDate, throttle };

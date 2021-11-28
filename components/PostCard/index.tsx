@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 import { fadeInUp, scaleAndTab } from "lib";
 
-import { colors } from "styles/theme";
+import { theme, mixins, media, Section } from "styles";
 
 import styles from "./PostCard.module.css";
 
@@ -14,7 +15,7 @@ const postCard = {
     // scale: 1.05,
     // translateY: -2,
     // x: 15,
-    color: colors.primary,
+    color: theme.colors.primary,
     transition: { duration: 0.5, type: "tween", ease: "easeOut" },
   },
 };
@@ -39,9 +40,9 @@ export default function PostCard({
   featuredMedia: any;
 }) {
   return (
-    <motion.div
+    <CardContainer
       variants={fadeInUp}
-      className={`${styles.card} p-col-12 p-lg-4`}
+      // className={`${styles.card} p-col-12 p-lg-4`}
     >
       <motion.div
         whileHover="hover"
@@ -56,39 +57,54 @@ export default function PostCard({
             query: { slug: post.slug },
           }}
         >
-          <a>
-            <motion.p className="p-m-0 p-p-0">
+          <a style={{ width: "100%" }}>
+            <PostCardTitle>
               {post.title.rendered}
               <motion.span variants={arrowMotion}> →</motion.span>
-            </motion.p>
+            </PostCardTitle>
             {featuredMedia && (
-              <motion.div
-                className={`${styles.imageContainer}`}
+              <ImageContainer
+                // className={`${styles.imageContainer}`}
                 variants={scaleAndTab}
               >
-                <Image
+                <StyledImage
                   priority
                   src={featuredMedia?.source_url}
                   layout="fill"
                   alt={featuredMedia?.alt_text}
-                  className={`${styles.image}`}
+                  // className={`${styles.image}`}
                 />
-              </motion.div>
+              </ImageContainer>
             )}
           </a>
         </Link>
       </motion.div>
-    </motion.div>
+    </CardContainer>
   );
 }
 
-// export async function getStaticProps(context: any) {
-//   // const image = await getFeaturedImage(context);
-
-//   return {
-//     props: {
-//       // image,
-//     },
-//     revalidate: 10, // In seconds
-//   };
-// }
+const CardContainer = styled(motion.div)`
+  ${media.tablet`max-width: 20rem;`};
+  &:hover .cardImage {
+    filter: opacity(0.9);
+  }
+`;
+const PostCardTitle = styled(motion.p)`
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  font-size: 0.9rem;
+`;
+const ImageContainer = styled(motion.div)`
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  border-radius: 1rem;
+`;
+const StyledImage = styled(Image)`
+  object-fit: cover;
+  border-radius: 5px;
+  width: 850px;
+  height: 567px;
+  overflow: visible;
+  transition: all 0.5s ease;
+`;

@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 import {
   getSlugs,
@@ -31,9 +32,7 @@ export default function CategoryPage({
         />
       </Head>
 
-      <motion.article
-        className="p-d-flex"
-        style={{ margin: "5rem 0" }}
+      <MainCategoriesContainer
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}
@@ -49,10 +48,16 @@ export default function CategoryPage({
           className="p-grid p-align-start p-justify-end"
           style={{ width: "100%" }}
         />
-      </motion.article>
+      </MainCategoriesContainer>
     </>
   );
 }
+
+const MainCategoriesContainer = styled(motion.article)`
+  display: flex;
+  margin: 10rem 0 5rem 0;
+  min-height: 80vh;
+`;
 
 export async function getStaticPaths() {
   const paths = await getSlugs("categories");

@@ -1,4 +1,4 @@
-import IconLinkedin from "components/Icons/IconLinkedin";
+import IconLinkedin from "components/icons/IconLinkedin";
 
 export const routesConfig = [
   {
@@ -25,22 +25,14 @@ export const DeviceSize = {
   laptop: 1324,
   desktop: 2024,
 };
-
-export const DeviceSizes = {
-  giant: 1440,
-  desktop: 1000,
-  tablet: 768,
-  thone: 600,
-  phablet: 480,
-  phone: 376,
-  tiny: 330,
-};
+export const headerHeight = 100;
 
 export const socialLinks: any = {
   linkedin: {
     url: "https://www.linkedin.com/in/rauldediegovazquez/",
     // icon: "pi pi-linkedin",
     Icon: IconLinkedin,
+    name: "Linkedin",
     show: true,
   },
   github: {
@@ -59,6 +51,14 @@ export const socialLinks: any = {
     show: false,
   },
 };
+
+export const socialMedia = [
+  {
+    name: "Linkedin",
+    url: "https://www.linkedin.com/in/rauldediegovazquez/",
+    Icon: IconLinkedin,
+  },
+];
 
 export const about = {
   name: "Raúl de Diego",

@@ -3,11 +3,15 @@ import { ReactNode } from "react";
 import Head from "next/head";
 
 import { motion } from "framer-motion";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import styled from "styled-components";
 
 import { getMedia, getPosts, getCategories, about } from "lib";
 
 import Hero from "components/Hero";
 import WorksGallery from "components/WorksGallery";
+
+import { theme, mixins, media, Section } from "styles";
 
 // import styles from "styles/Home.module.css";
 
@@ -21,34 +25,6 @@ export default function Home({ posts, media, categories }: any) {
 
       <motion.main initial="initial" animate="animate" exit={{ opacity: 0 }}>
         <Hero />
-
-        {/* <div
-          className="p-d-flex p-flex-column p-ai-center p-jc-center"
-          style={{
-            margin: "5rem 0",
-            backgroundColor: "#7cb1b1",
-            minHeight: "60vh",
-            color: "#fff",
-            fontSize: "1.5rem",
-          }}
-        >
-          <div
-            className="p-d-flex p-flex-column p-ai-center p-jc-center p-pb-6"
-            style={{
-              maxWidth: "60%",
-            }}
-          >
-            <h3 className="p-text-center p-text-uppercase">{about.title}</h3>
-            <p
-              className="p-text-center p-m-0"
-              style={{
-                fontSize: "1rem",
-              }}
-            >
-              {about.description}
-            </p>
-          </div>
-        </div> */}
 
         <section className="container">
           <HomeSection title={about.title}>
@@ -93,30 +69,43 @@ function HomeSection({
   children: ReactNode;
 }) {
   return (
-    <section
-      className="p-d-flex p-flex-column p-ai-center p-jc-center"
-      style={{
-        margin: "2rem 0",
-        // minHeight: "40vh",
-      }}
-    >
-      <div>
-        <div className="p-d-flex p-ai-center pjc center">
-          <h3 className="p-text-uppercase">{title}</h3>
-          <div
-            style={{
-              height: "2px",
-              width: "100%",
-              backgroundColor: "#6bb0b2",
-            }}
-            className={"p-ml-6"}
-          />
-        </div>
-        {children}
-      </div>
-    </section>
+    <HomeSectionContainer>
+      <FlexHeaderContainer className="p-d-flex p-ai-center p-jc-center">
+        <h3>{title.toUpperCase()}</h3>
+        <LineSeparator />
+      </FlexHeaderContainer>
+      {children}
+    </HomeSectionContainer>
   );
 }
+
+const HomeSectionContainer = styled(Section)`
+  position: relative;
+  max-width: 700px;
+  padding: 50px 0;
+  &:first-of-type {
+    padding-top: 100px;
+  }
+`;
+const FlexHeaderContainer = styled.div`
+  ${mixins.flexCenter};
+  width: 100%;
+  max-width: 750px;
+  margin: 0.5rem 0;
+  ${media.tablet`width: 100%;`};
+  h3 {
+    font-size: ${theme.fontSizes.large};
+    color: ${theme.colors.teal};
+    margin: 0;
+    padding: 0;
+  }
+`;
+const LineSeparator = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: ${theme.colors.teal};
+  margin: 3px 0 0 1rem;
+`;
 
 export async function getStaticProps({ params }: { params: any }) {
   const posts = await getPosts();

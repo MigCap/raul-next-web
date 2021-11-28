@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import Head from "next/head";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 import BackButton from "components/BackButton";
 import LightBox from "components/LightBox";
@@ -14,14 +15,14 @@ import {
   getSlugs,
   getPostTags,
   getPostCategories,
-  getImagesSources,
+  getPostsImagesSources,
   fadeInUp,
   parse,
   stagger,
   getPostBySlug,
 } from "lib";
 
-import styles from "./WorkPage.module.css";
+import { theme, mixins, media } from "styles";
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
@@ -40,7 +41,7 @@ export default function WorkPage({
   const [show, setShow] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const imgs = getImagesSources(post);
+  const imgs = getPostsImagesSources(post);
 
   const onClickImg = useCallback((index: number) => {
     setShow(true);
@@ -77,61 +78,83 @@ export default function WorkPage({
         />
       </Head>
 
-      <motion.article
+      <PostDetailContainer
         initial="initial"
         animate="animate"
         exit={{ opacity: 0 }}
-        style={{ margin: "5rem 0" }}
       >
         <BackButton />
-        <div className="p-grid p-align-center">
-          <motion.div
-            className="p-col-12 p-md-4 p-col-align-start p-mt-2 p-mt-md-5 p-pt-md-2"
-            variants={stagger}
-          >
-            <motion.h1
-              className={`${styles["post-title"]} p-mb-0 primary-color`}
-              variants={fadeInUp}
-            >
-              {postTitle}
-            </motion.h1>
-            <motion.div className={`p-my-1 p-md-my-3`} variants={fadeInUp}>
-              <motion.div
-                className={`${styles.separator}`}
-                // initial="hidden"
-                // animate="visible"
-                // transition={{ duration: 2 }}
-                variants={postTitleUnderline}
-              />
-            </motion.div>
-            <motion.div className="p-pb-2 p-pb-md-6 p-pt-2" variants={fadeInUp}>
+        <PostDetailContent imagesLength={imgs?.length}>
+          <motion.div variants={stagger}>
+            <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
+            <LineSeparatorContainer variants={fadeInUp}>
+              <LineSeparator variants={postTitleUnderline} />
+            </LineSeparatorContainer>
+            <PostDescription variants={fadeInUp}>
               {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
-            </motion.div>
+            </PostDescription>
             <WorkTags postTags={postTags} />
             <WorkCategories postCategories={postCategories} />
           </motion.div>
 
-          <div className="p-col-12 p-md-8">
-            <div className="p-grid p-align-center p-px-3">
-              <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                {leftPostImages}
-              </motion.div>
-              <motion.div className="p-col-12 p-md-6" variants={stagger}>
-                {rightPostImages}
-              </motion.div>
-            </div>
+          <div>
+            <PostImagesContainer imagesLength={imgs?.length}>
+              <motion.div variants={stagger}>{leftPostImages}</motion.div>
+              <motion.div variants={stagger}>{rightPostImages}</motion.div>
+            </PostImagesContainer>
           </div>
-        </div>
-      </motion.article>
-      <LightBox
+        </PostDetailContent>
+      </PostDetailContainer>
+      {/* <LightBox
         images={imgs}
         show={show}
         setShow={setShow}
         activeIndex={activeIndex}
-      />
+      /> */}
     </>
   );
 }
+
+interface ImagesLengthProp {
+  imagesLength: number;
+}
+
+const PostDetailContainer = styled(motion.article)`
+  margin: ${theme.headerHeight} 0 0 0;
+`;
+const PostDetailContent = styled.div<ImagesLengthProp>`
+  ${mixins.gridCenter};
+  grid-template-columns: ${(props: any) =>
+    props.imagesLength > 3 ? `40% 60%` : "100%"};
+  ${media.desktop`grid-template-columns: 100%;`};
+  gap: 1rem;
+`;
+const PostTitle = styled(motion.h1)`
+  margin: 1rem 0 0 0;
+  color: ${theme.colors.teal};
+`;
+const LineSeparatorContainer = styled(motion.div)`
+  margin: 0.5rem 0;
+  ${media.desktop`margin: 1rem 0;`};
+`;
+const LineSeparator = styled(motion.div)`
+  width: 20%;
+  height: 2px;
+  background-color: ${theme.colors.teal};
+`;
+const PostDescription = styled(motion.div)`
+  padding: 1rem 0 0.5rem 0;
+  ${media.desktop`padding: 1rem 0 1rem 0;`};
+`;
+const PostImagesContainer = styled.div<ImagesLengthProp>`
+  margin: 0;
+  ${media.desktop`margin: 3rem 0 0 0;`};
+  ${mixins.gridCenter};
+  grid-template-columns: ${(props: any) =>
+    props.imagesLength >= 4 ? `50% 50%` : "100%"};
+  ${media.desktop`grid-template-columns: 100%;`};
+  gap: 1rem;
+`;
 
 export async function getStaticPaths() {
   const paths = await getSlugs("posts");
