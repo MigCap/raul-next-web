@@ -66,13 +66,13 @@ export default function WorkPage({
 
       <Section>
         <PostDetailContainer
-          initial="initial"
-          animate="animate"
-          exit={{ opacity: 0 }}
+        // initial="initial"
+        // animate="animate"
+        // exit={{ opacity: 0 }}
         >
-          <div style={{ padding: ".5rem 1rem 1rem 1rem" }}>
+          <BackButtonWrapper>
             <BackButton />
-          </div>
+          </BackButtonWrapper>
 
           <PostDetailContent imagesLength={imgs?.length}>
             <motion.div variants={stagger}>
@@ -116,10 +116,19 @@ const PostDetailContainer = styled(motion.article)`
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   margin-top: 8rem;
+  ${media.phablet`
+      margin-top: 1rem;
+      gap: 0;
+    `};
   ${mixins.gridStart};
   grid-template-columns: 40% 60%;
   ${media.desktop`grid-template-columns: 100%;`};
   gap: 5rem;
+`;
+const BackButtonWrapper = styled(motion.article)`
+  padding: 0.5rem 1rem 1rem 1rem;
+  ${media.thone`padding: 25px;`};
+  ${media.phablet`display: none;`};
 `;
 const PostTitle = styled(motion.h1)`
   margin: 0 0 0 0;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { fadeInUp } from "lib";
 
-import { theme, mixins } from "styles";
+import { theme, media, mixins } from "styles";
 
 export default function WorkCategories({
   postCategories,
@@ -17,7 +17,6 @@ export default function WorkCategories({
   return (
     <>
       <WorkCategoriesContainer variants={fadeInUp}>
-        {/* <WorkCategoriesTitle>CATEGORIES</WorkCategoriesTitle> */}
         <WorkCategoriesListContainer>
           {postCategories?.map(({ id, name, count, slug }: any, i: number) => {
             if (name === "Uncategorized" || count === 0) {
@@ -26,18 +25,13 @@ export default function WorkCategories({
             return (
               <Link
                 href={{
-                  pathname: "/categories/[slug]",
+                  pathname: "/portfolio-categories/[slug]",
                   query: { slug },
                 }}
                 key={id}
               >
                 <a>
-                  <WorkCategorieText
-                  // className="p-my-0 p-mr-2 p-text-bold"
-                  // style={{ fontSize: "0.7rem" }}
-                  >
-                    #{name.toLowerCase()}
-                  </WorkCategorieText>
+                  <WorkCategorieText>#{name.toLowerCase()}</WorkCategorieText>
                 </a>
               </Link>
             );
@@ -50,6 +44,7 @@ export default function WorkCategories({
 
 const WorkCategoriesContainer = styled(motion.div)`
   padding: 3rem 0;
+  ${media.phablet`padding: 1rem 0;`};
 `;
 // const WorkCategoriesTitle = styled.h3`
 //   margin: 1rem 0 0 0;

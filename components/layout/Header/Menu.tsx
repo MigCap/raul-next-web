@@ -5,12 +5,11 @@ import styled from "styled-components";
 import { theme, mixins, media, Nav } from "styles";
 
 export default function Menu(props: any) {
-  const { isHome, menuOpen, navLinks, handleMenuClick } = props;
+  const { isHome, menuOpen, navLinks, location, toggleMenu } = props;
 
   return (
     <MenuContainer
       menuOpen={menuOpen}
-      onClick={handleMenuClick}
       aria-hidden={!menuOpen}
       tabIndex={menuOpen ? 1 : -1}
     >
@@ -19,13 +18,26 @@ export default function Menu(props: any) {
           {isHome && (
             <NavList>
               {navLinks &&
-                navLinks.map(({ path, name }: any, i: number) => (
-                  <NavListItem key={name}>
-                    <NavLink href={path}>
-                      <a>{name}</a>
-                    </NavLink>
-                  </NavListItem>
-                ))}
+                navLinks.map(({ path, name }: any, i: number) => {
+                  const isCurrentRoute = location && location.pathname === path;
+                  return (
+                    <NavListItem key={name} onClick={toggleMenu}>
+                      <NavLink href={path}>
+                        <a>
+                          {name}
+                          {isCurrentRoute && (
+                            <div
+                              style={{
+                                height: "2px",
+                                backgroundColor: "white",
+                              }}
+                            />
+                          )}
+                        </a>
+                      </NavLink>
+                    </NavListItem>
+                  );
+                })}
             </NavList>
           )}
         </NavLinks>
@@ -63,9 +75,9 @@ const Sidebar = styled.div`
   right: 0;
   margin-left: auto;
   font-family: ${theme.fonts.SFMono};
-  box-shadow: -2px 0px 4px ${theme.colors.transNavy};
+  box-shadow: -2px 0px 4px ${theme.colors.teal};
   ${media.thone`padding: 25px;`};
-  ${media.phablet`width: 100vw;`};
+  ${media.phablet`width: 75vw;`};
   ${media.tiny`padding: 10px;`};
 `;
 const NavLinks = styled(Nav)`
@@ -75,27 +87,19 @@ const NavLinks = styled(Nav)`
 `;
 const NavList = styled.ol`
   width: 100%;
+  ${media.phablet`margin-bottom: 3rem;`};
 `;
 const NavListItem = styled.li`
   margin: 0 auto 20px;
   position: relative;
   font-size: ${theme.fontSizes.large};
-  //   counter-increment: item 1;
   ${media.thone`
     margin: 3rem auto;
-    // margin: 0 auto 10px;
     font-size: ${theme.fontSizes.medium};
   `};
   ${media.tiny`
     font-size: ${theme.fontSizes.xlarge};
   `};
-  //   &:before {
-  //     display: block;
-  //     content: "0" counter(item) ".";
-  //     color: ${theme.colors.green};
-  //     font-size: ${theme.fontSizes.small};
-  //     margin-bottom: 5px;
-  //   }
 `;
 const NavLink = styled(Link)`
   //   ${mixins.link};

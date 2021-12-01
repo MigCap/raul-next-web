@@ -133,9 +133,23 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  .gatsby-image-outer-wrapper {
-    height: 100%;
-  }
+  .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem transparent;
+}
+
+.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+  background: transparent;
+  border-color: ${theme.colors.teal};
+  color: ${theme.colors.teal};
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
+    background: #e9ecef;
+    border-color: ${theme.colors.teal};
+  color: ${theme.colors.teal};
+}
 
   .fadeup-enter {
     opacity: 0.01;

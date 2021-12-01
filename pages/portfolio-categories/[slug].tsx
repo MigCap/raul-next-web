@@ -15,9 +15,9 @@ import {
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
-import { Section } from "styles";
+import { Section, media } from "styles";
 
-export default function CategoryPage({
+export default function PortfolioCategoryPage({
   category,
   posts,
   media,
@@ -35,7 +35,7 @@ export default function CategoryPage({
       </Head>
 
       <Section>
-        <MainCategoriesContainer
+        <PortfolioCategoryContainer
           initial="initial"
           animate="animate"
           exit={{ opacity: 0 }}
@@ -45,21 +45,19 @@ export default function CategoryPage({
             tags={tags}
             currCategory={category?.name}
           />
-          <WorksGallery
-            posts={posts}
-            media={media}
-            className="p-grid p-align-start p-justify-end"
-            style={{ width: "100%" }}
-          />
-        </MainCategoriesContainer>
+          <WorksGallery posts={posts} media={media} />
+        </PortfolioCategoryContainer>
       </Section>
     </>
   );
 }
 
-const MainCategoriesContainer = styled(motion.article)`
-  display: flex;
+const PortfolioCategoryContainer = styled(motion.article)`
+  padding-top: 1rem;
   min-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  ${media.phablet`flex-direction: column;`};
 `;
 
 export async function getStaticPaths() {

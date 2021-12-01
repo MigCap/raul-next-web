@@ -8,7 +8,7 @@ import { getMedia, getPosts, getCategories, getTags, about } from "lib";
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
 
-import { theme, mixins, media, Section } from "styles";
+import { media, Section } from "styles";
 
 export default function CategoriesPage({
   posts,
@@ -30,12 +30,7 @@ export default function CategoriesPage({
           exit={{ opacity: 0 }}
         >
           <MenuSide categories={categories} tags={tags} />
-          <WorksGallery
-            posts={posts}
-            media={media}
-            className="p-grid p-align-center p-justify-end"
-            style={{ width: "100%" }}
-          />
+          <WorksGallery posts={posts} media={media} />
         </MainCategoriesContainer>
       </Section>
     </>
@@ -43,8 +38,11 @@ export default function CategoriesPage({
 }
 
 const MainCategoriesContainer = styled(motion.div)`
-  display: flex;
+  padding-top: 1rem;
   min-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  ${media.phablet`flex-direction: column;`};
 `;
 
 export async function getStaticProps({ params }: { params: any }) {

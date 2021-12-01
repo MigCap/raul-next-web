@@ -26,12 +26,13 @@ export default function ContactPage() {
       </Head>
 
       <Section>
-        <MainContactContainer
+        <ContactContainer
           initial="initial"
           animate="animate"
           exit={{ opacity: 0 }}
         >
           <FormContainer>
+            <h3>Contact</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               assumenda velit sint, natus non expedita repudiandae beatae labore
@@ -85,15 +86,16 @@ export default function ContactPage() {
               style={{ width: "100%" }}
             />
           </FormContainer>
-        </MainContactContainer>
+        </ContactContainer>
       </Section>
     </>
   );
 }
 
-const MainContactContainer = styled(motion.div)`
+const ContactContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
+  padding: 1rem 0;
   h1,
   h3,
   p {

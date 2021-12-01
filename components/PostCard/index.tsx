@@ -6,9 +6,7 @@ import styled from "styled-components";
 
 import { fadeInUp, scaleAndTab } from "lib";
 
-import { theme, mixins, media, Section } from "styles";
-
-import styles from "./PostCard.module.css";
+import { theme, media } from "styles";
 
 const postCard = {
   hover: {
@@ -40,10 +38,7 @@ export default function PostCard({
   featuredMedia: any;
 }) {
   return (
-    <CardContainer
-      variants={fadeInUp}
-      // className={`${styles.card} p-col-12 p-lg-4`}
-    >
+    <CardContainer variants={fadeInUp}>
       <motion.div
         whileHover="hover"
         whileTap="tap"
@@ -53,7 +48,7 @@ export default function PostCard({
       >
         <Link
           href={{
-            pathname: "/portfolio/[slug]",
+            pathname: "/works/[slug]",
             query: { slug: post.slug },
           }}
         >
@@ -63,16 +58,12 @@ export default function PostCard({
               <motion.span variants={arrowMotion}> →</motion.span>
             </PostCardTitle>
             {featuredMedia && (
-              <ImageContainer
-                // className={`${styles.imageContainer}`}
-                variants={scaleAndTab}
-              >
+              <ImageContainer variants={scaleAndTab}>
                 <StyledImage
                   priority
                   src={featuredMedia?.source_url}
                   layout="fill"
                   alt={featuredMedia?.alt_text}
-                  // className={`${styles.image}`}
                 />
               </ImageContainer>
             )}

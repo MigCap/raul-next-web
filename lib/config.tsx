@@ -7,7 +7,7 @@ export const routesConfig = [
   },
   {
     name: "portfolio",
-    path: "/categories",
+    path: "/portfolio-categories/graphic-design",
   },
   {
     name: "blog",

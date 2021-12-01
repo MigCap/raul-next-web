@@ -170,7 +170,8 @@ export default function Header({ location }: any) {
         isHome={true}
         navLinks={navLinks}
         menuOpen={menuOpen}
-        handleMenuClick={(e: any) => {}}
+        location={location}
+        toggleMenu={toggleMenu}
       />
     </HeaderContainer>
   );
@@ -289,7 +290,7 @@ const HamburgerInner = styled.div<HamburgerInner>`
   background-color: ${theme.colors.white};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
-  height: 2px;
+  height: 4px;
   border-radius: ${theme.borderRadius};
   top: 50%;
   left: 0;
@@ -311,21 +312,21 @@ const HamburgerInner = styled.div<HamburgerInner>`
     left: auto;
     right: 0;
     width: ${theme.hamburgerWidth}px;
-    height: 2px;
+    height: 4px;
     transition-timing-function: ease;
     transition-duration: 0.15s;
     transition-property: transform;
-    border-radius: 4px;
+    border-radius: 20px;
   }
   &:before {
-    width: ${(props: any) => (props.menuOpen ? `100%` : `120%`)};
+    width: ${(props: any) => (props.menuOpen ? `100%` : `100%`)};
     top: ${(props: any) => (props.menuOpen ? `0` : `-10px`)};
     opacity: ${(props: any) => (props.menuOpen ? 0 : 1)};
     transition: ${(props: any) =>
       props.menuOpen ? theme.hamBeforeActive : theme.hamBefore};
   }
   &:after {
-    width: ${(props: any) => (props.menuOpen ? `100%` : `80%`)};
+    width: ${(props: any) => (props.menuOpen ? `100%` : `100%`)};
     bottom: ${(props: any) => (props.menuOpen ? `0` : `-10px`)};
     transform: rotate(${(props: any) => (props.menuOpen ? `-90deg` : `0`)});
     transition: ${(props: any) =>
