@@ -60,7 +60,7 @@ const HomeSectionContainer = styled(Section)`
   position: relative;
   padding: 50px 0;
   ${media.desktop`padding: 25px 100px;`};
-  ${media.tablet`padding: 20px 20px;`};
+  ${media.tablet`padding: 1rem 2.5rem;`};
   &:first-of-type {
     padding-top: 100px;
     ${media.desktop`padding-top: 50px;`};
