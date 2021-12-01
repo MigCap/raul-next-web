@@ -30,9 +30,7 @@ export default function Home({ posts, media, categories }: any) {
           </HomeSection>
 
           <HomeSection title={"works"}>
-            <div>
-              <WorksGallery posts={posts} media={media} />
-            </div>
+            <WorksGallery posts={posts} media={media} />
           </HomeSection>
         </section>
       </motion.main>
@@ -62,7 +60,7 @@ const HomeSectionContainer = styled(Section)`
   position: relative;
   padding: 50px 0;
   ${media.desktop`padding: 25px 100px;`};
-  ${media.tablet`padding: 50px 50px;`};
+  ${media.tablet`padding: 20px 20px;`};
   &:first-of-type {
     padding-top: 100px;
     ${media.desktop`padding-top: 50px;`};

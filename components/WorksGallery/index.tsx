@@ -29,7 +29,7 @@ export default function WorksGallery({ posts, media, className, style }: any) {
 const WorksGalleryContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 32%);
-  ${media.phone`grid-template-columns: repeat(2, minmax(160px, 250px));`};
+  ${media.phone`grid-template-columns: 100%;`};
   gap: 1em;
   overflow: hidden;
   margin-top: 20px;
