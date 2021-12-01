@@ -2,18 +2,22 @@ import { IconLinkedin, IconInstagram } from "components/Icons";
 
 export const routesConfig = [
   {
+    id: "",
     name: "home",
     path: "/",
   },
   {
+    id: "portfolio-categories",
     name: "portfolio",
     path: "/portfolio-categories/graphic-design",
   },
   {
+    id: "blog",
     name: "blog",
     path: "/blog",
   },
   {
+    id: "contact",
     name: "contact",
     path: "/contact",
   },
