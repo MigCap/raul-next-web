@@ -19,6 +19,8 @@ import {
 
 import { theme, mixins, media, Nav } from "styles";
 
+import Menu from "./Menu";
+
 export default function Header({ location }: any) {
   const [lastScrollTop, setLastScrollTop] = useState<any>(0);
   const [scrollDirection, setScrollDirection] = useState<any>("none");
@@ -150,7 +152,26 @@ export default function Header({ location }: any) {
             </TransitionGroup>
           </NavList>
         </NavLinks>
+
+        <TransitionGroup>
+          {isMounted && (
+            <CSSTransition classNames="fade" timeout={3000}>
+              <Hamburger onClick={toggleMenu}>
+                <HamburgerBox>
+                  <HamburgerInner menuOpen={menuOpen} />
+                </HamburgerBox>
+              </Hamburger>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </Navbar>
+
+      <Menu
+        isHome={true}
+        navLinks={navLinks}
+        menuOpen={menuOpen}
+        handleMenuClick={(e: any) => {}}
+      />
     </HeaderContainer>
   );
 }
@@ -261,8 +282,11 @@ const HamburgerBox = styled.div`
   width: ${theme.hamburgerWidth}px;
   height: 24px;
 `;
-const HamburgerInner = styled.div`
-  background-color: ${theme.colors.green};
+interface HamburgerInner {
+  menuOpen: boolean;
+}
+const HamburgerInner = styled.div<HamburgerInner>`
+  background-color: ${theme.colors.white};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
   height: 2px;
@@ -282,7 +306,7 @@ const HamburgerInner = styled.div`
   &:after {
     content: "";
     display: block;
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.white};
     position: absolute;
     left: auto;
     right: 0;
@@ -311,7 +335,7 @@ const HamburgerInner = styled.div`
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
-  // ${media.tablet`display: none;`};
+  ${media.tablet`display: none;`};
   font-weight: 600;
 `;
 const NavList = styled.ol`
