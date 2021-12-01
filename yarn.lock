@@ -2642,10 +2642,10 @@ primeicons@^5.0.0:
   resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-5.0.0.tgz#73a0b6028a77c58a9eeb331ad13aaf085e8451ee"
   integrity sha512-heygWF0X5HFI1otlZE62pp6ye7sZ8om78J9au2BRkg8O7Y8AHTZ9qKMRzchZUHLe8zUAvdi6hZzzm9XxgwIExw==
 
-primereact@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/primereact/-/primereact-7.0.0.tgz#d153d640ef4879f522ecbe14e09e9a63d0786cc2"
-  integrity sha512-S/gUrhToE7GSD1jg6peeNxl2XAaK2uf6ikdpG9F9vodZu9O/3gC+ceiYlEuPDv8yg5aZS7fSy8EjvCnfmzD0fw==
+primereact@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/primereact/-/primereact-7.0.1.tgz#4aa4750320c71c457e6cf76de6a185e4a9e1065b"
+  integrity sha512-Mq3gc7VXn5xk0vapMui4utjO5AYxdH5PN4ShK6AM3/CQEcv0hWpolqHfHxX5HytaHWLvnzXcWDw/iDCwCV8BmA==
 
 process@0.11.10:
   version "0.11.10"
@@ -2724,11 +2724,6 @@ raw-body@2.4.1:
     http-errors "1.7.3"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
-
-react-anchor-link-smooth-scroll@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/react-anchor-link-smooth-scroll/-/react-anchor-link-smooth-scroll-1.0.12.tgz#5cd49c73e74be6d20b4c05a5e5c72d07ebbedac7"
-  integrity sha512-aaY+9X0yh8YnC0jBfoTKpsiCLdO/Y6pCltww+VB+NnTBPDOvnIdnp1AlazajsDitc1j+cVSQ+yNtaVeTIMQbxw==
 
 react-dom@^17.0.2:
   version "17.0.2"

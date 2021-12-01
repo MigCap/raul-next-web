@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-import { IconLinkedin } from "components/Icons";
+// import { socialMedia } from "lib";
 
-import { socialMedia } from "lib";
-
-import { theme, mixins, media, Nav } from "styles";
+import { theme, mixins, media } from "styles";
 
 export default function Footer() {
   return (
@@ -13,7 +11,7 @@ export default function Footer() {
         Copyright 2014-2021 – Raúl de Diego . All rights reserved
       </Copyright>
 
-      <SocialContainer>
+      {/* <SocialContainer>
         <SocialItemList>
           {socialMedia &&
             socialMedia.map(({ name, url, Icon }, i) => (
@@ -29,7 +27,7 @@ export default function Footer() {
               </SocialItem>
             ))}
         </SocialItemList>
-      </SocialContainer>
+      </SocialContainer> */}
 
       <By className="p-d-flex p-ai-center p-jc-center p-my-2">
         Develop by
@@ -60,25 +58,25 @@ const Copyright = styled.p`
   padding: 0;
   margin: 0;
 `;
-const SocialContainer = styled.div`
-  color: ${theme.colors.lightSlate};
-  width: 100%;
-  max-width: 270px;
-  margin: 0 auto;
-  // display: none;
-  ${media.tablet`display: block;`};
-`;
-const SocialItemList = styled.ul`
-  ${mixins.flexCenter};
-`;
-const SocialItem = styled.li``;
-const SocialLink = styled.a`
-  padding: 10px;
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-`;
+// const SocialContainer = styled.div`
+//   color: ${theme.colors.lightSlate};
+//   width: 100%;
+//   max-width: 270px;
+//   margin: 0 auto;
+//   // display: none;
+//   ${media.tablet`display: block;`};
+// `;
+// const SocialItemList = styled.ul`
+//   ${mixins.flexCenter};
+// `;
+// const SocialItem = styled.li``;
+// const SocialLink = styled.a`
+//   padding: 10px;
+//   svg {
+//     width: 20px;
+//     height: 20px;
+//   }
+// `;
 const By = styled.p`
   padding: 10px 0 5px 0;
   font-size: 0.7rem;

@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 
 import Link from "next/link";
-import Image from "next/image";
 // import Router from "next/router";
 
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-// import AnchorLink from "react-anchor-link-smooth-scroll";
+
+import { Logo } from "components/Icons";
 
 import {
-  about,
+  // about,
   headerHeight,
   routesConfig as navLinks,
   scaleAndTab,
@@ -85,61 +85,23 @@ export default function Header({ location }: any) {
     []
   );
 
-  // const handleMenuClick = useCallback((e: any) => {
-  //   const target = e.target;
-  //   const isLink = target.hasAttribute("href");
-  //   const isContainer =
-  //     target.classList && target.classList[0].includes("MenuContainer");
-
-  //   if (isLink || isContainer) {
-  //     toggleMenu();
-  //   }
-  // }, []);
-
   const headerRef = useRef(null);
   const nodeRef = useRef(null);
 
-  // const isHome = location && location.pathname === "/";
-
   return (
     <HeaderContainer ref={headerRef} scrollDirection={scrollDirection}>
-      {/* <Helmet>
-        <body className={menuOpen ? "blur" : ""} />
-      </Helmet> */}
       <Navbar>
-        {/* <TransitionGroup>
-          {isMounted && (
-            <CSSTransition classNames="fade" timeout={3000}>
-              <Logo>
-                <LogoLink href="/" aria-label="Home">
-                  <IconLogo />
-                </LogoLink>
-              </Logo>
-            </CSSTransition>
-          )}
-        </TransitionGroup> */}
         <TransitionGroup>
           {isMounted && (
             <CSSTransition nodeRef={nodeRef} classNames="fade" timeout={3000}>
               <div ref={nodeRef}>
                 <Link href="/">
                   <a>
-                    <motion.div variants={scaleAndTab}>
-                      <Logo>
-                        <div
-                          style={{
-                            position: "relative",
-                          }}
-                        >
-                          <Image
-                            src={`/assets/logo-raul.png`}
-                            alt={`logo-raul`}
-                            width={25}
-                            height={25}
-                          />
-                        </div>
-                        <p>{about.name}</p>
-                      </Logo>
+                    <motion.div
+                      variants={scaleAndTab}
+                      style={{ width: "3.5rem" }}
+                    >
+                      <Logo />
                     </motion.div>
                   </a>
                 </Link>
@@ -148,165 +110,50 @@ export default function Header({ location }: any) {
           )}
         </TransitionGroup>
 
-        {/* <TransitionGroup>
-          {isMounted && (
-            <CSSTransition classNames="fade" timeout={3000}>
-              <Hamburger onClick={toggleMenu}>
-                <HamburgerBox>
-                  <HamburgerInner menuOpen={menuOpen} />
-                </HamburgerBox>
-              </Hamburger>
-            </CSSTransition>
-          )}
-        </TransitionGroup> */}
-
         <NavLinks>
-          {/* {isHome && ( */}
           <NavList>
             <TransitionGroup>
               {isMounted &&
                 navLinks &&
-                navLinks.map(({ path, name }: any, i: number) => (
-                  <CSSTransition
-                    nodeRef={nodeRef}
-                    key={i}
-                    classNames="fadedown"
-                    timeout={3000}
-                  >
-                    <NavListItem
+                navLinks.map(({ path, name }: any, i: number) => {
+                  const isCurrentRoute = location && location.pathname === path;
+
+                  return (
+                    <CSSTransition
                       nodeRef={nodeRef}
                       key={i}
-                      style={{ transitionDelay: `${i * 100}ms` }}
+                      classNames="fadedown"
+                      timeout={3000}
                     >
-                      <NavLink href={path}>
-                        <a>
-                          <p style={{ margin: 0 }}>{name}</p>
-                        </a>
-                      </NavLink>
-                    </NavListItem>
-                  </CSSTransition>
-                ))}
+                      <NavListItem
+                        nodeRef={nodeRef}
+                        key={i}
+                        style={{ transitionDelay: `${i * 100}ms` }}
+                      >
+                        <NavLink href={path}>
+                          <a>
+                            <p style={{ margin: 0 }}>{name}</p>
+                            {isCurrentRoute && (
+                              <div
+                                style={{
+                                  height: "2px",
+                                  backgroundColor: "white",
+                                }}
+                              />
+                            )}
+                          </a>
+                        </NavLink>
+                      </NavListItem>
+                    </CSSTransition>
+                  );
+                })}
             </TransitionGroup>
           </NavList>
-          {/* )} */}
-          {/* <TransitionGroup>
-            {isMounted && (
-              <CSSTransition classNames="fadedown" timeout={3000}>
-                <ResumeButton style={{ transitionDelay: `600ms` }}>
-                  <ResumeLink
-                    href={resume}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    download="Miguel-Capellan-resume"
-                  >
-                    Resume
-                    <IconDownload />
-                  </ResumeLink>
-                </ResumeButton>
-              </CSSTransition>
-            )}
-          </TransitionGroup> */}
         </NavLinks>
       </Navbar>
-
-      {/* <Menu
-        isHome={isHome}
-        navLinks={navLinks}
-        menuOpen={menuOpen}
-        handleMenuClick={(e: any) => handleMenuClick(e)}
-      /> */}
     </HeaderContainer>
-
-    // <header className="container header">
-    //   <motion.div
-    //     className="p-py-3"
-    //     style={{
-    //       width: "100%",
-    //       // background: "#fff",
-    //     }}
-    //     whileHover="hover"
-    //     whileTap="tap"
-    //     animate="animate"
-    //     initial="initial"
-    //   >
-    //     <div className="p-d-flex p-ai-center p-jc-between">
-    //       <Link href="/">
-    //         <a>
-    //           <motion.div
-    //             className="p-d-flex p-ai-center"
-    //             variants={scaleAndTab}
-    //           >
-    //             <div
-    //               style={{
-    //                 position: "relative",
-    //               }}
-    //             >
-    //               <Image
-    //                 src={`/assets/logo-raul.png`}
-    //                 alt={`logo-raul`}
-    //                 width={25}
-    //                 height={25}
-    //               />
-    //             </div>
-    //             <p
-    //               className="p-text-uppercase p-my-0 p-mx-2"
-    //               style={{ fontWeight: 700 }}
-    //             >
-    //               {about.name}
-    //             </p>
-    //           </motion.div>
-    //         </a>
-    //       </Link>
-
-    //       <NavBar />
-    //     </div>
-    //   </motion.div>
-    // </header>
   );
 }
-
-// function NavBar() {
-//   return (
-//     <nav>
-//       <ul className={`p-d-flex`}>
-//         {navLinks.map(({ name, path }: any) => {
-//           return (
-//             <li
-//               key={name}
-//               className="p-text-uppercase p-text-bold p-ml-3"
-//               style={{ fontSize: "0.7rem" }}
-//             >
-//               <Link
-//                 href={{
-//                   pathname: path,
-//                 }}
-//               >
-//                 <a className="lighten">
-//                   <span>{name}</span>
-//                 </a>
-//               </Link>
-//             </li>
-//           );
-//         })}
-//       </ul>
-
-//       <div className="p-d-flex p-ai-center p-jc-end">
-//         <div className="p-d-flex p-ai-center">
-//           <Link href="/">
-//             <a className="lighten">
-//               <p
-//                 className="p-m-0"
-//                 style={{ fontSize: "0.6rem", fontWeight: 600 }}
-//               >
-//                 {about.contactMail}
-//               </p>
-//             </a>
-//           </Link>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// }
 
 const DELTA = 5;
 
@@ -326,7 +173,7 @@ const HeaderContainer = styled.header<IHeaderContainer>`
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.teal};
   transition: ${theme.transition};
   z-index: 11;
   filter: none !important;
@@ -348,26 +195,34 @@ const HeaderContainer = styled.header<IHeaderContainer>`
   );
   ${media.desktop`padding: 0 40px;`};
   ${media.tablet`padding: 0 25px;`};
+
+  a {
+    &:hover,
+    &:focus {
+      color: ${theme.colors.lightestSlate};
+      outline: 0;
+    }
+  }
 `;
 const Navbar = styled(Nav)`
   ${mixins.flexBetween};
   font-family: ${theme.fonts.SFMono};
-  color: ${theme.colors.grey};
+  color: ${theme.colors.white};
   counter-reset: item 0;
   position: relative;
   z-index: 12;
 `;
-const Logo = styled.div`
-  ${mixins.flexCenter};
-  p {
-    color: ${theme.colors.teal};
-    font-weight: 500;
-    margin: 0 0 0 10px;
-    &:hover {
-      color: ${theme.colors.lightSlate};
-    }
-  }
-`;
+// const Logo = styled.div`
+//   ${mixins.flexCenter};
+//   p {
+//     color: ${theme.colors.teal};
+//     font-weight: 500;
+//     margin: 0 0 0 10px;
+//     &:hover {
+//       color: ${theme.colors.lightSlate};
+//     }
+//   }
+// `;
 const LogoLink = styled(Link)`
   color: ${theme.colors.green};
   width: 42px;
@@ -457,6 +312,7 @@ const NavLinks = styled.div`
   display: flex;
   align-items: center;
   // ${media.tablet`display: none;`};
+  font-weight: 600;
 `;
 const NavList = styled.ol`
   div {
@@ -464,12 +320,12 @@ const NavList = styled.ol`
   }
 `;
 const NavListItem = styled.li<INavListItem>`
-  margin: 0 10px;
+  margin: 0 1.2rem;
   position: relative;
   font-size: ${theme.fontSizes.smallish};
 `;
 const NavLink = styled(Link)`
-  padding: 12px 10px;
+  padding: 1rem 1.2rem;
 `;
 const ResumeButton = styled.div``;
 const ResumeLink = styled.a`

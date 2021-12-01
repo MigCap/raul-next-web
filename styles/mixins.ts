@@ -16,6 +16,18 @@ const mixins = {
     align-items: center;
   `,
 
+  flexEnd: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  `,
+
+  gridStart: css`
+    display: grid;
+    align-items: start;
+  `,
+
   gridCenter: css`
     display: grid;
     align-items: center;

@@ -53,7 +53,7 @@ export default function PostCard({
       >
         <Link
           href={{
-            pathname: "/works/[slug]",
+            pathname: "/portfolio/[slug]",
             query: { slug: post.slug },
           }}
         >
@@ -93,6 +93,10 @@ const PostCardTitle = styled(motion.p)`
   margin: 0 0 0.5rem 0;
   padding: 0;
   font-size: 0.9rem;
+  max-width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 const ImageContainer = styled(motion.div)`
   position: relative;

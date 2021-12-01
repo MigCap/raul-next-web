@@ -2,6 +2,7 @@ const theme = {
   colors: {
     primary: "#6bb0b2",
     teal: "#6bb0b2",
+    bronze: "#dcc594",
     // bg_color: "#f0f0f0",
 
     dark: "#000007",

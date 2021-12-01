@@ -28,16 +28,10 @@ export default function BackButton() {
           whileTap="pressed"
         >
           <motion.svg
-            width="5"
-            height="10"
             xmlns="http://www.w3.org/2000/svg"
             variants={postBackButtonArrow}
           >
-            <path
-              d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
-              fill={theme.colors.teal}
-              // fillRule="nonzero"
-            />
+            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
           </motion.svg>
         </BackButtonContainer>
       </a>
@@ -46,17 +40,24 @@ export default function BackButton() {
 }
 
 const BackButtonContainer = styled(motion.div)`
-  margin: 1rem 0;
-  padding: 12px 5px 0 10px;
-  // position: absolute;
-  border: solid ${theme.colors.teal} 1px;
+  cursor: pointer;
+  // margin: 1rem 0;
+  padding: 5.5px 0px 4px 4px;
+  border: solid ${theme.colors.bronze} 2px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: ${theme.colors.teal};
+  }
+
+  // position: absolute;
   // top: 10px;
   // right: 10px;
   // display: flex;
   // justify-content: center;
   // align-items: center;
-  cursor: pointer;
 `;

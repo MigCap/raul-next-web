@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { fadeInUp } from "lib";
 
-import { theme, mixins, media, Main } from "styles";
+import { theme, mixins } from "styles";
 
 export default function WorkCategories({
   postCategories,
@@ -16,12 +16,9 @@ export default function WorkCategories({
 
   return (
     <>
-      <WorkCategoriesContainer
-        // className="p-col-12 p-mt-2 p-mt-md-6 p-p-0"
-        variants={fadeInUp}
-      >
-        <WorkCategoriesTitle>CATEGORIES</WorkCategoriesTitle>
-        <div className="p-d-flex p-flex-wrap p-jc-cener p-ai-start">
+      <WorkCategoriesContainer variants={fadeInUp}>
+        {/* <WorkCategoriesTitle>CATEGORIES</WorkCategoriesTitle> */}
+        <WorkCategoriesListContainer>
           {postCategories?.map(({ id, name, count, slug }: any, i: number) => {
             if (name === "Uncategorized" || count === 0) {
               return null;
@@ -45,17 +42,26 @@ export default function WorkCategories({
               </Link>
             );
           })}
-        </div>
+        </WorkCategoriesListContainer>
       </WorkCategoriesContainer>
     </>
   );
 }
 
-const WorkCategoriesContainer = styled(motion.div)``;
-const WorkCategoriesTitle = styled.h3`
-  margin: 1rem 0 0 0;
-  font-weight: 700;
-  color: ${theme.colors.teal};
+const WorkCategoriesContainer = styled(motion.div)`
+  padding: 3rem 0;
+`;
+// const WorkCategoriesTitle = styled.h3`
+//   margin: 1rem 0 0 0;
+//   font-weight: 700;
+//   color: ${theme.colors.teal};
+// `;
+const WorkCategoriesListContainer = styled(motion.div)`
+  ${mixins.flexEnd};
+  a {
+    margin-left: auto;
+    color: ${theme.colors.blue};
+  }
 `;
 const WorkCategorieText = styled.p`
   margin: 0 0.5rem 0 0;

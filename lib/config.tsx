@@ -1,4 +1,4 @@
-import IconLinkedin from "components/Icons/IconLinkedin";
+import { IconLinkedin, IconInstagram } from "components/Icons";
 
 export const routesConfig = [
   {
@@ -6,16 +6,16 @@ export const routesConfig = [
     path: "/",
   },
   {
-    name: "about",
-    path: "/",
-  },
-  {
-    name: "works",
+    name: "portfolio",
     path: "/categories",
   },
   {
+    name: "blog",
+    path: "/blog",
+  },
+  {
     name: "contact",
-    path: "/",
+    path: "/contact",
   },
 ];
 
@@ -29,42 +29,48 @@ export const headerHeight = 100;
 
 export const socialLinks: any = {
   linkedin: {
+    name: "Linkedin",
     url: "https://www.linkedin.com/in/rauldediegovazquez/",
     // icon: "pi pi-linkedin",
     Icon: IconLinkedin,
-    name: "Linkedin",
     show: true,
   },
   github: {
+    name: "Github",
     url: "",
     icon: "pi pi-github",
     show: false,
   },
   twitter: {
+    name: "Twitter",
     url: "",
     icon: "pi pi-twitter",
     show: false,
   },
   instagram: {
-    url: "",
-    icon: "pi pi-instagram",
-    show: false,
+    name: "Instagram",
+    url: "https://www.linkedin.com/in/rauldediegovazquez/",
+    // icon: "pi pi-instagram",
+    Icon: IconInstagram,
+    show: true,
   },
 };
 
 export const socialMedia = [
   {
-    name: "Linkedin",
+    name: "Mail",
     url: "https://www.linkedin.com/in/rauldediegovazquez/",
-    Icon: IconLinkedin,
+    icon: "pi pi-envelope",
   },
+  socialLinks.linkedin,
+  socialLinks.instagram,
 ];
 
 export const about = {
   name: "Raúl de Diego",
   fullName: "Raul de Diego Vázquez",
   image: "/assets/Foto1CVsm.png",
-  mainMail: "rauldediego@rauldediego.com",
+  mainMail: "hello@rauldediego.com",
   contactMail: "contact@rauldediego.com",
   position: "Diseñador Gráfico Senior e Ilustrador",
   positionDescription: "Artefinalista y Director de Arte",
@@ -72,7 +78,7 @@ export const about = {
   title: "about",
   subtitle: "",
   description:
-    "Me llamo Raúl, encantado de saludarte. ¡Bienvenido/a a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
+    "Me llamo Raúl, encantado de saludarte. ¡Bienvenid@ a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
   experience: [
     {
       title: "Desarrollador Frontend",

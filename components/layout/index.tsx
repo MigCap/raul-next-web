@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 
 import Header from "components/layout/Header";
 import Social from "components/layout/Social";
-import Email from "components/layout/Email";
+// import Email from "components/layout/Email";
 import Footer from "components/layout/Footer";
 
 import { GlobalStyle, Main, theme, mixins } from "styles";
@@ -26,7 +26,7 @@ export default function Layout({ children, router }: any) {
           <motion.div key={router.route}>
             <Header location={router} />
             <Social />
-            <Email />
+            {/* <Email /> */}
             {isHomePage ? (
               <>{children}</>
             ) : (

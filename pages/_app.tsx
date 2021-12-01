@@ -7,10 +7,11 @@ import Router from "next/router";
 import Layout from "components/layout";
 
 // Import styles
+import "primereact/resources/themes/lara-light-teal/theme.css";
 // import "primereact/resources/themes/lara-light-indigo/theme.css";
-// import "primereact/resources/primereact.min.css";
+import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-// import "primeflex/primeflex.scss";
+import "primeflex/primeflex.scss";
 
 const routeChange = () => {
   // Temporary fix to avoid flash of unstyled content

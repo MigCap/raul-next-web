@@ -8,14 +8,13 @@ import { fadeInRight } from "lib";
 import { theme, mixins, media } from "styles";
 
 export default function WorkImage({
-  src,
-  index,
+  img,
   onClick,
 }: {
-  src: string;
-  index: number;
+  img: { src: string; alt: string; index: number };
   onClick: any;
 }) {
+  const { src, alt, index } = img;
   const newImageSrc = src.toString().replace(/[()]/g, "");
   const convertImage = (w: any, h: any) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,7 +44,7 @@ export default function WorkImage({
           layout="responsive"
           width={850}
           height={570}
-          alt={src}
+          alt={alt}
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             convertImage(700, 475)
           )}`}
