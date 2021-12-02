@@ -45,9 +45,10 @@
 }
 
 .title {
-    margin: 0;
+    margin: 3rem 0;
     line-height: 1.15;
-    font-size: 2rem;
+    font-size: 3rem;
+    color: #27debf;
 }
 
 .title,
