@@ -73,6 +73,7 @@ const SocialContainer = styled.div`
     left: 25px;
     top: auto;
     bottom: 0;
+    height: 400px;
   `};
   ${media.tablet`display: none;`};
 `;
