@@ -1,9 +1,11 @@
 import Image from "next/image";
 
+import styled from "styled-components";
+
 import { Dialog } from "primereact/dialog";
 import { Galleria } from "primereact/galleria";
 
-import styles from "./LightBox.module.css";
+import { media } from "styles";
 
 export default function LightBox({ show, setShow, images, activeIndex }: any) {
   const onHide = () => {
@@ -31,16 +33,15 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
 
   const itemTemplate = ({ src, alt }: any) => {
     return (
-      <div className={styles.imageContainer}>
-        <Image
+      <ImageContainer>
+        <ImageStyled
           src={src}
           layout="responsive"
           width={850}
           height={570}
           alt={src}
-          className={`${styles["image"]}`}
         />
-      </div>
+      </ImageContainer>
     );
   };
 
@@ -57,13 +58,12 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
         dismissableMask
         keepInViewport
       >
-        <Galleria
+        <GalleriaStyled
           value={images}
           responsiveOptions={responsiveOptions}
           activeIndex={activeIndex}
           numVisible={7}
           circular
-          style={{ minWidth: "50vw" }}
           item={itemTemplate}
           showItemNavigators
           showThumbnails={false}
@@ -74,3 +74,22 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
     </>
   );
 }
+
+const ImageContainer = styled.div`
+  min-height: 20rem;
+  width: 100%;
+  border-radius: 1rem;
+`;
+const ImageStyled = styled(Image)`
+  object-fit: contain;
+  border-radius: 5px;
+  width: 20rem;
+  height: 100%;
+  overflow: visible;
+  transition: all 0.5s ease;
+`;
+const GalleriaStyled = styled(Galleria)`
+  min-width: 70vw;
+  ${media.desktop`min-width: 90vw;`};
+  ${media.tablet`min-width: 80vw;`};
+`;

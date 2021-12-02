@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 
 import Link from "next/link";
-// import Router from "next/router";
 
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -10,7 +9,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Logo } from "components/Icons";
 
 import {
-  // about,
   headerHeight,
   routesConfig as navLinks,
   scaleAndTab,
@@ -96,18 +94,27 @@ export default function Header({ location }: any) {
         <TransitionGroup>
           {isMounted && (
             <CSSTransition nodeRef={nodeRef} classNames="fade" timeout={3000}>
-              <div ref={nodeRef}>
+              <NavLogoContainer ref={nodeRef}>
                 <Link href="/">
                   <a>
-                    <motion.div
-                      variants={scaleAndTab}
-                      style={{ width: "3.5rem" }}
-                    >
+                    <motion.div variants={scaleAndTab}>
                       <Logo />
                     </motion.div>
                   </a>
                 </Link>
-              </div>
+              </NavLogoContainer>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
+
+        <TransitionGroup>
+          {isMounted && (
+            <CSSTransition classNames="fade" timeout={3000}>
+              <Hamburger onClick={toggleMenu}>
+                <HamburgerBox>
+                  <HamburgerInner menuOpen={menuOpen} />
+                </HamburgerBox>
+              </Hamburger>
             </CSSTransition>
           )}
         </TransitionGroup>
@@ -134,15 +141,8 @@ export default function Header({ location }: any) {
                       >
                         <NavLink href={path}>
                           <a>
-                            <p style={{ margin: 0 }}>{name}</p>
-                            {isCurrentRoute && (
-                              <div
-                                style={{
-                                  height: "2px",
-                                  backgroundColor: "white",
-                                }}
-                              />
-                            )}
+                            <p>{name}</p>
+                            {isCurrentRoute && <NavLinkSelectedUnderline />}
                           </a>
                         </NavLink>
                       </NavListItem>
@@ -152,22 +152,9 @@ export default function Header({ location }: any) {
             </TransitionGroup>
           </NavList>
         </NavLinks>
-
-        <TransitionGroup>
-          {isMounted && (
-            <CSSTransition classNames="fade" timeout={3000}>
-              <Hamburger onClick={toggleMenu}>
-                <HamburgerBox>
-                  <HamburgerInner menuOpen={menuOpen} />
-                </HamburgerBox>
-              </Hamburger>
-            </CSSTransition>
-          )}
-        </TransitionGroup>
       </Navbar>
 
       <Menu
-        isHome={true}
         navLinks={navLinks}
         menuOpen={menuOpen}
         location={location}
@@ -234,33 +221,39 @@ const Navbar = styled(Nav)`
   position: relative;
   z-index: 12;
 `;
-// const Logo = styled.div`
-//   ${mixins.flexCenter};
-//   p {
-//     color: ${theme.colors.teal};
-//     font-weight: 500;
-//     margin: 0 0 0 10px;
-//     &:hover {
-//       color: ${theme.colors.lightSlate};
-//     }
-//   }
-// `;
-const LogoLink = styled(Link)`
-  color: ${theme.colors.green};
-  width: 42px;
-  height: 42px;
-  &:hover,
-  &:focus {
-    svg {
-      fill: ${theme.colors.transGreen};
-    }
-  }
-  svg {
-    fill: none;
-    transition: ${theme.transition};
-    user-select: none;
+const NavLogoContainer = styled.div`
+  div {
+    width: 3.5rem;
   }
 `;
+
+const NavLinks = styled.div`
+  display: flex;
+  align-items: center;
+  ${media.tablet`display: none;`};
+  font-weight: 600;
+`;
+const NavList = styled.ol`
+  div {
+    ${mixins.flexBetween};
+  }
+`;
+const NavListItem = styled.li<INavListItem>`
+  margin: 0 1.2rem;
+  position: relative;
+  font-size: ${theme.fontSizes.smallish};
+`;
+const NavLink = styled(Link)`
+  padding: 1rem 1.2rem;
+  p {
+    margin: 0;
+  }
+`;
+const NavLinkSelectedUnderline = styled.div`
+  height: 2px;
+  background-color: ${theme.colors.white};
+`;
+
 const Hamburger = styled.div`
   ${mixins.flexCenter};
   overflow: visible;
@@ -331,35 +324,5 @@ const HamburgerInner = styled.div<HamburgerInner>`
     transform: rotate(${(props: any) => (props.menuOpen ? `-90deg` : `0`)});
     transition: ${(props: any) =>
       props.menuOpen ? theme.hamAfterActive : theme.hamAfter};
-  }
-`;
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-  ${media.tablet`display: none;`};
-  font-weight: 600;
-`;
-const NavList = styled.ol`
-  div {
-    ${mixins.flexBetween};
-  }
-`;
-const NavListItem = styled.li<INavListItem>`
-  margin: 0 1.2rem;
-  position: relative;
-  font-size: ${theme.fontSizes.smallish};
-`;
-const NavLink = styled(Link)`
-  padding: 1rem 1.2rem;
-`;
-const ResumeButton = styled.div``;
-const ResumeLink = styled.a`
-  ${mixins.smallButton};
-  margin-left: 10px;
-  font-size: ${theme.fontSizes.smallish};
-  svg {
-    padding-left: 5px;
-    width: 15px;
-    height: 15px;
   }
 `;

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 import BackButton from "components/BackButton";
+import { Filigrana } from "components/Icons";
 import LightBox from "components/LightBox";
 import PostImage from "components/work/WorkImage";
 // import WorkTags from "components/work/WorkTags";
@@ -65,18 +66,20 @@ export default function WorkPage({
       </Head>
 
       <Section>
-        <PostDetailContainer
-        // initial="initial"
-        // animate="animate"
-        // exit={{ opacity: 0 }}
-        >
+        <PostDetailContainer>
           <BackButtonWrapper>
             <BackButton />
           </BackButtonWrapper>
 
+          <FiligranaContainer>
+            <Filigrana />
+          </FiligranaContainer>
+
           <PostDetailContent imagesLength={imgs?.length}>
             <motion.div variants={stagger}>
+              {/* <PostTitleContainer> */}
               <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
+              {/* </PostTitleContainer> */}
 
               <LineSeparatorContainer variants={fadeInUp}>
                 <LineSeparator variants={postTitleUnderline} />
@@ -114,6 +117,22 @@ interface ImagesLengthProp {
 const PostDetailContainer = styled(motion.article)`
   display: flex;
 `;
+const BackButtonWrapper = styled(motion.article)`
+  padding: 0.5rem 1rem 1rem 1rem;
+  // ${media.thone`padding: 25px; display: none;`};
+  ${media.tablet`
+    padding: 25px;
+    display: none;
+  `};
+`;
+const FiligranaContainer = styled.div`
+  margin: 8rem 1rem;
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+  }
+`;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   margin-top: 8rem;
   ${media.phablet`
@@ -121,17 +140,15 @@ const PostDetailContent = styled.div<ImagesLengthProp>`
       gap: 0;
     `};
   ${mixins.gridStart};
-  grid-template-columns: 40% 60%;
-  ${media.desktop`grid-template-columns: 100%;`};
   gap: 5rem;
-`;
-const BackButtonWrapper = styled(motion.article)`
-  padding: 0.5rem 1rem 1rem 1rem;
-  ${media.thone`padding: 25px;`};
-  ${media.phablet`display: none;`};
+  grid-template-columns: 40% 60%;
+  ${media.desktop`
+    grid-template-columns: 100%;
+    gap: 0;
+  `};
 `;
 const PostTitle = styled(motion.h1)`
-  margin: 0 0 0 0;
+  margin: 0 0 1rem 0;
   color: ${theme.colors.teal};
   font-size: 2.5rem;
   font-weight: 800;
@@ -153,8 +170,8 @@ const PostDescription = styled(motion.div)`
 const PostImagesContainer = styled.div<ImagesLengthProp>`
   ${mixins.gridCenter};
   grid-template-columns: "100%";
-  margin: 3rem 0 0 0;
-  ${media.desktop`margin: 3rem 0 0 0;`};
+  margin: 8rem 0 0 0;
+  ${media.desktop`margin: 0 0 0 0;`};
 `;
 
 export async function getStaticPaths() {

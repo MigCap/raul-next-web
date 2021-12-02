@@ -61,12 +61,19 @@ export default function Social() {
 }
 
 const SocialContainer = styled.div`
+  position: absolute;
   width: 40px;
-  position: fixed;
-  bottom: 0;
+  height: 496px;
   left: 40px;
+  top: 568px;
+
   color: ${theme.colors.teal};
-  ${media.desktop`left: 25px;`};
+  ${media.desktop`
+    position: fixed;
+    left: 25px;
+    top: auto;
+    bottom: 0;
+  `};
   ${media.tablet`display: none;`};
 `;
 const SocialContent = styled.div`
@@ -91,6 +98,8 @@ const Line = styled.div`
   position: absolute;
   bottom: 0;
   z-index: -1;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  ${media.tablet`filter: none;`};
 `;
 const SocialItem = styled.li`
   margin-bottom: 1.2rem;
@@ -108,6 +117,8 @@ const SocialLink = styled.a<SocialLinkProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
 
   background-color: ${theme.colors.white};
   border: solid 2px ${theme.colors.bronze};
