@@ -162,7 +162,7 @@ const SocialLink = styled.a<SocialLinkProps>`
   width: 50px;
   height: 50px;
 
-  margin: 0 5px;
+  margin: 0 10px;
   padding: 10px;
 
   transform: translateY(
