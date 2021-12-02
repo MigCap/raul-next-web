@@ -141,7 +141,7 @@ export default function Header({ location }: any) {
                       >
                         <NavLink href={path}>
                           <a>
-                            <p>{name}</p>
+                            <p className="p-m-0">{name}</p>
                             {isCurrentRoute && <NavLinkSelectedUnderline />}
                           </a>
                         </NavLink>
@@ -245,9 +245,6 @@ const NavListItem = styled.li<INavListItem>`
 `;
 const NavLink = styled(Link)`
   padding: 1rem 1.2rem;
-  p {
-    margin: 0;
-  }
 `;
 const NavLinkSelectedUnderline = styled.div`
   height: 2px;
