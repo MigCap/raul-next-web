@@ -32,16 +32,36 @@ export default function Hero() {
       <HeroContainer>
         <TransitionGroup>
           {isMounted && (
-            <CSSTransition nodeRef={nodeRef} classNames="fadeup" timeout={3000}>
-              <HeroContent>
-                <BlobContainer>
-                  <Blob />
-                </BlobContainer>
-                <div ref={nodeRef}>
-                  <One />
-                  <Two />
-                </div>
-              </HeroContent>
+            <CSSTransition nodeRef={nodeRef} className="fadeup" timeout={3000}>
+              <>
+                <HeroContent>
+                  <BlobContainer>
+                    <Blob />
+                  </BlobContainer>
+                  <div ref={nodeRef}>
+                    <One />
+                    <Two />
+                  </div>
+                </HeroContent>
+                <CustomDividerTop>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1200 120"
+                    preserveAspectRatio="none"
+                  >
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                  </svg>
+                </CustomDividerTop>
+                <CustomDivider>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1200 120"
+                    preserveAspectRatio="none"
+                  >
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                  </svg>
+                </CustomDivider>
+              </>
             </CSSTransition>
           )}
         </TransitionGroup>
@@ -58,37 +78,81 @@ const HeroContainer = styled(Section)`
   min-height: 100vh;
   ${media.desktop`min-height: 60vh;`};
 
-  padding: 0 1rem;
+  // padding: 0 1rem;
+  padding: 0;
   ${media.desktop`padding-top: 120px;`};
 
-  // background: #6bb0b2 url("/assets/Picture Background.jpg") no-repeat fixed
-  //   center;
   // background: #6bb0b2 url("/assets/pattern_flower.png") no-repeat fixed center;
   // background-blend-mode: multiply;
 `;
+const CustomDividerTop = styled.div`
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 130px;
+    transform: rotateY(180deg);
+    fill: ${theme.colors.teal};
+    // opacity: 0.5;
+  }
+`;
+const CustomDivider = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 130px;
+    transform: rotateY(180deg);
+    fill: ${theme.colors.teal};
+    // opacity: 0.5;
+  }
+  ${media.tablet`svg {
+    width: calc(100% + 1.3px);
+    height: 44px;
+}`};
+`;
 const HeroContent = styled.div`
-  margin: 0 0.5rem 0 5rem;
+  padding: 0 0.5rem 0 5rem;
+  ${media.desktop`padding: 0 0;`};
 `;
 
 const BlobContainer = styled.div`
+  overflow-x: hidden;
+  position: absolute;
   svg {
-    position: absolute;
-    top: 5.5rem;
+    position: relative;
+    // top: 5.5rem;
     left: 2.5rem;
-    width: 75%;
-    height: 80%;
+    width: 100%;
+    // height: 100%;
     z-index: -1;
+    fill: ${theme.colors.teal};
+    // opacity: 0.5;
+    // transform: translate(50px 50px);
   }
-  ${media.desktop`
-    svg {
-      position: absolute;
-      top: 5.5rem;
-      left: 2.5rem;
-      // width: 30rem;
-      // height: auto;
-      width: 85%;
-      height: 50%;
-    }             
+  // ${media.desktop`
+  //   svg {
+  //     // position: absolute;
+  //     // top: 5.5rem;
+  //     left: 2.5rem;
+  //     // // width: 30rem;
+  //     // // height: auto;
+  //     // width: 85%;
+  //     // height: 50%;
+  // }             
   `};
 `;
 const Title = styled.h1`

@@ -75,7 +75,7 @@ export default function PostCard({
 }
 
 const CardContainer = styled(motion.div)`
-  ${media.tablet`max-width: 20rem;`};
+  // ${media.tablet`max-width: 20rem;`};
   &:hover .cardImage {
     filter: opacity(0.9);
   }
