@@ -71,15 +71,13 @@ export default function WorkPage({
             <BackButton />
           </BackButtonWrapper>
 
-          <FiligranaContainer>
+          <FiligranaContainerDesktop>
             <Filigrana />
-          </FiligranaContainer>
+          </FiligranaContainerDesktop>
 
           <PostDetailContent imagesLength={imgs?.length}>
             <motion.div variants={stagger}>
-              {/* <PostTitleContainer> */}
               <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
-              {/* </PostTitleContainer> */}
 
               <LineSeparatorContainer variants={fadeInUp}>
                 <LineSeparator variants={postTitleUnderline} />
@@ -125,13 +123,22 @@ const BackButtonWrapper = styled(motion.article)`
     display: none;
   `};
 `;
-const FiligranaContainer = styled.div`
+const FiligranaContainerMobile = styled.div`
+  margin: 0 0.5rem;
+  align-self: center;
+  svg {
+    width: 4rem;
+    height: 100%;
+  }
+`;
+const FiligranaContainerDesktop = styled.div`
   margin: 8rem 1rem;
-
   svg {
     width: 4rem;
     height: 4rem;
   }
+
+  ${media.tablet`display: none;`};
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   margin-top: 8rem;
@@ -146,6 +153,9 @@ const PostDetailContent = styled.div<ImagesLengthProp>`
     grid-template-columns: 100%;
     gap: 0;
   `};
+`;
+const PostTitleContainerMobile = styled.div`
+  display: flex;
 `;
 const PostTitle = styled(motion.h1)`
   margin: 0 0 1rem 0;

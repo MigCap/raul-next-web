@@ -103,9 +103,10 @@ const Sidebar = styled.div`
 `;
 
 const NavLinks = styled(Nav)`
-  ${mixins.flexBetween};
+  ${mixins.flexAround};
   flex-direction: column;
   text-align: center;
+  height: 60%;
 `;
 const NavList = styled.ol`
   width: 100%;

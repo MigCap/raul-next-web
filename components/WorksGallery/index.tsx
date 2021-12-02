@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 import { getFeaturedMedia, stagger } from "lib";
 
-import { theme, mixins, media, Section } from "styles";
+import { media } from "styles";
 
 export default function WorksGallery({ posts, media, className, style }: any) {
   const isHomePage = Router?.router?.pathname === "/";
@@ -26,7 +26,7 @@ export default function WorksGallery({ posts, media, className, style }: any) {
   );
 }
 
-const WorksGalleryContainer = styled.ul`
+const WorksGalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 32%);
   ${media.phone`grid-template-columns: 100%;`};
