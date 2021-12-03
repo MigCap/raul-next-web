@@ -9,14 +9,13 @@ import { about } from "lib";
 
 import { theme, mixins, media, Section } from "styles";
 
-import Blob from "./Blob";
+// import Blob from "./Blob";
 
 export default function Hero() {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 2000);
-
+    const timeout = setTimeout(() => setIsMounted(true), 100);
     return () => {
       clearTimeout(timeout);
     };
@@ -55,24 +54,24 @@ export default function Hero() {
       </SectionSeparatorContainerUp>
 
       <HeroContainer>
-        {/* <TransitionGroup> */}
-        {isMounted && (
-          // <CSSTransition nodeRef={nodeRef} className="fadeup" timeout={2000}>
-          <>
-            <HeroContent>
-              {/* <BlobContainer>
+        <TransitionGroup>
+          {isMounted && (
+            <CSSTransition nodeRef={nodeRef} className="fade" timeout={3000}>
+              {/* <div ref={nodeRef}> */}
+              <HeroContent>
+                {/* <BlobContainer>
                     <Blob />
                   </BlobContainer> */}
 
-              <div ref={nodeRef}>
-                <One />
-                <Two />
-              </div>
-            </HeroContent>
-          </>
-          // </CSSTransition>
-        )}
-        {/* </TransitionGroup> */}
+                <div>
+                  <One />
+                  <Two />
+                </div>
+              </HeroContent>
+              {/* </div> */}
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </HeroContainer>
 
       {/* <svg
