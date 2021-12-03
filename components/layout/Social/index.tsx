@@ -66,6 +66,7 @@ const SocialContainer = styled.div`
   height: 496px;
   left: 40px;
   top: 568px;
+  z-index: 2;
 
   color: ${theme.colors.teal};
   ${media.desktop`
@@ -85,6 +86,7 @@ const SocialItemList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 `;
 const Line = styled.div`
   display: flex;
@@ -98,7 +100,7 @@ const Line = styled.div`
   background-color: ${theme.colors.teal};
   position: absolute;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   ${media.tablet`filter: none;`};
 `;

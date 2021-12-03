@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
-import Blob from "./Blob";
+// import Blob from "./Blob";
 
 import { about } from "lib";
 
@@ -35,40 +35,71 @@ export default function Hero() {
             <CSSTransition nodeRef={nodeRef} className="fadeup" timeout={3000}>
               <>
                 <HeroContent>
-                  <BlobContainer>
+                  {/* <BlobContainer>
                     <Blob />
-                  </BlobContainer>
+                  </BlobContainer> */}
+
                   <div ref={nodeRef}>
                     <One />
                     <Two />
                   </div>
                 </HeroContent>
-                <CustomDividerTop>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-                  </svg>
-                </CustomDividerTop>
-                <CustomDivider>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-                  </svg>
-                </CustomDivider>
               </>
             </CSSTransition>
           )}
         </TransitionGroup>
       </HeroContainer>
+
+      <SeparatorContainer>
+        <RowSeparator>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path d="M0,160L60,181.3C120,203,240,245,360,250.7C480,256,600,224,720,181.3C840,139,960,85,1080,106.7C1200,128,1320,224,1380,272L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+          </svg>
+        </RowSeparator>
+      </SeparatorContainer>
     </>
   );
 }
+
+const SeparatorContainer = styled.div`
+  ${mixins.flexCenter};
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1000px;
+  display: inline-block;
+  ${media.tablet`padding: 0;`};
+  position: absolute;
+`;
+const RowSeparator = styled.div`
+  width: 100%;
+  height: 5vh;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  background-color: ${theme.colors.white};
+
+  svg {
+    display: block;
+    background: 0 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9;
+    -webkit-transform: translateY(-100%) translateY(2px);
+    // transform: translateY(-100%) translateY(2px);
+    width: 100%;
+    transform: translateY(-100%) translateY(2px) scale(1, 1);
+    transform-origin: top;
+    fill: ${theme.colors.white};
+  }
+`;
 
 const HeroContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -82,79 +113,39 @@ const HeroContainer = styled(Section)`
   padding: 0;
   ${media.desktop`padding-top: 120px;`};
 
-  // background: #6bb0b2 url("/assets/pattern_flower.png") no-repeat fixed center;
+  background: url("/assets/pattern_flower.png") no-repeat fixed center;
   // background-blend-mode: multiply;
-`;
-const CustomDividerTop = styled.div`
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-  svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 130px;
-    transform: rotateY(180deg);
-    fill: ${theme.colors.teal};
-    // opacity: 0.5;
-  }
-`;
-const CustomDivider = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 130px;
-    transform: rotateY(180deg);
-    fill: ${theme.colors.teal};
-    // opacity: 0.5;
-  }
-  ${media.tablet`svg {
-    width: calc(100% + 1.3px);
-    height: 44px;
-}`};
 `;
 const HeroContent = styled.div`
   padding: 0 0.5rem 0 5rem;
-  ${media.desktop`padding: 0 0;`};
+  ${media.desktop`padding: 0 20px;`};
 `;
-
-const BlobContainer = styled.div`
-  overflow-x: hidden;
-  position: absolute;
-  svg {
-    position: relative;
-    // top: 5.5rem;
-    left: 2.5rem;
-    width: 100%;
-    // height: 100%;
-    z-index: -1;
-    fill: ${theme.colors.teal};
-    // opacity: 0.5;
-    // transform: translate(50px 50px);
-  }
-  // ${media.desktop`
-  //   svg {
-  //     // position: absolute;
-  //     // top: 5.5rem;
-  //     left: 2.5rem;
-  //     // // width: 30rem;
-  //     // // height: auto;
-  //     // width: 85%;
-  //     // height: 50%;
-  // }             
-  `};
-`;
+// const BlobContainer = styled.div`
+//   overflow-x: hidden;
+//   position: absolute;
+//   svg {
+//     position: relative;
+//     // top: 5.5rem;
+//     left: 2.5rem;
+//     width: 100%;
+//     // height: 100%;
+//     z-index: -1;
+//     fill: ${theme.colors.teal};
+//     // opacity: 0.5;
+//     // transform: translate(50px 50px);
+//   }
+//   // ${media.desktop`
+//   //   svg {
+//   //     // position: absolute;
+//   //     // top: 5.5rem;
+//   //     left: 2.5rem;
+//   //     // // width: 30rem;
+//   //     // // height: auto;
+//   //     // width: 85%;
+//   //     // height: 50%;
+//   // }
+//   `};
+// `;
 const Title = styled.h1`
   font-family: "Poppins", sans-serif;
   font-size: 80px;
