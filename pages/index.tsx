@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import UnderConstruction from "../components/UnderConstruction";
 import styles from "../styles/Home.module.css";
 
@@ -15,16 +15,9 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h3 className={styles.title}>RAÚL DE DIEGO</h3>
-
-        {/* <span className={styles.logo}>
-          <Image
-            src="/assets/2489360.jpg"
-            alt="Under Construction Logo"
-            width={450}
-            height={400}
-          />
-        </span> */}
-        <UnderConstruction width={300} height={400} />
+        <div style={{ width: "80%", padding: "2rem 2rem" }}>
+          <UnderConstruction />
+        </div>
       </main>
 
       <footer className={styles.footer}>

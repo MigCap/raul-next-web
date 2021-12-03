@@ -1,6 +1,5 @@
 export default function UnderConstruction(props: any) {
   return (
-    <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 471.18 432.66"
@@ -2839,6 +2838,5 @@ export default function UnderConstruction(props: any) {
           </g>
         </g>
       </svg>
-    </div>
   );
 }
