@@ -24,7 +24,7 @@ export default function Home({ posts, media, categories }: any) {
       <motion.main initial="initial" animate="animate" exit={{ opacity: 0 }}>
         <Hero />
 
-        <section className="container">
+        <section className="container" style={{ marginTop: "5rem" }}>
           <HomeSection title={about.title}>
             <p>{about.description}</p>
           </HomeSection>
