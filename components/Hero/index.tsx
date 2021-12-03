@@ -108,7 +108,7 @@ export default function Hero() {
         </SectionSeparatorDown>
       </SectionSeparatorContainerDown>
       <SectionSeparatorContainerUp>
-        <SectionSeparatorUp style={{ height: "30rem" }}>
+        <SectionSeparatorUp height="30rem">
           <svg
             id="visual"
             viewBox="0 0 900 600"
@@ -212,9 +212,11 @@ const SectionSeparatorContainerUp = styled.div`
   position: absolute;
   z-index: -1;
 `;
-const SectionSeparatorUp = styled.div`
+const SectionSeparatorUp = styled.div<any>`
   width: 100%;
-  height: 70rem;
+  height: ${(props) => (props.height ? "30rem" : "70rem")};
+  ${media.tablet`height: ${(props: any) =>
+    props.height ? "20rem" : "50rem"}`};
   padding: 0;
   margin: 0;
   display: inline-block;
@@ -250,6 +252,7 @@ const SectionSeparatorContainerDown = styled.div`
 const SectionSeparatorDown = styled.div`
   width: 100%;
   height: 45rem;
+  ${media.tablet`height: 35rem;`};
   padding: 0;
   margin: 0;
   display: inline-block;
