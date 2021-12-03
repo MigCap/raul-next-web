@@ -5,11 +5,11 @@ import { useState, useEffect, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
-// import Blob from "./Blob";
-
 import { about } from "lib";
 
 import { theme, mixins, media, Section } from "styles";
+
+import Blob from "./Blob";
 
 export default function Hero() {
   const [isMounted, setIsMounted] = useState<any>(false);
@@ -50,8 +50,8 @@ export default function Hero() {
         </TransitionGroup>
       </HeroContainer>
 
-      <SeparatorContainer>
-        <RowSeparator>
+      <SectionSeparatorContainer>
+        <SectionSeparator>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
@@ -59,13 +59,78 @@ export default function Hero() {
           >
             <path d="M0,160L60,181.3C120,203,240,245,360,250.7C480,256,600,224,720,181.3C840,139,960,85,1080,106.7C1200,128,1320,224,1380,272L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
           </svg>
-        </RowSeparator>
-      </SeparatorContainer>
+        </SectionSeparator>
+      </SectionSeparatorContainer>
     </>
   );
 }
 
-const SeparatorContainer = styled.div`
+const HeroContainer = styled(Section)`
+  ${mixins.flexCenter};
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-height: 100vh;
+  ${media.desktop`min-height: 60vh;`};
+
+  // padding: 0 1rem;
+  padding: 0;
+  ${media.desktop`padding-top: 120px;`};
+
+  // background: ${theme.colors.teal};
+  background: url("/assets/pattern_flower.png") no-repeat fixed center;
+  // background-blend-mode: multiply;
+`;
+const HeroContent = styled.div`
+  padding: 0 0.5rem 0 5rem;
+  ${media.desktop`padding: 0 20px;`};
+`;
+const BlobContainer = styled.div`
+  overflow-x: hidden;
+  position: absolute;
+  svg {
+    position: relative;
+    // top: 5.5rem;
+    left: 2.5rem;
+    width: 100%;
+    // height: 100%;
+    fill: ${theme.colors.teal};
+    // opacity: 0.5;
+    // transform: translate(50px 50px);
+  }
+  // ${media.desktop`
+  //   svg {
+  //     // position: absolute;
+  //     // top: 5.5rem;
+  //     left: 2.5rem;
+  //     // // width: 30rem;
+  //     // // height: auto;
+  //     // width: 85%;
+  //     // height: 50%;
+  // }
+  `};
+`;
+const Title = styled.h1`
+  font-family: "Poppins", sans-serif;
+  font-size: 80px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: ${theme.colors.dark};
+  ${media.desktop`font-size: 70px;`};
+  ${media.tablet`font-size: 60px;`};
+  ${media.phablet`font-size: 50px;`};
+  ${media.phone`font-size: 50px;`};
+`;
+const Subtitle = styled.h2`
+  color: ${theme.colors.dark};
+  margin: 0 0 20px 3px;
+  font-size: ${theme.fontSizes.medium};
+  font-family: ${theme.fonts.SFMono};
+  font-weight: normal;
+  ${media.desktop`font-size: ${theme.fontSizes.xlarge};`};
+  ${media.tablet`font-size: ${theme.fontSizes.smallish};`};
+`;
+const SectionSeparatorContainer = styled.div`
   ${mixins.flexCenter};
   margin: 0 auto;
   padding: 0;
@@ -75,7 +140,7 @@ const SeparatorContainer = styled.div`
   ${media.tablet`padding: 0;`};
   position: absolute;
 `;
-const RowSeparator = styled.div`
+const SectionSeparator = styled.div`
   width: 100%;
   height: 5vh;
   padding: 0;
@@ -99,70 +164,4 @@ const RowSeparator = styled.div`
     transform-origin: top;
     fill: ${theme.colors.white};
   }
-`;
-
-const HeroContainer = styled(Section)`
-  ${mixins.flexCenter};
-  flex-direction: column;
-  align-items: flex-start;
-
-  min-height: 100vh;
-  ${media.desktop`min-height: 60vh;`};
-
-  // padding: 0 1rem;
-  padding: 0;
-  ${media.desktop`padding-top: 120px;`};
-
-  background: url("/assets/pattern_flower.png") no-repeat fixed center;
-  // background-blend-mode: multiply;
-`;
-const HeroContent = styled.div`
-  padding: 0 0.5rem 0 5rem;
-  ${media.desktop`padding: 0 20px;`};
-`;
-// const BlobContainer = styled.div`
-//   overflow-x: hidden;
-//   position: absolute;
-//   svg {
-//     position: relative;
-//     // top: 5.5rem;
-//     left: 2.5rem;
-//     width: 100%;
-//     // height: 100%;
-//     z-index: -1;
-//     fill: ${theme.colors.teal};
-//     // opacity: 0.5;
-//     // transform: translate(50px 50px);
-//   }
-//   // ${media.desktop`
-//   //   svg {
-//   //     // position: absolute;
-//   //     // top: 5.5rem;
-//   //     left: 2.5rem;
-//   //     // // width: 30rem;
-//   //     // // height: auto;
-//   //     // width: 85%;
-//   //     // height: 50%;
-//   // }
-//   `};
-// `;
-const Title = styled.h1`
-  font-family: "Poppins", sans-serif;
-  font-size: 80px;
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: ${theme.colors.dark};
-  ${media.desktop`font-size: 70px;`};
-  ${media.tablet`font-size: 60px;`};
-  ${media.phablet`font-size: 50px;`};
-  ${media.phone`font-size: 50px;`};
-`;
-const Subtitle = styled.h2`
-  color: ${theme.colors.dark};
-  margin: 0 0 20px 3px;
-  font-size: ${theme.fontSizes.medium};
-  font-family: ${theme.fonts.SFMono};
-  font-weight: normal;
-  ${media.desktop`font-size: ${theme.fontSizes.xlarge};`};
-  ${media.tablet`font-size: ${theme.fontSizes.smallish};`};
 `;
