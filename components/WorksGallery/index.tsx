@@ -29,7 +29,10 @@ export default function WorksGallery({ posts, media, className, style }: any) {
 const WorksGalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  ${media.phone`grid-template-columns: 100%;`};
+  padding: 0 1rem;
+  ${media.phone`grid-template-columns: 100%; 
+  padding: 0;
+  `};
   gap: 1em;
   overflow: hidden;
   margin-top: 20px;

@@ -192,14 +192,18 @@ interface INavListItem {
 }
 
 const HeaderContainer = styled.header<IHeaderContainer>`
+  // margin: 0 auto;
+  // max-width: 1000px;
   ${mixins.flexBetween};
   position: fixed;
   top: 0;
-  padding: 0px 50px;
+  padding: 0px 20%;
+  ${media.desktop`padding: 0 40px;`};
+  ${media.tablet`padding: 0 25px;`};
   background-color: ${({ isHomePage }) =>
     isHomePage ? "transparent" : theme.colors.teal};
   transition: ${theme.transition};
-  z-index: 11;
+  z-index: 10;
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -217,8 +221,7 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     ${(props: any) =>
       props.scrollDirection === "down" ? `-${theme.headerScrollHeight}` : "0px"}
   );
-  ${media.desktop`padding: 0 40px;`};
-  ${media.tablet`padding: 0 25px;`};
+ 
 
   a {
     &:hover,

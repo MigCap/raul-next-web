@@ -29,8 +29,8 @@ export default function Hero() {
 
   return (
     <>
-      <SectionSeparatorContainerDown>
-        <SectionSeparatorDown>
+      <SectionSeparatorContainerUp>
+        <SectionSeparatorUp>
           <svg
             id="visual"
             viewBox="0 0 900 600"
@@ -51,8 +51,8 @@ export default function Hero() {
               fill="#b0cec7"
             ></path>
           </svg>
-        </SectionSeparatorDown>
-      </SectionSeparatorContainerDown>
+        </SectionSeparatorUp>
+      </SectionSeparatorContainerUp>
 
       <HeroContainer>
         <TransitionGroup>
@@ -83,8 +83,8 @@ export default function Hero() {
         <path d="M0,160L60,181.3C120,203,240,245,360,250.7C480,256,600,224,720,181.3C840,139,960,85,1080,106.7C1200,128,1320,224,1380,272L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
       </svg> */}
 
-      <SectionSeparatorContainer>
-        <SectionSeparator>
+      <SectionSeparatorContainerDown>
+        <SectionSeparatorDown>
           <svg
             id="visual"
             viewBox="0 0 900 600"
@@ -105,8 +105,8 @@ export default function Hero() {
               fill="#b0cec7"
             ></path>
           </svg>
-        </SectionSeparator>
-      </SectionSeparatorContainer>
+        </SectionSeparatorDown>
+      </SectionSeparatorContainerDown>
     </>
   );
 }
@@ -177,55 +177,17 @@ const Subtitle = styled.h2`
   ${media.tablet`font-size: ${theme.fontSizes.smallish};`};
 `;
 
-const SectionSeparatorContainer = styled.div`
+const SectionSeparatorContainerUp = styled.div`
   ${mixins.flexCenter};
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  max-width: 1000px;
-  display: inline-block;
-  ${media.tablet`padding: 0;`};
-  position: absolute;
-  z-index: 1;
-`;
-const SectionSeparator = styled.div`
-  width: 100%;
-  height: 25rem;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  position: relative;
-  background-color: ${theme.colors.white};
-
-  svg {
-    display: block;
-    background: 0 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 2;
-    -webkit-transform: translateY(-100%) translateY(2px);
-    // transform: translateY(-100%) translateY(2px);
-    width: 100%;
-    transform: translateY(-100%) translateY(2px) scale(1, 1);
-    transform-origin: top;
-    fill: ${theme.colors.white};
-  }
-`;
-
-const SectionSeparatorContainerDown = styled.div`
-  ${mixins.flexCenter};
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  max-width: 1000px;
   display: inline-block;
   ${media.tablet`padding: 0;`};
   position: absolute;
   z-index: -1;
 `;
-const SectionSeparatorDown = styled.div`
+const SectionSeparatorUp = styled.div`
   width: 100%;
   height: 70rem;
   padding: 0;
@@ -241,12 +203,47 @@ const SectionSeparatorDown = styled.div`
     left: 0;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: 1;
     // -webkit-transform: translateY(-100%) translateY(2px);
     // transform: translateY(-100%) translateY(2px);
     width: 100%;
     // transform: translateY(-100%) translateY(2px) scale(1, 1);
     // transform-origin: top;
+    fill: ${theme.colors.white};
+  }
+`;
+const SectionSeparatorContainerDown = styled.div`
+  ${mixins.flexCenter};
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  display: inline-block;
+  ${media.tablet`padding: 0;`};
+  position: absolute;
+  z-index: -1;
+`;
+const SectionSeparatorDown = styled.div`
+  width: 100%;
+  height: 25rem;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  background-color: ${theme.colors.white};
+
+  svg {
+    display: block;
+    background: 0 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    -webkit-transform: translateY(-100%) translateY(2px);
+    // transform: translateY(-100%) translateY(2px);
+    width: 100%;
+    transform: translateY(-100%) translateY(2px) scale(1, 1);
+    transform-origin: top;
     fill: ${theme.colors.white};
   }
 `;
