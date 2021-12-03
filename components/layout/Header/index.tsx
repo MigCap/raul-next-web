@@ -192,8 +192,6 @@ interface INavListItem {
 }
 
 const HeaderContainer = styled.header<IHeaderContainer>`
-  // margin: 0 auto;
-  // max-width: 1000px;
   ${mixins.flexBetween};
   position: fixed;
   top: 0;

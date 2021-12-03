@@ -55,24 +55,24 @@ export default function Hero() {
       </SectionSeparatorContainerUp>
 
       <HeroContainer>
-        <TransitionGroup>
-          {isMounted && (
-            <CSSTransition nodeRef={nodeRef} className="fadeup" timeout={3000}>
-              <>
-                <HeroContent>
-                  {/* <BlobContainer>
+        {/* <TransitionGroup> */}
+        {isMounted && (
+          // <CSSTransition nodeRef={nodeRef} className="fadeup" timeout={2000}>
+          <>
+            <HeroContent>
+              {/* <BlobContainer>
                     <Blob />
                   </BlobContainer> */}
 
-                  <div ref={nodeRef}>
-                    <One />
-                    <Two />
-                  </div>
-                </HeroContent>
-              </>
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+              <div ref={nodeRef}>
+                <One />
+                <Two />
+              </div>
+            </HeroContent>
+          </>
+          // </CSSTransition>
+        )}
+        {/* </TransitionGroup> */}
       </HeroContainer>
 
       {/* <svg
@@ -157,7 +157,8 @@ const BlobContainer = styled.div`
   `};
 `;
 const Title = styled.h1`
-  font-family: "Poppins", sans-serif;
+  font-family: "Karla", sans-serif;
+  font-weight: 900;
   font-size: 80px;
   line-height: 1.1;
   text-transform: uppercase;
@@ -224,7 +225,7 @@ const SectionSeparatorContainerDown = styled.div`
 `;
 const SectionSeparatorDown = styled.div`
   width: 100%;
-  height: 25rem;
+  height: 45rem;
   padding: 0;
   margin: 0;
   display: inline-block;
