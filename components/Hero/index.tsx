@@ -2,29 +2,41 @@ import { useState, useEffect, useRef } from "react";
 
 // import Image from "next/
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { about } from "lib";
+import { about, easing } from "lib";
 
 import { theme, mixins, media, Section } from "styles";
 
 // import Blob from "./Blob";
 
+const stagger = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+};
+
 export default function Hero() {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 100);
+    const timeout = setTimeout(() => setIsMounted(true), 200);
     return () => {
       clearTimeout(timeout);
     };
   }, []);
 
   const nodeRef = useRef(null);
-
-  const One = () => <Title>{about.position}</Title>;
-  const Two = () => <Subtitle>{about.positionDescription}</Subtitle>;
 
   return (
     <>
@@ -54,33 +66,19 @@ export default function Hero() {
       </SectionSeparatorContainerUp>
 
       <HeroContainer>
-        <TransitionGroup>
-          {isMounted && (
-            <CSSTransition nodeRef={nodeRef} className="fade" timeout={3000}>
-              {/* <div ref={nodeRef}> */}
-              <HeroContent>
-                {/* <BlobContainer>
+        {isMounted && (
+          <HeroContent ref={nodeRef}>
+            {/* <BlobContainer>
                     <Blob />
                   </BlobContainer> */}
 
-                <div>
-                  <One />
-                  <Two />
-                </div>
-              </HeroContent>
-              {/* </div> */}
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+            <motion.div variants={stagger}>
+              <Title variants={fadeIn}>{about.position}</Title>
+              <Subtitle variants={fadeIn}>{about.positionDescription}</Subtitle>
+            </motion.div>
+          </HeroContent>
+        )}
       </HeroContainer>
-
-      {/* <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path d="M0,160L60,181.3C120,203,240,245,360,250.7C480,256,600,224,720,181.3C840,139,960,85,1080,106.7C1200,128,1320,224,1380,272L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-      </svg> */}
 
       <SectionSeparatorContainerDown>
         <SectionSeparatorDown>
@@ -106,6 +104,7 @@ export default function Hero() {
           </svg>
         </SectionSeparatorDown>
       </SectionSeparatorContainerDown>
+
       <SectionSeparatorContainerUp>
         <SectionSeparatorUp height="30rem">
           <svg
@@ -179,7 +178,7 @@ const BlobContainer = styled.div`
   // }
   `};
 `;
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   font-family: "Karla", sans-serif;
   font-weight: 900;
   font-size: 80px;
@@ -191,7 +190,7 @@ const Title = styled.h1`
   ${media.phablet`font-size: 50px;`};
   ${media.phone`font-size: 50px;`};
 `;
-const Subtitle = styled.h2`
+const Subtitle = styled(motion.h2)`
   color: ${theme.colors.dark};
   margin: 0 0 20px 3px;
   font-size: ${theme.fontSizes.medium};
