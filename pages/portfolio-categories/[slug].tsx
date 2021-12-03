@@ -57,7 +57,7 @@ const PortfolioCategoryContainer = styled(motion.article)`
   min-height: 80vh;
   display: flex;
   flex-direction: row;
-  ${media.phablet`flex-direction: column;`};
+  ${media.desktop`flex-direction: column;`};
 `;
 
 export async function getStaticPaths() {

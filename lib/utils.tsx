@@ -21,4 +21,8 @@ function throttle(func: any, wait: number = 100) {
   };
 }
 
-export { parse, getDate, throttle };
+function isCurrentRoute(location: any, id: string) {
+  return location && location.pathname.split("/")[1] === id;
+}
+
+export { parse, getDate, throttle, isCurrentRoute };

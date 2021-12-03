@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 import styled from "styled-components";
@@ -10,6 +11,7 @@ import { Logo } from "components/Icons";
 
 import {
   headerHeight,
+  isCurrentRoute,
   routesConfig as navLinks,
   scaleAndTab,
   throttle,
@@ -85,12 +87,19 @@ export default function Header({ location }: any) {
     []
   );
 
+  const router = useRouter();
+  const isHomePage = router?.pathname === "/";
+
   const headerRef = useRef(null);
   const nodeRef = useRef(null);
 
   return (
-    <HeaderContainer ref={headerRef} scrollDirection={scrollDirection}>
-      <Navbar>
+    <HeaderContainer
+      ref={headerRef}
+      scrollDirection={scrollDirection}
+      isHomePage={isHomePage}
+    >
+      <Navbar isHomePage={isHomePage}>
         <TransitionGroup>
           {isMounted && (
             <CSSTransition nodeRef={nodeRef} classNames="fade" timeout={3000}>
@@ -124,8 +133,8 @@ export default function Header({ location }: any) {
             <TransitionGroup>
               {isMounted &&
                 navLinks &&
-                navLinks.map(({ path, name }: any, i: number) => {
-                  const isCurrentRoute = location && location.pathname === path;
+                navLinks.map(({ path, name, id }: any, i: number) => {
+                  const isCurrRoute = isCurrentRoute(location, id);
 
                   return (
                     <CSSTransition
@@ -142,7 +151,11 @@ export default function Header({ location }: any) {
                         <NavLink href={path}>
                           <a>
                             <p className="p-m-0">{name}</p>
-                            {isCurrentRoute && <NavLinkSelectedUnderline />}
+                            {isCurrRoute && (
+                              <NavLinkSelectedUnderline
+                                isHomePage={isHomePage}
+                              />
+                            )}
                           </a>
                         </NavLink>
                       </NavListItem>
@@ -169,6 +182,7 @@ const DELTA = 5;
 interface IHeaderContainer {
   ref: any;
   scrollDirection: any;
+  isHomePage: boolean;
 }
 
 interface INavListItem {
@@ -182,7 +196,8 @@ const HeaderContainer = styled.header<IHeaderContainer>`
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background-color: ${theme.colors.teal};
+  background-color: ${({ isHomePage }) =>
+    isHomePage ? "transparent" : theme.colors.teal};
   transition: ${theme.transition};
   z-index: 11;
   filter: none !important;
@@ -213,10 +228,11 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     }
   }
 `;
-const Navbar = styled(Nav)`
+const Navbar = styled(Nav)<any>`
   ${mixins.flexBetween};
   font-family: ${theme.fonts.SFMono};
-  color: ${theme.colors.white};
+  color: ${({ isHomePage }) =>
+    isHomePage ? theme.colors.dark : theme.colors.white};
   counter-reset: item 0;
   position: relative;
   z-index: 12;
@@ -246,9 +262,10 @@ const NavListItem = styled.li<INavListItem>`
 const NavLink = styled(Link)`
   padding: 1rem 1.2rem;
 `;
-const NavLinkSelectedUnderline = styled.div`
+const NavLinkSelectedUnderline = styled.div<any>`
   height: 2px;
-  background-color: ${theme.colors.white};
+  background-color: ${({ isHomePage }) =>
+    isHomePage ? theme.colors.dark : theme.colors.white};
 `;
 
 const Hamburger = styled.div`

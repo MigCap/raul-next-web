@@ -28,7 +28,7 @@ export default function WorksGallery({ posts, media, className, style }: any) {
 
 const WorksGalleryContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 32%);
+  grid-template-columns: repeat(3, 1fr);
   ${media.phone`grid-template-columns: 100%;`};
   gap: 1em;
   overflow: hidden;

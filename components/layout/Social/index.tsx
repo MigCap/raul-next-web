@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
+
+import { useRouter } from "next/router";
+
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
 import { socialMedia } from "lib";
-
-import { IconLinkedin } from "components/Icons";
 
 import { theme, media } from "styles";
 
@@ -19,10 +20,13 @@ export default function Social() {
     };
   }, []);
 
+  const router = useRouter();
+  const isHomePage = router?.pathname === "/";
+
   const nodeRef = useRef(null);
 
   return (
-    <SocialContainer>
+    <SocialContainer isHomePage={isHomePage}>
       <TransitionGroup>
         {isMounted && (
           <CSSTransition nodeRef={nodeRef} timeout={3000} classNames="fade">
@@ -60,10 +64,10 @@ export default function Social() {
   );
 }
 
-const SocialContainer = styled.div`
+const SocialContainer = styled.div<{ isHomePage: boolean }>`
   position: absolute;
   width: 40px;
-  height: 496px;
+  height: ${(props: any) => (props?.isHomePage ? "400px" : "496px")};
   left: 40px;
   top: 568px;
   z-index: 2;
@@ -74,7 +78,7 @@ const SocialContainer = styled.div`
     left: 25px;
     top: auto;
     bottom: 0;
-    height: 400px;
+    height: ${(props: any) => (props?.isHomePage ? "350px" : "400px")};
   `};
   ${media.tablet`display: none;`};
 `;

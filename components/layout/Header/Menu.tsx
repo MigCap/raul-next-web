@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
-import { socialMedia } from "lib";
+import { isCurrentRoute, socialMedia } from "lib";
 
 import { theme, mixins, media, Nav } from "styles";
 
@@ -20,14 +20,14 @@ export default function Menu(props: any) {
           <NavList>
             {navLinks &&
               navLinks.map(({ path, name, id }: any) => {
-                const isCurrentRoute =
-                  location && location.pathname.split("/")[1] === id;
+                const isCurrRoute = isCurrentRoute(location, id);
+
                 return (
                   <NavListItem key={name} onClick={toggleMenu}>
                     <NavLink href={path}>
                       <a>
                         {name}
-                        {isCurrentRoute && (
+                        {isCurrRoute && (
                           <div
                             style={{
                               height: "2px",
