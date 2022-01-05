@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import Link from "next/link";
 
@@ -7,9 +7,11 @@ import styled from "styled-components";
 
 import { Accordion, AccordionTab } from "primereact/accordion";
 
-import { stagger } from "lib";
+import SocialH from "components/layout/SocialH";
 
-// import { media } from "styles";
+import { categoriesConfig, categoriesIds, stagger } from "lib";
+
+import { theme } from "styles";
 
 const AccordionHeader = styled(motion.article)`
   display: flex;
@@ -17,7 +19,7 @@ const AccordionHeader = styled(motion.article)`
 
 export function MenuSide({
   categories,
-  tags,
+  // tags,
   currCategory,
 }: {
   categories: any;
@@ -26,11 +28,45 @@ export function MenuSide({
 }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
+  const filteredCategories = categories?.reduce((acc: any, categorie: any) => {
+    if (categoriesIds?.includes(categorie?.id)) {
+      acc = [
+        ...acc,
+        {
+          ...categorie,
+          Icon: categoriesConfig.filter((c: any) => c.id === categorie?.id)[0]
+            .Icon,
+          children: [],
+        },
+      ];
+    }
+
+    return acc;
+  }, []);
+
+  const filteredCategoriesWithChildren = categories?.reduce(
+    (acc: any, categorie: any) => {
+      if (categoriesIds?.includes(categorie?.parent)) {
+        const parentIndex = acc.findIndex(
+          (el: any) => el?.id === categorie?.parent
+        );
+
+        if (parentIndex >= 0) {
+          acc[parentIndex] = {
+            ...acc[parentIndex],
+            children: [...acc[parentIndex]?.children, categorie],
+          };
+        }
+      }
+      return acc;
+    },
+    filteredCategories
+  );
+
   return (
     <>
-      <motion.div
+      <CategoriesContainer
         className="menu"
-        style={{ minWidth: "10rem" }}
         initial="initial"
         whileHover="hover"
         whileTap="tap"
@@ -38,7 +74,7 @@ export function MenuSide({
         exit={{ opacity: 0 }}
         variants={stagger}
       >
-        <Accordion
+        {/* <Accordion
           activeIndex={activeIndex}
           onTabChange={(e: any) => setActiveIndex(e.index)}
         >
@@ -80,39 +116,81 @@ export function MenuSide({
                 );
               })}
           </AccordionTab>
-        </Accordion>
+        </Accordion> */}
 
-        {/* <p
-          className="p-text-uppercase p-mt-4 p-mb-0"
-          style={{ fontWeight: 700, marginTop: "1rem" }}
-        >
-          tools
-        </p>
-        {tags &&
-          tags.map(({ id, name, count, slug }: any) => {
-            if (count === 0) return null;
-            return (
-              <div key={id}>
-                <Link
-                  href={{
-                    pathname: "/portfolio-categories/",
-                    // pathname: "/tools/[slug]",
-                    // query: { slug },
-                  }}
-                >
-                  <a className="lighten">
-                    <p
-                      className={`p-text-lowercase p-m-0`}
-                      style={{ fontSize: "0.7rem" }}
-                    >
-                      # {name} ({count})
-                    </p>
-                  </a>
-                </Link>
-              </div>
-            );
-          })} */}
-      </motion.div>
+        {filteredCategoriesWithChildren &&
+          filteredCategoriesWithChildren.map(
+            ({ id, name, count, slug, children, Icon }: any, i: number) => {
+              if (name === "Uncategorized" || count === 0) {
+                return null;
+              }
+
+              return (
+                <Fragment key={id}>
+                  <CategoryTitleContainer>
+                    <Icon />
+                    <div key={id} onClick={() => setActiveIndex(null)}>
+                      <Link href={`/portfolio-categories/${slug}`}>
+                        <a className="lighten">
+                          <CategoryTitle>{name}</CategoryTitle>
+                        </a>
+                      </Link>
+                    </div>
+                  </CategoryTitleContainer>
+                  <SubCategoriesContainer>
+                    {children &&
+                      children.length > 0 &&
+                      children.map((childCategory: any) => {
+                        const { id, name, slug } = childCategory;
+                        return (
+                          <Link href={`/portfolio-categories/${slug}`} key={id}>
+                            <a className="lighten">
+                              <span>{name}</span>
+                            </a>
+                          </Link>
+                        );
+                      })}
+                  </SubCategoriesContainer>
+                </Fragment>
+              );
+            }
+          )}
+
+        <SocialH />
+      </CategoriesContainer>
     </>
   );
 }
+
+const CategoriesContainer = styled(motion.div)`
+  padding: 10rem 2rem 0 2rem;
+  min-width: 20rem;
+`;
+const CategoryTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 0 0;
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 1rem;
+    align-self: start;
+  }
+`;
+const CategoryTitle = styled.h1`
+  color: ${theme.colors.primary};
+  font-weight: 800;
+  transition: ${theme.transition};
+  font-size: 1.5rem;
+  &:hover {
+    color: ${theme.colors.orange};
+  }
+`;
+const SubCategoriesContainer = styled.div`
+  margin-left: 4.5rem;
+  a {
+    font-family: "Josefin Slab", serif;
+    color: ${theme.colors.orange};
+    font-size: 1rem;
+  }
+`;

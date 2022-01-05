@@ -1,9 +1,19 @@
-import { IconLinkedin, IconInstagram } from "components/Icons";
+import {
+  IconLinkedin,
+  IconInstagram,
+  Filigrana,
+  Filigrana2,
+} from "components/Icons";
 
 export const routesConfig = [
   {
     id: "",
     name: "home",
+    path: "/",
+  },
+  {
+    id: "about",
+    name: "about",
     path: "/",
   },
   {
@@ -76,7 +86,7 @@ export const about = {
   image: "/assets/Foto1CVsm.png",
   mainMail: "hello@rauldediego.com",
   contactMail: "contact@rauldediego.com",
-  position: "Diseñador Gráfico Senior e Ilustrador",
+  position: "Senior Graphic Designer and Illustrator",
   positionDescription: "Artefinalista y Director de Arte",
   // title: "¡Hola!",
   title: "about",
@@ -118,3 +128,12 @@ export const about = {
   skills: [""],
   hobbies: ["Fútbol", "Ciclismo", "Cine", "Música"],
 };
+
+export const categoriesConfig = [
+  { id: 3, name: "Graphic Design", Icon: Filigrana },
+  { id: 4, name: "Illustration", Icon: Filigrana2 },
+];
+
+export const categoriesIds = categoriesConfig.map(
+  (categorie: any) => categorie?.id
+);
