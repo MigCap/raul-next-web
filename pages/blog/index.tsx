@@ -39,4 +39,7 @@ const BlogPageContainer = styled.div`
   p {
     color: ${theme.colors.teal};
   }
+  h3 {
+    padding-bottom: 1rem;
+  }
 `;

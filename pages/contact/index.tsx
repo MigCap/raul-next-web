@@ -110,6 +110,10 @@ const FormContainer = styled(motion.div)`
   min-width: 80%;
   margin: 0 auto;
 
+  h3 {
+    padding: 0 0 1rem 0;
+  }
+
   label {
     align-self: flex-start;
   }

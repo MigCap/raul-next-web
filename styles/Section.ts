@@ -6,7 +6,10 @@ const Section = styled.section<any>`
   padding: 150px 0;
   max-width: ${(props) => props.maxWidth || "1000px"};
 
-  ${media.tablet`padding: 100px 0;`};
+  ${media.desktop`
+    padding: 100px 0;
+    margin: 0 auto;
+  `};
 `;
 
 export default Section;
