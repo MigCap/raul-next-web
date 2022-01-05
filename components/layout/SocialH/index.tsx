@@ -9,7 +9,7 @@ import { socialMedia } from "lib";
 
 import { theme, media } from "styles";
 
-export default function Social() {
+export default function SocialH() {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
@@ -65,58 +65,51 @@ export default function Social() {
 }
 
 const SocialContainer = styled.div<{ isHomePage: boolean }>`
-  position: fixed;
-  width: 40px;
-  height: ${(props: any) => (props?.isHomePage ? "400px" : "496px")};
-  left: 40px;
-  top: 568px;
-  bottom: 0;
-  z-index: 2;
+  // position: absolute;
+  // width: 40px;
+  // height: ${(props: any) => (props?.isHomePage ? "400px" : "496px")};
+  // left: 40px;
+  // top: 568px;
+  // z-index: 2;
+  margin: 4rem 0;
 
   color: ${theme.colors.teal};
-  ${media.desktop`
-    position: fixed;
-    left: 25px;
-    top: auto;
-    bottom: 0;
-    height: ${(props: any) => (props?.isHomePage ? "350px" : "400px")};
-  `};
+  // ${media.desktop`
+  //   position: fixed;
+  //   left: 25px;
+  //   top: auto;
+  //   bottom: 0;
+  //   height: ${(props: any) => (props?.isHomePage ? "350px" : "400px")};
+  // `};
   ${media.tablet`display: none;`};
 `;
 const SocialContent = styled.div`
   display: flex;
   justify-content: center;
+  position: relative;
 `;
 const SocialItemList = styled.ul`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
   z-index: 1;
 `;
 const Line = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
   content: "";
   display: block;
-  width: 3px;
-  height: 100%;
-  margin: 0 auto;
+  width: 100%;
+  height: 3px;
+  margin: auto 0;
   background-color: ${theme.colors.teal};
   position: absolute;
-  bottom: 0;
-  z-index: 0;
+  left: 0;
+  top: 50%;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   ${media.tablet`filter: none;`};
 `;
 const SocialItem = styled.li`
-  margin-bottom: 1.2rem;
-  &:first-of-type {
-    margin-top: 2rem;
-  }
-  &:last-of-type {
-    margin-bottom: 5rem;
-  }
+  margin: 0.5rem;
 `;
 interface SocialLinkProps {
   name: string;

@@ -16,6 +16,10 @@ const MainContainer = styled(Main)`
 
 export default function Layout({ children, router }: any) {
   const isHomePage = router?.pathname === "/";
+  const isWorkDetail = router?.pathname?.startsWith("/works/");
+  const isPortfolioCategories = router?.pathname?.startsWith(
+    "/portfolio-categories/"
+  );
 
   return (
     <>
@@ -25,9 +29,9 @@ export default function Layout({ children, router }: any) {
           {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
           <motion.div key={router.route}>
             <Header location={router} />
-            <Social />
+            {(isHomePage || isWorkDetail) && <Social />}
             {/* <Email /> */}
-            {isHomePage ? (
+            {isHomePage || isPortfolioCategories ? (
               <>{children}</>
             ) : (
               <MainContainer>{children}</MainContainer>
