@@ -8,6 +8,11 @@ export default function Footer() {
       <Copyright>
         Copyright 2014-2021 – Raúl de Diego . All rights reserved
       </Copyright>
+      <Copyright>
+        The parcial o total reproduction of the designs, ideas or content
+        without the consent of the author will be reported to the legal
+        authorities.
+      </Copyright>
 
       <By className="p-d-flex p-ai-center p-jc-center p-my-2">
         Develop by
@@ -25,6 +30,7 @@ export default function Footer() {
 }
 
 const FooterContainer = styled.footer`
+  font-family: "Karla", sans-serif;
   ${mixins.flexCenter};
   flex-direction: column;
   padding: 50px 25px 25px 25px;
@@ -34,11 +40,11 @@ const FooterContainer = styled.footer`
   height: auto;
 `;
 const Copyright = styled.p`
-  font-size: 1rem;
-  padding: 0;
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
   margin: 0;
 `;
 const By = styled.p`
-  padding: 10px 0 5px 0;
+  padding: 5px 0;
   font-size: 0.7rem;
 `;
