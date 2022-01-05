@@ -65,23 +65,9 @@ export default function SocialH() {
 }
 
 const SocialContainer = styled.div<{ isHomePage: boolean }>`
-  // position: absolute;
-  // width: 40px;
-  // height: ${(props: any) => (props?.isHomePage ? "400px" : "496px")};
-  // left: 40px;
-  // top: 568px;
-  // z-index: 2;
   margin: 4rem 0;
-
   color: ${theme.colors.teal};
-  // ${media.desktop`
-  //   position: fixed;
-  //   left: 25px;
-  //   top: auto;
-  //   bottom: 0;
-  //   height: ${(props: any) => (props?.isHomePage ? "350px" : "400px")};
-  // `};
-  ${media.tablet`display: none;`};
+  ${media.desktop`display: none;`};
 `;
 const SocialContent = styled.div`
   display: flex;
@@ -90,7 +76,6 @@ const SocialContent = styled.div`
 `;
 const SocialItemList = styled.ul`
   display: flex;
-  // flex-direction: column;
   align-items: center;
   z-index: 1;
 `;
@@ -142,6 +127,6 @@ const SocialLink = styled.a<SocialLinkProps>`
     font-size: 1.25rem;
   }
   &:hover {
-    color: ${theme.colors.grey};
+    color: ${theme.colors.bronze};
   }
 `;

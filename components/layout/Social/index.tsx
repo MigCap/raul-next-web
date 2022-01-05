@@ -13,7 +13,7 @@ export default function Social() {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 2000);
+    const timeout = setTimeout(() => setIsMounted(true), 500);
 
     return () => {
       clearTimeout(timeout);
@@ -149,6 +149,6 @@ const SocialLink = styled.a<SocialLinkProps>`
     font-size: 1.25rem;
   }
   &:hover {
-    color: ${theme.colors.grey};
+    color: ${theme.colors.bronze};
   }
 `;
