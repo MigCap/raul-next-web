@@ -198,6 +198,31 @@ const GlobalStyle = createGlobalStyle`
     transition: opacity 1000ms ${theme.easing};
   }
 
+  .p-dialog .p-dialog-header .p-dialog-header-icon,
+  .p-dialog.p-dialog-header.p-dialog-header-icon,
+  .p-link {
+    &:focus {
+      box-shadow: 0 0 0 0.2rem ${theme.colors.teal};
+    }
+  }
+
+  .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
+    background-color: ${theme.colors.teal};
+  }
+
+  .p-inputtext {
+    &:enabled:focus {
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem ${theme.colors.teal};
+      border-color: ${theme.colors.teal};
+  }
+
+  .p-button:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px ${
+      theme.colors.teal
+    }, 0 1px 2px 0 black;
+  }
 `;
 
 export default GlobalStyle;
