@@ -30,6 +30,8 @@ const WorksGalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 0 1rem;
+  ${media.thone`grid-template-columns: repeat(2, 1fr); 
+  `};
   ${media.phone`grid-template-columns: 100%; 
   padding: 0;
   `};

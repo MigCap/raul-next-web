@@ -45,11 +45,7 @@ export default function PortfolioCategoryPage({
             tags={tags}
             currCategory={category?.name}
           />
-          <WorksGallery
-            posts={posts}
-            media={media}
-            style={{ flexGrow: "1", paddingRight: "3rem" }}
-          />
+          <WorksGallery posts={posts} media={media} style={{ flexGrow: "1" }} />
         </PortfolioCategoryContainer>
       </Section>
     </>

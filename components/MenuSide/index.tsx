@@ -11,7 +11,7 @@ import SocialH from "components/layout/SocialH";
 
 import { categoriesConfig, categoriesIds, stagger } from "lib";
 
-import { theme } from "styles";
+import { media, theme } from "styles";
 
 const AccordionHeader = styled(motion.article)`
   display: flex;
@@ -74,50 +74,6 @@ export function MenuSide({
         exit={{ opacity: 0 }}
         variants={stagger}
       >
-        {/* <Accordion
-          activeIndex={activeIndex}
-          onTabChange={(e: any) => setActiveIndex(e.index)}
-        >
-          <AccordionTab
-            header={
-              <AccordionHeader>
-                <i className="pi pi-bookmark p-mr-2"></i>
-                <p className="p-text-uppercase p-m-0">categorías</p>
-              </AccordionHeader>
-            }
-          >
-            {categories &&
-              categories.map(({ id, name, count, slug }: any, i: number) => {
-                if (name === "Uncategorized" || count === 0) {
-                  return null;
-                }
-                return (
-                  <div key={id} onClick={() => setActiveIndex(null)}>
-                    <Link
-                      href={{
-                        pathname: "/portfolio-categories/[slug]",
-                        query: { slug },
-                      }}
-                    >
-                      <a className="lighten">
-                        <p
-                          className={`p-text-lowercase p-m-0 ${
-                            currCategory && currCategory === name
-                              ? "p-text-bold"
-                              : ""
-                          }`}
-                          style={{ fontSize: "0.7rem" }}
-                        >
-                          # {name} ({count})
-                        </p>
-                      </a>
-                    </Link>
-                  </div>
-                );
-              })}
-          </AccordionTab>
-        </Accordion> */}
-
         {filteredCategoriesWithChildren &&
           filteredCategoriesWithChildren.map(
             ({ id, name, count, slug, children, Icon }: any, i: number) => {
@@ -155,7 +111,6 @@ export function MenuSide({
               );
             }
           )}
-
         <SocialH />
       </CategoriesContainer>
     </>
@@ -165,6 +120,9 @@ export function MenuSide({
 const CategoriesContainer = styled(motion.div)`
   padding: 10rem 2rem 0 2rem;
   min-width: 20rem;
+  ${media.desktop` 
+    padding: 0 2rem 2rem 2rem;
+  `};
 `;
 const CategoryTitleContainer = styled.div`
   display: flex;
