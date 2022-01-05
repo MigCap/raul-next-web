@@ -109,14 +109,22 @@ export async function getMedia(posts: any) {
       .join()
       .replace(" ", "");
 
-  const mediaRes = await fetch(`${MEDIA_API_URL}?include=${postsMediaIds}`);
+  const mediaRes = await fetch(
+    `${MEDIA_API_URL}?include=${postsMediaIds}&per_page=${
+      Number(posts?.length) || 20
+    }`
+  );
   const media = await mediaRes.json();
   return media;
 }
 
 export function getFeaturedMedia(media: any, id: any) {
-  if (!id) return;
-  const featuredMediaArray = media?.filter((element: any) => element.id === id);
+  if (!Number(id)) return;
+
+  const featuredMediaArray = media?.filter((element: any) => {
+    return element.id === id;
+  });
+
   return featuredMediaArray?.length > 0 ? featuredMediaArray[0] : null;
 }
 
