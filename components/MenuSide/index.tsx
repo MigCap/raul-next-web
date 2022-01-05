@@ -146,6 +146,8 @@ const CategoryTitle = styled.h1`
 `;
 const SubCategoriesContainer = styled.div`
   margin-left: 4.5rem;
+  display: flex;
+  flex-direction: column;
   a {
     font-family: "Josefin Slab", serif;
     color: ${theme.colors.orange};
