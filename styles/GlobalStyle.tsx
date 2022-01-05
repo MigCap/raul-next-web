@@ -55,7 +55,15 @@ const GlobalStyle = createGlobalStyle`
   h5 {
     font-weight: 600;
     color: ${theme.colors.white};
-    margin: 0 0 10px 0;
+    margin: 0 0 0 0;
+  }
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+  }
+
+  h2 {
+    font-family: "Josefin Slab", serif;
   }
 
   #root {
@@ -94,6 +102,11 @@ const GlobalStyle = createGlobalStyle`
       outline: 0;
     }
   }
+
+  a.lighten:hover {
+    // filter: brightness(1.5);
+    color: ${theme.colors.teal};
+}
 
   button {
     cursor: pointer;

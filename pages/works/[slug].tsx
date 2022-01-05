@@ -154,9 +154,9 @@ const PostDetailContent = styled.div<ImagesLengthProp>`
     gap: 0;
   `};
 `;
-const PostTitleContainerMobile = styled.div`
-  display: flex;
-`;
+// const PostTitleContainerMobile = styled.div`
+//   display: flex;
+// `;
 const PostTitle = styled(motion.h1)`
   margin: 0 0 1rem 0;
   color: ${theme.colors.teal};

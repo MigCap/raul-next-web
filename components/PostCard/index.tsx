@@ -1,8 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
+
+import { Filigrana } from "components/Icons";
 
 import { fadeInUp, scaleAndTab } from "lib";
 
@@ -18,17 +20,17 @@ const postCard = {
   },
 };
 
-const arrowMotion = {
-  initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
-  hover: {
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      type: "tween",
-      ease: "easeIn",
-    },
-  },
-};
+// const arrowMotion = {
+//   initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
+//   hover: {
+//     opacity: 1,
+//     transition: {
+//       duration: 0.4,
+//       type: "tween",
+//       ease: "easeIn",
+//     },
+//   },
+// };
 
 export default function PostCard({
   post,
@@ -46,25 +48,20 @@ export default function PostCard({
         initial="initial"
         variants={postCard}
       >
-        <Link
-          href={{
-            pathname: "/works/[slug]",
-            query: { slug: post.slug },
-          }}
-        >
-          <a style={{ width: "100%" }}>
-            <PostCardTitle>
-              {post.title.rendered}
-              <motion.span variants={arrowMotion}> →</motion.span>
-            </PostCardTitle>
+        <Link href={`/works/${post.slug}`}>
+          <a>
             {featuredMedia && (
-              <ImageContainer variants={scaleAndTab}>
+              <ImageContainer>
                 <StyledImage
-                  priority
                   src={featuredMedia?.source_url}
-                  layout="fill"
-                  alt={featuredMedia?.alt_text}
+                  alt={`${post.title.rendered}-image`}
                 />
+                <PostCardTitleContainer>
+                  <div>
+                    <Filigrana />
+                    <h1>{post.title.rendered}</h1>
+                  </div>
+                </PostCardTitleContainer>
               </ImageContainer>
             )}
           </a>
@@ -79,27 +76,59 @@ const CardContainer = styled(motion.div)`
   &:hover .cardImage {
     filter: opacity(0.9);
   }
+  a {
+    width: 100%;
+  }
 `;
-const PostCardTitle = styled(motion.p)`
-  margin: 0 0 0.5rem 0;
-  padding: 0;
-  font-size: 0.9rem;
-  max-width: 80%;
+
+const StyledImage = styled.img`
+  position: absolute;
+  object-fit: cover;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  transition: ${theme.transition};
+`;
+const PostCardTitleContainer = styled.div`
+  padding: 0.5rem;
+  position: relative;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: start;
+  justify-content: end;
+  transition: ${theme.transition};
+  div {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    h1 {
+      padding: 0 0 0 0.5rem;
+    }
+  }
+  &:hover {
+    opacity: 1;
+  }
 `;
 const ImageContainer = styled(motion.div)`
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 10rem;
   width: 100%;
-  border-radius: 1rem;
-`;
-const StyledImage = styled(Image)`
-  object-fit: cover;
   border-radius: 5px;
-  width: 850px;
-  height: 567px;
-  overflow: visible;
-  transition: all 0.5s ease;
+  background-color: ${theme.colors.teal};
+  transition: ${theme.transition};
+  &:hover ${StyledImage} {
+    opacity: 0.1;
+    border-radius: 5px 40px 5px 5px;
+  }
+  &:hover {
+    border-radius: 5px 40px 5px 5px;
+  }
 `;

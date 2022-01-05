@@ -34,7 +34,7 @@ export default function PortfolioCategoryPage({
         />
       </Head>
 
-      <Section>
+      <Section margin="0 2rem" maxWidth="100%">
         <PortfolioCategoryContainer
           initial="initial"
           animate="animate"
@@ -45,7 +45,11 @@ export default function PortfolioCategoryPage({
             tags={tags}
             currCategory={category?.name}
           />
-          <WorksGallery posts={posts} media={media} />
+          <WorksGallery
+            posts={posts}
+            media={media}
+            style={{ flexGrow: "1", paddingRight: "3rem" }}
+          />
         </PortfolioCategoryContainer>
       </Section>
     </>

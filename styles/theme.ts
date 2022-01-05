@@ -3,6 +3,7 @@ const theme = {
     primary: "#6bb0b2",
     teal: "#6bb0b2",
     bronze: "#dcc594",
+    orange: "#EF9700",
     // bg_color: "#f0f0f0",
 
     dark: "#000007",
@@ -23,7 +24,7 @@ const theme = {
     white: "white",
     pink: "#FF647F",
     yellow: "#FFC464",
-    orange: "#FF9E64",
+    // orange: "#FF9E64",
     green: "#64ffda",
     blue: "#71AFFF",
     darkBlue: "#1D7FFC",
@@ -53,6 +54,7 @@ const theme = {
 
   easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
   transition: "all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)",
+  // transition: "all 150ms cubic-bezier(0.4, 0, 0.2, 1)",
 
   borderRadius: "2px",
   headerHeight: "100px",
