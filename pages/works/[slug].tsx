@@ -152,6 +152,7 @@ const PostDetailContent = styled.div<ImagesLengthProp>`
   ${media.desktop`
     grid-template-columns: 100%;
     gap: 0;
+    margin-top: 1rem;
   `};
 `;
 // const PostTitleContainerMobile = styled.div`
