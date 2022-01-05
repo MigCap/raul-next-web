@@ -112,6 +112,7 @@ const NavList = styled.ol`
   width: 100%;
   ${media.phablet`margin-bottom: 3rem;`};
 `;
+
 const NavListItem = styled.li`
   margin: 0 auto 20px;
   position: relative;
@@ -124,8 +125,8 @@ const NavListItem = styled.li`
     font-size: ${theme.fontSizes.xlarge};
   `};
 `;
+
 const NavLink = styled(Link)`
-  //   ${mixins.link};
   padding: 3px 20px 20px;
   width: 100%;
 `;
@@ -135,36 +136,29 @@ const SocialContainer = styled.div`
   width: 100%;
   max-width: 270px;
   margin: 0 auto;
-  // display: none;
   ${media.tablet`display: block;`};
 `;
+
 const SocialItemList = styled.ul`
   ${mixins.flexCenter};
 `;
+
 const SocialItem = styled.li``;
 interface SocialLinkProps {
   name: string;
 }
+
 const SocialLink = styled.a<SocialLinkProps>`
-  // padding: 10px;
-  // svg {
-  //   width: 20px;
-  //   height: 20px;
-  // }
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: ${theme.colors.white};
-  // background-color: ${theme.colors.white};
   border: solid 2px ${theme.colors.white};
   border-radius: 50%;
   width: 50px;
   height: 50px;
-
   margin: 0 10px;
   padding: 10px;
-
   transform: translateY(
     ${(props: any) =>
       props.scrollDirection === "down" ? `-${theme.headerScrollHeight}` : "0px"}
@@ -178,6 +172,7 @@ const SocialLink = styled.a<SocialLinkProps>`
     font-size: 1.25rem;
   }
   &:hover {
-    color: ${theme.colors.grey};
+    color: ${theme.colors.orange} !important;
+    border: solid 2px ${theme.colors.orange};
   }
 `;

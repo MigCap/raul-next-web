@@ -138,6 +138,24 @@ const mixins = {
     ${media.tablet`padding: 0 50px;`};
     ${media.phablet`padding: 0 25px;`};
   `,
+
+  animatedUnderline: css`
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right, ${theme.colors.orange}, ${theme.colors.orange});
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+
+    &:hover {
+      background-size: 0 2px, 100% 2px;
+    }
+  `,
 };
 
 export default mixins;

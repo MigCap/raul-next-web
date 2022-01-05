@@ -147,13 +147,14 @@ export default function Header({ location }: any) {
                         nodeRef={nodeRef}
                         key={i}
                         style={{ transitionDelay: `${i * 100}ms` }}
+                        isCurrRoute={isCurrRoute}
                       >
                         <NavLink href={path}>
                           <a>
                             <p className="p-m-0">{name}</p>
                             {isCurrRoute && (
                               <NavLinkSelectedUnderline
-                                isHomePage={isHomePage}
+                                isCurrRoute={isCurrRoute}
                               />
                             )}
                           </a>
@@ -185,12 +186,6 @@ interface IHeaderContainer {
   isHomePage: boolean;
 }
 
-interface INavListItem {
-  nodeRef: any;
-  key: any;
-  style: any;
-}
-
 const HeaderContainer = styled.header<IHeaderContainer>`
   ${mixins.flexBetween};
   position: fixed;
@@ -219,15 +214,13 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     ${(props: any) =>
       props.scrollDirection === "down" ? `-${theme.headerScrollHeight}` : "0px"}
   );
- 
-
-  a {
-    &:hover,
-    &:focus {
-      color: ${theme.colors.lightestSlate};
-      outline: 0;
-    }
-  }
+  // a {
+  //   &:hover,
+  //   &:focus {
+  //     color: ${theme.colors.orange};
+  //     outline: 0;
+  //   }
+  // }
 `;
 const Navbar = styled(Nav)<any>`
   ${mixins.flexBetween};
@@ -255,18 +248,32 @@ const NavList = styled.ol`
     ${mixins.flexBetween};
   }
 `;
+interface INavListItem {
+  nodeRef: any;
+  key: any;
+  style: any;
+  isCurrRoute: any;
+}
 const NavListItem = styled.li<INavListItem>`
   margin: 0 1.2rem;
   position: relative;
   font-size: ${theme.fontSizes.smallish};
+  color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
+  a {
+    &:hover,
+    &:focus {
+      color: ${theme.colors.orange};
+      outline: 0;
+    }
+  }
+  ${mixins.animatedUnderline}
 `;
 const NavLink = styled(Link)`
   padding: 1rem 1.2rem;
 `;
 const NavLinkSelectedUnderline = styled.div<any>`
   height: 2px;
-  background-color: ${({ isHomePage }) =>
-    isHomePage ? theme.colors.dark : theme.colors.white};
+  background-color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
 `;
 
 const Hamburger = styled.div`
