@@ -14,7 +14,7 @@ export const routesConfig = [
   {
     id: "about",
     name: "about",
-    path: "/",
+    path: "/about",
   },
   {
     id: "portfolio-categories",
@@ -73,7 +73,7 @@ export const socialLinks: any = {
 export const socialMedia = [
   {
     name: "Mail",
-    url: "https://www.linkedin.com/in/rauldediegovazquez/",
+    url: "/contact",
     icon: "pi pi-envelope",
   },
   socialLinks.linkedin,
