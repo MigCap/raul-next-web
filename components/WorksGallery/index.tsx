@@ -33,7 +33,6 @@ const WorksGalleryContainer = styled.div`
   ${media.thone`grid-template-columns: repeat(2, 1fr); 
   `};
   ${media.phone`grid-template-columns: 100%; 
-  padding: 0;
   `};
   gap: 1em;
   overflow: hidden;
