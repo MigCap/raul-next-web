@@ -11,7 +11,7 @@ import SocialH from "components/layout/SocialH";
 
 import { categoriesConfig, categoriesIds, stagger } from "lib";
 
-import { media, theme } from "styles";
+import { media, mixins, theme } from "styles";
 
 const AccordionHeader = styled(motion.article)`
   display: flex;
@@ -81,6 +81,8 @@ export function MenuSide({
                 return null;
               }
 
+              const isSelected = name === currCategory;
+
               return (
                 <Fragment key={id}>
                   <CategoryTitleContainer>
@@ -88,7 +90,9 @@ export function MenuSide({
                     <div key={id} onClick={() => setActiveIndex(null)}>
                       <Link href={`/portfolio-categories/${slug}`}>
                         <a className="lighten">
-                          <CategoryTitle>{name}</CategoryTitle>
+                          <CategoryTitle isSelected={isSelected}>
+                            {name}
+                          </CategoryTitle>
                         </a>
                       </Link>
                     </div>
@@ -98,11 +102,19 @@ export function MenuSide({
                       children.length > 0 &&
                       children.map((childCategory: any) => {
                         const { id, name, slug } = childCategory;
+                        const isSelected = name === currCategory;
                         return (
-                          <Link href={`/portfolio-categories/${slug}`} key={id}>
-                            <a className="lighten">
+                          <Link
+                            href={`/portfolio-categories/${slug}`}
+                            passHref
+                            key={id}
+                          >
+                            <SubCategoryAnchor
+                              className="lighten"
+                              isSelected={isSelected}
+                            >
                               <span>{name}</span>
-                            </a>
+                            </SubCategoryAnchor>
                           </Link>
                         );
                       })}
@@ -135,11 +147,13 @@ const CategoryTitleContainer = styled.div`
     align-self: start;
   }
 `;
-const CategoryTitle = styled.h1`
-  color: ${theme.colors.primary};
+const CategoryTitle = styled.h1<any>`
+  color: ${({ isSelected }) =>
+    isSelected ? theme.colors.orange : theme.colors.teal};
   font-weight: 800;
   transition: ${theme.transition};
   font-size: 1.5rem;
+  ${mixins.animatedUnderline}
   &:hover {
     color: ${theme.colors.orange};
   }
@@ -148,9 +162,16 @@ const SubCategoriesContainer = styled.div`
   margin-left: 4.5rem;
   display: flex;
   flex-direction: column;
-  a {
-    font-family: "Josefin Slab", serif;
-    color: ${theme.colors.orange};
-    font-size: 1rem;
+`;
+const SubCategoryAnchor = styled.a<any>`
+  font-family: "Josefin Slab", serif;
+  font-size: 1rem;
+  span {
+    color: ${({ isSelected }) =>
+      isSelected ? theme.colors.orange : theme.colors.teal};
+    ${mixins.animatedUnderline}
+    &:hover {
+      color: ${theme.colors.orange} !important;
+    }
   }
 `;

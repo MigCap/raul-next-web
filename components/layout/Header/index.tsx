@@ -214,13 +214,6 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     ${(props: any) =>
       props.scrollDirection === "down" ? `-${theme.headerScrollHeight}` : "0px"}
   );
-  // a {
-  //   &:hover,
-  //   &:focus {
-  //     color: ${theme.colors.orange};
-  //     outline: 0;
-  //   }
-  // }
 `;
 const Navbar = styled(Nav)<any>`
   ${mixins.flexBetween};
