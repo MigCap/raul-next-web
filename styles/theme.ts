@@ -3,6 +3,7 @@ const theme = {
     primary: "#6bb0b2",
     teal: "#6bb0b2",
     bronze: "#dcc594",
+    bronzeLight: "#E0D3B4",
     orange: "#EF9700",
     // bg_color: "#f0f0f0",
 
@@ -35,10 +36,9 @@ const theme = {
   },
 
   fonts: {
-    Montserrat:
-      "Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
-    SFMono:
-      "SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace",
+    Karla: "Karla, sans-serif",
+    JosefinSlab: "Josefin Slab, serif",
+    Oswald: "Oswald, sans-serif",
   },
 
   fontSizes: {

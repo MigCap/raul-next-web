@@ -2,12 +2,15 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
-import { isCurrentRoute, socialMedia } from "lib";
+import { useRouter } from "next/router";
+
+import { isCurrentRoute, socialMedia, locales as localesConfig } from "lib";
 
 import { theme, mixins, media, Nav } from "styles";
 
 export default function Menu(props: any) {
-  const { isHome, menuOpen, navLinks, location, toggleMenu } = props;
+  const { menuOpen, navLinks, location, toggleMenu } = props;
+  const { locale } = useRouter();
 
   return (
     <MenuContainer
@@ -26,7 +29,7 @@ export default function Menu(props: any) {
                   <NavListItem key={name} onClick={toggleMenu}>
                     <NavLink href={path}>
                       <a>
-                        {name}
+                        {name[locale || localesConfig[0]]}
                         {isCurrRoute && (
                           <div
                             style={{
@@ -95,7 +98,7 @@ const Sidebar = styled.div`
   position: relative;
   right: 0;
   margin-left: auto;
-  font-family: ${theme.fonts.SFMono};
+  font-family: ${theme.fonts.JosefinSlab};
   box-shadow: -2px 0px 4px ${theme.colors.teal};
   ${media.thone`padding: 25px;`};
   ${media.phablet`width: 75vw;`};

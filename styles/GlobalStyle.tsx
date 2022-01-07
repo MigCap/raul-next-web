@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.slate};
     // color: ${theme.colors.grey};
     line-height: 1.25;
-    font-family: ${theme.fonts.Montserrat};
+    font-family: ${theme.fonts.Karla};
     font-size: ${theme.fontSizes.xlarge};
     ${media.phablet`font-size: ${theme.fontSizes.large};`}
 
@@ -59,11 +59,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-family: "Oswald", sans-serif;
+    font-family: ${theme.fonts.Oswald};
   }
 
   h2 {
-    font-family: "Josefin Slab", serif;
+    font-family: ${theme.fonts.JosefinSlab};
   }
 
   #root {

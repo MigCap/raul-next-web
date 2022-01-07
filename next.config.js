@@ -5,4 +5,10 @@ module.exports = {
   images: {
     domains: ["wp.rauldediego.com", "www.rauldediego.es"],
   },
+  i18n: {
+    locales: ["en", "sp"],
+    defaultLocale: "en",
+    localeDetection: false,
+  },
+  trailingSlash: true,
 };

@@ -2,27 +2,36 @@ import { useState } from "react";
 
 import Head from "next/head";
 
-import { motion } from "framer-motion";
-import styled from "styled-components";
-
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
 
+import { useTranslation } from "hooks";
+
 import { about } from "lib";
 
-import { theme, Section } from "styles";
+import {
+  Section,
+  ContactContainer,
+  FormContainer,
+  FieldWrapper,
+} from "./styles";
+import { locale } from "./locale";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const { t } = useTranslation({ localeFile: locale });
+
   return (
     <>
       <Head>
-        <title>{about.name} Contact</title>
-        <meta name="description" content={`${about.name} Contact`} />
+        <title>
+          {about.name} {t("title")}
+        </title>
+        <meta name="description" content={`${about.name} ${t("title")}`} />
       </Head>
 
       <Section>
@@ -32,16 +41,8 @@ export default function ContactPage() {
           exit={{ opacity: 0 }}
         >
           <FormContainer>
-            <h3>Contact</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-              assumenda velit sint, natus non expedita repudiandae beatae labore
-              earum nobis! Illum amet atque libero ducimus repudiandae laborum
-              suscipit eligendi laudantium. ipsum dolor sit amet consectetur
-              adipisicing elit. Sunt illum nisi dolores tenetur et. Dolor
-              inventore, quas voluptates culpa possimus dolorum quis, cupiditate
-              temporibus sit exercitationem optio explicabo assumenda dolorem.
-            </p>
+            <h3>{t("title")}</h3>
+            <p>{t("description")}</p>
 
             <FieldWrapper>
               <span className="p-float-label">
@@ -50,7 +51,7 @@ export default function ContactPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{t("name")}</label>
               </span>
             </FieldWrapper>
 
@@ -62,7 +63,7 @@ export default function ContactPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t("email")}</label>
               </span>
             </FieldWrapper>
 
@@ -76,12 +77,12 @@ export default function ContactPage() {
                   cols={30}
                   autoResize
                 />
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t("message")}</label>
               </span>
             </FieldWrapper>
 
             <Button
-              label="Enviar"
+              label={t("send")}
               className="p-button-raised p-button-rounded p-mt-3"
               style={{ width: "100%" }}
             />
@@ -91,40 +92,3 @@ export default function ContactPage() {
     </>
   );
 }
-
-const ContactContainer = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  h1,
-  h3,
-  p {
-    color: ${theme.colors.teal};
-  }
-`;
-const FormContainer = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 80%;
-  margin: 0 auto;
-
-  h3 {
-    padding: 0 0 1rem 0;
-  }
-
-  label {
-    align-self: flex-start;
-  }
-
-  span,
-  textarea,
-  input {
-    width: 100%;
-  }
-`;
-const FieldWrapper = styled(motion.div)`
-  margin: 1.5rem 0;
-  width: 100%;
-`;

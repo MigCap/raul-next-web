@@ -1,12 +1,15 @@
 import Head from "next/head";
 
-import styled from "styled-components";
+import { useTranslation } from "hooks";
 
 import { about } from "lib";
 
-import { Section, theme } from "styles";
+import { Section, BlogPageContainer } from "./styles";
+import { locale } from "./locale";
 
 export default function BlogPage() {
+  const { t } = useTranslation({ localeFile: locale });
+
   return (
     <>
       <Head>
@@ -16,30 +19,10 @@ export default function BlogPage() {
 
       <Section>
         <BlogPageContainer>
-          <h3>Blog</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque rem
-            hic repellendus delectus. Quis illum in ab ratione natus! Saepe
-            atque est sint illum et consequatur necessitatibus, iure veritatis
-            perferendis!
-          </p>
+          <h3>{t("title")}</h3>
+          <p>{t("description")}</p>
         </BlogPageContainer>
       </Section>
     </>
   );
 }
-
-const BlogPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
-  padding: 1rem 0;
-  h1,
-  h3,
-  p {
-    color: ${theme.colors.teal};
-  }
-  h3 {
-    padding-bottom: 1rem;
-  }
-`;

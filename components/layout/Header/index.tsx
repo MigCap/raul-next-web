@@ -12,6 +12,7 @@ import { Logo } from "components/Icons";
 import {
   headerHeight,
   isCurrentRoute,
+  locales as localesConfig,
   routesConfig as navLinks,
   scaleAndTab,
   throttle,
@@ -20,6 +21,7 @@ import {
 import { theme, mixins, media, Nav } from "styles";
 
 import Menu from "./Menu";
+import LocaleSelector from "./LocaleSelector";
 
 export default function Header({ location }: any) {
   const [lastScrollTop, setLastScrollTop] = useState<any>(0);
@@ -87,8 +89,8 @@ export default function Header({ location }: any) {
     []
   );
 
-  const router = useRouter();
-  const isHomePage = router?.pathname === "/";
+  const { pathname, locale } = useRouter();
+  const isHomePage = pathname === "/";
 
   const headerRef = useRef(null);
   const nodeRef = useRef(null);
@@ -151,7 +153,9 @@ export default function Header({ location }: any) {
                       >
                         <NavLink href={path}>
                           <a>
-                            <p className="p-m-0">{name}</p>
+                            <p className="p-m-0">
+                              {name[locale || localesConfig[0]]}
+                            </p>
                             {isCurrRoute && (
                               <NavLinkSelectedUnderline
                                 isCurrRoute={isCurrRoute}
@@ -166,6 +170,8 @@ export default function Header({ location }: any) {
             </TransitionGroup>
           </NavList>
         </NavLinks>
+
+        <LocaleSelector />
       </Navbar>
 
       <Menu
@@ -217,7 +223,7 @@ const HeaderContainer = styled.header<IHeaderContainer>`
 `;
 const Navbar = styled(Nav)<any>`
   ${mixins.flexBetween};
-  font-family: ${theme.fonts.SFMono};
+  font-family: ${theme.fonts.Karla};
   color: ${({ isHomePage }) =>
     isHomePage ? theme.colors.dark : theme.colors.white};
   counter-reset: item 0;

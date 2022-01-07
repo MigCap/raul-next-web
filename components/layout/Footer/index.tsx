@@ -30,7 +30,7 @@ export default function Footer() {
 }
 
 const FooterContainer = styled.footer`
-  font-family: "Karla", sans-serif;
+  font-family: ${theme.fonts.Karla};
   ${mixins.flexCenter};
   flex-direction: column;
   padding: 50px 25px 25px 25px;

@@ -5,9 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { Accordion, AccordionTab } from "primereact/accordion";
-
 import SocialH from "components/layout/SocialH";
+
+import { useTranslation } from "hooks/useTranslation";
 
 import { categoriesConfig, categoriesIds, stagger } from "lib";
 
@@ -63,6 +63,8 @@ export function MenuSide({
     filteredCategories
   );
 
+  const { locale } = useTranslation({});
+
   return (
     <>
       <CategoriesContainer
@@ -88,7 +90,7 @@ export function MenuSide({
                   <CategoryTitleContainer>
                     <Icon />
                     <div key={id} onClick={() => setActiveIndex(null)}>
-                      <Link href={`/portfolio-categories/${slug}`}>
+                      <Link href={`${locale}/portfolio-categories/${slug}`}>
                         <a className="lighten">
                           <CategoryTitle isSelected={isSelected}>
                             {name}
@@ -105,7 +107,7 @@ export function MenuSide({
                         const isSelected = name === currCategory;
                         return (
                           <Link
-                            href={`/portfolio-categories/${slug}`}
+                            href={`${locale}/portfolio-categories/${slug}`}
                             passHref
                             key={id}
                           >
@@ -164,7 +166,7 @@ const SubCategoriesContainer = styled.div`
   flex-direction: column;
 `;
 const SubCategoryAnchor = styled.a<any>`
-  font-family: "Josefin Slab", serif;
+  font-family: ${theme.fonts.JosefinSlab};
   font-size: 1rem;
   span {
     color: ${({ isSelected }) =>

@@ -5,30 +5,32 @@ import {
   Filigrana2,
 } from "components/Icons";
 
+export const locales = ["en", "sp"];
+
 export const routesConfig = [
   {
     id: "",
-    name: "home",
+    name: { en: "home", sp: "home" },
     path: "/",
   },
   {
     id: "about",
-    name: "about",
+    name: { en: "about", sp: "sobre" },
     path: "/about",
   },
   {
     id: "portfolio-categories",
-    name: "portfolio",
+    name: { en: "portfolio", sp: "trabajos" },
     path: "/portfolio-categories/graphic-design",
   },
   {
     id: "blog",
-    name: "blog",
+    name: { en: "blog", sp: "blog" },
     path: "/blog",
   },
   {
     id: "contact",
-    name: "contact",
+    name: { en: "contact", sp: "contacto" },
     path: "/contact",
   },
 ];
@@ -86,13 +88,21 @@ export const about = {
   image: "/assets/Foto1CVsm.png",
   mainMail: "hello@rauldediego.com",
   contactMail: "contact@rauldediego.com",
-  position: "Senior Graphic Designer and Illustrator",
-  positionDescription: "Artefinalista y Director de Arte",
+  position: {
+    en: "Senior Graphic Designer and Illustrator",
+    sp: "Diseñador Gráfico Senior e Ilustrador",
+  },
+  positionDescription: {
+    en: "Art Director",
+    sp: "Artefinalista y Director de Arte",
+  },
   // title: "¡Hola!",
-  title: "about",
+  title: { en: "about", sp: "sobre" },
   subtitle: "",
-  description:
-    "Me llamo Raúl, encantado de saludarte. ¡Bienvenid@ a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
+  description: {
+    en: "My name is Raúl, encantado de saludarte. ¡Bienvenid@ a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
+    sp: "Me llamo Raúl, encantado de saludarte. ¡Bienvenid@ a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
+  },
   experience: [
     {
       title: "Desarrollador Frontend",

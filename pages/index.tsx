@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 // import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
+import { useTranslation } from "hooks";
+
 import { getMedia, getPosts, getCategories, about } from "lib";
 
 import Hero from "components/Hero";
@@ -14,6 +16,8 @@ import WorksGallery from "components/WorksGallery";
 import { theme, mixins, media, Section } from "styles";
 
 export default function Home({ posts, media, categories }: any) {
+  const { locale } = useTranslation({});
+
   return (
     <>
       <Head>
@@ -25,8 +29,8 @@ export default function Home({ posts, media, categories }: any) {
         <Hero />
 
         <section className="container" style={{ marginTop: "5rem" }}>
-          <HomeSection title={about.title}>
-            <p>{about.description}</p>
+          <HomeSection title={about?.title?.[locale]}>
+            <p>{about?.description?.[locale]}</p>
           </HomeSection>
 
           <HomeSection title={"works"}>
