@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 import { useTranslation } from "hooks";
 
-import { getMedia, getPosts, getCategories, about } from "lib";
+import { getMedia, getPosts, getPostsByLang, getCategories, about } from "lib";
 
 import Hero from "components/Hero";
 import WorksGallery from "components/WorksGallery";
@@ -89,8 +89,8 @@ const LineSeparator = styled.div`
   margin: 3px 0 0 1rem;
 `;
 
-export async function getStaticProps({ params }: { params: any }) {
-  const posts = await getPosts();
+export async function getStaticProps({ locale }: { locale: any }) {
+  const posts = await getPostsByLang(locale);
   const media = await getMedia(posts);
   const categories = await getCategories();
   return {

@@ -64,7 +64,7 @@ const EmailLinkWrapper = styled.div`
   }
 `;
 const EmailLink = styled.a`
-  font-family: ${theme.fonts.SFMono};
+  font-family: ${theme.fonts.Karla};
   font-size: ${theme.fontSizes.xsmall};
   letter-spacing: 0.5px;
   writing-mode: vertical-rl;

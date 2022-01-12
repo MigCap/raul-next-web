@@ -142,6 +142,7 @@ const FiligranaContainerDesktop = styled.div`
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   margin-top: 8rem;
+  width: 100%;
   ${media.phablet`
       margin-top: 1rem;
       gap: 0;

@@ -8,7 +8,7 @@ import { useTranslation } from "hooks";
 import { theme, mixins } from "styles";
 
 function LocaleSelector() {
-  const { locale, isEn, isSp, linkLocaleHref } = useTranslation({});
+  const { isEn, isSp, linkLocaleHref } = useTranslation({});
 
   const router = useRouter();
   const { pathname } = router;

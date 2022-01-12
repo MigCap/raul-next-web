@@ -7,7 +7,8 @@ import { sp } from "locales/sp";
 export type TLocales = "en" | "sp";
 
 export function useTranslation({ localeFile = null }: { localeFile?: any }) {
-  const { locale, route, query } = useRouter();
+  const router = useRouter();
+  const { locale, route, query } = router;
 
   const isEn = locale === "en";
   const isSp = locale === "sp";
@@ -23,12 +24,32 @@ export function useTranslation({ localeFile = null }: { localeFile?: any }) {
     [locale]
   );
 
-  const hasQuery = query?.slug !== "";
+  const slug = query?.slug as string;
+  const hasQuery = slug !== "";
+  const isWorkPost = route.startsWith("/works/");
+
+  const getSlugWithCurrentLocale = useCallback(() => {
+    const splitedSlug = slug?.split("-");
+    const langIndex = splitedSlug?.length - 1;
+    // const lang = splitedSlug?.[langIndex];
+    const slugMinusLang = splitedSlug?.slice(0, langIndex)?.join("-");
+    // const slugWithCurrentLocale = `${slugMinusLang}-${locale}`;
+    const slugWithCurrentLocale =
+      locale === "sp" ? `${slugMinusLang}-en` : `${slugMinusLang}-sp`;
+
+    return slugWithCurrentLocale;
+  }, [locale]);
+
   const linkLocaleHref = hasQuery
-    ? {
-        pathname: `/${route}`,
-        query: { slug: query.slug },
-      }
+    ? isWorkPost
+      ? {
+          pathname: `/${route}`,
+          query: { slug: getSlugWithCurrentLocale() },
+        }
+      : {
+          pathname: `/${route}`,
+          query: { slug },
+        }
     : `/${route}`;
 
   return { t, isEn, isSp, locale: locale as TLocales, linkLocaleHref };

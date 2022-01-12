@@ -90,7 +90,7 @@ export function MenuSide({
                   <CategoryTitleContainer>
                     <Icon />
                     <div key={id} onClick={() => setActiveIndex(null)}>
-                      <Link href={`${locale}/portfolio-categories/${slug}`}>
+                      <Link href={`/portfolio-categories/${slug}`}>
                         <a className="lighten">
                           <CategoryTitle isSelected={isSelected}>
                             {name}
@@ -107,7 +107,7 @@ export function MenuSide({
                         const isSelected = name === currCategory;
                         return (
                           <Link
-                            href={`${locale}/portfolio-categories/${slug}`}
+                            href={`/portfolio-categories/${slug}`}
                             passHref
                             key={id}
                           >

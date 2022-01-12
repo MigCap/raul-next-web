@@ -71,11 +71,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: { params: any }) {
+export async function getStaticProps({ params, locale }: any) {
   const categories = await getCategories();
   const tags = await getTags();
   const category = await getCategory(params.slug);
-  const posts = await getPostsByCategoryId(category?.id);
+  const posts = await getPostsByCategoryId(category?.id, locale);
   const media = await getMedia(posts);
   return {
     props: {

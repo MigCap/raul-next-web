@@ -5,6 +5,15 @@ const TAGS_API_URL = `${BASE_URL}/tags`;
 const CATEGORIES_API_URL = `${BASE_URL}/categories`;
 const MEDIA_API_URL = `${BASE_URL}/media`;
 
+const TAG_LANG_EN = "55";
+const TAG_LANG_SP = "54";
+
+function getLangTagsByLang(lang: any) {
+  return lang === "sp"
+    ? `tags_exclude=${TAG_LANG_EN}&tags=${TAG_LANG_SP}`
+    : `tags_exclude=${TAG_LANG_SP}&tags=${TAG_LANG_EN}`;
+}
+
 export async function getPosts() {
   const fields =
     "?_fields=id,slug,title,content,excerpt,featured_media,categories,tags,_links";
@@ -12,9 +21,19 @@ export async function getPosts() {
   const posts = await postsRes.json();
   return posts;
 }
+export async function getPostsByLang(lang: any) {
+  const fields = `?_fields=id,slug,title,content,excerpt,featured_media,categories,tags,_links`;
+  const langTags = getLangTagsByLang(lang);
+  const postsRes = await fetch(`${POSTS_API_URL}${fields}&${langTags}`);
+  const posts = await postsRes.json();
+  return posts;
+}
 
-export async function getPostsByCategoryId(id: string) {
-  const postsRes = await fetch(`${POSTS_API_URL}?categories=${id}&per_page=18`);
+export async function getPostsByCategoryId(id: string, lang: any) {
+  const langTags = getLangTagsByLang(lang);
+  const postsRes = await fetch(
+    `${POSTS_API_URL}?categories=${id}&per_page=18&${langTags}`
+  );
   const posts = await postsRes.json();
   return posts;
 }
@@ -32,7 +51,7 @@ export async function getPostBySlug(slug: any) {
   return post?.[0];
 }
 
-export async function getPostBy(id: any) {
+export async function getPostById(id: any) {
   const postRes = await fetch(`${POSTS_API_URL}/${id}`);
   const post = await postRes.json();
 
@@ -105,7 +124,7 @@ export async function getMedia(posts: any) {
   const postsMediaIds =
     posts &&
     posts
-      ?.map((post: any) => post.featured_media)
+      ?.map((post: any) => post?.featured_media)
       .join()
       .replace(" ", "");
 
