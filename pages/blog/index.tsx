@@ -4,7 +4,7 @@ import { useTranslation } from "hooks";
 
 import { about } from "lib";
 
-import { Section, BlogPageContainer } from "./styles";
+import { Section, BlogPageContainer } from "styles/blog";
 
 export default function BlogPage() {
   const { t } = useTranslation({});
