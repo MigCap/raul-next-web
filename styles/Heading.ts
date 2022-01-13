@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import theme from './theme';
-import media from './media';
+import styled from "styled-components";
+import theme from "./theme";
+import media from "./media";
 
 const Heading = styled.h3`
   position: relative;
@@ -14,9 +14,9 @@ const Heading = styled.h3`
 
   &:before {
     counter-increment: section;
-    content: '0' counter(section) '.';
+    content: "0" counter(section) ".";
     margin-right: 10px;
-    font-family: ${theme.fonts.SFMono};
+    font-family: ${theme.fonts.JosefinSlab};
     font-weight: normal;
     color: ${theme.colors.green};
     font-size: ${theme.fontSizes.small};
@@ -26,7 +26,7 @@ const Heading = styled.h3`
   }
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     height: 1px;
     width: 300px;
