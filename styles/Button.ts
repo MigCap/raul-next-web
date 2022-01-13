@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from './theme';
+import styled from "styled-components";
+import theme from "./theme";
 
 const Button = styled.button`
   color: ${theme.colors.green};
@@ -7,7 +7,7 @@ const Button = styled.button`
   border: 1px solid ${theme.colors.green};
   border-radius: ${theme.borderRadius};
   font-size: ${theme.fontSizes.smallish};
-  font-family: ${theme.fonts.SFMono};
+  font-family: ${theme.fonts.JosefinSlab};
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
