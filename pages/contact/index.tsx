@@ -15,15 +15,14 @@ import {
   ContactContainer,
   FormContainer,
   FieldWrapper,
-} from "./styles";
-import { locale } from "./locale";
+} from "styles/contact";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const { t } = useTranslation({ localeFile: locale });
+  const { t } = useTranslation({});
 
   return (
     <>
@@ -52,12 +51,12 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const { t } = useTranslation({ localeFile: locale });
+  const { t } = useTranslation({});
 
   return (
     <>
       <FormContainer>
-        <p>{t("description")}</p>
+        <p>{t("contactDescription")}</p>
 
         <FieldWrapper>
           <span className="p-float-label">

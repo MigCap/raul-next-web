@@ -22,7 +22,7 @@ import {
   Section,
   AboutPageContainer,
   TestimonialItemContainer,
-} from "./styles";
+} from "styles/about";
 
 export default function AboutPage() {
   const router = useRouter();

@@ -5,10 +5,9 @@ import { useTranslation } from "hooks";
 import { about } from "lib";
 
 import { Section, BlogPageContainer } from "./styles";
-import { locale } from "./locale";
 
 export default function BlogPage() {
-  const { t } = useTranslation({ localeFile: locale });
+  const { t } = useTranslation({});
 
   return (
     <>
@@ -19,8 +18,8 @@ export default function BlogPage() {
 
       <Section>
         <BlogPageContainer>
-          <h3>{t("title")}</h3>
-          <p>{t("description")}</p>
+          <h3>{t("blog")}</h3>
+          <p>{t("blogDescription")}</p>
         </BlogPageContainer>
       </Section>
     </>

@@ -21,7 +21,7 @@ import {
   ROUTES_IDS,
 } from "lib";
 
-import { HomeSectionContainer, HomeAboutSection } from "./styles";
+import { HomeSectionContainer, HomeAboutSection } from "styles/home";
 
 export default function Home({ posts, media }: any) {
   const router = useRouter();
