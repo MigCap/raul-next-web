@@ -43,14 +43,14 @@ export function useTranslation({ localeFile = null }: { localeFile?: any }) {
   const linkLocaleHref = hasQuery
     ? isWorkPost
       ? {
-          pathname: `/${route}`,
+          pathname: `${route}`,
           query: { slug: getSlugWithCurrentLocale() },
         }
       : {
-          pathname: `/${route}`,
+          pathname: `${route}`,
           query: { slug },
         }
-    : `/${route}`;
+    : `${route}`;
 
   return { t, isEn, isSp, locale: locale as TLocales, linkLocaleHref };
 }

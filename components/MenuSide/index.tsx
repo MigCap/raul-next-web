@@ -9,13 +9,14 @@ import SocialH from "components/layout/SocialH";
 
 import { useTranslation } from "hooks/useTranslation";
 
-import { categoriesConfig, categoriesIds, stagger } from "lib";
+import {
+  categoriesConfig,
+  categoriesIds,
+  stagger,
+  getCategoryNameFromConfig,
+} from "lib";
 
 import { media, mixins, theme } from "styles";
-
-const AccordionHeader = styled(motion.article)`
-  display: flex;
-`;
 
 export function MenuSide({
   categories,
@@ -26,6 +27,8 @@ export function MenuSide({
   currCategory?: any;
   tags: any;
 }) {
+  const { locale } = useTranslation({});
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const filteredCategories = categories?.reduce((acc: any, categorie: any) => {
@@ -34,6 +37,7 @@ export function MenuSide({
         ...acc,
         {
           ...categorie,
+          name: getCategoryNameFromConfig(categorie?.id),
           Icon: categoriesConfig.filter((c: any) => c.id === categorie?.id)[0]
             .Icon,
           children: [],
@@ -63,8 +67,6 @@ export function MenuSide({
     filteredCategories
   );
 
-  const { locale } = useTranslation({});
-
   return (
     <>
       <CategoriesContainer
@@ -83,7 +85,7 @@ export function MenuSide({
                 return null;
               }
 
-              const isSelected = name === currCategory;
+              const isSelected = name["en"] === currCategory;
 
               return (
                 <Fragment key={id}>
@@ -93,7 +95,7 @@ export function MenuSide({
                       <Link href={`/portfolio-categories/${slug}`}>
                         <a className="lighten">
                           <CategoryTitle isSelected={isSelected}>
-                            {name}
+                            {name[locale]}
                           </CategoryTitle>
                         </a>
                       </Link>

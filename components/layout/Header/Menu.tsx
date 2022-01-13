@@ -26,7 +26,7 @@ export default function Menu(props: any) {
                 const isCurrRoute = isCurrentRoute(location, id);
 
                 return (
-                  <NavListItem key={name} onClick={toggleMenu}>
+                  <NavListItem key={`${name}-${id}`} onClick={toggleMenu}>
                     <NavLink href={path}>
                       <a>
                         {name[locale || localesConfig[0]]}
@@ -48,19 +48,27 @@ export default function Menu(props: any) {
           <SocialContainer>
             <SocialItemList>
               {socialMedia &&
-                socialMedia.map(({ name, url, icon, Icon }, i) => (
-                  <SocialItem key={i}>
-                    <SocialLink
-                      href={url}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      aria-label={name}
-                      name={name}
-                    >
-                      {Icon ? <Icon /> : icon ? <i className={icon} /> : <></>}
-                    </SocialLink>
-                  </SocialItem>
-                ))}
+                socialMedia.map(({ name, url, icon, Icon }, i) => {
+                  return (
+                    <SocialItem key={i}>
+                      <SocialLink
+                        href={url}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        aria-label={name}
+                        name={name}
+                      >
+                        {Icon ? (
+                          <Icon />
+                        ) : icon ? (
+                          <i className={icon} />
+                        ) : (
+                          <></>
+                        )}
+                      </SocialLink>
+                    </SocialItem>
+                  );
+                })}
             </SocialItemList>
           </SocialContainer>
         </NavLinks>

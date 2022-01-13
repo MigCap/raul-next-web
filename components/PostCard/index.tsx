@@ -97,8 +97,10 @@ const PostCardTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  align-items: start;
-  justify-content: end;
+  align-items: center;
+  justify-content: center;
+  // align-items: start;
+  // justify-content: end;
   transition: ${theme.transition};
   div {
     display: flex;
@@ -111,9 +113,6 @@ const PostCardTitleContainer = styled.div`
       padding: 0 0 0 0.5rem;
     }
   }
-  &:hover {
-    opacity: 1;
-  }
 `;
 const ImageContainer = styled(motion.div)`
   position: relative;
@@ -124,11 +123,14 @@ const ImageContainer = styled(motion.div)`
   border-radius: 5px;
   background-color: ${theme.colors.teal};
   transition: ${theme.transition};
+  &:hover ${PostCardTitleContainer} {
+    opacity: 1;
+  }
   &:hover ${StyledImage} {
     opacity: 0.1;
-    border-radius: 5px 40px 5px 5px;
+    // border-radius: 5px 40px 5px 5px;
   }
-  &:hover {
-    border-radius: 5px 40px 5px 5px;
-  }
+  // &:hover {
+  //   border-radius: 5px 40px 5px 5px;
+  // }
 `;

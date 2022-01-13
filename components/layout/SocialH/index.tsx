@@ -3,13 +3,17 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import styled from "styled-components";
+import styled, { Interpolation } from "styled-components";
 
 import { socialMedia } from "lib";
 
 import { theme, media } from "styles";
 
-export default function SocialH() {
+type SocialHProps = {
+  styles?: Interpolation<React.CSSProperties>;
+};
+
+export default function SocialH({ styles = {} }: SocialHProps) {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function SocialH() {
   const nodeRef = useRef(null);
 
   return (
-    <SocialContainer isHomePage={isHomePage}>
+    <SocialContainer isHomePage={isHomePage} styles={styles}>
       <TransitionGroup>
         {isMounted && (
           <CSSTransition nodeRef={nodeRef} timeout={3000} classNames="fade">
@@ -64,10 +68,11 @@ export default function SocialH() {
   );
 }
 
-const SocialContainer = styled.div<{ isHomePage: boolean }>`
+const SocialContainer = styled.div<{ isHomePage: boolean; styles: any }>`
   margin: 4rem 0;
   color: ${theme.colors.teal};
   ${media.desktop`display: none;`};
+  ${({ styles }) => styles}
 `;
 const SocialContent = styled.div`
   display: flex;

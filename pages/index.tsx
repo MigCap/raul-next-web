@@ -1,21 +1,30 @@
 import { ReactNode } from "react";
-
+import { useRouter } from "next/router";
 import Head from "next/head";
 
 import { motion } from "framer-motion";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
-import styled from "styled-components";
+
+import { Button } from "primereact/button";
+
+import Hero from "components/Hero";
+import Title from "components/Title";
+import WorksGallery from "components/WorksGallery";
+import { Filigrana, Filigrana2 } from "components/Icons";
 
 import { useTranslation } from "hooks";
 
-import { getMedia, getPosts, getPostsByLang, getCategories, about } from "lib";
+import {
+  getMedia,
+  getPostsByLang,
+  about,
+  getRoutePathById,
+  ROUTES_IDS,
+} from "lib";
 
-import Hero from "components/Hero";
-import WorksGallery from "components/WorksGallery";
+import { HomeSectionContainer, HomeAboutSection } from "./styles";
 
-import { theme, mixins, media, Section } from "styles";
-
-export default function Home({ posts, media, categories }: any) {
+export default function Home({ posts, media }: any) {
+  const router = useRouter();
   const { locale } = useTranslation({});
 
   return (
@@ -28,14 +37,59 @@ export default function Home({ posts, media, categories }: any) {
       <motion.main initial="initial" animate="animate" exit={{ opacity: 0 }}>
         <Hero />
 
-        <section className="container" style={{ marginTop: "5rem" }}>
-          <HomeSection title={about?.title?.[locale]}>
-            <p>{about?.description?.[locale]}</p>
+        <section>
+          <HomeSection
+            title={"heyThanksForComing"}
+            Icon={Filigrana}
+            margin="0"
+            maxWidth="100%"
+          >
+            <HomeAboutSection>
+              <div className="bg-wrapper"></div>
+              <div className="img-wrapper">
+                <img
+                  alt="Raul de Diego Picture"
+                  src="/assets/profile-pic-home.png"
+                  // width="241px"
+                  // height="241px"
+                />
+              </div>
+              {/* <NextImage
+                  alt="Raul de Diego Picture"
+                  src="/assets/profile-pic-home.png"
+                  width="241px"
+                  height="241px"
+                /> */}
+              <div className="right-side-wrapper">
+                <p>{about?.description?.[locale]}</p>
+                <div className="buttons-wrapper">
+                  <Button
+                    label={"Curriculum Vitae"}
+                    // onClick={() =>
+                    //   router.push(getRoutePathById(ROUTES_IDS.PORTFOLIO))
+                    // }
+                    className="p-button-primary p-mr-4"
+                  />
+                  <Button
+                    label={"Services Catalogue"}
+                    onClick={() =>
+                      router.push(getRoutePathById(ROUTES_IDS.PORTFOLIO))
+                    }
+                    className="p-button-primary"
+                  />
+                </div>
+              </div>
+            </HomeAboutSection>
           </HomeSection>
 
-          <HomeSection title={"works"}>
+          <HomeSection title={"whatCanIDoForYou"} Icon={Filigrana2}>
             <WorksGallery posts={posts} media={media} />
           </HomeSection>
+
+          {/* <HomeSectionContainer>
+            <Title title={"whatCanIDoForYou"} Icon={Filigrana2} />
+            <WorksGallery posts={posts} media={media} />
+          </HomeSectionContainer> */}
         </section>
       </motion.main>
     </>
@@ -44,60 +98,34 @@ export default function Home({ posts, media, categories }: any) {
 
 function HomeSection({
   title,
+  Icon,
+  margin,
+  maxWidth,
   children,
 }: {
   title: string;
+  Icon: any;
+  margin?: string;
+  maxWidth?: string;
   children: ReactNode;
 }) {
   return (
-    <HomeSectionContainer>
-      <FlexHeaderContainer>
-        <h3>{title.toUpperCase()}</h3>
-        <LineSeparator />
-      </FlexHeaderContainer>
+    <HomeSectionContainer margin={margin} maxWidth={maxWidth}>
+      <Title title={title} Icon={Icon} />
       {children}
     </HomeSectionContainer>
   );
 }
 
-const HomeSectionContainer = styled(Section)`
-  position: relative;
-  padding: 50px 0;
-  ${media.desktop`padding: 25px 100px;`};
-  ${media.tablet`padding: 1rem 1.2rem;`};
-  &:first-of-type {
-    padding-top: 100px;
-    ${media.desktop`padding-top: 50px;`};
-  }
-`;
-const FlexHeaderContainer = styled.div`
-  ${mixins.flexCenter};
-  width: 100%;
-  margin: 0.5rem 0;
-  ${media.tablet`width: 100%;`};
-  h3 {
-    font-size: ${theme.fontSizes.large};
-    color: ${theme.colors.teal};
-    margin: 0;
-    padding: 0;
-  }
-`;
-const LineSeparator = styled.div`
-  height: 1px;
-  width: 100%;
-  background-color: ${theme.colors.teal};
-  margin: 3px 0 0 1rem;
-`;
-
 export async function getStaticProps({ locale }: { locale: any }) {
   const posts = await getPostsByLang(locale);
   const media = await getMedia(posts);
-  const categories = await getCategories();
+  // const categories = await getCategories();
   return {
     props: {
       posts,
       media,
-      categories,
+      // categories,
     },
     revalidate: 10, // In seconds
   };

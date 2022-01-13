@@ -40,55 +40,68 @@ export default function ContactPage() {
           animate="animate"
           exit={{ opacity: 0 }}
         >
-          <FormContainer>
-            <h3>{t("title")}</h3>
-            <p>{t("description")}</p>
-
-            <FieldWrapper>
-              <span className="p-float-label">
-                <InputText
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <label htmlFor="name">{t("name")}</label>
-              </span>
-            </FieldWrapper>
-
-            <FieldWrapper>
-              <span className="p-float-label">
-                <InputText
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <label htmlFor="email">{t("email")}</label>
-              </span>
-            </FieldWrapper>
-
-            <FieldWrapper>
-              <span className="p-float-label">
-                <InputTextarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={5}
-                  cols={30}
-                  autoResize
-                />
-                <label htmlFor="message">{t("message")}</label>
-              </span>
-            </FieldWrapper>
-
-            <Button
-              label={t("send")}
-              className="p-button-raised p-button-rounded p-mt-3"
-              style={{ width: "100%" }}
-            />
-          </FormContainer>
+          <ContactForm />
         </ContactContainer>
       </Section>
+    </>
+  );
+}
+
+export function ContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const { t } = useTranslation({ localeFile: locale });
+
+  return (
+    <>
+      <FormContainer>
+        <p>{t("description")}</p>
+
+        <FieldWrapper>
+          <span className="p-float-label">
+            <InputText
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label htmlFor="name">{t("name")}</label>
+          </span>
+        </FieldWrapper>
+
+        <FieldWrapper>
+          <span className="p-float-label">
+            <InputText
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="email">{t("email")}</label>
+          </span>
+        </FieldWrapper>
+
+        <FieldWrapper>
+          <span className="p-float-label">
+            <InputTextarea
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              rows={5}
+              cols={30}
+              autoResize
+            />
+            <label htmlFor="message">{t("message")}</label>
+          </span>
+        </FieldWrapper>
+
+        <Button
+          label={t("contactMe")}
+          className="p-button-raised p-mt-3"
+          style={{ alignSelf: "start", padding: "0.25rem 1.25rem" }}
+        />
+      </FormContainer>
     </>
   );
 }

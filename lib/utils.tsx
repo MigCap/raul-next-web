@@ -1,5 +1,7 @@
 import parse from "html-react-parser";
 
+import { routesConfig, categoriesConfig, ROUTES_IDS, IRoute } from "lib";
+
 function getDate(date: any) {
   return new Date(date).toLocaleDateString("en-GB", {
     day: "numeric",
@@ -25,4 +27,20 @@ function isCurrentRoute(location: any, id: string) {
   return location && location.pathname.split("/")[1] === id;
 }
 
-export { parse, getDate, throttle, isCurrentRoute };
+function getRoutePathById(id: ROUTES_IDS) {
+  return routesConfig.find((route: IRoute) => route.id === id)?.path as string;
+}
+
+function getCategoryNameFromConfig(id: number) {
+  if (!id) return;
+  return categoriesConfig?.find((category: any) => category.id === id)?.name;
+}
+
+export {
+  parse,
+  getDate,
+  throttle,
+  isCurrentRoute,
+  getRoutePathById,
+  getCategoryNameFromConfig,
+};

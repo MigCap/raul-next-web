@@ -2,9 +2,11 @@ const theme = {
   colors: {
     primary: "#6bb0b2",
     teal: "#6bb0b2",
+    tealSemiTransparent: "rgba(107, 176, 177, 0.9)",
     bronze: "#dcc594",
     bronzeLight: "#E0D3B4",
     orange: "#EF9700",
+    grey: "#707070",
     // bg_color: "#f0f0f0",
 
     dark: "#000007",
@@ -15,7 +17,7 @@ const theme = {
     darkGrey: "#333f58",
     mediumGrey: "#2d3952",
     blueGrey: "#293d5a",
-    grey: "#4c5772",
+    darkGreygrey: "#4c5772",
     lightGrey: "#606a86",
     slate: "#8892b0",
     lightSlate: "#a8b2d1",

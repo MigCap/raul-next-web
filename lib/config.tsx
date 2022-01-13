@@ -7,29 +7,50 @@ import {
 
 export const locales = ["en", "sp"];
 
-export const routesConfig = [
+export enum ROUTES_IDS {
+  HOME = "",
+  ABOUT = "about",
+  PORTFOLIO = "portfolio-categories",
+  BLOG = "blog",
+  CONTACT = "contact",
+}
+
+// export type TRoutesIds = ROUTES_IDS;
+
+export interface IRoute {
+  id: ROUTES_IDS;
+  name: {
+    en: string;
+    sp: string;
+  };
+  path: string;
+}
+
+type TRoutesConfig = IRoute[];
+
+export const routesConfig: TRoutesConfig = [
   {
-    id: "",
+    id: ROUTES_IDS.HOME,
     name: { en: "home", sp: "home" },
     path: "/",
   },
   {
-    id: "about",
+    id: ROUTES_IDS.ABOUT,
     name: { en: "about", sp: "sobre" },
     path: "/about",
   },
   {
-    id: "portfolio-categories",
+    id: ROUTES_IDS.PORTFOLIO,
     name: { en: "portfolio", sp: "trabajos" },
     path: "/portfolio-categories/graphic-design",
   },
   {
-    id: "blog",
+    id: ROUTES_IDS.BLOG,
     name: { en: "blog", sp: "blog" },
     path: "/blog",
   },
   {
-    id: "contact",
+    id: ROUTES_IDS.CONTACT,
     name: { en: "contact", sp: "contacto" },
     path: "/contact",
   },
@@ -89,15 +110,14 @@ export const about = {
   mainMail: "hello@rauldediego.com",
   contactMail: "contact@rauldediego.com",
   position: {
-    en: "Senior Graphic Designer and Illustrator",
-    sp: "Diseñador Gráfico Senior e Ilustrador",
+    en: "Graphic Designer and Illustrator",
+    sp: "Diseñador Gráfico e Ilustrador",
   },
   positionDescription: {
     en: "Art Director",
     sp: "Artefinalista y Director de Arte",
   },
-  // title: "¡Hola!",
-  title: { en: "about", sp: "sobre" },
+  title: { en: "Welcome to my work!", sp: "Bienvenido a mi trabajo" },
   subtitle: "",
   description: {
     en: "My name is Raúl, encantado de saludarte. ¡Bienvenid@ a mi portfolio! Un lugar donde encontrarás algunos de mis mejores trabajos a los largo de mi carrera y mis estudios, así como mi experiencia profesional, clientes y educación. ¿Qué más puedo contarte sobre mí? Alguien creativo, comprometido, competitivo, resiliente, con capacidad y gusto por el trabajo en equipo, de rápido aprendizaje, simpático, dicharachero, empático, con sus inquietudes… Aunque lo mejor es que charlemos y me conozcas personalmente. ¿Hablamos pronto y formamos equipo?",
@@ -140,8 +160,12 @@ export const about = {
 };
 
 export const categoriesConfig = [
-  { id: 3, name: "Graphic Design", Icon: Filigrana },
-  { id: 4, name: "Illustration", Icon: Filigrana2 },
+  {
+    id: 56,
+    name: { en: "Graphic Design", sp: "Diseño Grafico" },
+    Icon: Filigrana,
+  },
+  { id: 4, name: { en: "Illustration", sp: "Ilustración" }, Icon: Filigrana2 },
 ];
 
 export const categoriesIds = categoriesConfig.map(

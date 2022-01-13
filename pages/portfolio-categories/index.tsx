@@ -3,7 +3,14 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { getMedia, getPosts, getCategories, getTags, about } from "lib";
+import {
+  getMedia,
+  getPosts,
+  getPostsByLang,
+  getCategories,
+  getTags,
+  about,
+} from "lib";
 
 import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
@@ -45,8 +52,9 @@ const MainCategoriesContainer = styled(motion.div)`
   ${media.phablet`flex-direction: column;`};
 `;
 
-export async function getStaticProps({ params }: { params: any }) {
-  const posts = await getPosts();
+export async function getStaticProps({ locale }: { locale: any }) {
+  // const posts = await getPosts();
+  const posts = await getPostsByLang(locale);
   const media = await getMedia(posts);
   const categories = await getCategories();
   const tags = await getTags();

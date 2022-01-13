@@ -5,7 +5,11 @@ import styled from "styled-components";
 
 import { useTranslation } from "hooks";
 
-import { theme, mixins } from "styles";
+import {
+  LocalesContainer,
+  LocaleAnchor,
+  LocaleSelectedUnderline,
+} from "./styles";
 
 function LocaleSelector() {
   const { isEn, isSp, linkLocaleHref } = useTranslation({});
@@ -32,29 +36,5 @@ function LocaleSelector() {
     </LocalesContainer>
   );
 }
-
-const LocalesContainer = styled.div<any>`
-  font-family: ${theme.fonts.Karla};
-  font-size: 1rem;
-  color: ${({ isHomePage }) =>
-    isHomePage ? theme.colors.dark : theme.colors.bronzeLight};
-`;
-const LocaleAnchor = styled.a<any>`
-  color: ${({ isSelected, isHomePage }) => {
-    return isSelected
-      ? `${theme.colors.orange} !important`
-      : isHomePage
-      ? `${theme.colors.dark} !important`
-      : `${theme.colors.bronzeLight} !important`;
-  }};
-  ${mixins.animatedUnderline}
-  &:hover {
-    color: ${theme.colors.orange} !important;
-  }
-`;
-const LocaleSelectedUnderline = styled.div<any>`
-  height: 2px;
-  background-color: ${({ isSelected }) => isSelected && theme.colors.orange};
-`;
 
 export default LocaleSelector;
