@@ -1,12 +1,12 @@
 import Link from "next/link";
-// import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
 import { Filigrana } from "components/Icons";
 
-import { fadeInUp } from "lib";
+import { fadeInUp, getRoutePathById, ROUTES_IDS } from "lib";
 
 import { theme } from "styles";
 
@@ -46,6 +46,9 @@ export default function PostCard({
   post: any;
   featuredMedia: any;
 }) {
+  const { pathname, locale } = useRouter();
+  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
+
   return (
     <CardContainer variants={fadeInUp}>
       <motion.div
@@ -58,12 +61,13 @@ export default function PostCard({
         <Link href={`/works/${post.slug}`}>
           <a>
             {featuredMedia && (
-              <ImageContainer>
+              <ImageContainer isHomePage={isHomePage}>
                 <StyledImage
                   src={featuredMedia?.source_url}
                   alt={`${post.title.rendered}-image`}
+                  isHomePage={isHomePage}
                 />
-                <PostCardTitleContainer>
+                <PostCardTitleContainer isHomePage={isHomePage}>
                   <div>
                     <Filigrana />
                     <h1>{post.title.rendered}</h1>

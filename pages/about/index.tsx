@@ -5,12 +5,7 @@ import { Button } from "primereact/button";
 import { Carousel } from "primereact/carousel";
 
 import Title from "components/Title";
-import {
-  Filigrana,
-  Filigrana2,
-  FiligranaRombo,
-  FiligranaRombo2,
-} from "components/Icons";
+import { Filigrana, Filigrana2 } from "components/Icons";
 import SocialH from "components/layout/SocialH";
 import { ContactForm } from "pages/contact";
 
@@ -19,14 +14,11 @@ import { useTranslation } from "hooks";
 import { about, getRoutePathById, ROUTES_IDS } from "lib";
 
 import {
-  Section,
   AboutPageContainer,
   MeetSectionContainer,
   TestimonialSectionContainer,
   TestimonialItemContainer,
 } from "styles/about";
-
-import filigranaRombo from "public/assets/filigranaRombo.svg";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -115,12 +107,11 @@ export default function AboutPage() {
               <img
                 src={
                   isEven
-                    ? "/assets/filigranaRombo.svg"
+                    ? "/assets/filigranaRombo2.svg"
                     : "/assets/filigranaRombo.svg"
                 }
                 alt="An SVG of an eye"
               />
-              {/* {isEven ? <FiligranaRombo2 /> : <FiligranaRombo />} */}
             </div>
             <div className="testimonial-text-wrapper">
               <p className="testimonial-description">{description}</p>
@@ -179,7 +170,7 @@ export default function AboutPage() {
             <Carousel
               value={testimonials}
               numVisible={2}
-              // numScroll={1}
+              numScroll={2}
               responsiveOptions={responsiveOptions}
               className="custom-carousel"
               circular

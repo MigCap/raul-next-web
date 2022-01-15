@@ -13,7 +13,7 @@ const CardContainer = styled(motion.div)`
   }
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled.img<any>`
   position: absolute;
   object-fit: cover;
   border-radius: 5px;
@@ -21,11 +21,13 @@ const StyledImage = styled.img`
   height: 100%;
   overflow: hidden;
   transition: ${theme.transition};
+  opacity: ${({ isHomePage }) => (isHomePage ? 0.1 : 1)};
 `;
-const PostCardTitleContainer = styled.div`
+
+const PostCardTitleContainer = styled.div<any>`
   padding: 0.5rem;
   position: relative;
-  opacity: 0;
+  opacity: ${({ isHomePage }) => (isHomePage ? 1 : 0)};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -46,7 +48,8 @@ const PostCardTitleContainer = styled.div`
     }
   }
 `;
-const ImageContainer = styled(motion.div)`
+
+const ImageContainer = styled<any>(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -56,10 +59,10 @@ const ImageContainer = styled(motion.div)`
   background-color: ${theme.colors.teal};
   transition: ${theme.transition};
   &:hover ${PostCardTitleContainer} {
-    opacity: 1;
+    opacity: ${({ isHomePage }) => (isHomePage ? 0 : 1)};
   }
   &:hover ${StyledImage} {
-    opacity: 0.1;
+    opacity: ${({ isHomePage }) => (isHomePage ? 1 : 0.1)};
     // border-radius: 5px 40px 5px 5px;
   }
   // &:hover {
