@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import media from "./media";
+import media from "../config/media";
 
 const Section = styled.section<any>`
   margin: ${({ margin }) => margin || "0 auto"};
-  padding: 150px 0;
+  padding: 8rem 0;
   max-width: ${({ maxWidth }) => maxWidth || "1000px"};
 
   ${media.desktop`

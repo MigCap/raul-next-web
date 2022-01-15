@@ -92,9 +92,12 @@ const NavLinkSelectedUnderline = styled.div<any>`
   background-color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
 `;
 
+const LocaleSelectorDescktop = styled.div<any>`
+  ${media.tablet`display: none;`};
+`;
 const LocalesContainer = styled.div<any>`
   font-family: ${theme.fonts.Karla};
-  font-size: 1rem;
+  font-size: ${theme.fontSizes.smallish};
   color: ${({ isHomePage }) => theme.colors.bronzeLight};
 `;
 const LocaleAnchor = styled.a<any>`
@@ -194,6 +197,7 @@ export {
   NavListItem,
   NavLink,
   NavLinkSelectedUnderline,
+  LocaleSelectorDescktop,
   LocalesContainer,
   LocaleAnchor,
   LocaleSelectedUnderline,

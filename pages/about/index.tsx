@@ -21,8 +21,12 @@ import { about, getRoutePathById, ROUTES_IDS } from "lib";
 import {
   Section,
   AboutPageContainer,
+  MeetSectionContainer,
+  TestimonialSectionContainer,
   TestimonialItemContainer,
 } from "styles/about";
+
+import filigranaRombo from "public/assets/filigranaRombo.svg";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -108,7 +112,15 @@ export default function AboutPage() {
             <div className="bg-left"></div>
             <div className="bg-right"></div>
             <div className="testimonial-icon-wrapper">
-              {isEven ? <FiligranaRombo2 /> : <FiligranaRombo />}
+              <img
+                src={
+                  isEven
+                    ? "/assets/filigranaRombo.svg"
+                    : "/assets/filigranaRombo.svg"
+                }
+                alt="An SVG of an eye"
+              />
+              {/* {isEven ? <FiligranaRombo2 /> : <FiligranaRombo />} */}
             </div>
             <div className="testimonial-text-wrapper">
               <p className="testimonial-description">{description}</p>
@@ -131,9 +143,7 @@ export default function AboutPage() {
       </Head>
 
       <AboutPageContainer>
-        <Section
-          styles={{ margin: "0", "max-width": "100%", padding: "150px 0 0 0" }}
-        >
+        <MeetSectionContainer>
           <Title title={"niceToMeetYou"} Icon={Filigrana} />
 
           <section className="meet-section">
@@ -161,15 +171,9 @@ export default function AboutPage() {
               </div>
             </div>
           </section>
-        </Section>
+        </MeetSectionContainer>
 
-        <Section
-          styles={{
-            margin: "0 10%",
-            "max-width": "100%",
-            padding: "0 0 150px 0",
-          }}
-        >
+        <TestimonialSectionContainer>
           <section className="testimonial-section">
             <Title title={"whatTheySayAboutMe"} Icon={Filigrana2} />
             <Carousel
@@ -189,7 +193,7 @@ export default function AboutPage() {
             <Title title={"whatCanIDoForYou"} Icon={Filigrana} />
             <ContactForm />
           </section>
-        </Section>
+        </TestimonialSectionContainer>
       </AboutPageContainer>
     </>
   );

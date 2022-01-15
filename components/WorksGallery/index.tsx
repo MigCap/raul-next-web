@@ -1,16 +1,18 @@
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { getFeaturedMedia, stagger } from "lib";
+import { getFeaturedMedia, stagger, getRoutePathById, ROUTES_IDS } from "lib";
 
 import { media } from "styles";
 
 export default function WorksGallery({ posts, media, className, style }: any) {
-  const isHomePage = Router?.router?.pathname === "/";
+  const { pathname } = useRouter();
+  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
+
   const maxCardsToShow = isHomePage ? 9 : 18;
 
   const jsxPosts = posts?.slice(0, maxCardsToShow)?.map((post: any) => {

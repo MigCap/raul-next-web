@@ -1,15 +1,15 @@
 import GlobalStyle from "./GlobalStyle";
-import theme from "./theme";
-import mixins from "./mixins";
-import media from "./media";
-import Header from "./Header";
-import Nav from "./Nav";
-import Main from "./Main";
-import Section from "./Section";
-import Footer from "./Footer";
-import Heading from "./Heading";
-import Button from "./Button";
-import InlineLink from "./InlineLink";
+import theme from "./config/theme";
+import mixins from "./config/mixins";
+import media from "./config/media";
+import Header from "./elements/Header";
+import Nav from "./elements/Nav";
+import Main from "./elements/Main";
+import Section from "./elements/Section";
+import Footer from "./elements/Footer";
+import Heading from "./elements/Heading";
+import Button from "./elements/Button";
+import InlineLink from "./elements/InlineLink";
 
 export {
   theme,

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled, { Interpolation } from "styled-components";
 
-import { socialMedia } from "lib";
+import { socialMedia, getRoutePathById, ROUTES_IDS } from "lib";
 
 import { theme, media } from "styles";
 
@@ -24,8 +24,8 @@ export default function SocialH({ styles = {} }: SocialHProps) {
     };
   }, []);
 
-  const router = useRouter();
-  const isHomePage = router?.pathname === "/";
+  const { pathname } = useRouter();
+  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
 
   const nodeRef = useRef(null);
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, Section } from "styles";
+import { theme, media, Section } from "styles";
 
 const AboutPageContainer = styled.div`
   display: flex;
@@ -11,58 +11,6 @@ const AboutPageContainer = styled.div`
   h3,
   p {
     color: ${theme.colors.teal};
-  }
-  h3 {
-    padding-bottom: 1rem;
-  }
-
-  .meet-section,
-  .testimonial-section {
-    margin-bottom: 4rem;
-  }
-
-  .meet-section {
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: 2rem auto 2rem;
-    width: 100%;
-    color: ${theme.colors.white};
-
-    .bg-wrapper {
-      grid-column: 1 / span 20;
-      grid-row: 1 / span 3;
-      // background: url("/assets/profile-pic-home.png") no-repeat fixed top;
-      background-image: url("/assets/profile-pic-home.png");
-      background-position: right top;
-      background-size: cover;
-      background-origin: content-box, padding-box;
-      background-clip: padding-box;
-      background-repeat: no-repeat;
-    }
-    .left-side-wrapper {
-      grid-column: 1 / span 6;
-      grid-row: 1 / 4;
-      display: flex;
-      align-items: center;
-      justify-content: start;
-      padding-top: 5rem;
-    }
-    .right-side-wrapper {
-      grid-column: 10 / 21;
-      grid-row: 2 / 3;
-      padding: 2rem 4rem 2rem 0;
-      display: flex;
-      flex-direction: column;
-      background: ${theme.colors.teal};
-      p {
-        padding-left: 2rem;
-        margin: 3rem 0;
-        color: ${theme.colors.white};
-      }
-      .buttons-wrapper {
-        align-self: end;
-      }
-    }
   }
 
   .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
@@ -97,6 +45,96 @@ const AboutPageContainer = styled.div`
     outline-offset: 0;
     box-shadow: 0 0 0 0.2rem transparent;
   }
+
+  .meet-section,
+  .testimonial-section {
+    margin-bottom: 4rem;
+  }
+`;
+
+const MeetSectionContainer = styled(Section)<any>`
+  margin: 0;
+  max-width: 100%;
+  padding: 8rem 0 0 0;
+  ${media.desktop`
+    // margin: 0;
+    // padding: 8rem 0 0 0;
+  `};
+  ${media.tablet`
+    // margin: 0;
+    // padding: 8rem 0 0 0;
+  `};
+  .meet-section {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: 2rem auto 2rem;
+    width: 100%;
+    color: ${theme.colors.white};
+
+    .bg-wrapper {
+      grid-column: 1 / span 20;
+      grid-row: 1 / span 3;
+      // background: url("/assets/profile-pic-home.png") no-repeat fixed top;
+      background-image: url("/assets/profile-pic-home.png");
+      background-position: right top;
+      background-size: cover;
+      background-origin: content-box, padding-box;
+      background-clip: padding-box;
+      background-repeat: no-repeat;
+      ${media.tablet`
+        display: none;
+      `};
+    }
+    .left-side-wrapper {
+      grid-column: 1 / span 6;
+      grid-row: 1 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      padding-top: 5rem;
+    }
+    .right-side-wrapper {
+      grid-column: 10 / 21;
+      grid-row: 2 / 3;
+      padding: 2rem 4rem 2rem 0;
+      display: flex;
+      flex-direction: column;
+      background: ${theme.colors.teal};
+      p {
+        padding-left: 2rem;
+        margin: 3rem 0;
+        color: ${theme.colors.white};
+      }
+      .buttons-wrapper {
+        align-self: end;
+      }
+      ${media.tablet`
+        grid-column: 1 / 21;
+        padding: 2rem;
+        p {
+          text-align: center;
+          padding: 0;
+        }
+        .buttons-wrapper {
+          align-self: center;
+        }
+      `};
+    }
+  }
+`;
+
+const TestimonialSectionContainer = styled(Section)<any>`
+  margin: 0 2rem;
+  max-width: 100%;
+  padding: 0 5% 8rem 5%;
+  ${media.desktop`
+    margin: 0;
+    padding: 0rem 2rem;
+  `};
+  ${media.tablet`
+    margin: 0;
+    padding: 1rem 1.2rem;
+  `};
 `;
 
 const TestimonialItemContainer = styled.div<any>`
@@ -108,8 +146,8 @@ const TestimonialItemContainer = styled.div<any>`
       margin: 0.3rem;
       text-align: left;
 
-      border: 1px solid grey;
-      border-radius: 3px;
+      // border: 1px solid grey;
+      // border-radius: 3px;
 
       .bg-left {
         grid-column: 1 / span 4;
@@ -161,4 +199,10 @@ const TestimonialItemContainer = styled.div<any>`
   }
 `;
 
-export { Section, AboutPageContainer, TestimonialItemContainer };
+export {
+  Section,
+  AboutPageContainer,
+  MeetSectionContainer,
+  TestimonialSectionContainer,
+  TestimonialItemContainer,
+};

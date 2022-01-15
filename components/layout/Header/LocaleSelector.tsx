@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import styled from "styled-components";
-
 import { useTranslation } from "hooks";
+
+import { getRoutePathById, ROUTES_IDS } from "lib";
 
 import {
   LocalesContainer,
@@ -14,9 +14,8 @@ import {
 function LocaleSelector() {
   const { isEn, isSp, linkLocaleHref } = useTranslation({});
 
-  const router = useRouter();
-  const { pathname } = router;
-  const isHomePage = pathname === "/";
+  const { pathname } = useRouter();
+  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
 
   return (
     <LocalesContainer isHomePage={isHomePage}>

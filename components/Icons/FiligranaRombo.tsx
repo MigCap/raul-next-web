@@ -3,6 +3,7 @@ const FiligranaRombo = () => (
     width="142"
     viewBox="0 0 142 142"
     fill="none"
+    id="b80c53a0-fbf6-4494-bbaf-81c896ec0e15"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>FiligranaRombo</title>

@@ -1,81 +1,7 @@
 import Link from "next/link";
-
 import styled from "styled-components";
 
-import { useRouter } from "next/router";
-
-import { isCurrentRoute, socialMedia, locales as localesConfig } from "lib";
-
-import { theme, mixins, media, Nav } from "styles";
-
-export default function Menu(props: any) {
-  const { menuOpen, navLinks, location, toggleMenu } = props;
-  const { locale } = useRouter();
-
-  return (
-    <MenuContainer
-      menuOpen={menuOpen}
-      aria-hidden={!menuOpen}
-      tabIndex={menuOpen ? 1 : -1}
-    >
-      <Sidebar>
-        <NavLinks>
-          <NavList>
-            {navLinks &&
-              navLinks.map(({ path, name, id }: any) => {
-                const isCurrRoute = isCurrentRoute(location, id);
-
-                return (
-                  <NavListItem key={`${name}-${id}`} onClick={toggleMenu}>
-                    <NavLink href={path}>
-                      <a>
-                        {name[locale || localesConfig[0]]}
-                        {isCurrRoute && (
-                          <div
-                            style={{
-                              height: "2px",
-                              backgroundColor: "white",
-                            }}
-                          />
-                        )}
-                      </a>
-                    </NavLink>
-                  </NavListItem>
-                );
-              })}
-          </NavList>
-
-          <SocialContainer>
-            <SocialItemList>
-              {socialMedia &&
-                socialMedia.map(({ name, url, icon, Icon }, i) => {
-                  return (
-                    <SocialItem key={i}>
-                      <SocialLink
-                        href={url}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label={name}
-                        name={name}
-                      >
-                        {Icon ? (
-                          <Icon />
-                        ) : icon ? (
-                          <i className={icon} />
-                        ) : (
-                          <></>
-                        )}
-                      </SocialLink>
-                    </SocialItem>
-                  );
-                })}
-            </SocialItemList>
-          </SocialContainer>
-        </NavLinks>
-      </Sidebar>
-    </MenuContainer>
-  );
-}
+import { media, mixins, Nav, theme } from "styles";
 
 interface MenuContainerProps {
   menuOpen: any;
@@ -124,10 +50,11 @@ const NavList = styled.ol`
   ${media.phablet`margin-bottom: 3rem;`};
 `;
 
-const NavListItem = styled.li`
+const NavListItem = styled.li<any>`
   margin: 0 auto 20px;
   position: relative;
   font-size: ${theme.fontSizes.large};
+  color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
   ${media.thone`
     margin: 1rem auto 1.5rem auto;
     font-size: ${theme.fontSizes.medium};
@@ -140,6 +67,10 @@ const NavListItem = styled.li`
 const NavLink = styled(Link)`
   padding: 3px 20px 20px;
   width: 100%;
+`;
+const NavLinkSelectedUnderline = styled.div<any>`
+  height: 2px;
+  background-color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
 `;
 
 const SocialContainer = styled.div`
@@ -187,3 +118,17 @@ const SocialLink = styled.a<SocialLinkProps>`
     border: solid 2px ${theme.colors.orange};
   }
 `;
+
+export {
+  MenuContainer,
+  Sidebar,
+  NavLinks,
+  NavList,
+  NavListItem,
+  NavLink,
+  NavLinkSelectedUnderline,
+  SocialContainer,
+  SocialItemList,
+  SocialItem,
+  SocialLink,
+};

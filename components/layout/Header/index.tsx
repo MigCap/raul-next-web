@@ -15,6 +15,8 @@ import {
   routesConfig as navLinks,
   scaleAndTab,
   throttle,
+  getRoutePathById,
+  ROUTES_IDS,
 } from "lib";
 
 import {
@@ -29,14 +31,21 @@ import {
   HamburgerBox,
   HamburgerInner,
   HeaderContainer,
+  LocaleSelectorDescktop,
 } from "./styles";
 
-import Menu from "./Menu";
-import LocaleSelector from "./LocaleSelector";
+import LocaleSelector from "components/layout/Header/LocaleSelector";
+import MenuMobile from "./MenuMobile";
 
 const DELTA = 5;
 
 export default function Header({ location }: any) {
+  const { pathname, locale } = useRouter();
+  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
+
+  const headerRef = useRef(null);
+  const nodeRef = useRef(null);
+
   const [lastScrollTop, setLastScrollTop] = useState<any>(0);
   const [scrollDirection, setScrollDirection] = useState<any>("none");
   const [menuOpen, setMenuOpen] = useState<any>(false);
@@ -101,12 +110,6 @@ export default function Header({ location }: any) {
     () => setMenuOpen((prevMenuOpen: boolean) => !prevMenuOpen),
     []
   );
-
-  const { pathname, locale } = useRouter();
-  const isHomePage = pathname === "/";
-
-  const headerRef = useRef(null);
-  const nodeRef = useRef(null);
 
   return (
     <HeaderContainer
@@ -184,10 +187,12 @@ export default function Header({ location }: any) {
           </NavList>
         </NavLinks>
 
-        <LocaleSelector />
+        <LocaleSelectorDescktop>
+          <LocaleSelector />
+        </LocaleSelectorDescktop>
       </Navbar>
 
-      <Menu
+      <MenuMobile
         navLinks={navLinks}
         menuOpen={menuOpen}
         location={location}

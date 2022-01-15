@@ -5,19 +5,21 @@ import { theme, mixins, media, Section } from "styles";
 
 const HomeSectionContainer = styled(Section)`
   position: relative;
-  padding: 50px 0;
-  ${media.desktop`padding: 25px 100px;`};
+  padding: 5rem 0;
+  ${media.desktop`padding: 5rem 2rem;`};
   ${media.tablet`padding: 1rem 1.2rem;`};
   &:first-of-type {
     padding-top: 5rem;
-    ${media.desktop`padding-top: 50px;`};
+    ${media.desktop`padding-top: 4rem;`};
   }
 `;
 const FlexTitleContainer = styled.div`
   ${mixins.flexCenter};
   width: 100%;
   margin: 0.5rem 0 2.5rem 0;
-  ${media.tablet`width: 100%;`};
+  ${media.tablet`
+    width: 100%;
+  `};
   h3 {
     font-family: ${theme.fonts.Oswald};
     font-size: 2.3rem;
@@ -51,8 +53,11 @@ const HomeAboutSection = styled.div`
     img {
       height: 100%;
       object-fit: cover;
-      //   padding-right: 2rem;
+      // padding-right: 2rem;
     }
+    ${media.desktop`
+      display: none;
+    `};
   }
   .right-side-wrapper {
     grid-column: 9 / 21;
@@ -70,6 +75,17 @@ const HomeAboutSection = styled.div`
       //   max-width: 80%;
       align-self: end;
     }
+    ${media.desktop`
+      grid-column: 2 / span 20;
+      grid-row: 2 / 3;
+      p {
+        text-align: center;
+      }
+      .buttons-wrapper {
+        //   max-width: 80%;
+      align-self: center;
+    }
+    `};
   }
   // ${media.desktop`padding: 25px 100px;`};
   // ${media.tablet`padding: 1rem 1.2rem;`};

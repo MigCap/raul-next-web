@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from './theme';
+import styled from "styled-components";
+import theme from "../config/theme";
 
 const Nav = styled.nav`
   width: 100%;

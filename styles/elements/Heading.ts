@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import theme from "./theme";
-import media from "./media";
+import theme from "../config/theme";
+import media from "../config/media";
 
 const Heading = styled.h3`
   position: relative;
