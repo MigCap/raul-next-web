@@ -27,7 +27,10 @@ const HeroContent = styled.div`
   width: 70%;
   height: 100%;
   text-align: center;
-  ${media.desktop`padding: 0 20px;`};
+  ${media.desktop`
+    width: 90%;
+    padding: 0 20px;
+  `};
 `;
 const Title = styled(motion.h1)`
   font-family: ${theme.fonts.Oswald};

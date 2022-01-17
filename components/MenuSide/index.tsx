@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import SocialH from "components/layout/SocialH";
+import SocialH from "components/SocialH";
 
 import { useTranslation } from "hooks/useTranslation";
 

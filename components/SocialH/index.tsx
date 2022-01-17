@@ -17,7 +17,7 @@ export default function SocialH({ styles = {} }: SocialHProps) {
   const [isMounted, setIsMounted] = useState<any>(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 2000);
+    const timeout = setTimeout(() => setIsMounted(true), 500);
 
     return () => {
       clearTimeout(timeout);

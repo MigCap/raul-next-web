@@ -76,8 +76,9 @@ const HomeAboutSection = styled.div`
       align-self: end;
     }
     ${media.desktop`
-      grid-column: 2 / span 20;
+      grid-column: 2 / span 18;
       grid-row: 2 / 3;
+      padding: 2rem 0;
       p {
         text-align: center;
       }

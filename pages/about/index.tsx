@@ -6,7 +6,7 @@ import { Carousel } from "primereact/carousel";
 
 import Title from "components/Title";
 import { Filigrana, Filigrana2 } from "components/Icons";
-import SocialH from "components/layout/SocialH";
+import SocialH from "components/SocialH";
 import { ContactForm } from "pages/contact";
 
 import { useTranslation } from "hooks";

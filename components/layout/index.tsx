@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import styled, { ThemeProvider } from "styled-components";
 
 import Header from "components/layout/Header";
-import Social from "components/layout/Social";
+import Social from "components/Social";
 // import Email from "components/layout/Email";
 import Footer from "components/layout/Footer";
 
