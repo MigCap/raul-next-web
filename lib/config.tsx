@@ -165,7 +165,7 @@ export const categoriesConfig = [
     name: { en: "Graphic Design", sp: "Diseño Grafico" },
     Icon: Filigrana,
   },
-  { id: 4, name: { en: "Illustration", sp: "Ilustración" }, Icon: Filigrana2 },
+  { id: 57, name: { en: "Illustration", sp: "Ilustración" }, Icon: Filigrana2 },
 ];
 
 export const categoriesIds = categoriesConfig.map(

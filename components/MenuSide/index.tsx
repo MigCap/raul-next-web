@@ -79,54 +79,54 @@ export function MenuSide({
         variants={stagger}
       >
         {filteredCategoriesWithChildren &&
-          filteredCategoriesWithChildren.map(
-            ({ id, name, count, slug, children, Icon }: any, i: number) => {
-              if (name === "Uncategorized" || count === 0) {
-                return null;
-              }
+          filteredCategoriesWithChildren.map((category: any, i: number) => {
+            const { id, name, count, slug, children, Icon } = category;
 
-              const isSelected = name["en"] === currCategory;
-
-              return (
-                <Fragment key={id}>
-                  <CategoryTitleContainer>
-                    <Icon />
-                    <div key={id} onClick={() => setActiveIndex(null)}>
-                      <Link href={`/portfolio-categories/${slug}`}>
-                        <a className="lighten">
-                          <CategoryTitle isSelected={isSelected}>
-                            {name[locale]}
-                          </CategoryTitle>
-                        </a>
-                      </Link>
-                    </div>
-                  </CategoryTitleContainer>
-                  <SubCategoriesContainer>
-                    {children &&
-                      children.length > 0 &&
-                      children.map((childCategory: any) => {
-                        const { id, name, slug } = childCategory;
-                        const isSelected = name === currCategory;
-                        return (
-                          <Link
-                            href={`/portfolio-categories/${slug}`}
-                            passHref
-                            key={id}
-                          >
-                            <SubCategoryAnchor
-                              className="lighten"
-                              isSelected={isSelected}
-                            >
-                              <span>{name}</span>
-                            </SubCategoryAnchor>
-                          </Link>
-                        );
-                      })}
-                  </SubCategoriesContainer>
-                </Fragment>
-              );
+            if (name === "Uncategorized" || count === 0 || !category) {
+              return null;
             }
-          )}
+
+            const isSelected = name["en"] === currCategory;
+
+            return (
+              <Fragment key={id}>
+                <CategoryTitleContainer>
+                  {Icon && <Icon />}
+                  <div key={id} onClick={() => setActiveIndex(null)}>
+                    <Link href={`/portfolio-categories/${slug}`}>
+                      <a className="lighten">
+                        <CategoryTitle isSelected={isSelected}>
+                          {name[locale]}
+                        </CategoryTitle>
+                      </a>
+                    </Link>
+                  </div>
+                </CategoryTitleContainer>
+                <SubCategoriesContainer>
+                  {children &&
+                    children.length > 0 &&
+                    children.map((childCategory: any) => {
+                      const { id, name, slug } = childCategory;
+                      const isSelected = name === currCategory;
+                      return (
+                        <Link
+                          href={`/portfolio-categories/${slug}`}
+                          passHref
+                          key={id}
+                        >
+                          <SubCategoryAnchor
+                            className="lighten"
+                            isSelected={isSelected}
+                          >
+                            <span>{name}</span>
+                          </SubCategoryAnchor>
+                        </Link>
+                      );
+                    })}
+                </SubCategoriesContainer>
+              </Fragment>
+            );
+          })}
         <SocialH />
       </CategoriesContainer>
     </>

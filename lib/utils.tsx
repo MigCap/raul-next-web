@@ -36,11 +36,34 @@ function getCategoryNameFromConfig(id: number) {
   return categoriesConfig?.find((category: any) => category.id === id)?.name;
 }
 
+function debounce(func: () => void, wait: number, immediate?: boolean) {
+  let timeout: any;
+  return function () {
+    const context: any = this;
+    const args: any = arguments;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+function getHtmlTagContentFromString(htmlString: string, tag: "p" | "a") {
+  // const regex = new RegExp(``, "i");
+  return htmlString?.match(/<p>(.*?)<\/p>/g)?.join("") || "";
+}
+
 export {
   parse,
   getDate,
   throttle,
+  debounce,
   isCurrentRoute,
   getRoutePathById,
   getCategoryNameFromConfig,
+  getHtmlTagContentFromString,
 };

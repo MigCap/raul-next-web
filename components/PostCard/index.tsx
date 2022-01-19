@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { motion } from "framer-motion";
-import styled from "styled-components";
 
 import { Filigrana } from "components/Icons";
 
@@ -27,18 +26,6 @@ const postCard = {
   },
 };
 
-// const arrowMotion = {
-//   initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
-//   hover: {
-//     opacity: 1,
-//     transition: {
-//       duration: 0.4,
-//       type: "tween",
-//       ease: "easeIn",
-//     },
-//   },
-// };
-
 export default function PostCard({
   post,
   featuredMedia,
@@ -61,13 +48,13 @@ export default function PostCard({
         <Link href={`/works/${post.slug}`}>
           <a>
             {featuredMedia && (
-              <ImageContainer isHomePage={isHomePage}>
+              <ImageContainer $isHomePage={isHomePage}>
                 <StyledImage
                   src={featuredMedia?.source_url}
                   alt={`${post.title.rendered}-image`}
-                  isHomePage={isHomePage}
+                  $isHomePage={isHomePage}
                 />
-                <PostCardTitleContainer isHomePage={isHomePage}>
+                <PostCardTitleContainer $isHomePage={isHomePage}>
                   <div>
                     <Filigrana />
                     <h1>{post.title.rendered}</h1>

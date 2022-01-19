@@ -57,3 +57,15 @@ export const scaleAndTab = {
     scale: 0.95,
   },
 };
+
+// const arrowMotion = {
+//   initial: { opacity: 0, ease: "easeOut", duration: 0.2, type: "tween" },
+//   hover: {
+//     opacity: 1,
+//     transition: {
+//       duration: 0.4,
+//       type: "tween",
+//       ease: "easeIn",
+//     },
+//   },
+// };

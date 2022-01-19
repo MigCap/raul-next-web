@@ -128,8 +128,8 @@ const SocialLink = styled.a<SocialLinkProps>`
     height: ${(props: any) => (props.name === "Instagram" ? `23px` : "20px")};
   }
   i {
-    font-weight: bold;
-    font-size: 1.25rem;
+    font-weight: bold !important;
+    font-size: 1.25rem !important;
   }
   &:hover {
     color: ${theme.colors.bronze};

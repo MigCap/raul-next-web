@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { media, mixins, Nav, theme } from "styles";
 
 interface IHeaderContainer {
-  ref: any;
+  // ref: any;
   scrollDirection: any;
   isHomePage: boolean;
 }
@@ -18,26 +18,22 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     ${media.tablet`padding: 0 25px;`};
     background-color: ${({ isHomePage }) => theme.colors.teal};
     transition: ${theme.transition};
-    z-index: 10;s
+    z-index: 10;
     filter: none !important;
     pointer-events: auto !important;
     user-select: auto !important;
     width: 100%;import { useEffect } from 'react';
   
-    height: ${(props: any) =>
-      props.scrollDirection === "none"
+    height: ${({ scrollDirection }: any) =>
+      scrollDirection === "none"
         ? theme.headerHeight
         : theme.headerScrollHeight};
-    box-shadow: ${(props: any) =>
-      props.scrollDirection === "up"
+    box-shadow: ${({ scrollDirection }: any) =>
+      scrollDirection === "up"
         ? `0 2px 4px ${theme.colors.transGreen}`
         : "none"};
-    transform: translateY(
-      ${(props: any) =>
-        props.scrollDirection === "down"
-          ? `-${theme.headerScrollHeight}`
-          : "0px"}
-    );
+    top: ${({ scrollDirection }: any) =>
+      scrollDirection === "down" ? `-${theme.headerScrollHeight}` : "0"};
   `;
 const Navbar = styled(Nav)<any>`
   ${mixins.flexBetween};
@@ -65,12 +61,11 @@ const NavList = styled.ol`
   }
 `;
 interface INavListItem {
-  nodeRef: any;
-  key: any;
+  ref: any;
   style: any;
   isCurrRoute: any;
 }
-const NavListItem = styled.li<INavListItem>`
+const NavListItem = styled.li<any>`
   margin: 0 1.2rem;
   position: relative;
   font-size: ${theme.fontSizes.smallish};
@@ -116,7 +111,7 @@ const LocaleSelectedUnderline = styled.div<any>`
   background-color: ${({ isSelected }) => isSelected && theme.colors.orange};
 `;
 
-const Hamburger = styled.div`
+const Hamburger = styled.div<any>`
   ${mixins.flexCenter};
   overflow: visible;
   margin: 0 -12px 0 0;

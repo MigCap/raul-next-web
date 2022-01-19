@@ -9,11 +9,13 @@ import { Logo } from "components/Icons";
 
 import {
   headerHeight,
+  DeviceSize,
   isCurrentRoute,
   locales as localesConfig,
   routesConfig as navLinks,
   scaleAndTab,
   throttle,
+  debounce,
   getRoutePathById,
   ROUTES_IDS,
 } from "lib";
@@ -43,54 +45,82 @@ export default function Header({ location }: any) {
   const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
 
   const headerRef = useRef(null);
-  const nodeRef = useRef(null);
+  const logoRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  const listItemRef = useRef(null);
 
   const [lastScrollTop, setLastScrollTop] = useState<any>(0);
   const [scrollDirection, setScrollDirection] = useState<any>("none");
   const [menuOpen, setMenuOpen] = useState<any>(false);
   const [isMounted, setIsMounted] = useState<any>(false);
 
+  const handleScroll = useCallback(
+    debounce(() => {
+      const fromTop = window.scrollY;
+
+      // Make sure they scroll more than DELTA
+      if (Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
+        return;
+      }
+
+      // console.log(`🚀 ~ debounce ~ fromTop < DELTA`, fromTop < DELTA);
+      // console.log(
+      //   `🚀 ~ debounce ~ fromTop > lastScrollTop && fromTop > headerHeight`,
+      //   fromTop > lastScrollTop && fromTop > headerHeight
+      // );
+      // console.log(
+      //   `🚀 ~ debounce ~ fromTop + window.innerHeight < document.body.scrollHeight`,
+      //   fromTop + window.innerHeight < document.body.scrollHeight
+      // );
+
+      // console.log(`🚀 ~ debounce ~ fromTop`, fromTop);
+      // console.log(`🚀 ~ debounce ~ lastScrollTop`, lastScrollTop);
+      // console.log(`🚀 ~ debounce ~ headerHeight`, headerHeight);
+      // console.log(`🚀 ~ debounce ~ window.innerHeight`, window.innerHeight);
+      // console.log(
+      //   `🚀 ~ debounce ~ document.body.scrollHeight`,
+      //   document.body.scrollHeight
+      // );
+      // console.log(
+      //   `🚀 ~ debounce ~ document.body.getBoundingClientRect().top`,
+      //   document.body.getBoundingClientRect().top
+      // );
+
+      // if (isMounted) {
+      if (fromTop < DELTA) {
+        setScrollDirection("none");
+      } else if (fromTop > lastScrollTop && fromTop > headerHeight) {
+        setScrollDirection((pevScrollDirection: any) =>
+          pevScrollDirection !== "down" ? "down" : pevScrollDirection
+        );
+      } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
+        setScrollDirection((pevScrollDirection: any) =>
+          pevScrollDirection !== "up" ? "up" : pevScrollDirection
+        );
+      }
+
+      setLastScrollTop(fromTop);
+      // }
+    }, 100),
+    [isMounted]
+  );
+
   useEffect(() => {
     window.addEventListener("scroll", () => throttle(handleScroll()));
     window.addEventListener("resize", () => throttle(handleResize()));
     window.addEventListener("keydown", (e) => handleKeydown(e));
-
     const timeout = setTimeout(() => setIsMounted(true), 100);
 
     return () => {
       window.removeEventListener("scroll", () => handleScroll());
       window.removeEventListener("resize", () => handleResize());
       window.removeEventListener("keydown", (e) => handleKeydown(e));
-
       clearTimeout(timeout);
     };
   }, []);
 
-  const handleScroll = useCallback(() => {
-    const fromTop = window.scrollY;
-
-    // Make sure they scroll more than DELTA
-    if (Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
-      return;
-    }
-
-    if (fromTop < DELTA) {
-      setScrollDirection("none");
-    } else if (fromTop > lastScrollTop && fromTop > headerHeight) {
-      if (scrollDirection !== "down") {
-        setScrollDirection("down");
-      }
-    } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
-      if (scrollDirection !== "up") {
-        setScrollDirection("up");
-      }
-    }
-
-    setLastScrollTop(fromTop);
-  }, []);
-
   const handleResize = useCallback(() => {
-    if (window.innerWidth > 768 && menuOpen) {
+    if (window.innerWidth > DeviceSize?.mobile && menuOpen) {
       toggleMenu();
     }
   }, []);
@@ -105,10 +135,10 @@ export default function Header({ location }: any) {
     }
   }, []);
 
-  const toggleMenu = useCallback(
-    () => setMenuOpen((prevMenuOpen: boolean) => !prevMenuOpen),
-    []
-  );
+  const toggleMenu = useCallback(() => {
+    if (!isMounted) return;
+    setMenuOpen((prevMenuOpen: boolean) => !prevMenuOpen);
+  }, [isMounted]);
 
   return (
     <HeaderContainer
@@ -119,8 +149,8 @@ export default function Header({ location }: any) {
       <Navbar isHomePage={isHomePage}>
         <TransitionGroup>
           {isMounted && (
-            <CSSTransition nodeRef={nodeRef} classNames="fade" timeout={3000}>
-              <NavLogoContainer ref={nodeRef}>
+            <CSSTransition nodeRef={logoRef} classNames="fade" timeout={3000}>
+              <NavLogoContainer ref={logoRef}>
                 <Link href="/">
                   <a>
                     <motion.div variants={scaleAndTab}>
@@ -132,11 +162,14 @@ export default function Header({ location }: any) {
             </CSSTransition>
           )}
         </TransitionGroup>
-
         <TransitionGroup>
           {isMounted && (
-            <CSSTransition classNames="fade" timeout={3000}>
-              <Hamburger onClick={toggleMenu}>
+            <CSSTransition
+              classNames="fade"
+              timeout={3000}
+              nodeRef={hamburgerRef}
+            >
+              <Hamburger onClick={toggleMenu} ref={hamburgerRef}>
                 <HamburgerBox>
                   <HamburgerInner menuOpen={menuOpen} />
                 </HamburgerBox>
@@ -144,7 +177,6 @@ export default function Header({ location }: any) {
             </CSSTransition>
           )}
         </TransitionGroup>
-
         <NavLinks>
           <NavList>
             <TransitionGroup>
@@ -152,17 +184,15 @@ export default function Header({ location }: any) {
                 navLinks &&
                 navLinks.map(({ path, name, id }: any, i: number) => {
                   const isCurrRoute = isCurrentRoute(location, id);
-
                   return (
                     <CSSTransition
-                      nodeRef={nodeRef}
                       key={i}
+                      nodeRef={listItemRef}
                       classNames="fadedown"
                       timeout={3000}
                     >
                       <NavListItem
-                        nodeRef={nodeRef}
-                        key={i}
+                        // ref={listItemRef}
                         style={{ transitionDelay: `${i * 100}ms` }}
                         isCurrRoute={isCurrRoute}
                       >
@@ -185,12 +215,10 @@ export default function Header({ location }: any) {
             </TransitionGroup>
           </NavList>
         </NavLinks>
-
         <LocaleSelectorDescktop>
           <LocaleSelector />
         </LocaleSelectorDescktop>
       </Navbar>
-
       <MenuMobile
         navLinks={navLinks}
         menuOpen={menuOpen}

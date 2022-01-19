@@ -14,9 +14,10 @@ import WorkCategories from "components/work/WorkCategories";
 
 import {
   getSlugs,
-  getPostTags,
+  // getPostTags,
   getPostCategories,
   getPostsImagesSources,
+  getHtmlTagContentFromString,
   fadeInUp,
   parse,
   stagger,
@@ -55,6 +56,11 @@ export default function WorkPage({
 
   const postTitle = post?.title?.rendered;
 
+  const postDescriptionParagraphs: string = getHtmlTagContentFromString(
+    post?.content?.rendered,
+    "p"
+  );
+
   return (
     <>
       <Head>
@@ -84,10 +90,9 @@ export default function WorkPage({
               </LineSeparatorContainer>
 
               <PostDescription variants={fadeInUp}>
-                {post?.excerpt?.rendered && parse(post?.excerpt?.rendered)}
+                {parse(postDescriptionParagraphs)}
               </PostDescription>
 
-              {/* <WorkTags postTags={postTags} /> */}
               <WorkCategories postCategories={postCategories} />
             </motion.div>
 
@@ -117,20 +122,21 @@ const PostDetailContainer = styled(motion.article)`
 `;
 const BackButtonWrapper = styled(motion.article)`
   padding: 0.5rem 1rem 1rem 1rem;
-  // ${media.thone`padding: 25px; display: none;`};
+  ${media.desktop`padding: 1.5rem 1rem;`};
   ${media.tablet`
     padding: 25px;
     display: none;
   `};
+  // ${media.thone`padding: 25px; display: none;`};
 `;
-const FiligranaContainerMobile = styled.div`
-  margin: 0 0.5rem;
-  align-self: center;
-  svg {
-    width: 4rem;
-    height: 100%;
-  }
-`;
+// const FiligranaContainerMobile = styled.div`
+//   margin: 0 0.5rem;
+//   align-self: center;
+//   svg {
+//     width: 4rem;
+//     height: 100%;
+//   }
+// `;
 const FiligranaContainerDesktop = styled.div`
   margin: 8rem 1rem;
   svg {
@@ -138,15 +144,16 @@ const FiligranaContainerDesktop = styled.div`
     height: 4rem;
   }
 
+  ${media.desktop`margin: 1rem;`};
   ${media.tablet`display: none;`};
 `;
 const PostDetailContent = styled.div<ImagesLengthProp>`
   margin-top: 8rem;
   width: 100%;
   ${media.phablet`
-      margin-top: 1rem;
-      gap: 0;
-    `};
+    margin-top: 1rem;
+    gap: 0;
+  `};
   ${mixins.gridStart};
   gap: 5rem;
   grid-template-columns: 40% 60%;
@@ -164,7 +171,6 @@ const PostTitle = styled(motion.h1)`
   color: ${theme.colors.teal};
   font-size: 2.5rem;
   font-weight: 800;
-  letter-spacing: -2px;
 `;
 const LineSeparatorContainer = styled(motion.div)`
   margin: 0.2rem 0 0.5rem 0;
@@ -176,6 +182,7 @@ const LineSeparator = styled(motion.div)`
   height: 2px;
 `;
 const PostDescription = styled(motion.div)`
+  font-family: ${theme.fonts.Karla};
   padding: 3rem 0;
   ${media.desktop`padding: 1rem 0 1rem 0;`};
 `;
