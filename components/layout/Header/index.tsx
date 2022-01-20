@@ -32,22 +32,15 @@ import {
 
 import { useMenu } from "./useMenu";
 
-export default function Header({ location }: any) {
+export default function Header() {
   const {
     router: { locale },
     isHomePage,
     isCurrentRoute,
   } = useRouter();
 
-  const {
-    scrollDirection,
-    isMounted,
-    isMobileMenuOpen,
-    toggleMenu,
-    headerRef,
-    logoRef,
-    listItemRef,
-  } = useMenu();
+  const { scrollDirection, isMounted, headerRef, logoRef, listItemRef } =
+    useMenu();
 
   return (
     <HeaderContainer

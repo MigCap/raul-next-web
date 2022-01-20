@@ -1,10 +1,10 @@
 // import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 import { getRoutePathById, ROUTES_IDS } from "lib";
 
 export function useCustomRouter() {
-  const router = useRouter();
+  const router = Router;
   const { pathname } = router;
 
   const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
