@@ -10,6 +10,7 @@ import {
   getMedia,
   getCategories,
   getTags,
+  about,
 } from "lib";
 
 import WorksGallery from "components/WorksGallery";
@@ -27,10 +28,12 @@ export default function PortfolioCategoryPage({
   return (
     <>
       <Head>
-        <title>Raúl de Diego - {category?.name} Category</title>
+        <title>
+          {about.name} Works Categories - {category?.name}
+        </title>
         <meta
           name="description"
-          content={`Raúl de Diego - ${category?.name} Category`}
+          content={`Raúl de Diego Works Categories - ${category?.name}`}
         />
       </Head>
 

@@ -10,7 +10,9 @@ export function useCustomRouter() {
   const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
   const isAboutPage = pathname === getRoutePathById(ROUTES_IDS.ABOUT);
   const isWorkDetail = pathname?.startsWith("/works/");
-  const isPortfolioCategories = pathname?.startsWith("/portfolio-categories/");
+  const isPortfolioCategories =
+    pathname?.startsWith("/portfolio-categories/") ||
+    pathname === "/portfolio-categories";
 
   function isCurrentRoute(id: ROUTES_IDS) {
     return pathname.split("/")[1] === id;

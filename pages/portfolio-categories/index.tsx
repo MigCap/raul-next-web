@@ -5,14 +5,13 @@ import styled from "styled-components";
 
 import {
   getMedia,
-  getPosts,
+  // getPosts,
   getPostsByLang,
   getCategories,
   getTags,
   about,
 } from "lib";
 
-import BackButton from "components/BackButton";
 import WorksGallery from "components/WorksGallery";
 import { MenuSide } from "components/MenuSide";
 
@@ -27,33 +26,30 @@ export default function CategoriesPage({
   return (
     <>
       <Head>
-        <title>{about.name} Works</title>
-        <meta name="description" content={`${about.name} Works`} />
+        <title>{about.name} Works Categories</title>
+        <meta name="description" content={`${about.name} Works Categories`} />
       </Head>
 
-      <Section>
-        <MainCategoriesContainer
+      <Section margin="0 2rem" maxWidth="100%">
+        <PortfolioCategoryContainer
           initial="initial"
           animate="animate"
           exit={{ opacity: 0 }}
         >
-          <div>
-            <BackButton />
-            <MenuSide categories={categories} tags={tags} />
-          </div>
-          <WorksGallery posts={posts} media={media} />
-        </MainCategoriesContainer>
+          <MenuSide categories={categories} tags={tags} />
+          <WorksGallery posts={posts} media={media} style={{ flexGrow: "1" }} />
+        </PortfolioCategoryContainer>
       </Section>
     </>
   );
 }
 
-const MainCategoriesContainer = styled(motion.div)`
+const PortfolioCategoryContainer = styled(motion.article)`
   padding-top: 1rem;
   min-height: 80vh;
   display: flex;
   flex-direction: row;
-  ${media.phablet`flex-direction: column;`};
+  ${media.desktop`flex-direction: column;`};
 `;
 
 export async function getStaticProps({ locale }: { locale: any }) {

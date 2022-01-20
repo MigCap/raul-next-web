@@ -179,14 +179,34 @@ export const categoriesConfig = [
       [LANGUAGES.ES]: "Diseño Grafico",
     },
     Icon: Filigrana,
+    main: true,
   },
   {
     id: 57,
     name: { [LANGUAGES.EN]: "Illustration", [LANGUAGES.ES]: "Ilustración" },
     Icon: Filigrana2,
+    main: true,
+  },
+  {
+    id: 58,
+    name: {
+      [LANGUAGES.EN]: "Editorial Design",
+      [LANGUAGES.ES]: "Diseñó Editorial",
+    },
+  },
+  {
+    id: 59,
+    name: { [LANGUAGES.EN]: "Matte Painting", [LANGUAGES.ES]: "Pintura mate" },
+  },
+  {
+    id: 60,
+    name: {
+      [LANGUAGES.EN]: "Editorial Illustration",
+      [LANGUAGES.ES]: "Ilustración Editorial",
+    },
   },
 ];
 
-export const categoriesIds = categoriesConfig.map(
-  (categorie: any) => categorie?.id
-);
+export const categoriesIds = categoriesConfig
+  .filter((categorie: any) => categorie?.main)
+  ?.map((categorie: any) => categorie?.id);
