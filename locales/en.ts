@@ -7,7 +7,7 @@ export const en: any = {
   contactMe: "Contact me!",
   email: "Email",
   en: "en",
-  es: "sp",
+  es: "es",
   heyThanksForComing: "Hey! Thanks for coming!",
   letsTalk: "Let's talk!",
   message: "Message",

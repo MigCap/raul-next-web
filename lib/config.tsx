@@ -101,13 +101,13 @@ export const socialLinks: any = {
 };
 
 export const socialMedia = [
+  socialLinks.linkedin,
+  socialLinks.instagram,
   {
     name: "Mail",
     url: "/contact",
     icon: "pi pi-envelope",
   },
-  socialLinks.linkedin,
-  socialLinks.instagram,
 ];
 
 export const about = {

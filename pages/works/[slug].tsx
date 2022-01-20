@@ -3,12 +3,11 @@ import { useCallback, useState } from "react";
 import Head from "next/head";
 
 import { motion } from "framer-motion";
-import styled from "styled-components";
 
 import BackButton from "components/BackButton";
 import { Filigrana } from "components/Icons";
 import LightBox from "components/LightBox";
-import PostImage from "components/work/WorkImage";
+import WorkImage from "components/work/WorkImage";
 // import WorkTags from "components/work/WorkTags";
 import WorkCategories from "components/work/WorkCategories";
 
@@ -24,7 +23,18 @@ import {
   getPostBySlug,
 } from "lib";
 
-import { theme, mixins, media, Section } from "styles";
+import {
+  Section,
+  WorkDetailContainer,
+  BackButtonWrapper,
+  FiligranaContainerDesktop,
+  WorkDetailContent,
+  WorkTitle,
+  LineSeparatorContainer,
+  LineSeparator,
+  WorkDescription,
+  WorkImagesContainer,
+} from "styles/workSlug";
 
 const postTitleUnderline = {
   visible: { opacity: 1 },
@@ -51,7 +61,7 @@ export default function WorkPage({
   }, []);
 
   const postImages = imgs?.map((img: any) => (
-    <PostImage img={img} onClick={onClickImg} key={img?.src} />
+    <WorkImage img={img} onClick={onClickImg} key={img?.src} />
   ));
 
   const postTitle = post?.title?.rendered;
@@ -72,7 +82,7 @@ export default function WorkPage({
       </Head>
 
       <Section>
-        <PostDetailContainer>
+        <WorkDetailContainer>
           <BackButtonWrapper>
             <BackButton />
           </BackButtonWrapper>
@@ -81,26 +91,26 @@ export default function WorkPage({
             <Filigrana />
           </FiligranaContainerDesktop>
 
-          <PostDetailContent imagesLength={imgs?.length}>
+          <WorkDetailContent imagesLength={imgs?.length}>
             <motion.div variants={stagger}>
-              <PostTitle variants={fadeInUp}>{postTitle}</PostTitle>
+              <WorkTitle variants={fadeInUp}>{postTitle}</WorkTitle>
 
               <LineSeparatorContainer variants={fadeInUp}>
                 <LineSeparator variants={postTitleUnderline} />
               </LineSeparatorContainer>
 
-              <PostDescription variants={fadeInUp}>
+              <WorkDescription variants={fadeInUp}>
                 {parse(postDescriptionParagraphs)}
-              </PostDescription>
+              </WorkDescription>
 
               <WorkCategories postCategories={postCategories} />
             </motion.div>
 
-            <PostImagesContainer imagesLength={imgs?.length}>
+            <WorkImagesContainer imagesLength={imgs?.length}>
               <motion.div variants={stagger}>{postImages}</motion.div>
-            </PostImagesContainer>
-          </PostDetailContent>
-        </PostDetailContainer>
+            </WorkImagesContainer>
+          </WorkDetailContent>
+        </WorkDetailContainer>
 
         <LightBox
           images={imgs}
@@ -112,86 +122,6 @@ export default function WorkPage({
     </>
   );
 }
-
-interface ImagesLengthProp {
-  imagesLength: number;
-}
-
-const PostDetailContainer = styled(motion.article)`
-  display: flex;
-`;
-const BackButtonWrapper = styled(motion.article)`
-  padding: 0.5rem 1rem 1rem 1rem;
-  ${media.desktop`padding: 1.5rem 1rem;`};
-  ${media.tablet`
-    padding: 25px;
-    display: none;
-  `};
-  // ${media.thone`padding: 25px; display: none;`};
-`;
-// const FiligranaContainerMobile = styled.div`
-//   margin: 0 0.5rem;
-//   align-self: center;
-//   svg {
-//     width: 4rem;
-//     height: 100%;
-//   }
-// `;
-const FiligranaContainerDesktop = styled.div`
-  margin: 8rem 1rem;
-  svg {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  ${media.desktop`margin: 1rem;`};
-  ${media.tablet`display: none;`};
-`;
-const PostDetailContent = styled.div<ImagesLengthProp>`
-  margin-top: 8rem;
-  width: 100%;
-  ${media.phablet`
-    margin-top: 1rem;
-    gap: 0;
-  `};
-  ${mixins.gridStart};
-  gap: 5rem;
-  grid-template-columns: 40% 60%;
-  ${media.desktop`
-    grid-template-columns: 100%;
-    gap: 0;
-    margin-top: 1rem;
-  `};
-`;
-// const PostTitleContainerMobile = styled.div`
-//   display: flex;
-// `;
-const PostTitle = styled(motion.h1)`
-  margin: 0 0 1rem 0;
-  color: ${theme.colors.teal};
-  font-size: 2.5rem;
-  font-weight: 800;
-`;
-const LineSeparatorContainer = styled(motion.div)`
-  margin: 0.2rem 0 0.5rem 0;
-  ${media.desktop`margin: 0.4rem 0 1rem 0;`};
-  background-color: ${theme.colors.bronze};
-`;
-const LineSeparator = styled(motion.div)`
-  width: 20%;
-  height: 2px;
-`;
-const PostDescription = styled(motion.div)`
-  font-family: ${theme.fonts.Karla};
-  padding: 3rem 0;
-  ${media.desktop`padding: 1rem 0 1rem 0;`};
-`;
-const PostImagesContainer = styled.div<ImagesLengthProp>`
-  ${mixins.gridCenter};
-  grid-template-columns: "100%";
-  margin: 8rem 0 0 0;
-  ${media.desktop`margin: 0 0 0 0;`};
-`;
 
 export async function getStaticPaths() {
   const paths = await getSlugs("posts");

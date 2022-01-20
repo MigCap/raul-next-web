@@ -8,6 +8,7 @@ import Social from "components/Social";
 import Footer from "components/layout/Footer";
 
 import { getRoutePathById, ROUTES_IDS } from "lib";
+import { useCustomRouter as useRouter } from "hooks";
 
 import { GlobalStyle, Main, theme, mixins } from "styles";
 
@@ -17,12 +18,8 @@ const MainContainer = styled(Main)`
 `;
 
 export default function Layout({ children, router }: any) {
-  const isHomePage = router?.pathname === getRoutePathById(ROUTES_IDS.HOME);
-  const isAboutPage = router?.pathname === getRoutePathById(ROUTES_IDS.ABOUT);
-  const isWorkDetail = router?.pathname?.startsWith("/works/");
-  const isPortfolioCategories = router?.pathname?.startsWith(
-    "/portfolio-categories/"
-  );
+  const { isHomePage, isAboutPage, isWorkDetail, isPortfolioCategories } =
+    useRouter();
 
   return (
     <>
@@ -31,7 +28,7 @@ export default function Layout({ children, router }: any) {
         <AnimatePresence exitBeforeEnter>
           {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
           <motion.div key={router.route}>
-            <Header location={router} />
+            <Header />
             {isWorkDetail && <Social />}
             {/* <Email /> */}
             {isHomePage || isAboutPage || isPortfolioCategories ? (

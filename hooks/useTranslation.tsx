@@ -45,8 +45,6 @@ export function useTranslation({ localeFile = null }: { localeFile?: any }) {
   }, [locale]);
 
   const getLinkLocaleHref = useCallback(() => {
-    // console.log(`🚀 ~ getLinkLocaleHref ~ hasQuery`, hasQuery);
-    // console.log(`🚀 ~ getLinkLocaleHref ~ isWorkPost`, isWorkPost);
     if (!hasQuery) return `${route}`;
     if (isWorkPost) {
       return {

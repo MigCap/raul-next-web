@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { fadeInRight } from "lib";
 
-import { theme, mixins, media } from "styles";
+import { media } from "styles";
 
 export default function WorkImage({
   img,

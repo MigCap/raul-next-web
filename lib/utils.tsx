@@ -10,18 +10,18 @@ function getDate(date: any) {
   });
 }
 
-function throttle(func: any, wait: number = 100) {
-  let timer: any = null;
-  return function (...args: any) {
-    if (timer === null) {
-      timer = setTimeout(() => {
-        // @ts-ignore
-        func.apply(this, args);
-        timer = null;
-      }, wait);
-    }
-  };
-}
+// function throttle(func: any, wait: number = 100) {
+//   let timer: any = null;
+//   return function (...args: any) {
+//     if (timer === null) {
+//       timer = setTimeout(() => {
+//         // @ts-ignore
+//         func.apply(this, args);
+//         timer = null;
+//       }, wait);
+//     }
+//   };
+// }
 
 function isCurrentRoute(location: any, id: string) {
   return location && location.pathname.split("/")[1] === id;
@@ -36,7 +36,7 @@ function getCategoryNameFromConfig(id: number) {
   return categoriesConfig?.find((category: any) => category.id === id)?.name;
 }
 
-function debounce(func: () => void, wait: number, immediate?: boolean) {
+function debounce(func: () => void, wait: number = 100, immediate?: boolean) {
   let timeout: any;
   return function () {
     const context: any = this;
@@ -60,7 +60,6 @@ function getHtmlTagContentFromString(htmlString: string, tag: "p" | "a") {
 export {
   parse,
   getDate,
-  throttle,
   debounce,
   isCurrentRoute,
   getRoutePathById,
