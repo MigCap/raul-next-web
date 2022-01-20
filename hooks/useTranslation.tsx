@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 
-import { LANGUAGES, TLocales } from "lib";
+import { categoriesConfig, LANGUAGES, TLocales } from "lib";
 
 import { en } from "locales/en";
 import { es } from "locales/es";
@@ -74,5 +74,18 @@ export function useTranslation({ localeFile = null }: { localeFile?: any }) {
   //       }
   //   : `${route}`;
 
-  return { t, isEn, isEs, locale: locale as TLocales, linkLocaleHref };
+  function getCategoryLocaleNameFromConfig(id: number) {
+    if (!id) return;
+    return categoriesConfig?.find((category: any) => category.id === id)
+      ?.name?.[locale as string];
+  }
+
+  return {
+    t,
+    isEn,
+    isEs,
+    locale: locale as TLocales,
+    linkLocaleHref,
+    getCategoryLocaleNameFromConfig,
+  };
 }

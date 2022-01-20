@@ -3,7 +3,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { fadeInUp } from "lib";
+import { useTranslation } from "hooks";
+
+import { fadeInUp, getCategoryNameFromConfig } from "lib";
 
 import { theme, media, mixins } from "styles";
 
@@ -12,6 +14,8 @@ export default function WorkCategories({
 }: {
   postCategories: any;
 }) {
+  const { locale } = useTranslation({});
+
   if (!postCategories || postCategories?.length <= 0) return null;
 
   return (
@@ -31,7 +35,9 @@ export default function WorkCategories({
                 key={id}
               >
                 <a>
-                  <WorkCategorieText>#{name.toLowerCase()}</WorkCategorieText>
+                  <WorkCategorieText>
+                    #{getCategoryNameFromConfig(id)?.[locale].toLowerCase()}
+                  </WorkCategorieText>
                 </a>
               </Link>
             );

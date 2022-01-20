@@ -171,7 +171,7 @@ export const about = {
   hobbies: ["Fútbol", "Ciclismo", "Cine", "Música"],
 };
 
-export const categoriesConfig = [
+export const categoriesConfig: any = [
   {
     id: 56,
     name: {
