@@ -1,17 +1,16 @@
-import { useRouter } from "next/router";
-
 import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { getFeaturedMedia, stagger, getRoutePathById, ROUTES_IDS } from "lib";
+import { useCustomRouter as useRouter } from "hooks";
+
+import { getFeaturedMedia, stagger } from "lib";
 
 import { media } from "styles";
 
 export default function WorksGallery({ posts, media, className, style }: any) {
-  const { pathname } = useRouter();
-  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
+  const { isHomePage } = useRouter();
 
   const maxCardsToShow = isHomePage ? 9 : 18;
 

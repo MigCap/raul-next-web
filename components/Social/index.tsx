@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 
-import { useRouter } from "next/router";
-
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
-import { socialMedia, getRoutePathById, ROUTES_IDS } from "lib";
+import { useCustomRouter as useRouter } from "hooks";
+
+import { socialMedia } from "lib";
 
 import { theme, media } from "styles";
 
@@ -20,8 +20,7 @@ export default function Social() {
     };
   }, []);
 
-  const { pathname } = useRouter();
-  const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
+  const { isHomePage } = useRouter();
 
   const nodeRef = useRef(null);
 
