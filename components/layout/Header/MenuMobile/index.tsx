@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
-
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import LocaleSelector from "components/layout/Header/LocaleSelector";
 
+import { useCustomRouter as useRouter } from "hooks";
+
 import {
-  isCurrentRoute,
   socialMedia,
   locales as localesConfig,
   routesConfig as navLinks,
@@ -31,7 +30,10 @@ import {
 } from "./styles";
 
 export default function MenuMobile() {
-  const { locale } = useRouter();
+  const {
+    router: { locale },
+    isCurrentRoute,
+  } = useRouter();
 
   const { isMounted, isMobileMenuOpen, toggleMenu, hamburgerRef } = useMenu();
 
@@ -63,7 +65,7 @@ export default function MenuMobile() {
             <NavList>
               {navLinks &&
                 navLinks.map(({ path, name, id }: any) => {
-                  const isCurrRoute = isCurrentRoute(location, id);
+                  const isCurrRoute = isCurrentRoute(id);
                   return (
                     <NavListItem
                       key={`${name}-${id}`}

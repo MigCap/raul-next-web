@@ -23,10 +23,6 @@ function getDate(date: any) {
 //   };
 // }
 
-function isCurrentRoute(location: any, id: string) {
-  return location && location.pathname.split("/")[1] === id;
-}
-
 function getRoutePathById(id: ROUTES_IDS) {
   return routesConfig.find((route: IRoute) => route.id === id)?.path as string;
 }
@@ -61,7 +57,6 @@ export {
   parse,
   getDate,
   debounce,
-  isCurrentRoute,
   getRoutePathById,
   getCategoryNameFromConfig,
   getHtmlTagContentFromString,

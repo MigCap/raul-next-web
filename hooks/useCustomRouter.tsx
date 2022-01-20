@@ -13,7 +13,7 @@ export function useCustomRouter() {
   const isPortfolioCategories = pathname?.startsWith("/portfolio-categories/");
 
   function isCurrentRoute(id: ROUTES_IDS) {
-    return location && pathname.split("/")[1] === id;
+    return pathname.split("/")[1] === id;
   }
 
   return {
