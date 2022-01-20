@@ -12,8 +12,8 @@ import {
   getTags,
 } from "lib";
 
-import { MenuSide } from "components/MenuSide";
 import WorksGallery from "components/WorksGallery";
+import { MenuSide } from "components/MenuSide";
 
 import { Section, media } from "styles";
 

@@ -5,11 +5,11 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 
 import BackButton from "components/BackButton";
-import { Filigrana } from "components/Icons";
 import LightBox from "components/LightBox";
 import WorkImage from "components/work/WorkImage";
 // import WorkTags from "components/work/WorkTags";
 import WorkCategories from "components/work/WorkCategories";
+import { Filigrana } from "components/Icons";
 
 import {
   getSlugs,

@@ -12,8 +12,9 @@ import {
   about,
 } from "lib";
 
-import { MenuSide } from "components/MenuSide";
+import BackButton from "components/BackButton";
 import WorksGallery from "components/WorksGallery";
+import { MenuSide } from "components/MenuSide";
 
 import { media, Section } from "styles";
 
@@ -36,7 +37,10 @@ export default function CategoriesPage({
           animate="animate"
           exit={{ opacity: 0 }}
         >
-          <MenuSide categories={categories} tags={tags} />
+          <div>
+            <BackButton />
+            <MenuSide categories={categories} tags={tags} />
+          </div>
           <WorksGallery posts={posts} media={media} />
         </MainCategoriesContainer>
       </Section>

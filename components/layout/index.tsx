@@ -7,7 +7,6 @@ import Social from "components/Social";
 // import Email from "components/layout/Email";
 import Footer from "components/layout/Footer";
 
-import { getRoutePathById, ROUTES_IDS } from "lib";
 import { useCustomRouter as useRouter } from "hooks";
 
 import { GlobalStyle, Main, theme, mixins } from "styles";

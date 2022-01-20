@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import BackButton from "components/BackButton";
 import SocialH from "components/SocialH";
 
 import { useTranslation } from "hooks/useTranslation";
@@ -68,7 +69,11 @@ export function MenuSide({
   );
 
   return (
-    <>
+    <MenuSideContainer>
+      <BackButtonWrapper>
+        <BackButton />
+      </BackButtonWrapper>
+
       <CategoriesContainer
         className="menu"
         initial="initial"
@@ -136,17 +141,33 @@ export function MenuSide({
           })}
         <SocialH />
       </CategoriesContainer>
-    </>
+    </MenuSideContainer>
   );
 }
 
-const CategoriesContainer = styled(motion.div)`
-  padding: 10rem 2rem 0 2rem;
+const MenuSideContainer = styled(motion.div)`
   min-width: 20rem;
+  padding: 0 2rem;
+  ${media.desktop` 
+    padding: 0 1rem;
+  `};
+`;
+
+const BackButtonWrapper = styled(motion.article)`
+  padding: 1.5rem 3.5rem 0 3.5rem;
+  // ${media.desktop` 
+  //   padding: 0 1rem 2rem 1rem;
+  // `};
+`;
+
+const CategoriesContainer = styled(motion.div)`
+  min-width: 20rem;
+  padding: 7.5rem 2rem 0 2rem;
   ${media.desktop` 
     padding: 0 1rem 2rem 1rem;
   `};
 `;
+
 const CategoryTitleContainer = styled.div`
   display: flex;
   align-items: center;
