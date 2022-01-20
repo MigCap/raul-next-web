@@ -96,6 +96,7 @@ const LocalesContainer = styled.div<any>`
   color: ${({ isHomePage }) => theme.colors.bronzeLight};
 `;
 const LocaleAnchor = styled.a<any>`
+  text-transform: uppercase;
   color: ${({ isSelected, isHomePage }) => {
     return isSelected
       ? `${theme.colors.orange} !important`

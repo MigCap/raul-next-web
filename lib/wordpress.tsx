@@ -9,7 +9,7 @@ const TAG_LANG_EN = "55";
 const TAG_LANG_SP = "54";
 
 function getLangTagsByLang(lang: any) {
-  return lang === "sp"
+  return lang === "es"
     ? `tags_exclude=${TAG_LANG_EN}&tags=${TAG_LANG_SP}`
     : `tags_exclude=${TAG_LANG_SP}&tags=${TAG_LANG_EN}`;
 }

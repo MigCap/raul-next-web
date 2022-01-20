@@ -80,7 +80,14 @@ export function MenuSide({
       >
         {filteredCategoriesWithChildren &&
           filteredCategoriesWithChildren.map((category: any, i: number) => {
-            const { id, name, count, slug, children, Icon } = category;
+            const {
+              id,
+              name,
+              count,
+              slug: parentSlug,
+              children,
+              Icon,
+            } = category;
 
             if (name === "Uncategorized" || count === 0 || !category) {
               return null;
@@ -93,7 +100,7 @@ export function MenuSide({
                 <CategoryTitleContainer>
                   {Icon && <Icon />}
                   <div key={id} onClick={() => setActiveIndex(null)}>
-                    <Link href={`/portfolio-categories/${slug}`}>
+                    <Link href={`/portfolio-categories/${parentSlug}`}>
                       <a className="lighten">
                         <CategoryTitle isSelected={isSelected}>
                           {name[locale]}
@@ -137,7 +144,7 @@ const CategoriesContainer = styled(motion.div)`
   padding: 10rem 2rem 0 2rem;
   min-width: 20rem;
   ${media.desktop` 
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 1rem 2rem 1rem;
   `};
 `;
 const CategoryTitleContainer = styled.div`

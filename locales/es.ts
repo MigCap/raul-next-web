@@ -1,4 +1,4 @@
-export const sp: any = {
+export const es: any = {
   blog: "Blog",
   blogDescription: "Descripción del blog.",
   contact: "Contacto",
@@ -7,6 +7,7 @@ export const sp: any = {
   contactMe: "¡Contáctame!",
   email: "Email",
   en: "en",
+  es: "es",
   heyThanksForComing: "¡Gracias por venir!",
   letsTalk: "¡Hablamos!",
   message: "Mensaje",
@@ -14,7 +15,6 @@ export const sp: any = {
   name: "Nombre",
   niceToMeetYou: "¡Encantado de conocerte!",
   send: "Enviar",
-  sp: "es",
   welcomeToMyWork: "¡Bienvenido a mi trabajo!",
   whatCanIDoForYou: "Qué puedo hacer por ti?",
   whatTheySayAboutMe: "Qué dicen sobre mi",

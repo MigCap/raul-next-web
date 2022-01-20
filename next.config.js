@@ -6,7 +6,7 @@ module.exports = {
     domains: ["wp.rauldediego.com", "www.rauldediego.es"],
   },
   i18n: {
-    locales: ["en", "sp"],
+    locales: ["en", "es"],
     defaultLocale: "en",
     localeDetection: false,
   },

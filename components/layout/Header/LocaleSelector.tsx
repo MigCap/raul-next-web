@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { useTranslation } from "hooks";
 
-import { getRoutePathById, ROUTES_IDS } from "lib";
+import { getRoutePathById, LANGUAGES, ROUTES_IDS } from "lib";
 
 import {
   LocalesContainer,
@@ -12,24 +12,24 @@ import {
 } from "./styles";
 
 function LocaleSelector() {
-  const { isEn, isSp, linkLocaleHref } = useTranslation({});
+  const { t, isEn, isEs, linkLocaleHref } = useTranslation({});
 
   const { pathname } = useRouter();
   const isHomePage = pathname === getRoutePathById(ROUTES_IDS.HOME);
 
   return (
     <LocalesContainer isHomePage={isHomePage}>
-      <Link href={linkLocaleHref} locale="en" passHref>
+      <Link href={linkLocaleHref} locale={LANGUAGES.EN} passHref>
         <LocaleAnchor isSelected={isEn} isHomePage={isHomePage}>
-          EN
+          {t(LANGUAGES.EN)}
           {isEn && <LocaleSelectedUnderline isSelected={isEn} />}
         </LocaleAnchor>
       </Link>
       <span> / </span>
-      <Link href={linkLocaleHref} locale="sp" passHref>
-        <LocaleAnchor isSelected={isSp} isHomePage={isHomePage}>
-          ES
-          {isSp && <LocaleSelectedUnderline isSelected={isSp} />}
+      <Link href={linkLocaleHref} locale={LANGUAGES.ES} passHref>
+        <LocaleAnchor isSelected={isEs} isHomePage={isHomePage}>
+          {t(LANGUAGES.ES)}
+          {isEs && <LocaleSelectedUnderline isSelected={isEs} />}
         </LocaleAnchor>
       </Link>
     </LocalesContainer>
