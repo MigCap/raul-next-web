@@ -3,6 +3,8 @@ import PostCard from "components/PostCard";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import { Carousel } from "primereact/carousel";
+
 import { useCustomRouter as useRouter } from "hooks";
 
 import { getFeaturedMedia, stagger } from "lib";
@@ -27,6 +29,55 @@ export default function WorksGallery({ posts, media, className, style }: any) {
   );
 }
 
+const responsiveOptions = [
+  {
+    breakpoint: "1024px",
+    numVisible: 3,
+    numScroll: 3,
+  },
+  {
+    breakpoint: "600px",
+    numVisible: 2,
+    numScroll: 2,
+  },
+  {
+    breakpoint: "480px",
+    numVisible: 1,
+    numScroll: 1,
+  },
+];
+
+export function WorksGalleryCarousel({ posts, media }: any) {
+  const workCardTemplate = (post: any) => {
+    const featuredMediaId = post?.featured_media;
+    const featuredMedia = getFeaturedMedia(media, featuredMediaId);
+
+    return (
+      <div style={{ margin: "0 0.5rem" }}>
+        <PostCard post={post} featuredMedia={featuredMedia} />
+      </div>
+    );
+  };
+
+  return (
+    <motion.section variants={stagger}>
+      <WorksGalleryCarouselContainer>
+        <Carousel
+          value={posts}
+          numVisible={3}
+          numScroll={3}
+          responsiveOptions={responsiveOptions}
+          className="custom-carousel"
+          circular
+          autoplayInterval={3000}
+          itemTemplate={workCardTemplate}
+          // header={}
+        />
+      </WorksGalleryCarouselContainer>
+    </motion.section>
+  );
+}
+
 const WorksGalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,4 +90,10 @@ const WorksGalleryContainer = styled.div`
   overflow: hidden;
   margin-top: 20px;
   width: 100%;
+`;
+
+const WorksGalleryCarouselContainer = styled.div`
+  .p-carousel-indicators {
+    display: none;
+  }
 `;

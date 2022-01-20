@@ -8,7 +8,7 @@ import { Button } from "primereact/button";
 
 import Hero from "components/Hero";
 import Title from "components/Title";
-import WorksGallery from "components/WorksGallery";
+import WorksGallery, { WorksGalleryCarousel } from "components/WorksGallery";
 import { Filigrana, Filigrana2 } from "components/Icons";
 
 import { useTranslation } from "hooks";
@@ -83,7 +83,8 @@ export default function Home({ posts, media }: any) {
           </HomeSection>
 
           <HomeSection title={"whatCanIDoForYou"} Icon={Filigrana2}>
-            <WorksGallery posts={posts} media={media} />
+            {/* <WorksGallery posts={posts} media={media} /> */}
+            <WorksGalleryCarousel posts={posts} media={media} />
           </HomeSection>
 
           {/* <HomeSectionContainer>

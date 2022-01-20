@@ -181,7 +181,7 @@ const TestimonialItemContainer = styled.div<any>`
         }
         h6 {
           color: ${({ isEven }) =>
-            isEven ? theme.colors.darkBlue : theme.colors.teal};
+            isEven ? theme.colors.blue : theme.colors.teal};
           font-family: ${theme.fonts.JosefinSlab};
           font-size: 1.4rem;
           font-weight: 700;

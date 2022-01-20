@@ -72,7 +72,8 @@ const LineSeparator = styled(motion.div)`
   height: 2px;
 `;
 const WorkDescription = styled(motion.div)`
-  font-family: ${theme.fonts.Karla};
+  font-size: 0.9rem;
+  color: ${theme.colors.grey};
   padding: 3rem 0;
   ${media.desktop`padding: 1rem 0 1rem 0;`};
 `;

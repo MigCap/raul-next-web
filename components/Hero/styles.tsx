@@ -7,18 +7,15 @@ const HeroContainer = styled(Section)`
   ${mixins.flexCenter};
   flex-direction: column;
   align-items: center;
-
+  background: url("/assets/rectangle_landing.png") repeat fixed center;
   min-height: 100vh;
   height: 100vh;
-  ${media.desktop`min-height: 60vh; height: 60vh;`};
-
-  // padding: 0 1rem;
   padding: 0;
-  ${media.desktop`padding-top: 120px;`};
-
-  // background: ${theme.colors.teal};
-  background: url("/assets/rectangle_landing.png") repeat fixed center;
-  // background-blend-mode: multiply;
+  ${media.desktop`
+    min-height: 60vh;
+    height: 60vh;
+    padding-top: ${theme.headerScrollHeight};
+  `};
 `;
 const HeroContent = styled.div`
   ${mixins.flexCenter};
