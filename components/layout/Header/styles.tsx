@@ -112,80 +112,8 @@ const LocaleSelectedUnderline = styled.div<any>`
   background-color: ${({ isSelected }) => isSelected && theme.colors.orange};
 `;
 
-const Hamburger = styled.div<any>`
-  ${mixins.flexCenter};
-  overflow: visible;
-  margin: 0 -12px 0 0;
-  padding: 15px;
-  cursor: pointer;
-  transition-timing-function: linear;
-  transition-duration: 0.15s;
-  transition-property: opacity, filter;
-  text-transform: none;
-  color: inherit;
-  border: 0;
-  background-color: transparent;
-  display: none;
-  ${media.tablet`display: flex;`};
-`;
-const HamburgerBox = styled.div`
-  position: relative;
-  display: inline-block;
-  width: ${theme.hamburgerWidth}px;
-  height: 24px;
-`;
-interface HamburgerInner {
-  menuOpen: boolean;
-}
-const HamburgerInner = styled.div<HamburgerInner>`
-  background-color: ${theme.colors.white};
-  position: absolute;
-  width: ${theme.hamburgerWidth}px;
-  height: 4px;
-  border-radius: ${theme.borderRadius};
-  top: 50%;
-  left: 0;
-  right: 0;
-  transition-duration: 0.22s;
-  transition-property: transform;
-  transition-delay: ${(props: any) => (props.menuOpen ? `0.12s` : `0s`)};
-  transform: rotate(${(props: any) => (props.menuOpen ? `225deg` : `0deg`)});
-  transition-timing-function: cubic-bezier(
-    ${(props: any) =>
-      props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`}
-  );
-  &:before,
-  &:after {
-    content: "";
-    display: block;
-    background-color: ${theme.colors.white};
-    position: absolute;
-    left: auto;
-    right: 0;
-    width: ${theme.hamburgerWidth}px;
-    height: 4px;
-    transition-timing-function: ease;
-    transition-duration: 0.15s;
-    transition-property: transform;
-    border-radius: 20px;
-  }
-  &:before {
-    width: ${(props: any) => (props.menuOpen ? `100%` : `100%`)};
-    top: ${(props: any) => (props.menuOpen ? `0` : `-10px`)};
-    opacity: ${(props: any) => (props.menuOpen ? 0 : 1)};
-    transition: ${(props: any) =>
-      props.menuOpen ? theme.hamBeforeActive : theme.hamBefore};
-  }
-  &:after {
-    width: ${(props: any) => (props.menuOpen ? `100%` : `100%`)};
-    bottom: ${(props: any) => (props.menuOpen ? `0` : `-10px`)};
-    transform: rotate(${(props: any) => (props.menuOpen ? `-90deg` : `0`)});
-    transition: ${(props: any) =>
-      props.menuOpen ? theme.hamAfterActive : theme.hamAfter};
-  }
-`;
-
 export {
+  HeaderContainer,
   Navbar,
   NavLogoContainer,
   NavLinks,
@@ -197,8 +125,4 @@ export {
   LocalesContainer,
   LocaleAnchor,
   LocaleSelectedUnderline,
-  Hamburger,
-  HamburgerBox,
-  HamburgerInner,
-  HeaderContainer,
 };

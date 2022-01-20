@@ -26,9 +26,6 @@ import {
   NavListItem,
   NavLink,
   NavLinkSelectedUnderline,
-  Hamburger,
-  HamburgerBox,
-  HamburgerInner,
   HeaderContainer,
   LocaleSelectorDescktop,
 } from "./styles";
@@ -49,7 +46,6 @@ export default function Header({ location }: any) {
     toggleMenu,
     headerRef,
     logoRef,
-    hamburgerRef,
     listItemRef,
   } = useMenu();
 
@@ -75,21 +71,7 @@ export default function Header({ location }: any) {
             </CSSTransition>
           )}
         </TransitionGroup>
-        <TransitionGroup>
-          {isMounted && (
-            <CSSTransition
-              classNames="fade"
-              timeout={3000}
-              nodeRef={hamburgerRef}
-            >
-              <Hamburger onClick={toggleMenu} ref={hamburgerRef}>
-                <HamburgerBox>
-                  <HamburgerInner menuOpen={isMobileMenuOpen} />
-                </HamburgerBox>
-              </Hamburger>
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+
         <NavLinks>
           <NavList>
             <TransitionGroup>
@@ -132,12 +114,8 @@ export default function Header({ location }: any) {
           <LocaleSelector />
         </LocaleSelectorDescktop>
       </Navbar>
-      <MenuMobile
-        navLinks={navLinks}
-        menuOpen={isMobileMenuOpen}
-        location={location}
-        toggleMenu={toggleMenu}
-      />
+
+      <MenuMobile />
     </HeaderContainer>
   );
 }
