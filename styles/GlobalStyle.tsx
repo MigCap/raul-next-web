@@ -98,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: ${theme.colors.teal};
+      color: ${theme.colors.teal} !important;
       outline: 0;
     }
   }
