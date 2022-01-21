@@ -60,15 +60,15 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
       >
         <GalleriaStyled
           value={images}
-          responsiveOptions={responsiveOptions}
+          // responsiveOptions={responsiveOptions}
           activeIndex={activeIndex}
           numVisible={7}
           circular
           item={itemTemplate}
-          showItemNavigators
-          showThumbnails={false}
-          showItemNavigatorsOnHover
           showIndicators
+          showItemNavigators
+          showItemNavigatorsOnHover
+          showThumbnails={false}
         />
       </Dialog>
     </>
@@ -89,7 +89,7 @@ const ImageStyled = styled(Image)`
   transition: all 0.5s ease;
 `;
 const GalleriaStyled = styled(Galleria)`
-  min-width: 70vw;
+  min-width: 65vw;
   ${media.desktop`min-width: 90vw;`};
   ${media.tablet`min-width: 80vw;`};
 `;

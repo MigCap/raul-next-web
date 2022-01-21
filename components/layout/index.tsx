@@ -28,7 +28,7 @@ export default function Layout({ children, router }: any) {
           {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
           <motion.div key={router.route}>
             <Header />
-            {isWorkDetail && <Social />}
+            {/* {isWorkDetail && <Social />} */}
             {/* <Email /> */}
             {isHomePage || isAboutPage || isPortfolioCategories ? (
               <>{children}</>

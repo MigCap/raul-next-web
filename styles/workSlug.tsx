@@ -3,10 +3,6 @@ import styled from "styled-components";
 
 import { theme, media, mixins, Section } from "styles";
 
-interface ImagesLengthProp {
-  imagesLength: number;
-}
-
 const WorkDetailContainer = styled(motion.article)`
   display: flex;
 `;
@@ -27,26 +23,19 @@ const BackButtonWrapper = styled(motion.article)`
 //     height: 100%;
 //   }
 // `;
-const FiligranaContainerDesktop = styled.div`
-  margin: 8rem 1rem;
-  svg {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  ${media.desktop`margin: 1rem;`};
-  ${media.tablet`display: none;`};
-`;
-const WorkDetailContent = styled.div<ImagesLengthProp>`
-  margin-top: 8rem;
+const WorkDetailContent = styled.div`
+  margin-top: 1rem;
+  // margin-top: 8rem;
   width: 100%;
   ${media.phablet`
       margin-top: 1rem;
       gap: 0;
     `};
   ${mixins.gridStart};
-  gap: 5rem;
-  grid-template-columns: 40% 60%;
+  gap: 0;
+  // gap: 5rem;
+  grid-template-columns: 100%;
+  // grid-template-columns: 40% 60%;
   ${media.desktop`
       grid-template-columns: 100%;
       gap: 0;
@@ -56,32 +45,49 @@ const WorkDetailContent = styled.div<ImagesLengthProp>`
 // const WorkTitleContainerMobile = styled.div`
 //   display: flex;
 // `;
+const FiligranaContainerDesktop = styled.div`
+  margin: 1rem 1rem 1rem 0;
+  // margin: 8rem 1rem 8rem 0;
+  svg {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  ${media.desktop`margin: 1rem 1rem 1rem 0;`};
+  ${media.tablet`display: none;`};
+`;
+
 const WorkTitle = styled(motion.h1)`
-  margin: 0 0 1rem 0;
+  margin: 0;
   color: ${theme.colors.teal};
   font-size: 2.5rem;
   font-weight: 800;
 `;
 const LineSeparatorContainer = styled(motion.div)`
   margin: 0.2rem 0 0.5rem 0;
-  ${media.desktop`margin: 0.4rem 0 1rem 0;`};
+  ${media.desktop`margin: 0.4rem 0 0.5rem 0;`};
   background-color: ${theme.colors.bronze};
 `;
 const LineSeparator = styled(motion.div)`
   width: 20%;
   height: 2px;
 `;
+
 const WorkDescription = styled(motion.div)`
   font-size: 0.9rem;
   color: ${theme.colors.grey};
-  padding: 3rem 0;
+  padding: 1rem 0 1rem 0;
+  // padding: 3rem 0;
   ${media.desktop`padding: 1rem 0 1rem 0;`};
 `;
-const WorkImagesContainer = styled.div<ImagesLengthProp>`
+const WorkImagesContainer = styled(motion.div)<any>`
   ${mixins.gridCenter};
-  grid-template-columns: "100%";
-  margin: 8rem 0 0 0;
-  ${media.desktop`margin: 0 0 0 0;`};
+  margin: 1rem 0 0 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  ${media.thone`
+    grid-template-columns: 1fr;
+  `};
 `;
 
 export {

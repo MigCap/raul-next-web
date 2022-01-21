@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import { motion } from "framer-motion";
 
-import BackButton from "components/BackButton";
+// import BackButton from "components/BackButton";
 import LightBox from "components/LightBox";
 import WorkImage from "components/work/WorkImage";
 // import WorkTags from "components/work/WorkTags";
@@ -26,7 +26,7 @@ import {
 import {
   Section,
   WorkDetailContainer,
-  BackButtonWrapper,
+  // BackButtonWrapper,
   FiligranaContainerDesktop,
   WorkDetailContent,
   WorkTitle,
@@ -83,31 +83,43 @@ export default function WorkPage({
 
       <Section>
         <WorkDetailContainer>
-          <BackButtonWrapper>
+          {/* <BackButtonWrapper>
             <BackButton />
-          </BackButtonWrapper>
+          </BackButtonWrapper> */}
 
-          <FiligranaContainerDesktop>
+          {/* <FiligranaContainerDesktop>
             <Filigrana />
-          </FiligranaContainerDesktop>
+          </FiligranaContainerDesktop> */}
 
-          <WorkDetailContent imagesLength={imgs?.length}>
+          <WorkDetailContent>
             <motion.div variants={stagger}>
-              <WorkTitle variants={fadeInUp}>{postTitle}</WorkTitle>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <FiligranaContainerDesktop>
+                  <Filigrana />
+                </FiligranaContainerDesktop>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                  }}
+                >
+                  <WorkTitle variants={fadeInUp}>{postTitle}</WorkTitle>
+                  <LineSeparatorContainer variants={fadeInUp}>
+                    <LineSeparator variants={postTitleUnderline} />
+                  </LineSeparatorContainer>
+                </div>
+              </div>
 
-              <LineSeparatorContainer variants={fadeInUp}>
-                <LineSeparator variants={postTitleUnderline} />
-              </LineSeparatorContainer>
+              <WorkCategories postCategories={postCategories} />
 
               <WorkDescription variants={fadeInUp}>
                 {parse(postDescriptionParagraphs)}
               </WorkDescription>
-
-              <WorkCategories postCategories={postCategories} />
             </motion.div>
 
-            <WorkImagesContainer imagesLength={imgs?.length}>
-              <motion.div variants={stagger}>{postImages}</motion.div>
+            <WorkImagesContainer variants={stagger}>
+              {postImages}
             </WorkImagesContainer>
           </WorkDetailContent>
         </WorkDetailContainer>

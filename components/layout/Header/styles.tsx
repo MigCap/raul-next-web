@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-import { media, mixins, Nav, theme } from "styles";
+import { media, mixins, theme, Nav, Section } from "styles";
 
 interface IHeaderContainer {
   // ref: any;
@@ -13,7 +13,7 @@ const HeaderContainer = styled.header<IHeaderContainer>`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
-    padding: 0px 20%;
+    padding: 0px 16%;
     ${media.desktop`padding: 0 40px;`};
     ${media.tablet`padding: 0 25px;`};
     background-color: ${({ isHomePage }) => theme.colors.teal};
@@ -60,11 +60,11 @@ const NavList = styled.ol`
     ${mixins.flexBetween};
   }
 `;
-interface INavListItem {
-  ref: any;
-  style: any;
-  isCurrRoute: any;
-}
+// interface INavListItem {
+//   ref: any;
+//   style: any;
+//   isCurrRoute: any;
+// }
 const NavListItem = styled.li<any>`
   margin: 0 1.2rem;
   position: relative;
@@ -97,7 +97,7 @@ const LocalesContainer = styled.div<any>`
 `;
 const LocaleAnchor = styled.a<any>`
   text-transform: uppercase;
-  color: ${({ isSelected, isHomePage }) => {
+  color: ${({ isSelected }) => {
     return isSelected
       ? `${theme.colors.orange} !important`
       : `${theme.colors.bronzeLight} !important`;
@@ -113,6 +113,7 @@ const LocaleSelectedUnderline = styled.div<any>`
 `;
 
 export {
+  Section,
   HeaderContainer,
   Navbar,
   NavLogoContainer,

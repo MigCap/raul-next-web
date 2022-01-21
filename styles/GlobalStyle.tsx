@@ -228,7 +228,7 @@ const GlobalStyle = createGlobalStyle`
   .p-dialog.p-dialog-header.p-dialog-header-icon,
   .p-link {
     &:focus {
-      box-shadow: 0 0 0 0.2rem ${theme.colors.teal};
+      box-shadow: 0 0 0 0.2rem transparent;
     }
   }
 

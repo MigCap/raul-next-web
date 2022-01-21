@@ -49,7 +49,7 @@ export default function WorkCategories({
 }
 
 const WorkCategoriesContainer = styled(motion.div)`
-  padding: 3rem 0;
+  padding: 1rem 0;
   ${media.phablet`padding: 1rem 0;`};
 `;
 // const WorkCategoriesTitle = styled.h3`
@@ -58,10 +58,13 @@ const WorkCategoriesContainer = styled(motion.div)`
 //   color: ${theme.colors.teal};
 // `;
 const WorkCategoriesListContainer = styled(motion.div)`
-  ${mixins.flexEnd};
+  ${mixins.flexBetween};
   a {
-    margin-left: auto;
+    // margin-left: auto;
     color: ${theme.colors.blue};
+    // :hover {
+    //   color: ${theme.colors.blue};
+    // }
   }
 `;
 const WorkCategorieText = styled.p`

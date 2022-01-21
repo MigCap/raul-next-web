@@ -19,6 +19,7 @@ import {
 } from "lib";
 
 import {
+  Section,
   Navbar,
   NavLogoContainer,
   NavLinks,
@@ -64,7 +65,6 @@ export default function Header() {
             </CSSTransition>
           )}
         </TransitionGroup>
-
         <NavLinks>
           <NavList>
             <TransitionGroup>
@@ -107,7 +107,6 @@ export default function Header() {
           <LocaleSelector />
         </LocaleSelectorDescktop>
       </Navbar>
-
       <MenuMobile />
     </HeaderContainer>
   );

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { fadeInRight } from "lib";
 
-import { media } from "styles";
+// import { media } from "styles";
 
 export default function WorkImage({
   img,
@@ -55,8 +55,7 @@ export default function WorkImage({
 }
 
 const PostImageContainer = styled(motion.div)`
-  margin: 0 0 1rem 0;
-  ${media.tablet`margin: 0 0 2rem 0;`};
+  margin: 0;
 `;
 const ImageContainer = styled(motion.div)`
   position: relative;
@@ -77,6 +76,5 @@ const ImageStyled = styled(Image)`
   ${ImageContainer}:hover & {
     cursor: pointer;
     transform: scale(1.02);
-    /* opacity: 1.04; */
   }
 `;
