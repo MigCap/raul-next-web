@@ -62,9 +62,10 @@ const WorkCategoriesListContainer = styled(motion.div)`
   a {
     // margin-left: auto;
     color: ${theme.colors.blue};
-    // :hover {
-    //   color: ${theme.colors.blue};
-    // }
+    &:hover,
+    &:focus {
+      color: ${theme.colors.teal};
+    }
   }
 `;
 const WorkCategorieText = styled.p`
