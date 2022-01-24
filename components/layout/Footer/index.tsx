@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, mixins, media } from "styles";
+import { theme, mixins } from "styles";
 
 export default function Footer() {
   return (

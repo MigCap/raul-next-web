@@ -19,7 +19,7 @@ import {
 } from "lib";
 
 import {
-  Section,
+  // Section,
   Navbar,
   NavLogoContainer,
   NavLinks,

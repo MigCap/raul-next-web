@@ -60,7 +60,7 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
       >
         <GalleriaStyled
           value={images}
-          // responsiveOptions={responsiveOptions}
+          responsiveOptions={responsiveOptions}
           activeIndex={activeIndex}
           numVisible={7}
           circular

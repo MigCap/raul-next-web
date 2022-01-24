@@ -20,6 +20,7 @@ export enum ROUTES_IDS {
   PORTFOLIO = "portfolio-categories",
   BLOG = "blog",
   CONTACT = "contact",
+  PRIVACY_POLICY = "pribacy-policy",
 }
 
 // export type TRoutesIds = ROUTES_IDS;
@@ -60,6 +61,14 @@ export const routesConfig: TRoutesConfig = [
     id: ROUTES_IDS.CONTACT,
     name: { [LANGUAGES.EN]: "contact", [LANGUAGES.ES]: "contacto" },
     path: "/contact",
+  },
+  {
+    id: ROUTES_IDS.PRIVACY_POLICY,
+    name: {
+      [LANGUAGES.EN]: "privacy policy",
+      [LANGUAGES.ES]: "política de privacidad",
+    },
+    path: "/privacy-policy",
   },
 ];
 
