@@ -52,8 +52,9 @@ const NavLogoContainer = styled.div`
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
-  ${media.tablet`display: none;`};
+  margin: 0 0.5rem 0 auto;
   font-weight: 600;
+  ${media.tablet`display: none;`};
 `;
 const NavList = styled.ol`
   div {
