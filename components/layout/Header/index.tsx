@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
@@ -70,8 +71,10 @@ export default function Header() {
             <TransitionGroup>
               {isMounted &&
                 navLinks &&
-                navLinks.map(({ path, name, id }: any, i: number) => {
+                navLinks.map((route: any, i: number) => {
+                  const { path, name, id } = route;
                   const isCurrRoute = isCurrentRoute(id);
+                  if (route?.hide) return null;
                   return (
                     <CSSTransition
                       key={i}

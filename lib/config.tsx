@@ -32,6 +32,7 @@ export interface IRoute {
     [LANGUAGES.ES]: string;
   };
   path: string;
+  hide?: boolean;
 }
 
 type TRoutesConfig = IRoute[];
@@ -69,6 +70,7 @@ export const routesConfig: TRoutesConfig = [
       [LANGUAGES.ES]: "política de privacidad",
     },
     path: "/privacy-policy",
+    hide: true,
   },
 ];
 
