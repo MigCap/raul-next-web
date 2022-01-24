@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback } from "react";
+import Link from "next/link";
 
 // import { Messages } from "primereact/messages";
 import { Dialog } from "primereact/dialog";
@@ -6,7 +7,14 @@ import { Button } from "primereact/button";
 
 import { useGdprContext } from "components/Gdpr";
 
-import useCookie from "hooks/useCookie";
+// import useCookie from "hooks/useCookie";
+
+import {
+  getRoutePathById,
+  // locales as localesConfig,
+  // routesConfig as navLinks,
+  ROUTES_IDS,
+} from "lib";
 
 import { GdprDialogContentContainer } from "./styles";
 
@@ -65,8 +73,11 @@ export function GdprDialog() {
             <p>
               <strong>Notice.</strong> rauldediego.com uses cookies to provide
               necessary website functionality, improve your experience and
-              analyze our traffic. By using the website, you agree to our
-              Privacy Policy and our cookies usage.{" "}
+              analyze our traffic. By using the website, you agree to the
+              <Link href={getRoutePathById(ROUTES_IDS.PRIVACY_POLICY)}>
+                <a>Privacy Policy</a>
+              </Link>{" "}
+              and our cookies usage.{" "}
               <a
                 href="https://www.cookiesandyou.com/"
                 target="_blank"
