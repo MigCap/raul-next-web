@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import type { AppProps } from "next/app";
 // import Head from "next/head";
 import Router from "next/router";
+
+import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import Layout from "components/layout";
 
@@ -36,11 +39,18 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     router.push(router.asPath);
   }, []);
 
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <>
       {/* <Head>you can add metadata here, for all pages</Head> */}
       <Layout router={router}>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Component {...pageProps} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </Hydrate>
+        </QueryClientProvider>
       </Layout>
     </>
   );

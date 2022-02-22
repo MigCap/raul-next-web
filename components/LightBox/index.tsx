@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Dialog } from "primereact/dialog";
 import { Galleria } from "primereact/galleria";
 
+import NextImage from "components/CNextImage";
+
 import { media } from "styles";
 
 export default function LightBox({ show, setShow, images, activeIndex }: any) {
@@ -34,12 +36,17 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
   const itemTemplate = ({ src, alt }: any) => {
     return (
       <ImageContainer>
-        <ImageStyled
+        {/* <ImageStyled
           src={src}
           layout="responsive"
           width={850}
           height={570}
           alt={src}
+        /> */}
+        <NextImage
+          src={src}
+          alt={src}
+          // priority
         />
       </ImageContainer>
     );
@@ -77,7 +84,9 @@ export default function LightBox({ show, setShow, images, activeIndex }: any) {
 
 const ImageContainer = styled.div`
   min-height: 20rem;
+  position: relative;
   width: 100%;
+  height: 30rem;
   border-radius: 1rem;
 `;
 const ImageStyled = styled(Image)`

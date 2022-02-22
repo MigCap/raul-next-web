@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 
-import { useGdprContext } from "components/Gdpr";
+import { useGdprContext } from "contexts/gdpr";
 
 // import useCookie from "hooks/useCookie";
 

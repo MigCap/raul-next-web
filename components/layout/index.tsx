@@ -2,11 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import styled, { ThemeProvider } from "styled-components";
 
+import { Providers } from "contexts/Providers";
 import Header from "components/layout/Header";
 // import Social from "components/Social";
 // import Email from "components/layout/Email";
 import Footer from "components/layout/Footer";
-import { GdprProvider, GdprDialog } from "components/Gdpr";
+import { GdprDialog } from "components/Gdpr";
 
 import { useCustomRouter as useRouter } from "hooks";
 
@@ -28,7 +29,7 @@ export default function Layout({ children, router }: any) {
         <AnimatePresence exitBeforeEnter>
           {/* <AnimatePresence exitBeforeEnter onExitComplete={onExit}> */}
           <motion.div key={router.route}>
-            <GdprProvider>
+            <Providers>
               <Header />
               {/* {isWorkDetail && <Social />} */}
               {/* <Email /> */}
@@ -41,7 +42,7 @@ export default function Layout({ children, router }: any) {
               <Footer />
 
               <GdprDialog />
-            </GdprProvider>
+            </Providers>
           </motion.div>
         </AnimatePresence>
       </ThemeProvider>

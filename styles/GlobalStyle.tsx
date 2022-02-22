@@ -146,50 +146,6 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  .p-button {
-    color: ${theme.colors.white};
-    background: ${theme.colors.teal};
-    border: 1px solid ${theme.colors.teal};
-    &:focus {
-      box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent, 0 1px 2px 0 transparent;
-    }
-    &:enabled:hover, .p-button:not(button):not(a):not(.p-disabled):hover {
-      background: ${theme.colors.orange};
-      color: ${theme.colors.white};
-      border-color: ${theme.colors.orange};
-  }
-  }
-
-  .p-button-primary {
-    background: ${theme.colors.bronzeLight};
-    border: 1px solid ${theme.colors.bronzeLight};
-    &:enabled:hover {
-      background: ${theme.colors.orange};
-      border: 1px solid ${theme.colors.orange};
-    }
-    &:focus {
-      box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent, 0 1px 2px 0 transparent;
-    }
-  }
-
-  .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
-    outline: 0 none;
-    outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem transparent;
-}
-
-.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
-  background: transparent;
-  border-color: ${theme.colors.teal};
-  color: ${theme.colors.teal};
-}
-
-.p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
-    background: #e9ecef;
-    border-color: ${theme.colors.teal};
-    color: ${theme.colors.teal};
-}
-
   .fadeup-enter {
     opacity: 0.01;
     transform: translateY(20px);
@@ -224,31 +180,77 @@ const GlobalStyle = createGlobalStyle`
     transition: opacity 1000ms ${theme.easing};
   }
 
-  .p-dialog .p-dialog-header .p-dialog-header-icon,
-  .p-dialog.p-dialog-header.p-dialog-header-icon,
-  .p-link {
-    &:focus {
-      box-shadow: 0 0 0 0.2rem transparent;
-    }
-  }
+//////////// PRIME REACT //////////////////
 
-  .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
-    background-color: ${theme.colors.teal};
+.p-button {
+  color: ${theme.colors.white};
+  background: ${theme.colors.teal};
+  border: 1px solid ${theme.colors.teal};
+  &:focus {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent, 0 1px 2px 0 transparent;
   }
+  &:enabled:hover, .p-button:not(button):not(a):not(.p-disabled):hover {
+    background: ${theme.colors.orange};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.orange};
+}
+}
 
-  .p-inputtext {
-    &:enabled:focus {
-      outline: 0 none;
-      outline-offset: 0;
-      box-shadow: 0 0 0 0.2rem ${theme.colors.teal};
-      border-color: ${theme.colors.teal};
+.p-button-primary {
+  background: ${theme.colors.bronzeLight};
+  border: 1px solid ${theme.colors.bronzeLight};
+  &:enabled:hover {
+    background: ${theme.colors.orange};
+    border: 1px solid ${theme.colors.orange};
   }
+  &:focus {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent, 0 1px 2px 0 transparent;
+  }
+}
 
-  .p-button:focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px ${
-      theme.colors.teal
-    }, 0 1px 2px 0 black;
+.p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem transparent;
+}
+
+.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+  background: transparent;
+  border-color: ${theme.colors.teal};
+  color: ${theme.colors.teal};
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
+    background: #e9ecef;
+    border-color: ${theme.colors.teal};
+    color: ${theme.colors.teal};
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon,
+.p-dialog.p-dialog-header.p-dialog-header-icon,
+.p-link {
+  &:focus {
+    box-shadow: 0 0 0 0.2rem transparent;
   }
+}
+
+.p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
+  background-color: ${theme.colors.teal};
+}
+
+.p-inputtext {
+  &:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem ${theme.colors.teal};
+    border-color: ${theme.colors.teal};
+}
+
+.p-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px ${
+    theme.colors.teal
+  }, 0 1px 2px 0 black;
+}
 `;
 
 export default GlobalStyle;

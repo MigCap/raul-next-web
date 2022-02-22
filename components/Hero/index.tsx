@@ -50,12 +50,12 @@ export default function Hero() {
   return (
     <>
       <HeroContainer margin="0" maxWidth="100%">
-        {isMounted && (
-          <HeroContent ref={nodeRef}>
+        <HeroContent ref={nodeRef}>
+          {isMounted && (
             <motion.div variants={stagger}>
               <Title variants={fadeIn}>{t("welcomeToMyWork")}</Title>
               <Subtitle variants={fadeIn}>{about?.position?.[locale]}</Subtitle>
-              <ButtonsContainer>
+              <ButtonsContainer variants={fadeIn}>
                 <Button
                   label={t("whoIAm")}
                   onClick={() =>
@@ -79,8 +79,8 @@ export default function Hero() {
                 />
               </ButtonsContainer>
             </motion.div>
-          </HeroContent>
-        )}
+          )}
+        </HeroContent>
       </HeroContainer>
     </>
   );

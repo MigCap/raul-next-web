@@ -156,6 +156,42 @@ const mixins = {
       background-size: 0 2px, 100% 2px;
     }
   `,
+
+  customCarousel: css`
+    .p-carousel
+      .p-carousel-indicators
+      .p-carousel-indicator.p-highlight
+      button {
+      background-color: ${theme.colors.teal};
+    }
+
+    .p-carousel .p-carousel-content .p-carousel-prev,
+    .p-carousel .p-carousel-content .p-carousel-next {
+      color: ${theme.colors.orange};
+    }
+    .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover,
+    .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
+      color: ${theme.colors.teal};
+      border-color: transparent;
+      background: transparent;
+    }
+    .p-carousel {
+      .pi {
+        font-size: 2rem;
+      }
+    }
+    .p-carousel-content .p-carousel-next:focus {
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem transparent;
+    }
+    .p-carousel .p-carousel-content .p-carousel-prev:focus,
+    .p-carousel .p-carousel-content .p-carousel-next:focus {
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem transparent;
+    }
+  `,
 };
 
 export default mixins;

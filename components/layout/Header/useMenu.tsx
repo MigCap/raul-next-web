@@ -23,45 +23,52 @@ export function useMenu() {
   }, []);
 
   const handleKeydown = useCallback((evt: any) => {
-    if (!isMobileMenuOpen) {
-      return;
-    }
+    if (isMounted) {
+      if (!isMobileMenuOpen) {
+        return;
+      }
 
-    if (evt.key === "Escape" || evt.key === "Esc") {
-      toggleMenu();
+      if (evt.key === "Escape" || evt.key === "Esc") {
+        toggleMenu();
+      }
     }
   }, []);
-
-  const toggleMenu = useCallback(() => {
-    if (!isMounted) return;
-    setIsMobileMenuOpen((prev: boolean) => !prev);
-  }, [isMounted]);
-
-  useEffect(() => {
-    if (scroll.y > scroll.prevY) {
-      if (scroll.y > headerHeight) {
-        setScrollDirection((prev: any) => (prev !== "down" ? "down" : prev));
-      } else {
-        setScrollDirection((prev: any) => (prev !== "" ? "" : prev));
-      }
-    } else if (scroll.prevY > scroll.y && scroll.y !== 0) {
-      setScrollDirection((prev: any) => (prev !== "up" ? "up" : prev));
-    } else if (scroll.y === 0) {
-      setScrollDirection((prev: any) => (prev !== "none" ? "none" : prev));
-    }
-  }, [scroll.y, scroll.prevY]);
 
   useEffect(() => {
     window.addEventListener("resize", () => debounce(handleResize));
     window.addEventListener("keydown", (e) => handleKeydown(e));
     const timeout = setTimeout(() => setIsMounted(true), 100);
 
+    setIsMounted(true);
     return () => {
+      setIsMounted(false);
+
       window.removeEventListener("resize", () => handleResize());
       window.removeEventListener("keydown", (e) => handleKeydown(e));
       clearTimeout(timeout);
     };
   }, []);
+
+  const toggleMenu = useCallback(() => {
+    if (!isMounted) return;
+    if (isMounted) setIsMobileMenuOpen((prev: boolean) => !prev);
+  }, [isMounted]);
+
+  useEffect(() => {
+    if (isMounted) {
+      if (scroll.y > scroll.prevY) {
+        if (scroll.y > headerHeight) {
+          setScrollDirection((prev: any) => (prev !== "down" ? "down" : prev));
+        } else {
+          setScrollDirection((prev: any) => (prev !== "" ? "" : prev));
+        }
+      } else if (scroll.prevY > scroll.y && scroll.y !== 0) {
+        setScrollDirection((prev: any) => (prev !== "up" ? "up" : prev));
+      } else if (scroll.y === 0) {
+        setScrollDirection((prev: any) => (prev !== "none" ? "none" : prev));
+      }
+    }
+  }, [scroll.y, scroll.prevY]);
 
   return {
     scrollDirection,

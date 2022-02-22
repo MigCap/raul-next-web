@@ -7,7 +7,7 @@ const HeroContainer = styled(Section)`
   ${mixins.flexCenter};
   flex-direction: column;
   align-items: center;
-  background: url("/assets/rectangle_landing.png") repeat fixed center;
+  background: url("/assets/hero_landing.png") repeat fixed center;
   min-height: 100vh;
   height: 100vh;
   padding: 0;
@@ -49,7 +49,7 @@ const Subtitle = styled(motion.h2)`
   ${media.desktop`font-size: ${theme.fontSizes.xlarge};`};
   ${media.tablet`font-size: ${theme.fontSizes.smallish};`};
 `;
-const ButtonsContainer = styled.div`
+const ButtonsContainer = styled(motion.div)`
   ${mixins.flexAround};
   // padding: 0 0.5rem 0 5rem;
   // background: ${theme.colors.tealSemiTransparent};

@@ -41,13 +41,14 @@ export default function WorkImage({
         <ImageStyled
           priority
           src={newImageSrc}
-          layout="responsive"
-          width={850}
-          height={570}
+          layout="fill"
+          // width={850}
+          // height={570}
           alt={alt}
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             convertImage(700, 475)
           )}`}
+          className="image"
         />
       </ImageContainer>
     </PostImageContainer>
@@ -56,15 +57,24 @@ export default function WorkImage({
 
 const PostImageContainer = styled(motion.div)`
   margin: 0;
+  position: relative;
 `;
 const ImageContainer = styled(motion.div)`
   position: relative;
-  overflow: hidden;
+  height: 15rem;
+  border-radius: 5px;
   transition: transform 0.5s ease;
   border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+  .image-container {
+    transition: transform 0.5s ease;
+  }
 `;
 const ImageStyled = styled(Image)`
-  border-radius: 10px;
+  border-radius: 5px;
   object-fit: fill;
   width: 100%;
   width: 50rem;

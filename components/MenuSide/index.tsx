@@ -9,7 +9,7 @@ import { useTranslation } from "hooks/useTranslation";
 
 import {
   categoriesConfig,
-  categoriesIds,
+  mainCategoriesIds,
   stagger,
   getCategoryNameFromConfig,
   LANGUAGES,
@@ -37,7 +37,7 @@ export function MenuSide({
   const { locale } = useTranslation({});
 
   const filteredCategories = categories?.reduce((acc: any, categorie: any) => {
-    if (categoriesIds?.includes(categorie?.id)) {
+    if (mainCategoriesIds?.includes(categorie?.id)) {
       acc = [
         ...acc,
         {
@@ -55,7 +55,7 @@ export function MenuSide({
 
   const filteredCategoriesWithChildren = categories?.reduce(
     (acc: any, categorie: any) => {
-      if (categoriesIds?.includes(categorie?.parent)) {
+      if (mainCategoriesIds?.includes(categorie?.parent)) {
         const parentIndex = acc.findIndex(
           (el: any) => el?.id === categorie?.parent
         );
@@ -126,7 +126,7 @@ export function MenuSide({
                     children.length > 0 &&
                     children.map((childCategory: any) => {
                       const { id, name, slug } = childCategory;
-                      const isSelected = name[LANGUAGES.EN] === currCategory;
+                      const isSelected = name?.[LANGUAGES.EN] === currCategory;
                       return (
                         <Link
                           href={`/portfolio-categories/${slug}`}
@@ -137,7 +137,7 @@ export function MenuSide({
                             className="lighten"
                             isSelected={isSelected}
                           >
-                            <span>{name[locale]}</span>
+                            <span>{name?.[locale]}</span>
                           </SubCategoryAnchor>
                         </Link>
                       );

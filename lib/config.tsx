@@ -183,6 +183,9 @@ export const about = {
 };
 
 export const categoriesConfig: any = [
+  //
+  // GRAPHIC DESIGN
+  //
   {
     id: 56,
     name: {
@@ -193,10 +196,18 @@ export const categoriesConfig: any = [
     main: true,
   },
   {
-    id: 57,
-    name: { [LANGUAGES.EN]: "Illustration", [LANGUAGES.ES]: "Ilustración" },
-    Icon: Filigrana2,
-    main: true,
+    id: 62,
+    name: {
+      [LANGUAGES.EN]: "Branding",
+      [LANGUAGES.ES]: "Branding",
+    },
+  },
+  {
+    id: 65,
+    name: {
+      [LANGUAGES.EN]: "Communication",
+      [LANGUAGES.ES]: "Comunicación",
+    },
   },
   {
     id: 58,
@@ -206,8 +217,63 @@ export const categoriesConfig: any = [
     },
   },
   {
-    id: 59,
-    name: { [LANGUAGES.EN]: "Matte Painting", [LANGUAGES.ES]: "Pintura mate" },
+    id: 71,
+    name: {
+      [LANGUAGES.EN]: "Events",
+      [LANGUAGES.ES]: "Eventos",
+    },
+  },
+  {
+    id: 63,
+    name: {
+      [LANGUAGES.EN]: "Final Atwork",
+      [LANGUAGES.ES]: "Arte Final",
+    },
+  },
+  {
+    id: 70,
+    name: {
+      [LANGUAGES.EN]: "gigantrophy",
+      [LANGUAGES.ES]: "gigantrophy",
+    },
+  },
+  {
+    id: 67,
+    name: {
+      [LANGUAGES.EN]: "Layout",
+      [LANGUAGES.ES]: "Layout",
+    },
+  },
+  {
+    id: 66,
+    name: {
+      [LANGUAGES.EN]: "Marketing",
+      [LANGUAGES.ES]: "Marketing",
+    },
+  },
+  {
+    id: 61,
+    name: {
+      [LANGUAGES.EN]: "Packaging",
+      [LANGUAGES.ES]: "Packaging",
+    },
+  },
+
+  //
+  // ILLUSTRATION
+  //
+  {
+    id: 57,
+    name: { [LANGUAGES.EN]: "Illustration", [LANGUAGES.ES]: "Ilustración" },
+    Icon: Filigrana2,
+    main: true,
+  },
+  {
+    id: 69,
+    name: {
+      [LANGUAGES.EN]: "Digital Art",
+      [LANGUAGES.ES]: "Arte Digital",
+    },
   },
   {
     id: 60,
@@ -216,8 +282,19 @@ export const categoriesConfig: any = [
       [LANGUAGES.ES]: "Ilustración Editorial",
     },
   },
+  {
+    id: 68,
+    name: {
+      [LANGUAGES.EN]: "Fantasy Art",
+      [LANGUAGES.ES]: "Fantasy Art",
+    },
+  },
+  {
+    id: 59,
+    name: { [LANGUAGES.EN]: "Matte Painting", [LANGUAGES.ES]: "Pintura mate" },
+  },
 ];
 
-export const categoriesIds = categoriesConfig
+export const mainCategoriesIds = categoriesConfig
   .filter((categorie: any) => categorie?.main)
   ?.map((categorie: any) => categorie?.id);

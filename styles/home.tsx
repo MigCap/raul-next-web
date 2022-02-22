@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import { theme, mixins, media, Section } from "styles";
 
-const HomeSectionContainer = styled(Section)`
+const HomeSectionContainer = styled(Section)<any>`
   position: relative;
   padding: 5rem 0;
-  ${media.desktop`padding: 5rem 2rem;`};
+  ${media.desktop`padding: ${({ padding }: any) => padding || "5rem 0"};`};
   ${media.tablet`padding: 1rem 1.2rem;`};
   &:first-of-type {
     padding-top: 5rem;

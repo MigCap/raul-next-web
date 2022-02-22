@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import PostCard from "components/PostCard";
 
 import { motion } from "framer-motion";
@@ -9,7 +11,7 @@ import { useCustomRouter as useRouter } from "hooks";
 
 import { getFeaturedMedia, stagger } from "lib";
 
-import { media } from "styles";
+import { media, mixins } from "styles";
 
 export default function WorksGallery({ posts, media, className, style }: any) {
   const { isHomePage } = useRouter();
@@ -48,7 +50,7 @@ const responsiveOptions = [
 ];
 
 export function WorksGalleryCarousel({ posts, media }: any) {
-  const workCardTemplate = (post: any) => {
+  const workCardTemplate = useCallback((post: any) => {
     const featuredMediaId = post?.featured_media;
     const featuredMedia = getFeaturedMedia(media, featuredMediaId);
 
@@ -57,7 +59,7 @@ export function WorksGalleryCarousel({ posts, media }: any) {
         <PostCard post={post} featuredMedia={featuredMedia} />
       </div>
     );
-  };
+  }, []);
 
   return (
     <motion.section variants={stagger}>
@@ -69,7 +71,7 @@ export function WorksGalleryCarousel({ posts, media }: any) {
           responsiveOptions={responsiveOptions}
           className="custom-carousel"
           circular
-          autoplayInterval={3000}
+          // autoplayInterval={3000}
           itemTemplate={workCardTemplate}
           // header={}
         />
@@ -81,6 +83,7 @@ export function WorksGalleryCarousel({ posts, media }: any) {
 const WorksGalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 9rem;
   padding: 0 1rem;
   ${media.thone`grid-template-columns: repeat(2, 1fr); 
   `};
@@ -93,6 +96,8 @@ const WorksGalleryContainer = styled.div`
 `;
 
 const WorksGalleryCarouselContainer = styled.div`
+  ${mixins.customCarousel};
+  padding: 1rem 0;
   .p-carousel-indicators {
     display: none;
   }

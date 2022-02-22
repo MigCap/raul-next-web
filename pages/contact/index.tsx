@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
 
-import { useTranslation } from "hooks";
+import { useTranslation, useContactForm } from "hooks";
 
 import { about } from "lib";
 
@@ -18,10 +18,6 @@ import {
 } from "styles/contact";
 
 export default function ContactPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
   const { t } = useTranslation({});
 
   return (
@@ -39,7 +35,10 @@ export default function ContactPage() {
           animate="animate"
           exit={{ opacity: 0 }}
         >
-          <ContactForm />
+          <FormContainer>
+            <p>{t("contactDescription")}</p>
+            <ContactForm />
+          </FormContainer>
         </ContactContainer>
       </Section>
     </>
@@ -47,60 +46,58 @@ export default function ContactPage() {
 }
 
 export function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const { contactState, setFieldValue, sendContactInfo } = useContactForm();
 
   const { t } = useTranslation({});
 
   return (
     <>
-      <FormContainer>
-        <p>{t("contactDescription")}</p>
+      <FieldWrapper>
+        <span className="p-float-label">
+          <InputText
+            id="name"
+            name="name"
+            value={contactState["name"]}
+            onChange={setFieldValue}
+          />
+          <label htmlFor="name">{t("name")}</label>
+        </span>
+      </FieldWrapper>
 
-        <FieldWrapper>
-          <span className="p-float-label">
-            <InputText
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label htmlFor="name">{t("name")}</label>
-          </span>
-        </FieldWrapper>
+      <FieldWrapper>
+        <span className="p-float-label">
+          <InputText
+            id="email"
+            name="email"
+            type="email"
+            value={contactState["email"]}
+            onChange={setFieldValue}
+          />
+          <label htmlFor="email">{t("email")}</label>
+        </span>
+      </FieldWrapper>
 
-        <FieldWrapper>
-          <span className="p-float-label">
-            <InputText
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="email">{t("email")}</label>
-          </span>
-        </FieldWrapper>
+      <FieldWrapper>
+        <span className="p-float-label">
+          <InputTextarea
+            id="message"
+            name="message"
+            value={contactState["message"]}
+            onChange={setFieldValue}
+            rows={5}
+            cols={30}
+            autoResize
+          />
+          <label htmlFor="message">{t("message")}</label>
+        </span>
+      </FieldWrapper>
 
-        <FieldWrapper>
-          <span className="p-float-label">
-            <InputTextarea
-              id="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              rows={5}
-              cols={30}
-              autoResize
-            />
-            <label htmlFor="message">{t("message")}</label>
-          </span>
-        </FieldWrapper>
-
-        <Button
-          label={t("contactMe")}
-          className="p-button-raised p-mt-3"
-          style={{ alignSelf: "start", padding: "0.25rem 1.25rem" }}
-        />
-      </FormContainer>
+      <Button
+        label={t("contactMe")}
+        className="p-button-raised p-mt-3"
+        style={{ alignSelf: "start", padding: "0.25rem 1.25rem" }}
+        onClick={sendContactInfo}
+      />
     </>
   );
 }

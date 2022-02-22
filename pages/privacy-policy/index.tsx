@@ -17,6 +17,7 @@ function PrivacyPolicyPage() {
 }
 
 const PrivacyPolicyPageContainer = styled(Section)`
+  min-height: 75vh;
   h1 {
     text-align: center;
     color: ${theme.colors.teal};

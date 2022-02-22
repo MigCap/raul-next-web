@@ -2,9 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
-  // useEffect,
-  useLayoutEffect,
-  // useMemo,
+  useEffect,
   useState,
 } from "react";
 
@@ -38,7 +36,7 @@ function GdprProvider({ children }: any) {
     setGdpr(false);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (gdprCookie && gdrpState?.showDialog) {
       setShowDialog(false);
     } else {

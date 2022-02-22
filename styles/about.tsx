@@ -13,39 +13,6 @@ const AboutPageContainer = styled.div`
     color: ${theme.colors.teal};
   }
 
-  .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
-    background-color: ${theme.colors.teal};
-  }
-  .p-dialog .p-dialog-header .p-dialog-header-icon:focus,
-  .p-dialog.p-dialog-header.p-dialog-header-icon:focus,
-  .p-link:focus {
-    box-shadow: 0 0 0 0.2rem transparent;
-  }
-  .p-carousel .p-carousel-content .p-carousel-prev,
-  .p-carousel .p-carousel-content .p-carousel-next {
-    color: ${theme.colors.orange};
-  }
-  .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover,
-  .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
-    color: ${theme.colors.teal};
-    border-color: transparent;
-    background: transparent;
-  }
-  .pi {
-    font-size: 2rem;
-  }
-  .p-carousel-content .p-carousel-next:focus {
-    outline: 0 none;
-    outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem transparent;
-  }
-  .p-carousel .p-carousel-content .p-carousel-prev:focus,
-  .p-carousel .p-carousel-content .p-carousel-next:focus {
-    outline: 0 none;
-    outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem transparent;
-  }
-
   .meet-section,
   .testimonial-section {
     margin-bottom: 4rem;
@@ -75,7 +42,7 @@ const MeetSectionContainer = styled(Section)<any>`
       grid-column: 1 / span 20;
       grid-row: 1 / span 3;
       // background: url("/assets/profile-pic-home.png") no-repeat fixed top;
-      background-image: url("/assets/profile-pic-home.png");
+      background-image: url("/assets/profile-pic-about.png");
       background-position: right top;
       background-size: cover;
       background-origin: content-box, padding-box;
@@ -91,7 +58,7 @@ const MeetSectionContainer = styled(Section)<any>`
       display: flex;
       align-items: center;
       justify-content: start;
-      padding-top: 5rem;
+      padding-top: 20rem;
     }
     .right-side-wrapper {
       grid-column: 10 / 21;
@@ -126,7 +93,7 @@ const MeetSectionContainer = styled(Section)<any>`
 const TestimonialSectionContainer = styled(Section)<any>`
   margin: 0 2rem;
   max-width: 100%;
-  padding: 0 5% 8rem 5%;
+  padding: 0 5% 3rem 5%;
   ${media.desktop`
     margin: 0;
     padding: 0rem 2rem;
@@ -137,65 +104,40 @@ const TestimonialSectionContainer = styled(Section)<any>`
   `};
 `;
 
-const TestimonialItemContainer = styled.div<any>`
-  .testimonial-item-wrapper {
-    .testimonial-item-content {
-      display: grid;
-      grid-template-columns: repeat(20, 1fr);
-      grid-template-rows: 2rem auto 2rem;
-      margin: 0.3rem;
-      text-align: left;
+const ContactSectionContainer = styled(Section)<any>`
+  margin: 0 2rem;
+  max-width: 100%;
+  padding: 0 5% 3rem 5%;
+  ${media.desktop`
+    margin: 0;
+    padding: 0rem 2rem;
+  `};
+  ${media.tablet`
+    margin: 0;
+    padding: 1rem 1.2rem;
+  `};
+`;
 
-      // border: 1px solid grey;
-      // border-radius: 3px;
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80%;
+  margin: 0 auto;
 
-      .bg-left {
-        grid-column: 1 / span 4;
-        grid-row: 1 / span 3;
-        background-color: ${({ isEven }) =>
-          isEven ? theme.colors.white : theme.colors.teal};
-      }
-      .bg-right {
-        grid-column: 5 / span 16;
-        grid-row: 1 / span 3;
-        background-color: ${({ isEven }) =>
-          isEven ? theme.colors.teal : theme.colors.white};
-      }
-      .testimonial-icon-wrapper {
-        grid-column: 2 / span 6;
-        grid-row: 2 / span 1;
-        // margin-right: 1rem;
-        svg {
-          // margin-right: 2rem;
-          // transform: rotate(45deg);
-          // width: 2.8rem;
-          // height: 2.8rem;
-        }
-      }
-      .testimonial-text-wrapper {
-        grid-column: 9 / span 11;
-        grid-row: 2 / span 1;
-        p {
-          color: ${({ isEven }) =>
-            isEven ? theme.colors.white : theme.colors.grey};
-        }
-        h6 {
-          color: ${({ isEven }) =>
-            isEven ? theme.colors.blue : theme.colors.teal};
-          font-family: ${theme.fonts.JosefinSlab};
-          font-size: 1.4rem;
-          font-weight: 700;
-          margin: 0;
-        }
-        span {
-          color: ${theme.colors.bronze};
-          font-family: ${theme.fonts.JosefinSlab};
-          font-size: 1.4rem;
-          font-weight: 700;
-          margin: 0;
-        }
-      }
-    }
+  h3 {
+    padding: 0 0 1rem 0;
+  }
+
+  label {
+    align-self: flex-start;
+  }
+
+  span,
+  textarea,
+  input {
+    width: 100%;
   }
 `;
 
@@ -204,5 +146,6 @@ export {
   AboutPageContainer,
   MeetSectionContainer,
   TestimonialSectionContainer,
-  TestimonialItemContainer,
+  ContactSectionContainer,
+  FormContainer,
 };

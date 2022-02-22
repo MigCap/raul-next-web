@@ -1,4 +1,4 @@
-const BASE_URL = "http://wp.rauldediego.com/wp-json/wp/v2";
+const BASE_URL = "https://wp.rauldediego.com/wp-json/wp/v2";
 
 const POSTS_API_URL = `${BASE_URL}/posts`;
 const TAGS_API_URL = `${BASE_URL}/tags`;
@@ -104,7 +104,7 @@ export async function getCategory(slug: any) {
 }
 
 export async function getCategories() {
-  const res = await fetch(`${CATEGORIES_API_URL}`);
+  const res = await fetch(`${CATEGORIES_API_URL}?per_page=50`);
   const categories = await res.json();
   return categories;
 }

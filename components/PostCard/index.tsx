@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { motion } from "framer-motion";
 
 import { Filigrana } from "components/Icons";
+// import NextImage from "components/NextImage";
+import NextImage from "components/CNextImage";
 
 import { useCustomRouter as useRouter } from "hooks";
 
@@ -49,10 +52,9 @@ export default function PostCard({
           <a>
             {featuredMedia && (
               <ImageContainer $isHomePage={isHomePage}>
-                <StyledImage
+                <NextImage
                   src={featuredMedia?.source_url}
                   alt={`${post.title.rendered}-image`}
-                  $isHomePage={isHomePage}
                 />
                 <PostCardTitleContainer $isHomePage={isHomePage}>
                   <div>
