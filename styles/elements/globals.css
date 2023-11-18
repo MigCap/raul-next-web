@@ -1,0 +1,120 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Karla", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #f0f0f0;
+    color: #63666f;
+    /* font-size: 16px; */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a.lighten:hover {
+    /* filter: brightness(1.5); */
+    color: #6bb0b2;
+}
+
+a.darken:hover {
+    /* filter: brightness(1.5); */
+    color: #63666f;
+}
+
+p {
+    font-size: 16px;
+    line-height: 2em;
+    margin: 0 0 1rem 0;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+/* *** *** *** */
+
+.container {
+    min-width: 100vw;
+    padding: 0 1rem;
+}
+
+
+/* .header {
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e6e6e6;
+} */
+
+.header .link-linkedin svg {
+    width: 16px;
+    height: 16px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    height: auto;
+    width: 100%;
+    background: #fff;
+}
+
+.footer p {
+    font-size: 0.7rem;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .link-linkedin svg {
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.link-linkedin svg {
+    fill: #63666f;
+    transition: fill 0.2s ease-in-out;
+}
+
+.link-linkedin svg:hover {
+    fill: #312f2f;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+}
+
+
+/* *** *** *** */
+
+.p-dialog-header-icon:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem transparent !important;
+}
+
+.primary-color {
+    /* color: var(--teal-400); */
+    /* color: #26b59f; */
+    color: #6bb0b2;
+}
