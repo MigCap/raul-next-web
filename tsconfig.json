@@ -15,7 +15,19 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitThis": false,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/pages": ["src/pages/*"],
+      "@/components": ["src/components/*"],
+      "@/layouts": ["src/layouts/*"],
+      "@/icons": ["src/components/common/icons/*"],
+      "@/assets": ["public/assets/*"],
+      "@/i18n": ["src/i18n/*"],
+      "@/sanity": ["client_sanity/*"],
+      "@/styles": ["src/styles/*"],
+      "@/schema": ["../cms-sanity/sanity-schema.ts"]
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next"]

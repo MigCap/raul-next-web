@@ -21,6 +21,7 @@ export async function getPosts() {
   const posts = await postsRes.json();
   return posts;
 }
+
 export async function getPostsByLang(lang: any) {
   const fields = `?_fields=id,slug,title,content,excerpt,featured_media,categories,tags,_links`;
   const langTags = getLangTagsByLang(lang);
