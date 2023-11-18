@@ -1,5 +1,6 @@
 const supportedLanguages = [
   {id: 'en', title: 'English', isDefault: true},
+  {id: 'sp', title: 'Spanish'},
   {id: 'fr', title: 'French'},
   {id: 'it', title: 'Italian'},
 ]
