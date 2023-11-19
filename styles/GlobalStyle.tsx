@@ -1,3 +1,5 @@
+'use client'
+
 import { createGlobalStyle } from "styled-components";
 
 import theme from "./config/theme";

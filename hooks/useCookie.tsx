@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useState } from "react";
 
 const setCookie = (name: any, value: any, days: any, path: any) => {

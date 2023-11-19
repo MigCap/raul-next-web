@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,18 +21,51 @@
     "noImplicitThis": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@/pages": ["src/pages/*"],
-      "@/components": ["src/components/*"],
-      "@/layouts": ["src/layouts/*"],
-      "@/icons": ["src/components/common/icons/*"],
-      "@/assets": ["public/assets/*"],
-      "@/i18n": ["src/i18n/*"],
-      "@/sanity": ["client_sanity/*"],
-      "@/styles": ["src/styles/*"],
-      "@/schema": ["../cms-sanity/sanity-schema.ts"]
+      "@/*": [
+        "src/*"
+      ],
+      "@/pages": [
+        "src/pages/*"
+      ],
+      "@/components": [
+        "src/components/*"
+      ],
+      "@/layouts": [
+        "src/layouts/*"
+      ],
+      "@/icons": [
+        "src/components/common/icons/*"
+      ],
+      "@/assets": [
+        "public/assets/*"
+      ],
+      "@/i18n": [
+        "src/i18n/*"
+      ],
+      "@/sanity": [
+        "client_sanity/*"
+      ],
+      "@/styles": [
+        "src/styles/*"
+      ],
+      "@/schema": [
+        "../cms-sanity/sanity-schema.ts"
+      ]
     },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".next"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }
