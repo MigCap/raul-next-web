@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 import styled from "styled-components";
 
@@ -72,9 +72,9 @@ const NavListItem = styled.li`
     }
   }
 `;
-const NavLink = styled(Link)`
-  padding: 1rem 1.2rem;
-`;
+// const NavLink = styled(Link)`
+//   padding: 1rem 1.2rem;
+// `;
 const By = styled.p`
   padding: 0.5rem 0;
   margin-top: 100%;
@@ -100,6 +100,6 @@ export {
   FieldWrapper,
   GeneralContainer,
   NavListItem,
-  NavLink,
+  // NavLink,
   By,
 };

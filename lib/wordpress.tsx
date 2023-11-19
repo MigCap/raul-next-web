@@ -25,18 +25,20 @@ export async function getPosts() {
 export async function getPostsByLang(lang: any) {
   const fields = `?_fields=id,slug,title,content,excerpt,featured_media,categories,tags,_links`;
   const langTags = getLangTagsByLang(lang);
-  const postsRes = await fetch(`${POSTS_API_URL}${fields}&${langTags}`);
-  const posts = await postsRes.json();
-  return posts;
+  // const postsRes = await fetch(`${POSTS_API_URL}${fields}&${langTags}`);
+  // const posts = await postsRes.json();
+  // return posts;
+  return [];
 }
 
 export async function getPostsByCategoryId(id: string, lang: any) {
-  const langTags = getLangTagsByLang(lang);
-  const postsRes = await fetch(
-    `${POSTS_API_URL}?categories=${id}&per_page=18&${langTags}`
-  );
-  const posts = await postsRes.json();
-  return posts;
+  // const langTags = getLangTagsByLang(lang);
+  // const postsRes = await fetch(
+  //   `${POSTS_API_URL}?categories=${id}&per_page=18&${langTags}`
+  // );
+  // const posts = await postsRes.json();
+  // return posts;
+  return [];
 }
 
 // export async function getPost(slug: any) {
@@ -99,21 +101,24 @@ export async function getPostCategories(categories: string[]) {
 }
 
 export async function getCategory(slug: any) {
-  const categoryRes = await fetch(`${CATEGORIES_API_URL}?slug=${slug}`);
-  const categoryData = await categoryRes.json();
-  return categoryData?.[0];
+  // const categoryRes = await fetch(`${CATEGORIES_API_URL}?slug=${slug}`);
+  // const categoryData = await categoryRes.json();
+  // return categoryData?.[0];
+  return {};
 }
 
 export async function getCategories() {
-  const res = await fetch(`${CATEGORIES_API_URL}?per_page=50`);
-  const categories = await res.json();
-  return categories;
+  // const res = await fetch(`${CATEGORIES_API_URL}?per_page=50`);
+  // const categories = await res.json();
+  // return categories;
+  return [];
 }
 
 export async function getTags() {
-  const tagsRes = await fetch(`${TAGS_API_URL}`);
-  const tagsData = await tagsRes.json();
-  return tagsData;
+  // const tagsRes = await fetch(`${TAGS_API_URL}`);
+  // const tagsData = await tagsRes.json();
+  // return tagsData;
+  return [];
 }
 
 export async function getMedia(posts: any) {
@@ -129,13 +134,14 @@ export async function getMedia(posts: any) {
       .join()
       .replace(" ", "");
 
-  const mediaRes = await fetch(
-    `${MEDIA_API_URL}?include=${postsMediaIds}&per_page=${
-      Number(posts?.length) || 20
-    }`
-  );
-  const media = await mediaRes.json();
-  return media;
+  // const mediaRes = await fetch(
+  //   `${MEDIA_API_URL}?include=${postsMediaIds}&per_page=${
+  //     Number(posts?.length) || 20
+  //   }`
+  // );
+  // const media = await mediaRes.json();
+  // return media;
+  return [];
 }
 
 export function getFeaturedMedia(media: any, id: any) {

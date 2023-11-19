@@ -48,7 +48,7 @@ export default function PostCard({
         initial="initial"
         variants={postCard}
       >
-        <Link href={`/works/${post.slug}`}>
+        <Link legacyBehavior href={`/works/${post.slug}`}>
           <a>
             {featuredMedia && (
               <ImageContainer $isHomePage={isHomePage}>

@@ -2,6 +2,9 @@
 module.exports = {
   reactStrictMode: true,
   swcMinify: true,
+  experimental: {
+    newNextLinkBehavior: false,
+  },
   images: {
     domains: ["wp.rauldediego.com", "www.rauldediego.es"],
   },

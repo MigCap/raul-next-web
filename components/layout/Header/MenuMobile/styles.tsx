@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import styled from "styled-components";
 
 import { media, mixins, Nav, theme } from "styles";
@@ -64,10 +64,10 @@ const NavListItem = styled.li<any>`
   `};
 `;
 
-const NavLink = styled(Link)`
-  padding: 3px 20px 20px;
-  width: 100%;
-`;
+// const NavLink = styled(Link)`
+//   padding: 3px 20px 20px;
+//   width: 100%;
+// `;
 const NavLinkSelectedUnderline = styled.div<any>`
   height: 2px;
   background-color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
@@ -198,7 +198,7 @@ export {
   NavLinks,
   NavList,
   NavListItem,
-  NavLink,
+  // NavLink,
   NavLinkSelectedUnderline,
   SocialContainer,
   SocialItemList,

@@ -17,14 +17,14 @@ function LocaleSelector() {
 
   return (
     <LocalesContainer isHomePage={isHomePage}>
-      <Link href={linkLocaleHref} locale={LANGUAGES.EN} passHref>
+      <Link legacyBehavior href={linkLocaleHref} locale={LANGUAGES.EN} passHref>
         <LocaleAnchor isSelected={isEn} isHomePage={isHomePage}>
           {t(LANGUAGES.EN)}
           {isEn && <LocaleSelectedUnderline isSelected={isEn} />}
         </LocaleAnchor>
       </Link>
       <span> / </span>
-      <Link href={linkLocaleHref} locale={LANGUAGES.ES} passHref>
+      <Link legacyBehavior href={linkLocaleHref} locale={LANGUAGES.ES} passHref>
         <LocaleAnchor isSelected={isEs} isHomePage={isHomePage}>
           {t(LANGUAGES.ES)}
           {isEs && <LocaleSelectedUnderline isSelected={isEs} />}

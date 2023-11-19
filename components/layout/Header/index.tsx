@@ -25,7 +25,7 @@ import {
   NavLinks,
   NavList,
   NavListItem,
-  NavLink,
+  // NavLink,
   NavLinkSelectedUnderline,
   HeaderContainer,
   LocaleSelectorDescktop,
@@ -54,7 +54,7 @@ export default function Header() {
           {isMounted && (
             <CSSTransition nodeRef={logoRef} classNames="fade" timeout={3000}>
               <NavLogoContainer ref={logoRef}>
-                <Link href={getRoutePathById(ROUTES_IDS.HOME)}>
+                <Link legacyBehavior href={getRoutePathById(ROUTES_IDS.HOME)}>
                   <a>
                     <motion.div variants={scaleAndTab}>
                       <Logo />
@@ -86,7 +86,7 @@ export default function Header() {
                         style={{ transitionDelay: `${i * 100}ms` }}
                         isCurrRoute={isCurrRoute}
                       >
-                        <NavLink href={path}>
+                        <Link legacyBehavior href={path}>
                           <a>
                             <p className="p-m-0">
                               {name[locale || localesConfig[0]]}
@@ -97,7 +97,7 @@ export default function Header() {
                               />
                             )}
                           </a>
-                        </NavLink>
+                        </Link>
                       </NavListItem>
                     </CSSTransition>
                   );

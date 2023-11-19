@@ -37,13 +37,11 @@ export default function AboutPage() {
       <AboutPageContainer>
         <MeetSectionContainer>
           <Title title={"niceToMeetYou"} Icon={Filigrana} />
-
           <section className="meet-section">
             <div className="bg-wrapper"></div>
             <div className="left-side-wrapper">
               <SocialH styles={{ width: "100%", "flex-grow": "4" }} />
             </div>
-
             <div className="right-side-wrapper">
               <p>{about?.description?.[locale]}</p>
               <div className="buttons-wrapper">

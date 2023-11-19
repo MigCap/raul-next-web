@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   useContactForm,
   useCustomRouter as useRouter,
@@ -18,7 +20,7 @@ import {
   FieldWrapper,
   GeneralContainer,
   NavListItem,
-  NavLink,
+  // NavLink,
   By,
 } from "./styles";
 
@@ -99,11 +101,11 @@ export default function Footer() {
                 const { path, name, id } = route;
                 return (
                   <NavListItem key={i + id}>
-                    <NavLink href={path}>
+                    <Link legacyBehavior href={path}>
                       <a>
                         <p>{name[locale || localesConfig[0]]}</p>
                       </a>
-                    </NavLink>
+                    </Link>
                   </NavListItem>
                 );
               })}

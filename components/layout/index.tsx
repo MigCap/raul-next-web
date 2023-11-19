@@ -38,9 +38,7 @@ export default function Layout({ children, router }: any) {
               ) : (
                 <MainContainer>{children}</MainContainer>
               )}
-
               <Footer />
-
               <GdprDialog />
             </Providers>
           </motion.div>

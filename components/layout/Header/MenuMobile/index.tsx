@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import LocaleSelector from "components/layout/Header/LocaleSelector";
@@ -18,7 +20,7 @@ import {
   NavLinks,
   NavList,
   NavListItem,
-  NavLink,
+  // NavLink,
   NavLinkSelectedUnderline,
   SocialContainer,
   SocialItemList,
@@ -72,7 +74,7 @@ export default function MenuMobile() {
                       onClick={toggleMenu}
                       isCurrRoute={isCurrRoute}
                     >
-                      <NavLink href={path}>
+                      <Link legacyBehavior href={path}>
                         <a>
                           {name[locale || localesConfig[0]]}
                           {isCurrRoute && (
@@ -81,7 +83,7 @@ export default function MenuMobile() {
                             />
                           )}
                         </a>
-                      </NavLink>
+                      </Link>
                     </NavListItem>
                   );
                 })}

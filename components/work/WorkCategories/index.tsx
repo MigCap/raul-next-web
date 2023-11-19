@@ -27,7 +27,7 @@ export default function WorkCategories({
               return null;
             }
             return (
-              <Link
+              <Link legacyBehavior
                 href={{
                   pathname: "/portfolio-categories/[slug]",
                   query: { slug },

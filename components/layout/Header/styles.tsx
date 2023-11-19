@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 import styled from "styled-components";
 
@@ -81,9 +81,9 @@ const NavListItem = styled.li<any>`
   }
   ${mixins.animatedUnderline}
 `;
-const NavLink = styled(Link)`
-  padding: 1rem 1.2rem;
-`;
+// const NavLink = styled(Link)`
+//   padding: 1rem 1.2rem;
+// `;
 const NavLinkSelectedUnderline = styled.div<any>`
   height: 2px;
   background-color: ${({ isCurrRoute }) => isCurrRoute && theme.colors.orange};
@@ -122,7 +122,7 @@ export {
   NavLinks,
   NavList,
   NavListItem,
-  NavLink,
+  // NavLink,
   NavLinkSelectedUnderline,
   LocaleSelectorDescktop,
   LocalesContainer,

@@ -74,7 +74,7 @@ export function GdprDialog() {
               <strong>Notice.</strong> rauldediego.com uses cookies to provide
               necessary website functionality, improve your experience and
               analyze our traffic. By using the website, you agree to the
-              <Link href={getRoutePathById(ROUTES_IDS.PRIVACY_POLICY)}>
+              <Link legacyBehavior href={getRoutePathById(ROUTES_IDS.PRIVACY_POLICY)}>
                 <a>Privacy Policy</a>
               </Link>{" "}
               and our cookies usage.{" "}

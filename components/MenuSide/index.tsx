@@ -112,7 +112,7 @@ export function MenuSide({
                 <CategoryTitleContainer>
                   <>
                     {Icon && <Icon />}
-                    <Link href={`/portfolio-categories/${parentSlug}`}>
+                    <Link legacyBehavior href={`/portfolio-categories/${parentSlug}`}>
                       <a className="lighten">
                         <CategoryTitle isSelected={isSelected}>
                           {name[locale]}
@@ -128,7 +128,7 @@ export function MenuSide({
                       const { id, name, slug } = childCategory;
                       const isSelected = name?.[LANGUAGES.EN] === currCategory;
                       return (
-                        <Link
+                        <Link legacyBehavior
                           href={`/portfolio-categories/${slug}`}
                           passHref
                           key={id}
